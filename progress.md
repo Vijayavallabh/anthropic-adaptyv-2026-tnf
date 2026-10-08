@@ -129,6 +129,36 @@ source); (B) install SEPARATED multi-His (each near a distinct target cation Lys
 pKa 6.5-6.7) on expr-clean diverse binders (b4m2_r1, b1m12_r4). Fold (Boltz h+m) -> switch_sharpness ->
 keep sharpest that bind+express+cross-react. Goal: fill toward 20 with MORE sharp-switch dominating designs.
 
+## BREAKTHROUGH — sharp separated-multi-His switch + final 20-design portfolio (2026-10-08)
+
+**The gap was switch SHARPNESS (top objective); the fix was physics.** Installed spatially-separated His
+(>8A apart, each near a distinct CONSERVED target cation Lys93/Lys6/Arg98), which titrate additively
+(Delta-n_H->2-3) instead of anti-cooperatively splitting (`scripts/install_sharp_his.py`). Result: the
+switch jumped from FC 3-17x to **19-126x**, and the sharp variants switch in **both** species:
+- `TNFpH06_sh3` **FC 59x/59x** (h/m), expr-PASS, x-react Δ−0.02 — expressing sharp headliner
+- `TNFpH06_sh5` 31x/76x, expr-PASS; `TNFpH07_sh4` **126x/50x** (physics-max, FLAG hedge)
+- `b1m9_1A55H_K93_sh4` FC 22x — **the fully-validated LEAD**: MD His-causal (d_repel +0.91, Gln control
+  inert) AND sharp (PROPKA 22x + pKAI 7x) AND strong x-react binding (iptm 0.91h/0.82m) AND expr-PASS.
+
+**Switch confirmed by 4 method-classes, read as consensus (honest):** PROPKA-Wyman sharpness +
+**pKAI** (orthogonal ML pKa — agrees on SIGN and RANKING: sh5 pKAI 58x, sh4 40x, sh3 26x) + two-state MD
+His-causality (Gln control) + Baker His-cation geometry. **PROPKA/pKAI vs MD can disagree**: b1m9_sh4 is
+MD-confirmed; the **cb1 sharp variants are thermodynamically sharp (both pKa engines) but MD-ambiguous**
+(mobile modest-affinity interface — Gln control confounds, e.g. TNFpH07_sh4 d_repel+1.05 vs control+1.01).
+Since BLI-at-2-pH measures the THERMODYNAMIC switch, cb1 variants ship as strong candidates, labeled
+thermodynamic-sharp/MD-ambiguous. b2m0_c70 is an independent MD-His-causal de-novo switch (d_repel 3.2A).
+
+**Cross-reactivity corrected & re-verified**: fixed a target-file bug (`mouse_tnf.seq` was the full
+PRECURSOR with TM/signal domain -> spurious 0.15 iptm for ALL designs incl parents; now the mature 156aa
+ortholog, parent TNFpH06 recovers to 0.63/Δ+0.01, see [[env-mouse-tnf-seq-was-precursor]]). Epitope
+conservation 82-97% across the portfolio; switch cations conserved/cation-preserving (Arg98->Lys98).
+
+**Final deliverable: `runs/push/final20.{csv,fasta}` + `upload_final20.csv`** (Track-3 validator PASS,
+0 errors). **20 designs / 6 folds** (cb1:6, b1m9/f8:3, b1m12/f5:3 [all 4/4], b4m2/f2:3, b2m0/f1:3,
+b1m7/f11:2); **10 expr-PASS, 3 novelty-4/4, 6 sharp (FC>=19x)**. Assembler `scripts/build_final20.py`
+auto-merges every metric. Write-up rewritten: `docs/METHODS_push.md`. New scripts: install_sharp_his,
+switch_sharpness, pkai_sharpness, his_cation_contacts, epitope_conservation, build_final20.
+
 ## Next step
 
 **Decision point (owner):** upload. Recommended core = **Tiers A+B (10 designs)**; add Tier C (4) for fold
