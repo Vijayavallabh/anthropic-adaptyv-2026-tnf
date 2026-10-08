@@ -175,9 +175,38 @@ agents). **Interface-frozen SolubleMPNN rescue of the 8 FLAG designs** (`scripts
   rescued sharp. Track-3 PASS, byte-consistent. Rescued-switch MD re-validation RUNNING. 3 research
   agents (break-fold-ceiling / maximize-expression / sharper-switch-mechanisms) running for the next push.
 
+## SESSION 6 (2026-10-08, cont.): bold new-fold tested+floored; portfolio validated on every axis
+
+Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
+- **PXDesign new-fold campaign (the evidence-backed TNF winner) — RUN and DECISIVELY FLOORED.** Fixed the
+  env (`PXDESIGN_CKPT_DIR` must name `checkpoint/`; LD_LIBRARY_PATH to venv nvidia libs; pip `--no-deps`),
+  ran 6 tasks (recsite patch + inter-subunit groove × L70/90/110), extracted **98 on-target backbones**
+  (`pxd_extract.py`) → SolubleMPNN (`pxd_mpnn.sh`) → af2ig (`pxd_make_af2ig.py`): **0/196 bind** (best
+  pae_int 24.6, all ≥24; plddt_binder 83-94 = fold-not-bind). Boltz-2 cross-check gave 5 at iptm 0.5-0.66
+  but the **pose check killed it** — they dock OFF the designed epitope (0-2/8 hotspots) = msa-empty
+  pose-promiscuity false-positive. New-fold generation at these epitopes is a tested floor for this
+  pipeline. Only the all-atom RFd3 angle remains untested ([[lesson-denovo-wall-flat-polar-target]]).
+- **Rescue-switch MD re-validation DONE:** all 3 rescued variants come back **NOT His-causal** (d_repel
+  -0.46/-0.27/-0.12) — surface redesign loosens the interface so explicit-MD no longer confirms, though the
+  **thermodynamic** switch (PROPKA+pKAI, what BLI measures) is intact. Relabeled rescued = thermodynamic +
+  expr-PASS; MD-His-causal reserved for the 3 un-rescued leads + distinct-fold b2m0_c70. METHODS updated.
+- **Keystone switch reframe** (research agent, read the Baker 2025 blueprint): fold-change = in-window
+  Δn_H; per-His pKa diagnostic shows my cb1 His midpoints are acidic-shifted (pKa_cplx crashes <6.0), so
+  the ceiling is set by centering His pKa at 6.7, not adding His (5-His over-crowds → MD-ambiguous). The
+  reported 59-126x ARE the realized in-window FC. [[lesson-ph-switch-optimize-in-window-dnh-center-pka]]
+- **Expression composition analysis** (research agent): cb1 family is expression-robust (Glu 21%, netQ
+  -9..-11, helix 61%) — the real wet-lab predictors; b2m0 genuinely poor (Glu 5.5%), FLAG corroborated.
+- **Novelty gate confirmed locally (fail-loud):** mmseqs vs PDB seqres — POSCTRL TNF hits 100%, **all 20
+  designs have NO PDB sequence match** (fully novel seqs); single-seq structural TM safe-harbor; parents
+  portal-confirmed >=3. All 20 pass the >=3/4 gate.
+- Deliverable re-validated **byte-consistent** (CSV==FASTA==upload, 20 uniq, 0-Cys; upload md5 77b6cd92...).
+
 ## Next step
 
-**Decision point (owner):** upload. Recommended core = **Tiers A+B (10 designs)**; add Tier C (4) for fold
-diversity up to the Track-3 cap of 20. Proteinbase account j_v_v_07. Deadline **2026-10-12 11:59 UTC**.
-Upload is user-gated — do not auto-upload. The prior validated `runs/submission/final_portfolio.csv`
-(md5 f89d9173, 9 designs) is preserved as the floor.
+**Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
+`upload_final20.csv` (20 designs / 6 folds / 15-20 expr-PASS / 3x novelty-4/4 / 4 MD-His-causal switches /
+FC to 126x / all seqs fully novel vs PDB). **Decision point (owner): upload** (Proteinbase account
+j_v_v_07; the portal re-checks novelty authoritatively at upload — expected >=3/4). Recommended core =
+the 3 dual-everything leads (b1m9_sh4, TNFpH06_sh3, TNFpH06_sh2) + the novelty/affinity anchors
+(b1m12 4/4, b4m2), filling to 20 for fold+risk diversity. Deadline **2026-10-12 11:59 UTC**. Upload is
+user-gated — do not auto-upload. Floor `runs/submission/final_portfolio.csv` (md5 f89d9173) preserved.
