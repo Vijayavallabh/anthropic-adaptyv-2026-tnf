@@ -12,35 +12,35 @@ C=[
  # b1m9 f8 -- the FULLY-VALIDATED lead: sharp switch (PROPKA 22x + pKAI 7x) AND MD His-causal
  #           (d_repel +0.91, Gln control inert) AND strong cross-react binding (0.91/0.82) AND expresses.
  ("b1m9_1A55H_K93_sh4","f8-C8","3/4","LEAD: sharp switch FC 22x, MD His-causal (control inert), strong x-react bind, expr-clean"),
- ("b1m9_1A55H_K93_sh6","f8-C8","3/4","sharper b1m9 FC 29x thermodynamic (expr-risk hedge)"),
+ ("b1m9_1A55H_K93_sh6_r1","f8-C8","3/4","RESCUED sharp b1m9: FC 32x, iptm 0.92/0.83, now expr-PASS"),
  ("b1m9_1A55H_K93","f8-C8","3/4","validated single-His parent (iptm 0.89)"),
  # cb1 -- sharpest THERMODYNAMIC switches (PROPKA+pKAI consensus; what BLI-at-2-pH measures), both species
  ("TNFpH06_sh3","cb1","3/4","CO-LEAD: sharp FC 59x both species, MD His-causal (d_repel+1.18), x-react, expr-clean"),
  ("TNFpH06_sh5","cb1","3/4","sharp switch FC 31x/76x (pKAI 58x, sharpest by pKAI), x-react, expr-clean"),
- ("TNFpH07_sh4","cb1","3/4","physics-max thermodynamic FC 126x/50x (pKAI 40x); expr+MD-structural hedge"),
+ ("TNFpH07_sh4_r4","cb1","3/4","RESCUED physics-max switch: FC 69x, now expr-PASS + cross-react (iptm 0.66/0.72)"),
  ("TNFpH06_sh2","cb1","3/4","MD His-causal sharp cb1 (d_repel+1.25), FC 17x/11x both species, best cb1 binding iptm 0.75, expr-clean"),
  ("TNFpH06","cb1","3/4","validated coop-2His original (lineage anchor)"),
  ("TNFpH07","cb1","3/4","validated coop-2His original (2nd anchor)"),
  # b1m12 f5 -- 4/4 novel strong binders (novelty + affinity + x-react; modest switch)
  ("b1m12_r4","f5-C5","4/4","best novel binder iptm 0.94, expr-clean, novelty 4/4"),
- ("b1m12_2A67H_K112","f5-C5","4/4","4/4 strong binder (expr-risk hedge)"),
+ ("b1m12_2A67H_K112_r1","f5-C5","4/4","RESCUED 4/4 strong binder: iptm 0.92/0.92 perfect cross-react, now expr-PASS"),
  ("b1m12_r1","f5-C5","4/4","4/4 expr-clean binder"),
  # b4m2 f2 -- strong cross-reactive binders (epitope 96-97% conserved)
  ("b4m2_r1","f2-C2","3/4","expr-clean binder iptm 0.91, epitope 97% conserved"),
- ("b4m2_2A87H_K101","f2-C2","3/4","strongest binder iptm 0.93 (expr-risk hedge)"),
+ ("b4m2_2A87H_K101_r3","f2-C2","3/4","RESCUED strongest binder: iptm 0.95/0.95 perfect cross-react, FC 10x, now expr-PASS"),
  ("b4m2_r6","f2-C2","3/4","2nd expr-clean b4m2 hedge (96% conserved)"),
  # b2m0 f1 -- MD-confirmed de-novo switches (His-causal, Gln control inert)
  ("b2m0_c20","f1-C1","3/4","MD His-causal coop switch (d_repel+control inert), f1 fold"),
  ("b2m0_c70","f1-C1","3/4","MD His-causal coop switch, strongest d_repel 3.2A, f1 fold"),
  ("b2m0_1A67H_K84","f1-C1","3/4","f1 single-His original (diversity)"),
  # b1m7 f11
- ("b1m7_2A57H_K183","f11-C11","3/4","f11 fold diversity"),
+ ("b1m7_2A57H_K183_r1","f11-C11","3/4","RESCUED f11 binder: iptm 0.90/0.92, now expr-PASS"),
  ("b1m7_2A57H_K183_sh5","f11-C11","3/4","f11 multi-His switch variant"),
 ]
 
 def load_seqs():
     s={}
-    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv"]:
+    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv","rescue2/candidates.csv"]:
         p=f"{PU}/{f}"
         if os.path.exists(p):
             for r in csv.DictReader(open(p)):
@@ -50,22 +50,24 @@ def load_tsv(path,key="design_id"):
     return {r[key]:r for r in csv.DictReader(open(path),delimiter="\t")} if os.path.exists(path) else {}
 seqs=load_seqs()
 SH_H={};
-for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
+for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv","rescue2/sharpness_h.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
 SH_M={}
 for f in ["sharp/sharpness_mouse.tsv","sharp2/sharpness_mouse.tsv"]: SH_M.update(load_tsv(f"{PU}/{f}"))
 PKAI=load_tsv(f"{PU}/sharp/pkai.tsv")
 def iptm(name,species):
-    pat="boltz_*_h" if species=="h" else "boltz_*_m"
+    pats=["boltz_*_h","boltz_r2h*"] if species=="h" else ["boltz_*_m","boltz_r2m*"]
     best=None
-    for g in glob.glob(f"{R}/runs/{pat}/out/by_seed/{name}/s0/confidence_{name}_model_0.json"):
-        try:
-            v=json.load(open(g))["iptm"]
-            if best is None or v>best: best=v
-        except: pass
+    for pat in pats:
+        for g in glob.glob(f"{R}/runs/{pat}/out/by_seed/{name}/s0/confidence_{name}_model_0.json"):
+            try:
+                v=json.load(open(g))["iptm"]
+                if best is None or v>best: best=v
+            except: pass
     return best
 def md(name):
     # md_release_tnf writes --out as a directory containing <name>.json; also handle flat (coop)
-    cands=[f"{PU}/sharp/md/{name}.json/{name}.json",f"{PU}/sharp/md/{name}.json",f"{PU}/coop/md/{name}.json"]
+    cands=[f"{PU}/sharp/md/{name}.json/{name}.json",f"{PU}/sharp/md/{name}.json",f"{PU}/coop/md/{name}.json",
+           f"{PU}/rescue2/md/{name}.json/{name}.json",f"{PU}/rescue2/md/{name}.json"]
     for j in cands:
         if os.path.isfile(j) and os.path.getsize(j)>2:
             try:

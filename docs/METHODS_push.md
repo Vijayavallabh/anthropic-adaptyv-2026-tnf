@@ -66,11 +66,20 @@ labeled distinctly from the MD-confirmed designs.
 Against Adaptyv's `protein-qc` **standard** gate (instability < 40, GRAVY < 0.4, 0-Cys), only **1/9** of
 the original designs passed — the bindable epitope is hydrophobic, so vanilla-MPNN interfaces raise
 instability. Per the EGFR post-mortem a non-expressing design scores zero regardless of a perfect switch.
-**Rescue:** freeze the binding interface (union of human+mouse interfaces + the switch His) and
-re-sequence **only the solvent-facing surface** with SolubleMPNN (0-Cys); re-fold (Boltz-2 human+mouse)
-and re-score. This delivers expression-clean variants (instability 27–35) with binding + switch preserved
-(`b4m2_r1/r6`, `b1m12_r4/r1`). The final portfolio is **10/20 expression-PASS**; the 10 FLAG designs are
-kept only as hedges that are strongest on another axis (switch, affinity, novelty, or fold diversity).
+**Rescue:** freeze the binding interface (union of human+mouse interfaces + **all** switch His) and
+re-sequence **only the solvent-facing surface** with SolubleMPNN (0-Cys, 48 seqs/design); re-fold
+(Boltz-2 human+mouse) and re-score expression + binding + the switch on the exact rescued sequence. This
+preserves binding, cross-reactivity **and the His switch** (the interface+His are frozen) while fixing
+expression — and in several cases the surface redesign *sharpened* the switch:
+- `TNFpH07_sh4_r4` — physics-max switch FC 69× (parent 126×), now **expr-PASS** (instab 34) + cross-react (iptm 0.66 h/0.72 m);
+- `b1m9_1A55H_K93_sh6_r1` — sharp switch FC 32×, strong binding 0.92/0.83, now **expr-PASS**;
+- `b4m2_2A87H_K101_r3` — strongest binder iptm **0.95/0.95** (perfect cross-react), now **expr-PASS**;
+- `b1m12_2A67H_K112_r1` — the 4/4-novel strong binder (0.92/0.92), now **expr-PASS**.
+(The 73-aa `b2m0` fold is expression-stubborn — too little free surface, 23–26 residues — so its 3 designs,
+one of which carries an MD-His-causal switch, stay FLAG as fold-diversity/switch hedges.) The portfolio is
+**15/20 expression-PASS**; the 5 FLAG designs are the stubborn `b2m0` fold (incl. the MD-confirmed
+`b2m0_c70`), a borderline `b1m9` single-His parent, and a second `b1m7` variant — all kept only as hedges
+strongest on another axis (switch, novelty, or fold diversity).
 
 ## Cross-reactivity — designed in, verified on the mature mouse ortholog
 
@@ -121,5 +130,5 @@ cb1 leads are additionally sharp in *both* species). The 5-His cb1 hedges (`TNFp
 thermodynamic switch highest (to 126×, two pKa engines agreeing — the quantity BLI measures) but are
 MD-ambiguous, so we label them thermodynamic-only rather than overclaim. `b2m0_c70` adds a third,
 independent MD-His-causal switch on a different fold; the **b1m12 4/4** fold anchors structural novelty and
-**b4m2** the affinity. The spread across 6 folds with 10/20 expression-PASS hedges the dominant wet-lab
+**b4m2** the affinity. The spread across 6 folds with 15/20 expression-PASS hedges the dominant wet-lab
 risk. The remaining open item is upload (user-gated).

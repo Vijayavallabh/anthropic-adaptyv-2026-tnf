@@ -161,6 +161,20 @@ b1m7/f11:2); **10 expr-PASS, 3 novelty-4/4, 6 sharp (FC>=19x)**. Assembler `scri
 auto-merges every metric. Write-up rewritten: `docs/METHODS_push.md`. New scripts: install_sharp_his,
 switch_sharpness, pkai_sharpness, his_cation_contacts, epitope_conservation, build_final20.
 
+## SESSION 5 (2026-10-08, resumed on Stop-hook): expression rescue -> 15/20 PASS + sharper switches
+Stop-hook flagged stopping early with 10/20 expression-FLAG. Resumed aggressively (8 GPUs + 3 research
+agents). **Interface-frozen SolubleMPNN rescue of the 8 FLAG designs** (`scripts/rescue_build_general.py`
++ `rescue2_mpnn.sh` + `rescue2_select.py`; freeze union iface + ALL His, 48 surface-redesigns/design):
+- **5/8 rescued to expr-PASS, switch PRESERVED/SHARPENED on the exact rescued seq:** `TNFpH07_sh4_r4`
+  (FC 69x, now PASS, x-react 0.66/0.72), `b1m9_sh6_r1` (FC 32x, 0.92/0.83, PASS), `b4m2_2A87H_r3`
+  (iptm 0.95/0.95 perfect x-react, PASS), `b1m12_2A67H_r1` (4/4, 0.92/0.92, PASS), `b1m7_r1` (PASS).
+  TNFpH07_sh4_r2 even hit FC 223x. Swapped all 5 FLAG->rescued-PASS in `build_final20.py`.
+- **b2m0 (73aa) confirmed expression-STUBBORN** (0/48 pass; only 23-26 free surface) -> its 3 designs
+  (incl MD-His-causal b2m0_c70) stay FLAG as fold-diversity/switch hedges.
+- **Portfolio now 15/20 expr-PASS** (was 10), still 6 folds / 3x 4/4 / 3 MD-His-causal sharp switches +
+  rescued sharp. Track-3 PASS, byte-consistent. Rescued-switch MD re-validation RUNNING. 3 research
+  agents (break-fold-ceiling / maximize-expression / sharper-switch-mechanisms) running for the next push.
+
 ## Next step
 
 **Decision point (owner):** upload. Recommended core = **Tiers A+B (10 designs)**; add Tier C (4) for fold
