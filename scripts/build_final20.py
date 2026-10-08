@@ -15,7 +15,7 @@ C=[
  ("b1m9_1A55H_K93_sh6","f8-C8","3/4","sharper b1m9 FC 29x thermodynamic (expr-risk hedge)"),
  ("b1m9_1A55H_K93","f8-C8","3/4","validated single-His parent (iptm 0.89)"),
  # cb1 -- sharpest THERMODYNAMIC switches (PROPKA+pKAI consensus; what BLI-at-2-pH measures), both species
- ("TNFpH06_sh3","cb1","3/4","sharp switch FC 59x both species (pKAI 26x), x-react, expr-clean"),
+ ("TNFpH06_sh3","cb1","3/4","CO-LEAD: sharp FC 59x both species, MD His-causal (d_repel+1.18), x-react, expr-clean"),
  ("TNFpH06_sh5","cb1","3/4","sharp switch FC 31x/76x (pKAI 58x, sharpest by pKAI), x-react, expr-clean"),
  ("TNFpH07_sh4","cb1","3/4","physics-max thermodynamic FC 126x/50x (pKAI 40x); expr+MD-structural hedge"),
  ("TNFpH06_sh1","cb1","3/4","sharp switch FC 19x + best cb1 binding (iptm 0.74), expr-clean"),

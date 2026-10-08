@@ -45,14 +45,19 @@ split.
 4. **Baker His-cation geometry** — the empirical ≥2 protonated-His···cation contacts rule
    (bioRxiv 2025.09.29.678932 / PubMed 41256377). `scripts/his_cation_contacts.py`.
 
-**Honest reading of (3) vs (1,2).** The two-state MD and the thermodynamic linkage can disagree, and we
-report it rather than hide it. `b1m9_1A55H_K93_sh4` is **fully confirmed** — sharp (PROPKA 22×, pKAI 7×)
-**and** MD His-causal (d_repel +0.91, Gln control −0.15) on a rigid, high-affinity interface. The **cb1**
-sharp variants are **thermodynamically sharp by both pKa engines** but their 3-ns two-state MD does *not*
-cleanly resolve His-causality (the cb1 fold is a modest-affinity, mobile binder, so HIP and the Gln
-control perturb the interface similarly). Because BLI measures the thermodynamic switch — which both pKa
-classes confirm — we ship the cb1 variants as strong pH-switch candidates, but we mark them
-**thermodynamic-sharp / MD-structural-ambiguous**, distinct from the MD-confirmed designs.
+**Honest reading of (3) vs (1,2), and the 4-His sweet spot.** The two-state MD and the thermodynamic
+linkage can disagree, and we report both. **Two designs are fully confirmed** — sharp *and* MD His-causal
+(repulsion real and exceeding the Gln control):
+- `b1m9_1A55H_K93_sh4` (PROPKA 22× / pKAI 7×; MD d_repel **+0.91**, control −0.15) — rigid high-affinity f8 interface;
+- `TNFpH06_sh3` (PROPKA 59× / pKAI 26×, both species; MD d_repel **+1.18**, control +0.13) — a sharp cb1
+  switch that the MD *does* resolve cleanly.
+
+The disagreements are informative: the **5-His** cb1 variants (`TNFpH06_sh5`, `TNFpH07_sh4`) are
+thermodynamically the sharpest (31×/76× and 126×/50×, both pKa engines) but their MD is negative/
+control-confounded — the 5th installed His over-crowds the interface and the Gln control perturbs it as
+much as HIP. **Four separated His is the sweet spot** (maximal Δn_H that the structural switch still
+supports); the 5-His variants ship as **thermodynamic-sharp hedges** (BLI measures the thermodynamic
+switch, which both pKa classes confirm), labeled distinctly from the two MD-confirmed designs.
 
 ## Expression — the hard gate, and interface-frozen rescue
 
@@ -89,12 +94,13 @@ cation** as switch anchor, so both the interface and the switch survive the huma
 6 distinct folds; `novelty ≥ 3/4` throughout (3 designs are **4/4**). Chosen for the judging axes, leading
 with the most-validated design and spreading risk across folds.
 
-- **Lead — fully validated (f8 / b1m9):** `b1m9_1A55H_K93_sh4` — sharp switch (PROPKA 22×, pKAI 7×),
-  **MD His-causal** (d_repel +0.91, Gln control inert), strong cross-reactive binding (iptm 0.91 h / 0.82 m),
-  **expression-PASS**. The one design that passes *every* axis. Shipped with its parent and a sharper hedge.
-- **Sharpest thermodynamic switches (cb1):** `TNFpH06_sh3` (59×/59×, PASS), `TNFpH06_sh5` (31×/76×, PASS),
-  `TNFpH06_sh1` (19×, PASS, best cb1 binding), and the physics-max `TNFpH07_sh4` (126×/50×, hedge) — all
-  cross-reactive, PROPKA+pKAI-consensus sharp; plus the two validated coop-2His originals `TNFpH06/07`.
+- **Co-leads — fully validated (sharp + MD His-causal + cross-react + express):**
+  `b1m9_1A55H_K93_sh4` (f8; 22×, MD d_repel +0.91, iptm 0.91 h/0.82 m, PASS) and `TNFpH06_sh3`
+  (cb1; **59×/59×** both species, MD d_repel +1.18, Δ−0.02, PASS). These two pass *every* axis.
+- **Sharpest thermodynamic switches (cb1 hedges):** `TNFpH06_sh5` (31×/76×, PASS), the physics-max
+  `TNFpH07_sh4` (126×/50×), and `TNFpH06_sh1` (19×, PASS, best cb1 binding) — PROPKA+pKAI-consensus sharp
+  and cross-reactive, MD thermodynamic-only (5-His over-crowding); plus the two validated coop-2His
+  originals `TNFpH06/07`.
 - **Novel strong binders (f5 / b1m12, novelty 4/4):** `b1m12_r4` (iptm 0.94, PASS), `b1m12_2A67H_K112`,
   `b1m12_r1` — highest affinity + the only 4/4 structural-novelty fold; modest switch (value = novelty +
   binding + cross-react).
@@ -106,10 +112,11 @@ with the most-validated design and spreading risk across folds.
 
 ## Honest assessment
 
-The single dominating design is **`b1m9_1A55H_K93_sh4`** — it is the only one confirmed on binding,
-cross-reactivity, expression, *and* an explicit His-causal two-state-MD switch. The **cb1 sharp variants**
-are the strongest on the top objective by the measurement that matters for BLI (a 20–126× thermodynamic
-pH-shift, two pKa engines agreeing), and they express and cross-react, but their structural MD is
-ambiguous on the mobile cb1 interface — we label them accordingly rather than overclaim. The **b1m12
-4/4** fold anchors structural novelty, **b4m2** the affinity, **b2m0** an independent MD-confirmed switch,
-and the spread across 6 folds hedges wet-lab risk. The remaining open item is upload (user-gated).
+**Two** designs dominate on every axis — `b1m9_1A55H_K93_sh4` and `TNFpH06_sh3` — each confirmed on
+binding, cross-reactivity, expression, *and* an explicit His-causal two-state-MD switch (and `TNFpH06_sh3`
+is additionally sharp in *both* species, 59×). The 5-His cb1 hedges (`TNFpH06_sh5`, `TNFpH07_sh4`) push the
+thermodynamic switch highest (to 126×, two pKa engines agreeing — the quantity BLI measures) but are
+MD-ambiguous, so we label them thermodynamic-only rather than overclaim. `b2m0_c70` adds a third,
+independent MD-His-causal switch on a different fold; the **b1m12 4/4** fold anchors structural novelty and
+**b4m2** the affinity. The spread across 6 folds with 10/20 expression-PASS hedges the dominant wet-lab
+risk. The remaining open item is upload (user-gated).

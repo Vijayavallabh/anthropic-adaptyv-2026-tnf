@@ -142,11 +142,12 @@ switch jumped from FC 3-17x to **19-126x**, and the sharp variants switch in **b
 
 **Switch confirmed by 4 method-classes, read as consensus (honest):** PROPKA-Wyman sharpness +
 **pKAI** (orthogonal ML pKa — agrees on SIGN and RANKING: sh5 pKAI 58x, sh4 40x, sh3 26x) + two-state MD
-His-causality (Gln control) + Baker His-cation geometry. **PROPKA/pKAI vs MD can disagree**: b1m9_sh4 is
-MD-confirmed; the **cb1 sharp variants are thermodynamically sharp (both pKa engines) but MD-ambiguous**
-(mobile modest-affinity interface — Gln control confounds, e.g. TNFpH07_sh4 d_repel+1.05 vs control+1.01).
-Since BLI-at-2-pH measures the THERMODYNAMIC switch, cb1 variants ship as strong candidates, labeled
-thermodynamic-sharp/MD-ambiguous. b2m0_c70 is an independent MD-His-causal de-novo switch (d_repel 3.2A).
+His-causality (Gln control) + Baker His-cation geometry. **TWO co-leads fully validated** (sharp + MD
+His-causal + x-react + express): `b1m9_sh4` (MD d_repel +0.91) and `TNFpH06_sh3` (MD d_repel +1.18,
+59x both species). **4-His is the sweet spot**: the 5-His cb1 variants (sh5, sh4) are the sharpest
+thermodynamically (76x, 126x; both pKa engines) but MD-negative/ambiguous (5th His over-crowds; e.g.
+TNFpH07_sh4 d_repel+1.05 vs control+1.01) -> ship as thermodynamic-sharp hedges (BLI measures the
+thermodynamic switch). `b2m0_c70` = a third, independent MD-His-causal de-novo switch (d_repel 3.2A).
 
 **Cross-reactivity corrected & re-verified**: fixed a target-file bug (`mouse_tnf.seq` was the full
 PRECURSOR with TM/signal domain -> spurious 0.15 iptm for ALL designs incl parents; now the mature 156aa
