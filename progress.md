@@ -79,6 +79,56 @@ de-novo (A20V) — portal does the authoritative 1–4 score.
 New open generators (pxdesign/complexa) were deprioritized — install friction + full re-validation exceed the
 time budget for low expected value on this hard target.
 
+## Bold bet in progress — cooperative-2His switch strengthening (2026-10-08)
+
+The de-novo folds have weak single-His switches. Feasibility test: **all 6 de-novo folds sit near ≥2
+conserved target Lys** (precondition for a coupled 2-His switch). Installed a 2nd His near a 2nd Lys on
+b1m12 (novelty 4/4) and b2m0 and folded + scored:
+- **Switch ~2× stronger** (PROPKA binder-His linkage): b1m12 −0.41→**−1.00** (c94), b2m0 −0.67→**−1.27** (c20);
+  several variants −0.75…−1.00.
+- **Binding preserved** (iptm_h 0.92–0.94) and **cross-react preserved** (matched Δ −0.01…−0.13).
+- **Expression:** most coop variants FLAG (adding His to already-borderline de-novo folds pushes instab
+  43–50); **b1m12_c68 PASSES** (39.9) with a −0.82 switch — a candidate dominating design as-is.
+- **MD two-state selectivity gate: RUNNING** (the decisive test; PROPKA is only the pre-screen).
+
+Recipe for a dominating design: coop-2His (strong switch) → expression-rescue the strong-but-FLAG variants
+(freeze interface + both His, soluble surface) → re-validate. Gated on the MD selectivity verdict.
+Research agents (wide SOTA + switch-sharpening physics + TNF/unconventional) running in parallel.
+
+## Physics-grounded switch ranking + user relaxed novelty to 3/4 (2026-10-08, cont'd)
+
+**User: "I am fine with 3/4 novelty designs too."** Portal requires >=3/4 to submit; only `A20V` was 2/4 ->
+**DROPPED**. Portfolio = **13 designs / 6 folds**, all >=3/4; upload form regenerated
+(`runs/push/upload_push.csv`, 13 rows). The demanding all-20-at-4/4 generative campaign is OFF.
+
+**Three research agents returned (convergent, decisive):** Baker pH-binders now peer-reviewed (PubMed
+41256377); Anthropic Aug-2026 autonomous-binder paper *ran a TNFα campaign*; switch-sharpness physics.
+1. **Switch SHARPNESS = Delta-n_H (protons coupled to binding), NOT His count.** Width = 1.908/n_H pH.
+   Over 7.4->6.0: n_H=1 ~25x (single-His too broad = weak), 2 ~630x, 3 ~16000x. Clustered interface His
+   are ANTI-COOPERATIVE (pKas split -> broad); need SPATIALLY-SEPARATED His, each near its OWN target
+   cation, pKa-matched 6.5-6.7. New metric: `scripts/switch_sharpness.py` (peak Delta-n_H + fold-change
+   over 6.0-7.4 via PROPKA Wyman; envs/pyrosetta/bin/propka3). Output `runs/push/switch_sharpness.tsv`.
+2. **Baker empirical floor >=2 His<->cation contacts** (`scripts/his_cation_contacts.py`); placement>count.
+3. **Cross-reactivity SOLVED**: every design hits a **79-94% conserved** human<->mouse epitope
+   (`scripts/epitope_conservation.py`); divergences = flexible N-term (R1>Q,T2>N,P3>S) + conservative
+   (Ile<->Val). No new epitope campaign needed.
+
+**Physics-truthful portfolio (new `sharpness_FC` column, assemble_push.py):**
+- **TNFpH07 (peak 1.51 / 13x) + TNFpH06 (1.39 / 17x)** = the ONLY sharp switches (3 co-titrating His
+  ~pKa 6.3, expr-clean instab 33-35, Baker-PASS, cross-reactive). **THE headliners.**
+- All other 11: weak switches (FC 2-8x) — bind + cross-react, but the TOP-objective axis is weak.
+  Single-His TNFpH01 = 3x; b1m12 coop (c91/c92/c94/c68) weak (confirms anti-cooperative clustered His).
+
+**Coop-2His two-state MD (6 variants):** b2m0_c20/c37/c70 all selective (His-causal; Gln-isostere control
+inert; d_repel 0.24/0.66/3.22; iface stable in 3 ns) but FLAG expr (46-50; b2m0 expression-stubborn).
+b1m12_c68/c94 NOT selective (adjacent His 67/68, 67/94). Net: b2m0 can host a selective de-novo switch,
+expression is the blocker.
+
+**DECISIVE GAP -> sharp-multi-His generative campaign (8 GPUs idle):** (A) scale cb1 coop (reliable sharp
+source); (B) install SEPARATED multi-His (each near a distinct target cation Lys6/Lys93/Arg1, >8A apart,
+pKa 6.5-6.7) on expr-clean diverse binders (b4m2_r1, b1m12_r4). Fold (Boltz h+m) -> switch_sharpness ->
+keep sharpest that bind+express+cross-react. Goal: fill toward 20 with MORE sharp-switch dominating designs.
+
 ## Next step
 
 **Decision point (owner):** upload. Recommended core = **Tiers A+B (10 designs)**; add Tier C (4) for fold
