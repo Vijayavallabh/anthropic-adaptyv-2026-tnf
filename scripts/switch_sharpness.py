@@ -12,6 +12,7 @@ from Bio.SeqUtils import seq1
 R="/home/prachh/v/anthropic-adaptyv-2026-tnf"
 PROPKA=f"{R}/envs/pyrosetta/bin/propka3"
 SEARCH=[f"{R}/runs/boltz_push_h/out/by_seed",f"{R}/runs/boltz_fin_h/out/by_seed",f"{R}/runs/boltz_coop_h/out/by_seed"]
+if os.environ.get("BOLTZ_SEARCH"): SEARCH=[os.environ["BOLTZ_SEARCH"]]+SEARCH  # extra complex dir (e.g. mouse fold)
 def find_cif(n):
     for b in SEARCH:
         p=f"{b}/{n}/s0/{n}_model_0.cif"
