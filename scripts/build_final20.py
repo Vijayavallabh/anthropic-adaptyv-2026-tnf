@@ -22,13 +22,13 @@ C=[
  ("TNFpH06","cb1","3/4","validated coop-2His original (lineage anchor)"),
  ("TNFpH07","cb1","3/4","validated coop-2His original (2nd anchor)"),
  # b1m12 f5 -- 4/4 novel strong binders (novelty + affinity + x-react; modest switch)
- ("b1m12_r4","f5-C5","4/4","best novel binder iptm 0.94, expr-clean, novelty 4/4"),
+ ("b1m12_A91H","f5-C5","4/4","DOMINANT: 4/4-novel binder + MD-His-causal switch (d_repel 1.46, control inert) on conserved K98; iptm 0.92h/0.94m (best x-react), FC 3x, expr-PASS"),
  ("b1m12_2A67H_K112_r1","f5-C5","4/4","RESCUED 4/4 strong binder: iptm 0.92/0.92 perfect cross-react, now expr-PASS"),
- ("b1m12_r1","f5-C5","4/4","4/4 expr-clean binder"),
+ ("b1m12_r6_A92S","f5-C5","4/4","DOMINANT: 4/4-novel binder + STRONGEST MD-His-causal switch (d_repel 3.9) on conserved K98; iptm 0.91h/0.95m, FC 3x, expr-PASS"),
  # b4m2 f2 -- strong cross-reactive binders (epitope 96-97% conserved)
  ("b4m2_r1","f2-C2","3/4","expr-clean binder iptm 0.91, epitope 97% conserved"),
  ("b4m2_2A87H_K101_r3","f2-C2","3/4","RESCUED strongest binder: iptm 0.95/0.95 perfect cross-react, FC 10x, now expr-PASS"),
- ("b4m2_r6","f2-C2","3/4","2nd expr-clean b4m2 hedge (96% conserved)"),
+ ("b4m2_A37H","f2-C2","3/4","b4m2 binder + MD-His-causal switch (d_repel 0.45, control -2.16) on conserved K98; iptm 0.93h/0.80m x-react, FC 4x, expr-PASS"),
  # b2m0 f1 -- MD-confirmed de-novo switches (His-causal, Gln control inert)
  ("b2m0_c20","f1-C1","3/4","MD His-causal coop switch (d_repel+control inert), f1 fold"),
  ("b2m0_c70","f1-C1","3/4","MD His-causal coop switch, strongest d_repel 3.2A, f1 fold"),
@@ -40,7 +40,7 @@ C=[
 
 def load_seqs():
     s={}
-    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv","rescue2/candidates.csv","k90sw/variants.csv","regionIsw/variants.csv","k90rescue/rescued.csv","exprrescue/rescued.csv","rxconfirm/all_rx.csv"]:
+    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv","rescue2/candidates.csv","k90sw/variants.csv","regionIsw/variants.csv","k90rescue/rescued.csv","exprrescue/rescued.csv","rxconfirm/all_rx.csv","switchwin/winners.csv","switchwin/winner3.csv"]:
         p=f"{PU}/{f}"
         if os.path.exists(p):
             for r in csv.DictReader(open(p)):
@@ -50,7 +50,7 @@ def load_tsv(path,key="design_id"):
     return {r[key]:r for r in csv.DictReader(open(path),delimiter="\t")} if os.path.exists(path) else {}
 seqs=load_seqs()
 SH_H={};
-for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv","rescue2/sharpness_h.tsv","k90sw/sharpness.tsv","regionIsw/sharpness.tsv","exprrescue/sharpness_rx.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
+for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv","rescue2/sharpness_h.tsv","k90sw/sharpness.tsv","regionIsw/sharpness.tsv","exprrescue/sharpness_rx.tsv","switchwin/sharpness.tsv","switchwin/sharpness3.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
 SH_M={}
 for f in ["sharp/sharpness_mouse.tsv","sharp2/sharpness_mouse.tsv"]: SH_M.update(load_tsv(f"{PU}/{f}"))
 PKAI=load_tsv(f"{PU}/sharp/pkai.tsv")
@@ -69,7 +69,7 @@ def md(name):
     cands=[f"{PU}/sharp/md/{name}.json/{name}.json",f"{PU}/sharp/md/{name}.json",f"{PU}/coop/md/{name}.json",
            f"{PU}/rescue2/md/{name}.json/{name}.json",f"{PU}/rescue2/md/{name}.json"]
     # orig_md / k90md write <pdb_basename>.json inside <name>.json/ (basename may carry _h) -> glob it
-    for sub in ("orig_md","k90md"):
+    for sub in ("orig_md","k90md","switchwin/md"):
         cands+=sorted(glob.glob(f"{PU}/{sub}/{name}.json/*.json"))
     for j in cands:
         if os.path.isfile(j) and os.path.getsize(j)>2:

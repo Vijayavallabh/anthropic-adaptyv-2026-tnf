@@ -225,12 +225,35 @@ Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
   Track 3; upload md5 `90bc4cd8ecbf598d76e6810feb0cb86a`). _rx seqs byte-verified = parent ± exactly the
   intended edits; K90 confirmed = parent (not the binding-damaged rescue).
 
+## SESSION 8 (2026-10-09, Stop-hook cont.): switch hunt 6→9 MD-causal (2 dominant 4/4 designs); Genie3 built but cross-react negative
+
+- **Switch hunt on the strong binders — 3 NEW MD-His-causal switches (the #1 axis), 2 on the 4/4-novel
+  b1m12 fold.** Scanned His near the conserved cross-reactive cation **K98** on b1m12 (4/4-novel) and b4m2,
+  af2ig-confirmed binding retained, two-state MD screened causality. Winners (all expr-PASS, cross-react
+  Boltz-confirmed): **b1m12_r6_A92S** (d_repel **3.9**, strongest; iptm 0.91h/0.95m), **b1m12_A91H**
+  (d_repel 1.46; 0.92/0.94), **b4m2_A37H** (d_repel 0.45; 0.93/0.80). These are DOMINANT — 4/4-or-3/4
+  novel + MD-causal switch + strong cross-reactive binding + express. Integrated (swapped in for the plain
+  b1m12_r4/r1 and b4m2_r6). **MD-His-causal switches: 6 → 9.**
+- **Genie3 BUILT (the CRO-validated TNF generator, 8/12 reference binders) — docks but cross-react NEGATIVE.**
+  Built from scratch (uv venv py3.10 + torch 2.7.1+cu126 + pinned weights; `run.sh check` PASS). 400 binder
+  backbones at the K90 epitope dock tightly (313/400 ≥2 hotspots). But: it emits Cα-only backbones →
+  ProteinMPNN **CA-only** (cloned `ProteinMPNN_orig` + ca weights). Single-state ca-MPNN → confident human
+  binders (6/64 iptm>0.6) but **0/12 cross-reactive** (human-only, exactly the research-predicted single-state
+  failure). Multi-state tied ca-MPNN (human+mouse, `1TNF_B_mouse.pdb` threaded target) → **0/28 cross-react
+  AND degraded binding** (tie over-restricts CA-only). DECISIVE NEGATIVE: Genie3 generates docking backbones
+  but CA-MPNN can't make them cross-reactive here → NOT integrated. (Tooling kept: `setup`/`eval_genie3.sh`,
+  `build_multistate_pdb.py`, `thread_mouse_target.py` for future full-backbone attempts.)
+- Research scout (SOTA 2025-26) → [[reference-binder-sota-levers-2026]] (multi-state MPNN, Overath calibrated
+  ranker, buried-His-network switch, all-atom generators).
+- Deliverable re-validated **byte-consistent** (CSV==FASTA==upload, validator PASS Track 3, upload md5
+  `f5f632962835d24dfd31a4ce29f6a670`); 3 winners byte-verified present.
+
 ## Next step
 
 **Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
 `upload_final20.csv` (20 designs / **7 folds** / **17/20 expr-PASS** + 3 documented-soluble FLAGs /
-3× novelty-4/4 / **6 MD-His-causal switches** / sharp thermodynamic FC to 69× / all seqs fully novel vs
-PDB). This is the canonical Track-3 upload (supersedes the stale 9-design `runs/submission/final_portfolio.csv`).
+3× novelty-4/4 / **9 MD-His-causal switches** incl 2 dominant 4/4-novel (b1m12_A91H, b1m12_r6_A92S) /
+sharp thermodynamic FC to 69× / all seqs fully novel vs PDB). This is the canonical Track-3 upload (supersedes the stale 9-design `runs/submission/final_portfolio.csv`).
 **Decision point (owner): upload** (Proteinbase account j_v_v_07; the portal re-checks novelty
 authoritatively at upload — expected ≥3/4). Recommended core = the 3 dual-everything leads (b1m9_sh4,
 TNFpH06_sh3, TNFpH06_sh2) + the novelty/affinity anchors (b1m12 4/4, b4m2), filling to 20 for fold+risk

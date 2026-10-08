@@ -212,15 +212,21 @@ pKa" as open future work.
 
 ## Honest assessment
 
-**Three** designs dominate on every axis — `b1m9_1A55H_K93_sh4`, `TNFpH06_sh3`, and `TNFpH06_sh2` — each
-confirmed on binding, cross-reactivity, expression, *and* an explicit His-causal two-state-MD switch (both
+**Five** designs dominate on every axis — the two 4/4-novel `b1m12_r6_A92S` (d_repel 3.9) and `b1m12_A91H`
+(d_repel 1.46), plus `b1m9_1A55H_K93_sh4`, `TNFpH06_sh3`, and `TNFpH06_sh2` — each confirmed on binding,
+cross-reactivity, expression, *and* an explicit His-causal two-state-MD switch (the two b1m12 leads add
+4/4 structural novelty + the portfolio's best cross-reactive binding, iptm 0.91-0.92 h / 0.94-0.95 m; both
 cb1 leads are additionally sharp in *both* species). The 5-His cb1 hedges (`TNFpH06_sh5`, `TNFpH07_sh4`) push the
 thermodynamic switch highest (to 126×, two pKa engines agreeing — the quantity BLI measures) but are
 MD-ambiguous, so we label them thermodynamic-only rather than overclaim. `b2m0_c70` adds a third,
 independent MD-His-causal switch on a different fold; the **b1m12 4/4** fold anchors structural novelty and
-**b4m2** the affinity. Six designs carry an explicit MD-His-causal switch (`b1m9_sh4`, `TNFpH06_sh3/sh2`,
-`TNFpH06`, `TNFpH07`, `b2m0_c70`); the rest carry the thermodynamic switch (the quantity BLI measures) or
-are binder-first diversity picks. The spread across **7 folds with 17/20 expression-PASS** (the 3 FLAGs
-soluble by GRAVY/0-Cys) hedges the dominant wet-lab risk. Two new-fold routes were tested and honestly
-reported: the all-atom K90 fold entered as a cross-react hedge, and de-novo Region I design was a negative.
-The remaining open item is upload (user-gated).
+**b4m2** the affinity. **Nine** designs carry an explicit MD-His-causal switch — the six leads above
+(`b1m9_sh4`, `TNFpH06_sh3/sh2`, `TNFpH06`, `TNFpH07`, `b2m0_c70`) plus the three found by scanning His
+against the conserved cation **K98** on the strong binders (`b1m12_A91H`, `b1m12_r6_A92S`, `b4m2_A37H`);
+the rest carry the thermodynamic switch (the quantity BLI measures) or are binder-first diversity picks.
+The spread across **7 folds with 17/20 expression-PASS** (the 3 FLAGs soluble by GRAVY/0-Cys) hedges the
+dominant wet-lab risk. Several new-fold/new-switch routes were tested and honestly reported: the K98 switch
+hunt (adopted, +3 MD-causal), the all-atom K90 fold (a cross-react hedge), and two negatives — de-novo
+Region I design, and **Genie3** (the CRO-validated generator, built here; it docks tightly at the K90
+epitope but its Cα-only output through CA-only ProteinMPNN gave human-only binders single-state and
+binding-degraded multi-state, so it was not integrated). The remaining open item is upload (user-gated).
