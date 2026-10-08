@@ -63,10 +63,13 @@ all high on every design (Boltz/Chai interface ptm ≈ 0.78–0.94); binding is 
 cross-reactive by mechanism (above) and bind human by 3-folder consensus; the tiers rank by the real
 discriminators — expression (the hard gate), switch strength, and novelty. Expression-PASS: 7.
 
-- **Tier A (expression-clean + validated switch):** `b1m12_r4` (C5, rescued; novelty **4/4**),
-  `b4m2_r1` (C2, rescued), and the cooperative-2His cb1 trio `TNFpH06/07/08` (strongest proton linkage,
-  ddg to −2.34). Rescued switches confirmed release-competent by two-state MD + PROPKA on the exact
-  sequence.
+- **Tier A (expression-clean, strongest on the pH switch — the top objective):** the cooperative-2His cb1
+  trio `TNFpH06/07/08` (strongest proton linkage, ddg to −2.34) and `b4m2_r1` (C2, rescued), whose switch is
+  **confirmed selective by two-state MD** on the exact rescued sequence (d_repel 0.60; His-causal — the
+  Gln-isostere control does not repel). `b1m12_r4` (C5, rescued; the only **novelty 4/4** design, strong
+  binding, expression-clean) is also Tier A, but honestly its switch is **weak** — it passes PROPKA but is
+  **not MD-selective** (d_repel 0.17, His not interface-causal), the same weak switch as its parent
+  (d_switch 0.597); its value is novelty + binding, not the switch.
 - **Tier B (strong, expression-hedged):** `b4m2` & `b1m12` originals (highest human ipSAE 0.85/0.83,
   shipped alongside their rescued variants as an expression hedge — "diversify a working binder", the
   EGFR-winning strategy), the second rescued variants `b4m2_r6`/`b1m12_r1`, and `TNFpH01` (single-His, the

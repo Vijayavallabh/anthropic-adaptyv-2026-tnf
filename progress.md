@@ -64,10 +64,16 @@ What changed vs the shipped 9:
   delta (|Δ|<0.13). Human binding confirmed by **3 folders** (af2ig+Boltz+Chai, all high).
 - **ESM-C PLL** wired in (naturalness, the EGFR post-mortem's top signal).
 
-**Honest caveats:** rescue cleanly delivers 2 de-novo folds (C2, C5); the other de-novo folds (C1/C8/C11/C12)
-are not surface-rescuable (ship originals, expression-flagged). `b1m12`'s switch is the weakest (parent
-d_switch 0.597) and its rescued MD reads borderline — rely on PROPKA there. Rescued variants need a
-Proteinbase novelty re-check (same fold ⇒ expected ≥3/4); `A20V` (new 7th fold) needs its first portal check.
+**Two-state MD on the 4 rescued variants (done):** `b4m2` (r1/r6) switch **confirmed SELECTIVE** —
+d_repel 0.60/0.13, His-causal (the Gln-isostere control does not repel). `b1m12` (r4/r1) switch is
+**weak / not MD-selective** (d_repel 0.17/0.34, His not interface-causal) — same weak switch as its parent
+(d_switch 0.597); b1m12's value is novelty 4/4 + strong binding, not the switch. **Strongest switches
+overall:** the cb1 coop-2His family (ddg to −2.34) and single-His `TNFpH01` (d_switch 2.68).
+
+**Honest caveats:** rescue cleanly delivers 2 de-novo folds (C2 with a selective switch, C5 novelty-4/4);
+the other de-novo folds (C1/C8/C11/C12) are not surface-rescuable (ship originals, expression-flagged).
+Rescued variants need a Proteinbase novelty re-check (same fold ⇒ expected ≥3/4); `A20V` needs its first
+portal check.
 New open generators (pxdesign/complexa) were deprioritized — install friction + full re-validation exceed the
 time budget for low expected value on this hard target.
 
