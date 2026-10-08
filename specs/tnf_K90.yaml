@@ -1,0 +1,16 @@
+# TNF-alpha de novo binder — best bindable conserved+exposed patch (Tyr87 aromatic + Val91 + Lys90 switch anchor).
+# binding ordinals (1TNF_B.pdb chain B, res-5): 86Y->82? see below; res{86,87,88,90,91} -> ord{81,82,83,85,86}
+entities:
+  - protein:
+      id: A
+      sequence: 60..100
+  - file:
+      path: /home/prachh/v/anthropic-adaptyv-2026-tnf/data/targets/1TNF_B.pdb
+      include:
+        - chain:
+            id: B
+      binding_types:
+        - chain:
+            id: B
+            binding: "81,82,83,85,86"
+      structure_groups: "all"

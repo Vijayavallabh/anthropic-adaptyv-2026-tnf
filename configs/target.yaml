@@ -1,0 +1,43 @@
+# Human TNF-alpha conditional-binder target & trigger contract (Adaptyv Challenge 2).
+# Numbering is MATURE (residue 1 = V); UniProt precursor numbering = mature + 76 (precursor 77-233).
+target:
+  name: human TNF-alpha soluble trimer
+  uniprot: P01375-1
+  mature_residues: [1, 157]
+  reference_structure: 1TNF            # homotrimer chains A-C; residues 6-157 modeled (1-5 disordered)
+  assembly: homotrimer
+  design_unit: two_protomer_interface  # build a FULL-ATOM 2-protomer target (e.g. chains A+B) for af2ig
+  native_disulfide: [69, 101]
+  mature_sequence: VRSSSRTPSDKPVAHVVANPQAEGQLQWLNRRANALLANGVELRDNQLVVPSEGLYLIYSQVLFKGQGCPSTHVLLTHTISRIAVSYQTKVNLLSAIKSPCQRETPEGAEAKPWYEPIYLGGVFQLEKGDRLSAEINRPDYLDFAESGQVYFGIIAL
+
+epitope:
+  name: receptor (TNFR1/TNFR2) binding site at the two-protomer interface (adalimumab-blocking, functional)
+  anchors: [65, 67, 135, 146]          # K65 Q67 E135 E146; Ala here drops adalimumab affinity ~100x; ALL conserved h/mouse
+  note: conformational, spans two adjacent protomers; blocking it neutralises TNF = therapeutically relevant
+
+cross_reactivity:
+  ortholog_uniprot: P06804             # mouse TNF-alpha
+  identity_pct: 79.5                   # 124/156 mature (matches challenge)
+  conserved_anchors: [65, 67, 135, 146]
+  # conserved Arg/Lys to anchor a His-repulsion pH switch on (so the switch still works in mouse):
+  conserved_basic_for_switch: [32, 65, 90, 98, 112, 128]
+  # human!=mouse positions to steer binder contacts AWAY from (mature numbering):
+  divergent_avoid: [1, 6, 7, 8, 20, 22, 24, 27, 30, 31, 41, 42, 44, 52, 53, 58, 71, 73, 80, 83, 85, 89, 97, 102, 103, 104, 111, 131, 136, 138, 140, 154]
+  divergent_charge_changes: [R31Q, R44K, R103K, R131Q, R138L, D140K]   # D140K = charge REVERSAL, hard-avoid
+
+trigger:
+  type: pH
+  on_value: 7.4                        # plasma: binding ON
+  off_value: 6.0                       # early endosome: binding OFF (release -> target cleared, binder recycles)
+  direction: release_at_low_pH         # INVERTED vs Challenge 1: protonation must BREAK binding
+  sensor: binder_histidine             # His on the BINDER (pKa ~6.5): neutral @ 7.4, protonated @ 6.0
+  mechanisms:
+    A_interface_repulsion: binder His placed next to a CONSERVED target basic (ideally K65) -> protonation at pH 6 -> charge repulsion -> release
+    B_buried_network: buried His charged H-bond network in the binder core -> acid destabilizes the fold (target-independent, so safest for cross-reactivity; this is what the Baker 2025 paper used on TNF-alpha, 79x)
+  note: >
+    Folders (AF2/Boltz/Chai) are pH-blind: a good fold is not a switch. Confirm selectivity via
+    the Rosetta fa_elec ddG_elec(pH5)-ddG_elec(pH7) >= 0 filter AND an explicit-state MD occupancy gate
+    (His-neutral interface intact @ 7.4 / His-protonated interface broken @ 6.0), tuned so the transition
+    sits at pH 6.0. Static score proves direction, not selectivity (see memory: MD occupancy gate lesson).
+
+objective_priority: [ph_selective, cross_reactive, affinity]

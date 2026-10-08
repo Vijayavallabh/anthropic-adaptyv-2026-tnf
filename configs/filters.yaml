@@ -1,0 +1,37 @@
+# In-silico filter thresholds. Fold metrics are SANITY GATES, not ranking criteria:
+# prior design rounds showed ipTM/iPAE/pLDDT were near-random for binding.
+
+active_track: 3            # the active submission track (per-track caps below)
+
+fold_gates:
+  iptm_min: 0.80
+  pae_interaction_max: 7.0
+  plddt_min: 0.70                   # loose sanity only
+
+ranking:
+  # objective priority order (also the competition scoring priority)
+  primary: ph_margin               # ddG(off) - ddG(on); larger = sharper ON-state switch
+  secondary: cross_reactive_score  # predicted cross-reactive binding on conserved anchors
+  tertiary: affinity_score         # Boltz-2 affinity head + length-normalized ESM-2 pseudolikelihood
+  esm_note: use LENGTH-NORMALIZED ESM-2 pseudolikelihood (AUC ~0.72); never raw log-likelihood (AUC ~0.44)
+
+ph_selectivity:
+  ph_low: 6.5
+  ph_high: 7.4
+  his_pka_window: [6.3, 7.0]
+  min_interface_his: 2
+
+novelty:                            # de-novo hard filter (stage 6)
+  max_seq_identity_to_pdb_pct: 70
+  min_foldseek_tm_novelty: 0.5      # keep designs structurally distinct from known folds
+
+developability:
+  reject_unpaired_cys_in_cdr: true
+  reject_n_glyc_in_cdr: true
+  aggregation: aggrescan3d          # optional (see docs/TOOLS.md)
+
+portfolio:
+  # Submit a DIVERSE portfolio across epitope sub-patches/scaffolds/folds,
+  # not only metric-top designs (top-by-metric did not improve outcomes historically).
+  diversify: true
+  per_track_caps: {1: 40, 2: 20, 3: 20}

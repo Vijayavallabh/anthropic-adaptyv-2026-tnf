@@ -1,0 +1,49 @@
+# Inference-optimized, GPU-tuned model kits = the PRIMARY tool provider for this
+# repo (Apache-2.0).
+# Repo is cloned to third_party/uplifting-biomolecular-modeling (gitignored, 1.1 GB, no weights yet).
+#
+# Install ONE kit's isolated uv env:   scripts/setup_uplifting.sh <kit> [--weights]
+# Run a kit:  bash third_party/uplifting-biomolecular-modeling/<kit>/run.sh <cmd> --config h100 --mode <mode> ...
+# Modes: off | exact | fast (default) | big  (big supports --n_gpu P to split across the 8x H100)
+# Every run prints:  [<kit>-opt] ACTIVE mode=<mode>
+
+repo_dir: third_party/uplifting-biomolecular-modeling
+weights_dir: weights          # weights land under weights/<kit> (gitignored)
+jit_cache: .jit               # export MODEL_OPT_JIT_ROOT to persist the compile cache
+default_config: h100
+default_mode: fast
+
+# pipeline stage -> uplifting kit(s)
+stages:
+  stage1_generate:
+    kits: [colabdesign, boltzgen, rfdiffusion1]     # BindCraft(ColabDesign) / BoltzGen / RFdiffusion
+    optional: [rfdiffusion3, pxdesign, genie3, complexa, mosaic]
+    mode: fast
+    note: one generator process per GPU across the 8x H100; use big --n_gpu for large targets.
+  stage2_sequence:
+    kits: [proteinmpnn, caliby]                     # caliby = SolubleCaliby (expressibility redesign)
+    mode: exact                                     # proteinmpnn requires an explicit mode
+  stage3_fold_score:
+    kits: [af2ig, boltz2, chai1]                    # AF2 initial-guess filter; Boltz-2 co-fold iptm; Chai-1 orthogonal iptm (Boltz-2 affinity head is small-molecule-only, N/A for protein binders; real obj3 affinity = Rosetta InterfaceAnalyzer dG_separated + PRODIGY)
+    optional: [colabfold, openfold3, protenix_v1]   # colabfold also models the ortholog; protenix_v1 = Apache-2.0 AF3-class 5th co-fold vote (v2 weights are proprietary/blocked)
+    mode: fast
+    multi_gpu: true                                 # these cofolding kits accept --n_gpu P
+  stage6_select:
+    kits: [esmc, e1]                                # protein-LM scoring (use length-normalized)
+    mode: exact
+
+python_pins:                  # from each kit's STOCK.md - verify before install
+  default: "3.11"
+  caliby: "3.12"
+  esmc: "3.12"
+
+# Weights-cache env var per kit (discovered from run.sh install; set to weights/<kit> before
+# running). setup_uplifting.sh / verify_uplifting.sh record the live values into envs/uplifting.env.
+cache_env:
+  boltz2: BOLTZ_CACHE
+  chai1: CHAI_DOWNLOADS_DIR
+  caliby: MODEL_PARAMS_DIR
+  af2ig: AF2_PARAMS
+  boltzgen: BOLTZGEN_CACHE
+  proteinmpnn: MPNN_DIR
+  rfdiffusion1: WEIGHTS

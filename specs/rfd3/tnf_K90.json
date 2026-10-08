@@ -1,0 +1,15 @@
+{
+  "tnf_K90": {
+    "dialect": 2,
+    "infer_ori_strategy": "hotspots",
+    "input": "/home/prachh/v/anthropic-adaptyv-2026-tnf/data/targets/1TNF_B.pdb",
+    "contig": "80-130,/0,B6-157",
+    "select_hotspots": {
+      "B87": "CG,CZ",
+      "B90": "CG,NZ",
+      "B91": "CB,CG1",
+      "B141": "CG,CZ"
+    },
+    "is_non_loopy": true
+  }
+}
