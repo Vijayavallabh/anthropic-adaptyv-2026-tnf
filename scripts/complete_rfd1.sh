@@ -4,7 +4,7 @@
 # the kit venv, and have its weights fetched. setup_uplifting.sh does not do this.
 set -uo pipefail
 cd "$(dirname "$0")/.."
-export TMPDIR=/home/prachh/work/tmp MODEL_OPT_JIT_ROOT="$PWD/.jit"
+export TMPDIR="${TMPDIR:-/tmp}" MODEL_OPT_JIT_ROOT="$PWD/.jit"
 export PYTHONHASHSEED=0 CFLAGS=-g0 CC=gcc CXX=g++
 PIN=86507b6538f51fce57b5a72477165f03999ed7ae
 KIT="$PWD/third_party/uplifting-biomolecular-modeling/rfdiffusion1"

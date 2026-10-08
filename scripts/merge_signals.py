@@ -36,7 +36,7 @@ for f in glob.glob("runs/md/gate/*.json"):
     d = json.load(open(f)); agg = d.get("agg", {})
     def gg(va, m): return agg.get(va, {}).get(m)
     hip, hie, gln = gg("HIP", "his_lys_mindist"), gg("HIE", "his_lys_mindist"), gg("GLN", "his_lys_mindist")
-    sem = max([x for x in (gg("HIP", "sem_his_lys"), gg("HIE", "sem_his_lys")) if x is not None] or [0.0])
+    sem = max([x for x in (gg("HIP", "sem_his_lys"), gg("HIE", "sem_his_lys"), gg("GLN", "sem_his_lys")) if x is not None] or [0.0])
     dsw = (hip - hie) if None not in (hip, hie) else None
     diso = (hip - gln) if None not in (hip, gln) else None
     vd = "NA"

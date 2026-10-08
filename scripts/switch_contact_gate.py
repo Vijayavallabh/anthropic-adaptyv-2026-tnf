@@ -14,7 +14,7 @@ Writes name<TAB>his_pos<TAB>hie_contact<TAB>d_switch<TAB>two_sem_all<TAB>d_iso<T
 Usage: switch_contact_gate.py --mddirs runs/cb1ep/md runs/cb1ep2/md --confirmed ...tsv ... --out switch_contact.tsv
 """
 import json, glob, os, csv, argparse
-R = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTACT_A = 8.0   # His sidechain (~4 A) + Lys sidechain (~5 A) reach; 13+ A = non-contact drift
 ap = argparse.ArgumentParser()
 ap.add_argument("--mddirs", nargs="+", default=[f"{R}/runs/cb1ep/md", f"{R}/runs/cb1ep2/md"])

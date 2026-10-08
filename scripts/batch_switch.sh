@@ -1,7 +1,7 @@
 #!/bin/bash
 # For every candidate complex in runs/pool/cands: emit His-switch variants (scan_switch.py),
 # af2ig all variants (binding retained?), propka-score release linkage, write a ranked table.
-set -uo pipefail; cd /home/prachh/v/anthropic-adaptyv-2026-tnf
+set -uo pipefail; cd "$(dirname "$0")/.."
 SCAN=runs/pool/switch_scan; AIG=runs/pool/switch_af2ig; rm -rf "$SCAN" "$AIG"; mkdir -p "$SCAN"
 for c in runs/pool/cands/*.pdb; do
   uv run python scripts/scan_switch.py "$c" "$SCAN" 6 2>&1 | grep -v VIRTUAL_ENV | head -1

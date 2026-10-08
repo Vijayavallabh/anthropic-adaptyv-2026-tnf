@@ -23,7 +23,7 @@ than trust a hard-coded residue count.
 import csv, json, os, glob, math, sys
 import numpy as np
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAN = f"{REPO}/results/submission_manifest_v2_ALT_optGplus_wave13.csv"
 SCREEN = f"{REPO}/runs/md_bind_gplus/out"
 DEEP = f"{REPO}/runs/md_bind_gplus/deep"

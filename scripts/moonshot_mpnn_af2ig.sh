@@ -4,7 +4,7 @@
 # MPNN (fixed_residues_multi from moonshot_prep_mpnn.py); Cys is forbidden (0-Cys expression gate).
 #   Usage: moonshot_mpnn_af2ig.sh [staged_dir] [gpus lo-hi] [nseq]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 STAGED=${1:-runs/moonshot/staged}
 GPUS=${2:-0-7}

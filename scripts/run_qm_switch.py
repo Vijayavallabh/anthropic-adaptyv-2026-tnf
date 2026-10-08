@@ -4,7 +4,7 @@ Reads each design's MD JSON for the exact pose (pdb), switch-His (his_pos, chain
 (lys_resid, chain B), then calls qm_switch_fair.py. dE_switch = E_int(HIP)-E_int(HIE) > 0 => protonation
 raises the His(+)-Lys(+) repulsion => release at pH 6 (QM confirmation of the release sign)."""
 import json, glob, os, re, subprocess, sys
-R = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PY = f"{R}/envs/md/bin/python"
 DESIGNS = sys.argv[1:] or ["A67W2H_vsK84", "A55R2H_vsK93", "A67V2H_vsK112", "A57K2H_vsK183"]
 def md_json(tok):

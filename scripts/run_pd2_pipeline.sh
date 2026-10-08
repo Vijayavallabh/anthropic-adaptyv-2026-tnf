@@ -4,7 +4,7 @@
 # and runs/rfd_passers_pd2/ that select_final_v2 reads (source "pd_diverse"). GPU use kicks in only
 # after the wave frees the GPUs; obj1 is CPU (PyRosetta), so GPUs are free again for the next wave.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "waiting for PD-diverse wave... $(date -u +%T)"
 for i in $(seq 1 600); do
   grep -q PD_DIVERSE_WAVE2_DONE logs/pd_diverse_wave.log 2>/dev/null && { echo "wave done after ~$((i*30))s"; break; }

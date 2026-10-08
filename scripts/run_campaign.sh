@@ -2,14 +2,14 @@
 # Generic de-novo campaign: gen (env GPUS,LENS,N,HOTSPOTS) -> vanilla MPNN (NSEQ) -> single-protomer af2ig -> pass rate.
 # Env: TAG (out subdir), GPUS="3 4 5 6 7", LENS="70 80 90 100 110", N=250, NSEQ=16, HOTS="[B86,B87,B88,B90,B91]"
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 TAG=${TAG:-bf}; GPUS=${GPUS:-"3 4 5 6 7"}; LENS=${LENS:-"70 80 90 100 110"}; N=${N:-250}; NSEQ=${NSEQ:-16}; HOTS=${HOTS:-"[B86,B87,B88,B90,B91]"}
 GENOUT="$REPO/runs/${TAG}_rfd"; rm -rf "$GENOUT"; mkdir -p "$GENOUT"
 echo "[$TAG] gen GPUS=$GPUS LENS=$LENS N=$N $(date -u +%T)"
 # inline gen (per-GPU length, cache isolation)
 KIT="$REPO/third_party/uplifting-biomolecular-modeling/rfdiffusion1"
 unset VIRTUAL_ENV; source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
-export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR=/home/prachh/work/tmp
+export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR="${TMPDIR:-/tmp}"
 read -r -a GA <<< "$GPUS"; read -r -a LA <<< "$LENS"; i=0; pids=()
 for g in "${GA[@]}"; do
   L="${LA[$((i % ${#LA[@]}))]}"; pre="$GENOUT/g${g}_L${L}"; mkdir -p "$pre/sched" "$REPO/.jit/triton_g${g}"

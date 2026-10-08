@@ -17,7 +17,7 @@ can swap on the portal while keeping one-per-cluster.
 """
 import argparse, csv, os, re, subprocess, collections
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FS = f"{REPO}/tools/novelty/foldseek/bin/foldseek"
 LINEAGE_RE = re.compile(r"(egfr_phsw_\d+)")
 

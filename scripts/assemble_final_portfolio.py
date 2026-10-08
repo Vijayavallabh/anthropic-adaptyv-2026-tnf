@@ -4,7 +4,7 @@ folds, with all objective metrics. Select for all-objective balance + fold-diver
 Writes runs/submission/final_portfolio.{csv,fasta} + a ranked table.
 """
 import csv, os, glob, re
-R="/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ---- cb1-family (floor) ----
 core=list(csv.DictReader(open(f"{R}/runs/submission/floor_core8.csv")))
 rows=[]

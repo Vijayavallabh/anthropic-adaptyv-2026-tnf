@@ -6,7 +6,7 @@
 # switch > cross-react > pKAI > MD, all on the shortlist. The portal is the novelty oracle.
 # Usage: wave18_shortlist.sh [N=200] [MAX_PER_LINEAGE=15]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 MD="$REPO/envs/md/bin/python"; PR="$REPO/envs/pyrosetta/bin/python"
 N=${1:-200}; MAXPL=${2:-15}
 export TMPDIR="$REPO/runs/tmp"; mkdir -p "$TMPDIR"

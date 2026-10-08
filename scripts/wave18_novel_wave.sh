@@ -7,7 +7,7 @@
 # sequence). One worker per GPU, round-robin seeds. Prints the marker the wave17 downstream expects.
 # Usage: wave18_novel_wave.sh <seeds_file> <ndes> <partial_T> <out_prefix> "<gpu list>"
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 SEEDS=${1:-runs/pd_diverse_seeds.txt}; NDES=${2:-400}; PT=${3:-20}; PREFIX=${4:-pdnov}; GPUS=${5:-"0 1 2 3 4 5 6 7"}
 mkdir -p logs/rfd
 mapfile -t SEEDLINES < "$SEEDS"

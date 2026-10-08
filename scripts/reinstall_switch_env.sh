@@ -1,7 +1,7 @@
 #!/bin/bash
 # Rebuild envs/pyrosetta with PyRosetta + propka (+ pKAI) for the pH-switch scoring (objective 1).
 set -uo pipefail
-cd /home/prachh/v/anthropic-adaptyv-2026-tnf
+cd "$(dirname "$0")/.."
 echo "[switch-env] $(date -u +%T) creating venv"
 uv venv --clear --seed --managed-python --python 3.11 envs/pyrosetta > logs/pyrosetta.log 2>&1
 echo "[switch-env] installing pyrosetta-installer"

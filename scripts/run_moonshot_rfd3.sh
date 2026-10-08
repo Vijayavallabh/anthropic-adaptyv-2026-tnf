@@ -6,7 +6,7 @@
 # name collisions. Binder=chain A, target=chain B in the output CIFs.
 #   Usage: run_moonshot_rfd3.sh [inputs.json] [n_batches] [diffusion_batch_size]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 INPUTS=${1:-$REPO/specs/rfd3/egfr_hisasp_combined.json}
 NBATCH=${2:-6}
 BSIZE=${3:-16}

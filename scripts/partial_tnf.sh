@@ -3,10 +3,10 @@
 # to refine the interface (Baker 2-stage protocol; my ~35x lesson). Shards seeds across free GPUs
 # with per-GPU cache isolation (avoids the Triton/compile deadlock). Usage: partial_tnf.sh [ndes_per_seed] [partial_T]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 KIT="$REPO/third_party/uplifting-biomolecular-modeling/rfdiffusion1"
 unset VIRTUAL_ENV; source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
-export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR=/home/prachh/work/tmp
+export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR="${TMPDIR:-/tmp}"
 NDES="${1:-10}"; PT="${2:-10}"
 OUT="$REPO/runs/partial/out"; mkdir -p "$OUT"
 mapfile -t SEEDS < <(ls "$REPO"/runs/partial/seeds/*.pdb)

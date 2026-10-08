@@ -79,8 +79,13 @@ def nearest_lys_nz(positions, sw_atoms, target_chain):
 
 def build(pdb, his_variant, his_list, binder_chain="A", mutate_gln=False):
     fixer = PDBFixer(filename=pdb)
+    # Identify the binder chain the SAME way the His-Lys distance is measured (detect_chains = size-based:
+    # 2nd-largest chain). Mutating by the --binder-chain arg instead would, on any mismatch, no-op the
+    # isostere so the GLN "dud" still contains the His and the causal control passes vacuously (d_iso~0).
+    _t, _b = detect_chains(fixer.topology)
+    binder_cid = _b.id if _b is not None else binder_chain
     if mutate_gln:
-        fixer.applyMutations([f"HIS-{h}-GLN" for h in his_list], binder_chain)  # causal dud: neutral isostere
+        fixer.applyMutations([f"HIS-{h}-GLN" for h in his_list], binder_cid)  # causal dud: neutral isostere
     fixer.findMissingResidues(); fixer.missingResidues = {}
     fixer.findNonstandardResidues(); fixer.replaceNonstandardResidues()
     fixer.removeHeterogens(False)

@@ -17,7 +17,7 @@ Run: PATH=envs/pyrosetta/bin:$PATH envs/pyrosetta/bin/python scripts/wave16k_iso
 """
 import sys, os, csv, glob, json
 # propka3 (called by obj1_switch with cwd=tempdir) must be found by ABSOLUTE path
-os.environ["PATH"] = "/home/prachh/v/anthropic-adaptyv-2026-egfr/envs/pyrosetta/bin:" + os.environ.get("PATH", "")
+os.environ["PATH"] = (os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "envs", "pyrosetta", "bin") + os.pathsep) + os.environ.get("PATH", "")
 sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
 import obj1_switch as O
 

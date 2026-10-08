@@ -4,9 +4,10 @@
 SolubleMPNN/expression decisive). Merges signal_table + footprint + ESM2 naturalness + ProtParam.
 Z-scores each axis within the confirmed set; prints ranked composite + hard flags. No new deps.
 """
+import os
 import csv, os, math
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-ROOT="/home/prachh/v/anthropic-adaptyv-2026-tnf"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def read_tsv(p):
     with open(p) as fh:
         r=csv.DictReader(fh, delimiter="\t"); return list(r)

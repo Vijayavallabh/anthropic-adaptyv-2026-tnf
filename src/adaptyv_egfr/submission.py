@@ -1,10 +1,15 @@
-"""Submission contract + validator for the Anthropic x Adaptyv 2026 EGFR challenge.
+"""Submission contract + validator for the Anthropic x Adaptyv 2026 challenges.
 
-Single source of truth for the submission CSV format. Used by
-``scripts/validate_submission.py`` (the definition-of-done gate) and by the
-pipeline submission builder (``stage6_select.py``).
+This repo targets **Challenge 2 (TNF-α)**; the Adaptyv upload CSV format and the
+per-track caps are shared across the 2026 challenges (the package was generalized
+into a challenge-agnostic toolkit — hence the legacy ``adaptyv_egfr`` name). Single
+source of truth for the submission CSV format, used by ``scripts/validate_submission.py``
+(the definition-of-done gate). The TNF portfolio itself is built by
+``scripts/assemble_v2.py`` (which emits the internal table) and uploaded via the
+Proteinbase portal.
 
-CONTRACT (reconstructed from the EGFR challenge page, 2026-09-28).
+CONTRACT (Adaptyv 2026 upload form). Track caps here match ``configs/filters.yaml``
+and ``docs/PLAN_TNF.md`` (TNF Challenge 2 = Track 3, <=20 designs).
 IMPORTANT: the live /submit form is a client-rendered SPA that could not be read
 programmatically - RE-VERIFY exact column names/casing on the logged-in form
 before the final upload (see AGENTS.md "Open questions / must re-verify").

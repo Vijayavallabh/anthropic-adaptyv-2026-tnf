@@ -9,6 +9,7 @@ burial on complex formation. Reports per-atom and summed SASA + burial fraction.
 complex-SASA < ~5 A^2 (near-fully desolvated) = buried; > ~20 A^2 = surface (fragile). Works on af2pred-style
 complexes (binder chain A, target chain B); auto-finds the His's nearest acid if --acid not given.
 """
+import os
 import argparse, json, warnings
 import numpy as np
 warnings.filterwarnings("ignore")
@@ -73,7 +74,7 @@ def run(pdb, binder_chain, target_chain, his_resid, acid_resid, his_atoms=HISN):
     # SASA of the isolated binder (His exposure when target removed) + isolated target (acid exposure)
     import tempfile, os
     from Bio.PDB import PDBIO
-    with tempfile.TemporaryDirectory(dir="/home/prachh/v/anthropic-adaptyv-2026-egfr/runs") as wd:
+    with tempfile.TemporaryDirectory(dir=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "runs")) as wd:
         io = PDBIO(); io.set_structure(model)
         bp = os.path.join(wd, "b.pdb"); io.save(bp, _Keep([binder_chain]))
         tp = os.path.join(wd, "t.pdb"); io.save(tp, _Keep([target_chain]))

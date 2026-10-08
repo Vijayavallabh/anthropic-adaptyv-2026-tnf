@@ -4,7 +4,7 @@
 # Produces results/rfd_{af2_passers,obj1_switch}_w2fa.csv + runs/rfd_passers_w2fa/ (select_final_v2
 # reads tag w2fa, source rfd_denovo). Standard (DLC-OFF) af2ig — selection uses the calibrated gate.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "waiting for pd2 MD to finish... $(date -u +%T)"
 for i in $(seq 1 240); do
   grep -q PD2_MD_DONE logs/pd2_md.log 2>/dev/null && { echo "pd2 MD done after ~$((i*30))s"; break; }

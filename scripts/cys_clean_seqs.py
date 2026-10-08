@@ -6,9 +6,10 @@ surface-Cys fix (small, polar, isosteric-ish); the free-Cys survivors get full c
 In:  results/refill_candidates.csv (name,sequence,d_occ,occ_HIE,...)
 Out: results/refill_candidates_cs.csv (name=<orig>__cs, sequence=C->S, carry d_occ/occ_HIE/lineage, n_cys)
 """
+import os
 import csv
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IN = f"{REPO}/results/refill_candidates.csv"
 OUT = f"{REPO}/results/refill_candidates_cs.csv"
 

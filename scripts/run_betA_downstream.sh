@@ -6,7 +6,7 @@
 # Usage: run_betA_downstream.sh "<rfd dirs glob>" <gpus> <nseq> <tag>
 #   e.g. run_betA_downstream.sh 'runs/rfd/w2_*' 1-7 2 w2
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 GLOB=${1:-runs/rfd/w1_*}
 GPUS=${2:-1-7}

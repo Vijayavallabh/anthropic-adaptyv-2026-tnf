@@ -16,7 +16,7 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 XTB = f"{REPO}/envs/xtb/bin/xtb"
 H2KCAL = 627.509474
 

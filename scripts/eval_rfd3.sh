@@ -2,7 +2,7 @@
 # Evaluate RFd3 designs: cif.gz -> pdb (binder A, target B) -> vanilla MPNN (design A, 0-Cys) -> full-atom target -> af2ig -> pass rate.
 # Usage: eval_rfd3.sh <cif_glob> <tag> <gpus 0-7> <nseq> [target_pdb]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CIFGLOB=$1; TAG=$2; GPUS=${3:-0-7}; NSEQ=${4:-8}; TGT=${5:-data/targets/1TNF_B.pdb}
 PDB="$REPO/runs/${TAG}_pdb"; rm -rf "$PDB"; mkdir -p "$PDB"
 uv run python scripts/rfd3_to_pdb.py "$CIFGLOB" "$PDB" 2>&1 | grep -v VIRTUAL_ENV

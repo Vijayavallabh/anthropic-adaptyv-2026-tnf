@@ -6,7 +6,7 @@ lineage/cluster. Gate to DUAL-confirmed switch (PROPKA>0 AND pKAI-driven) AND cr
 write a scored pool for diversity-aware final selection (select_diverse.py)."""
 import csv, os, re
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"; os.chdir(REPO)
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(REPO)
 
 def norm(n):
     n = re.sub(r'_(mouse|humanrepack)_af2pred$', '', n)

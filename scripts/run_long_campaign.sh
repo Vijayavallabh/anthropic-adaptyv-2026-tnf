@@ -2,7 +2,7 @@
 # Larger campaign: LONGER binders (90/120/140) on the best epitope (K90/Y87/V91), GPUs 0,1,2.
 # gen -> vanilla MPNN (chain C) -> single-protomer af2ig -> pass rate. Harvests any pae<15.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 mv runs/rfd_gen runs/rfd_gen_e2_$(date +%s) 2>/dev/null || true
 echo "[long] gen longer binders $(date -u +%T)"
 GPU_OVERRIDE="0 1 2" LENS_OVERRIDE="90 120 140" bash scripts/run_gen_tnf.sh 150 > runs/gen_long.log 2>&1

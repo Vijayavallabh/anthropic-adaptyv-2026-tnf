@@ -5,7 +5,7 @@
 #   runs/rfd_passers_7d12/, runs/rfd_af2ig_eng_7d12/ for select_final_v2.py source "7d12_amp".
 # MD + cross-react + Boltz on the competitive 7D12 picks are done after (targeted).
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "waiting for 7D12 wave... $(date -u +%T)"
 for i in $(seq 1 240); do
   grep -q 7D12_WAVE_DONE logs/7d12_wave.log 2>/dev/null && { echo "7D12 wave done after ~$((i*15))s"; break; }

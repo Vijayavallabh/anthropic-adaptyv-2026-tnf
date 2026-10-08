@@ -5,7 +5,7 @@
 # EGFR DIII target, which is in the PDB) must hit -- otherwise an empty hits.m8 could be a silent tool
 # failure masquerading as "all novel" (a disqualification risk). Usage: novelty_check.sh [submission.csv]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CSV=${1:-results/submission_track3_v2.csv}
 NOV="$REPO/tools/novelty"; DB="$NOV/db"; mkdir -p "$NOV" "$DB" runs/novelty
 export PATH="$NOV/mmseqs/bin:$PATH"

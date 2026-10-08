@@ -2,7 +2,7 @@
 # WAVE 16 - run the Proton-PottsMPNN His433 pH-switch corroboration (objective 1) on the 20 complexes.
 # CPU-only (zero GPU). Requires the ProtonPottsMPNN venv + a built hbplus binary.
 set -euo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 PPM="$REPO/third_party/ProtonPottsMPNN"
 export ADAPTYV_REPO="$REPO"
 export HBPLUS_PATH="${HBPLUS_PATH:-$REPO/third_party/HBPLUS/hbplus/hbplus}"

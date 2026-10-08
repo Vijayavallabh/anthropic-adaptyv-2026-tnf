@@ -15,6 +15,7 @@ cross-reactive by construction AND tumor-ON (both His+ bridges form at 6.5, both
 Output: a two-His RFd3 theozyme PDB + spec (two motif His, two hotspots, dock at both Asp). Reuses the
 hardened clash-gated rotamer placement from build_his_asp_theozyme.build_his_for_asp.
 """
+import os
 import json, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO
@@ -22,10 +23,10 @@ from Bio.PDB.Chain import Chain
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 import sys
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_his_asp_theozyme import build_his_for_asp
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"
 OUTDIR = f"{REPO}/specs/rfd3"
 ELEM = {"N": "N", "CA": "C", "C": "C", "O": "O", "CB": "C", "CG": "C",

@@ -2,7 +2,7 @@
 # Boltz-2 single-seq cofold (binder:target DIII, msa:empty) for a submission-style CSV (name,sequence).
 # Independent 2nd binding predictor -> iptm. Usage: run_boltz.sh <csv> <tag> <gpu>
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CSV=$1; TAG=${2:-fin}; GPU=${3:-1}
 MD="$REPO/envs/md/bin/python"
 TGT=$(tr -d '\n ' < data/targets/human_domainIII.seq)

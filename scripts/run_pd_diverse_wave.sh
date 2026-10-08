@@ -4,7 +4,7 @@
 # processing its round-robin share of the 14 seeds sequentially. partial_T=10 keeps the binding mode.
 # Usage: run_pd_diverse_wave.sh [ndes_per_seed] [partial_T] "<gpu list>"
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 NDES=${1:-150}; PT=${2:-10}; GPUS=${3:-"0 1 2 3 4 5 6 7"}
 mkdir -p logs/rfd
 mapfile -t SEEDS < runs/pd_diverse_seeds.txt

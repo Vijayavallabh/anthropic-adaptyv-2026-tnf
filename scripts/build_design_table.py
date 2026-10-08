@@ -13,7 +13,7 @@ Confidence (all 20 are the floor: quad-confirmed switch + cross-reactive + 0-Cys
   Tier: High = both corroborations; Solid = one; Watch = neither (still quad-confirmed) + the reason.
 """
 import csv, os, sys
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # optional: build_design_table.py <comma-sep names> <out.md>  -> table for just that subset
 ONLY = set(sys.argv[1].split(",")) if len(sys.argv) > 1 and sys.argv[1] else None
 OUTPATH = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, "docs/DESIGN_TABLE.md")

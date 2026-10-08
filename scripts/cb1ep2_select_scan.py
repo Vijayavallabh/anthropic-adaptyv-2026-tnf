@@ -6,7 +6,7 @@ Usage: cb1ep2_select_scan.py <af2ig_dir> <out_root> [pae_thr]
 import sys, os, re, glob, shutil, subprocess
 afdir, outroot = sys.argv[1], sys.argv[2]
 THR = float(sys.argv[3]) if len(sys.argv) > 3 else 10.0
-R = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 binders = os.path.join(outroot, "binders"); scan = os.path.join(outroot, "switch_scan")
 for d in (binders, scan):
     shutil.rmtree(d, ignore_errors=True); os.makedirs(d)

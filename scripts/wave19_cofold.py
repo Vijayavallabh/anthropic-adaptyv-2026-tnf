@@ -18,7 +18,7 @@ mouse-vs-human delta upstream.)
 """
 import argparse, csv, glob, json, os, re
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"; os.chdir(REPO)
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(REPO)
 
 
 def build_input():

@@ -17,7 +17,7 @@ import os, re, sys
 import numpy as np
 import pandas as pd
 
-REPO = os.environ.get("ADAPTYV_REPO", "/home/prachh/v/anthropic-adaptyv-2026-egfr")
+REPO = os.environ.get("ADAPTYV_REPO", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 R = f"{REPO}/results"
 PHSEL = f"{R}/wave16_potts_phsel.csv"
 GBIND = f"{R}/wave16_potts_gbind.csv"

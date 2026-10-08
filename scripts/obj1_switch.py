@@ -237,7 +237,7 @@ def init_pyrosetta():
     if _PYR is None:
         import pyrosetta
         pyrosetta.init("-mute all -ignore_unrecognized_res -ignore_zero_occupancy false "
-                       "-no_optH false -ex1 -ex2")
+                       "-no_optH false -ex1 -ex2 -constant_seed")
         _PYR = pyrosetta
     return _PYR
 
@@ -416,7 +416,7 @@ def process_design(pyr, sf, pdb, outdir, acid_cut=9.0, his_cut=9.0, max_acid=8, 
         os.remove(tmp)
         if sc is None:
             continue
-        scored.append((tag, muts, foci, sc))
+        scored.append((tag, muts, foci, sc, p))   # keep the scored pose so persist == scored (no re-relax)
 
     if not scored:
         return {"design": name, "error": "no scored variants"}
@@ -438,16 +438,15 @@ def process_design(pyr, sf, pdb, outdir, acid_cut=9.0, his_cut=9.0, max_acid=8, 
                 sc = ddg_ph_from_pdb(tmp, binder_chain, target_chain)
                 os.remove(tmp)
                 if sc is not None:
-                    combo = (f"combo[{best_acid[0]}+{best_his[0]}]", muts, [his, glu], sc)
+                    combo = (f"combo[{best_acid[0]}+{best_his[0]}]", muts, [his, glu], sc, p)
                     scored.append(combo)
                     if sc["ddg_pH"] > best[3]["ddg_pH"]:
                         best = combo
             except Exception:
                 pass
 
-    # rebuild + persist the best variant, add interface ddG + sequence
-    tag, muts, foci, sc = best
-    p = make_variant(pyr, pose, sf, muts, foci) if muts or tag == "orig" else pose
+    # persist the EXACT pose that was scored (not a fresh stochastic re-relax) so best.pdb == the scored structure
+    tag, muts, foci, sc, p = best
     outpdb = os.path.join(outdir, f"{name}__best.pdb")
     p.dump_pdb(outpdb)
     iddg = interface_ddg(pyr, p)

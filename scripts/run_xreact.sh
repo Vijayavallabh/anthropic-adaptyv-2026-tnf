@@ -2,7 +2,7 @@
 # Cross-reactivity for final candidates: mutate target to mouse DIII + human-repack control, af2ig both.
 # Usage: run_xreact.sh <cand_dir> <tag> <gpus>
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 export TMPDIR="$REPO/runs/tmp"; mkdir -p "$TMPDIR"; export PATH="$REPO/envs/pyrosetta/bin:$PATH"
 CAND=$1; TAG=${2:-fin}; GPUS=${3:-1-7}
 PR="$REPO/envs/pyrosetta/bin/python"; MD="$REPO/envs/md/bin/python"

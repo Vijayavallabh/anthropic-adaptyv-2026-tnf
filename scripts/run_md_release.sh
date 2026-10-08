@@ -2,7 +2,7 @@
 # Two-state MD release-switch gate over a manifest (design_id<TAB>his_pos<TAB>anchor<TAB>pdb),
 # sharded design-by-design across GPUs. Each md_release_tnf.py runs its own HIP/HIE x replicas.
 # Usage: run_md_release.sh <manifest.tsv> <outdir> "<gpu list>" [prod_ps] [replicas]
-set -uo pipefail; cd /home/prachh/v/anthropic-adaptyv-2026-tnf
+set -uo pipefail; cd "$(dirname "$0")/.."
 MAN=$1; OUT=$2; GPUS=${3:-"0 1 2 3 4 5 6 7"}; PROD=${4:-3000}; REP=${5:-3}
 PY=envs/md2/bin/python   # cuda12 build (CUDA platform works on this H100)
 mkdir -p "$OUT"

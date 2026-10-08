@@ -18,11 +18,12 @@ Conserved exposed Asp candidates on the His433 face (author / p00533 / O->His433
   A436 / Asp460 / 12.0A / 0.19  (closest, central/EGF-blocking face)
   A434 / Asp458 / 15.4A / 0.25
 """
+import os
 import json, sys, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO, Select
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"   # has chain A = DIII target (author numbering 310-500)
 OUTDIR = f"{REPO}/specs/rfd3"
 

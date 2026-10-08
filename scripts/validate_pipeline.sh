@@ -2,7 +2,7 @@
 # Wait for the current RFd gen sweep to finish, then run MPNN+af2ig on the batch and
 # report raw-contact distribution + af2ig pass rate (pae_interaction<10). One-shot validation.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "[val] waiting for gen sweep to finish $(date -u +%T)"
 for i in $(seq 1 180); do
   grep -q 'sweep done' runs/gen_test_noise0.log 2>/dev/null && { echo "[val] gen done"; break; }

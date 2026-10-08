@@ -13,9 +13,9 @@ dE(cation-pi) vs dE(salt-bridge) is a fair comparison that the fixed-charge d_oc
 """
 import argparse, json, os, subprocess, sys, tempfile
 import numpy as np
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 XTB = f"{REPO}/envs/xtb/bin/xtb"
 H2KCAL = 627.509474
 BACKBONE = {"N", "C", "O", "CA", "H", "HA", "HA2", "HA3", "H1", "H2", "H3", "OXT"}

@@ -35,7 +35,7 @@ from atomworks.ml.utils.token import get_token_starts
 from mpnn.model.pottsmpnn import PottsMPNN
 from mpnn.potts_inference import load_model, prepare_potts_input, _resolve_device
 
-REPO = os.environ.get("ADAPTYV_REPO", "/home/prachh/v/anthropic-adaptyv-2026-egfr")
+REPO = os.environ.get("ADAPTYV_REPO", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CKPT = os.environ.get("PPM_CKPT",
     f"{REPO}/third_party/ProtonPottsMPNN/checkpoints/potts_v6_afdb_edge_his0.3_acid0.06/epoch-0125.ckpt")
 IN_GLOB = os.environ.get("PPM_INGLOB", f"{REPO}/runs/md_bind_gplus/in/egfr_phsw_*.pdb")

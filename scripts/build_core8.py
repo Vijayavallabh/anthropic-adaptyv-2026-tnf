@@ -5,7 +5,7 @@ floor submission CSV + fasta. Final >8 selection waits on the generation campaig
 """
 import csv, os
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-R="/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def rd(p):
     with open(p) as f: return list(csv.DictReader(f, delimiter="\t"))
 comp={r["variant"]:r for r in rd(f"{R}/runs/md/composite_rank.tsv")}

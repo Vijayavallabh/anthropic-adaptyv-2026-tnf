@@ -18,8 +18,8 @@ Usage: PATH=.../ambertools/bin:$PATH python scripts/wave16L_justhispka.py [--onl
 import os, sys, csv, json, glob, subprocess, tempfile, shutil, math
 from collections import defaultdict
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
-AMBER = "/home/prachh/miniconda3/envs/ambertools"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+AMBER = os.environ.get("AMBERTOOLS_ENV", "/home/prachh/miniconda3/envs/ambertools")
 JHP = os.path.join(REPO, "third_party/justhispka/justhispka-1.0.2")
 EXE = os.path.join(JHP, "justHisPKa"); LIC = os.path.join(JHP, "justHisPKa.lic")
 PUSH = os.path.join(JHP, "prep.dir/bin/push_renum.sh")

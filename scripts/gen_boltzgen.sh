@@ -6,7 +6,7 @@
 # usage: gen_boltzgen.sh GPU MODE SPEC OUTDIR NDES SEED BATCH [extra boltzgen args...]
 #   MODE = fast | exact | big | off
 set -uo pipefail
-R=/home/prachh/v/anthropic-adaptyv-2026-egfr
+R="$(cd "$(dirname "$0")/.." && pwd)"
 if [ $# -lt 7 ]; then echo "usage: gen_boltzgen.sh GPU MODE SPEC OUTDIR NDES SEED BATCH [extra...]" >&2; exit 2; fi
 GPU=$1; MODE=$2; SPEC=$3; OUT=$4; NDES=$5; SEED=$6; BATCH=$7; shift 7
 unset VIRTUAL_ENV 2>/dev/null || true

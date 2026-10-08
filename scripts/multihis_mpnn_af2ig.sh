@@ -4,7 +4,7 @@
 # near conserved neutral acceptors (Ser464/Gln432/His433/Phe412) so designs can form a multi-His collective
 # pH switch. Cys forbidden globally (0-Cys). Usage: multihis_mpnn_af2ig.sh [staged_dir] [gpus lo-hi] [nseq]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 STAGED=${1:-runs/wave25_multihis/staged}
 GPUS=${2:-0-7}

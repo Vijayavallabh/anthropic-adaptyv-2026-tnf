@@ -3,7 +3,7 @@
 # full-atom two-protomer af2ig inputs -> AF2-ig binding filter.
 # Usage: seq_af2ig_tnf.sh [gpus e.g. 0-7] [nseq_per_backbone] [rfd_glob_subdir]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 GPUS=${1:-0-7}; NSEQ=${2:-4}; SUB=${3:-g*}
 L="$REPO/third_party/LigandMPNN"; PY="$L/.venv/bin/python"; CKPT="$L/model_params/proteinmpnn_v_48_020.pt"  # VANILLA ProteinMPNN: designs interface hydrophobics/aromatics to complement the Trp/Tyr epitope core. soluble_mpnn strips them (42%-charged bundle -> 0 binders)

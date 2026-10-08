@@ -3,11 +3,12 @@
 attach all per-design metrics (sequence, PROPKA ddg_pH, developability) into one TSV.
 Boltz cross-react is added separately (GPU) via boltz on the emitted name,sequence CSV.
 Usage: finalize_cb1ep_batch.py <md_dir> <out_tsv> [keep=CONFIRMED|CONFIRMED,MARGINAL]
-Verdict logic mirrors md_verdict.py exactly (d_switch=HIP-HIE, d_iso=HIP-GLN, 2*sem floor).
+Verdict logic (d_switch=HIP-HIE, d_iso=HIP-GLN, 2*sem floor over HIP/HIE/GLN — GLN-inclusive, matching
+switch_contact_gate.py so the finalize verdict and the final contact gate agree on which switches are real).
 """
 import sys, os, re, glob, json, subprocess
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-R = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 aa3 = {'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C','GLN':'Q','GLU':'E','GLY':'G','HIS':'H',
        'ILE':'I','LEU':'L','LYS':'K','MET':'M','PHE':'F','PRO':'P','SER':'S','THR':'T','TRP':'W','TYR':'Y','VAL':'V'}
 md_dir, out_tsv = sys.argv[1], sys.argv[2]
@@ -17,7 +18,7 @@ def verdict(d):
     agg = d.get("agg", {})
     def g(v, m): return agg.get(v, {}).get(m)
     hip, hie, gln = g("HIP","his_lys_mindist"), g("HIE","his_lys_mindist"), g("GLN","his_lys_mindist")
-    sem = max([x for x in (g("HIP","sem_his_lys"), g("HIE","sem_his_lys")) if x is not None] or [0.0])
+    sem = max([x for x in (g("HIP","sem_his_lys"), g("HIE","sem_his_lys"), g("GLN","sem_his_lys")) if x is not None] or [0.0])
     if None in (hip, hie): return None, None, None, "NA"
     dsw, diso = hip - hie, (hip - gln if gln is not None else None)
     if dsw > 2*sem and dsw > 0 and (diso is None or diso > 0): v = "CONFIRMED"
@@ -50,7 +51,7 @@ for f in sorted(glob.glob(os.path.join(md_dir, "*.json"))):
         alt = glob.glob(os.path.join(md_dir, "..", "switch_af2ig", "**", "pdbs", name + ".pdb"), recursive=True)
         pdb = alt[0] if alt else pdb
     seq = chainA_seq(pdb)
-    bb = (re.search(r"cb1_epitope_\d+_model_\d+", name) or [None]) and re.search(r"cb1_epitope_\d+_model_\d+", name).group(0)
+    _m = re.search(r"cb1_epitope_\d+_model_\d+", name); bb = _m.group(0) if _m else name
     hm = re.search(r"_A(\d+)[A-Z]2H", name); anc = re.search(r"_vsK(\d+)", name)
     pa = ProteinAnalysis(seq.replace("X",""))
     rows.append(dict(name=name, backbone=bb, his_pos=hm.group(1) if hm else "",

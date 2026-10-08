@@ -8,7 +8,7 @@ import numpy as np
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser
 import sys
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bridge_burial as BB
 
 

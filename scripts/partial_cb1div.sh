@@ -4,10 +4,10 @@
 # target=chain B (human TNF, 152). Output backbones -> runs/partial_cb1div/out/<seed>/pd_*.pdb
 # Usage: partial_cb1div.sh [ndes_per_seed] [partial_T] "<gpus>"
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 KIT="$REPO/third_party/uplifting-biomolecular-modeling/rfdiffusion1"
 unset VIRTUAL_ENV; source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
-export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR=/home/prachh/work/tmp
+export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion" TMPDIR="${TMPDIR:-/tmp}"
 NDES="${1:-24}"; PT="${2:-12}"; read -ra GPUS <<< "${3:-4 5 6 7}"
 OUT="$REPO/runs/partial_cb1div/out"; mkdir -p "$OUT"
 mapfile -t SEEDS < <(ls "$REPO"/runs/partial/seeds_cb1div/*.pdb)

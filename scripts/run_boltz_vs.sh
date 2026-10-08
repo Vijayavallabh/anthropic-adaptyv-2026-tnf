@@ -5,7 +5,7 @@
 # that binding is DIII-specific, not non-specific (e.g. electrostatic stickiness of acidic binders).
 # Usage: run_boltz_vs.sh <csv> <target_seq_file> <tag> <gpu>
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CSV=$1; TGTF=$2; TAG=${3:-spec}; GPU=${4:-1}
 MD="$REPO/envs/md/bin/python"
 TGT=$(tr -d '\n ' < "$TGTF")

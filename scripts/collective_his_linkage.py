@@ -13,7 +13,7 @@ import argparse, json, math, os, re, subprocess, tempfile, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO, Select
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROPKA = f"{REPO}/envs/pyrosetta/bin/propka3"
 RT_LN10 = 1.419   # kcal/mol at 310 K
 

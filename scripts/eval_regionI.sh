@@ -3,7 +3,7 @@
 # full-atom 2-protomer af2ig -> binding pass rate. SolubleMPNN per EGFR post-mortem (expression lever).
 # Usage: eval_regionI.sh <pdbdir> <tag> <gpus lo-hi> <nseq>
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 PDB=$(readlink -f "$1"); TAG=$2; GPUS=${3:-0-7}; NSEQ=${4:-2}
 L="$REPO/third_party/LigandMPNN"; PY="$L/.venv/bin/python"; CKPT="$L/model_params/solublempnn_v_48_020.pt"
 W="$REPO/runs/${TAG}_mpnn"; AIN="$REPO/runs/${TAG}_af2in"; AIG="$REPO/runs/${TAG}_af2ig"; rm -rf "$W" "$AIN" "$AIG"; mkdir -p "$W"

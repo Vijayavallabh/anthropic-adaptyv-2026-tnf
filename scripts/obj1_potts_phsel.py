@@ -37,11 +37,11 @@ from biotite.structure.io.pdb import PDBFile
 
 from mpnn.potts_inference import load_model, prepare_potts_input, compute_log_probs
 
-REPO = os.environ.get("ADAPTYV_REPO", "/home/prachh/v/anthropic-adaptyv-2026-egfr")
+REPO = os.environ.get("ADAPTYV_REPO", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CKPT = os.environ.get("PPM_CKPT",
     f"{REPO}/third_party/ProtonPottsMPNN/checkpoints/potts_v6_afdb_edge_his0.3_acid0.06/epoch-0125.ckpt")
 IN_GLOB = os.environ.get("PPM_INGLOB", f"{REPO}/runs/md_bind_gplus/in/egfr_phsw_*.pdb")
-SCRATCH = os.environ.get("PPM_SCRATCH", "/home/prachh/work/tmp/claude-1004/-home-prachh-v/80165829-a188-4ed2-ae27-49adbdc8ef4f/scratchpad/apo")
+SCRATCH = os.environ.get("PPM_SCRATCH", os.path.join(REPO, "runs", "ppm_scratch"))
 OUT_CSV = f"{REPO}/results/wave16_potts_phsel.csv"
 OUT_JSON = f"{REPO}/results/wave16_potts_phsel_perhis.json"
 HIS433_ORD = 100

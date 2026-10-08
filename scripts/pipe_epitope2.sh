@@ -1,7 +1,7 @@
 #!/bin/bash
 # New-epitope (K90/Y87/V91) RFd de-novo -> vanilla MPNN (chain C) -> SINGLE-protomer af2ig -> pass rate.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "[e2] waiting for RFd gen (gen_epitope2.log) $(date -u +%T)"
 for i in $(seq 1 180); do grep -q 'sweep done' runs/gen_epitope2.log 2>/dev/null && break; sleep 20; done
 NB=$(ls runs/rfd_gen/g*/des_*.pdb 2>/dev/null|wc -l); echo "[e2] $NB RFd backbones"

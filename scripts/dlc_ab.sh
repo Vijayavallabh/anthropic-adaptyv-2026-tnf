@@ -3,7 +3,7 @@
 # whether the train/eval LayerNorm correction flips any pae<10 gate call or reshuffles the ranking.
 # Per the analysis, this is a ROBUSTNESS CHECK (+ pLDDT secondary signal), NOT a re-rank.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 MANI=${1:-results/submission_manifest_v2.csv}
 IN=runs/dlc_ab/in; rm -rf runs/dlc_ab; mkdir -p "$IN"
 

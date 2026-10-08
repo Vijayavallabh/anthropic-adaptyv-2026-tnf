@@ -18,6 +18,7 @@ TILT x DISTANCE x in-plane OFFSET x SPIN and maximizing CB-outward among antigen
 template geometry is lifted from a real indole rotamer (A386). Output: theozyme PDB + RFd3 spec that FIXES
 the Trp ring atoms and HOTSPOTS the His433 ring (A409), with NO h-bond term (pi contact, not a salt bridge).
 Adapts scripts/build_cationpi_theozyme.py (roles swapped: aromatic on binder, cation on target)."""
+import os
 import json, sys, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO
@@ -25,7 +26,7 @@ from Bio.PDB.Chain import Chain
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"   # chain A = DIII target (mature numbering 310-500); A409 = His433
 OUTDIR = f"{REPO}/specs/rfd3"
 

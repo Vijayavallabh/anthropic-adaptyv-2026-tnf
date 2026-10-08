@@ -9,7 +9,7 @@ Gates (documented Adaptyv + switch): dual_sw(d_switch>0 & ddg<0), xr_clean(xr>-0
   expr_ok(cys==0 & instab<40 & gravy<0.4); expr_accept(cys==0 & instab<50 & gravy<0.5).
 """
 import csv, re, argparse, os
-R = "/home/prachh/v/anthropic-adaptyv-2026-tnf"
+R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ap = argparse.ArgumentParser()
 ap.add_argument("--out", default=f"{R}/runs/submission/final_portfolio")
 ap.add_argument("--cb1cap", type=int, default=6)
@@ -42,12 +42,17 @@ if os.path.exists(_ipf):
 # passed the distance-ladder-only gate. real_switch[name] -> bool; hie_contact[name] -> float.
 real_switch, hie_contact = {}, {}
 _scf = f"{R}/runs/submission/switch_contact.tsv"
-if os.path.exists(_scf):
-    import csv as _csv3
-    for r in _csv3.DictReader(open(_scf), delimiter="\t"):
-        real_switch[r["name"]] = (r.get("real_switch") == "True")
-        try: hie_contact[r["name"]] = float(r["hie_contact"])
-        except (ValueError, KeyError): pass
+if not os.path.exists(_scf):
+    # FAIL LOUD: the contact gate drives real_switch_gate; without it every cb1ep design silently
+    # fails the gate and the whole de-novo portfolio is dropped. Refuse rather than ship a cb1-only CSV.
+    raise SystemExit(f"ERROR: contact-gate table missing: {_scf}\n"
+                     f"  Run `python scripts/switch_contact_gate.py` first (required: the real_switch gate "
+                     f"needs it; without it all cb1ep designs are dropped).")
+import csv as _csv3
+for r in _csv3.DictReader(open(_scf), delimiter="\t"):
+    real_switch[r["name"]] = (r.get("real_switch") == "True")
+    try: hie_contact[r["name"]] = float(r["hie_contact"])
+    except (ValueError, KeyError): pass
 
 def fnum(x, d=None):
     try: return float(x)

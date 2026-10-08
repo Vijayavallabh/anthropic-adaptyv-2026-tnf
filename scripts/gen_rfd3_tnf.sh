@@ -2,7 +2,7 @@
 # RFd3 de-novo binder gen for TNF, sharded across GPUs with distinct seeds. Binder=chain A, target=chain B in output CIFs.
 # Usage: gen_rfd3_tnf.sh <spec.json> <outdir> <n_batches> <bsize> "<gpus>"
 set -uo pipefail
-R=/home/prachh/v/anthropic-adaptyv-2026-tnf
+R="$(cd "$(dirname "$0")/.." && pwd)"
 SPEC=$1; OUT=$2; NB=${3:-4}; BS=${4:-16}; GPUS=${5:-"0 1 2 3 4 5 6 7"}
 KIT=$R/third_party/uplifting-biomolecular-modeling/rfdiffusion3
 mkdir -p "$OUT"

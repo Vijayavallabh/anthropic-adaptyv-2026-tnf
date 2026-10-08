@@ -11,7 +11,7 @@ This is the make-or-break selectivity test for the repulsion-gated dyad, fair to
 the charged-H-bond ON and the like-charge-repulsion OFF). Reuses qm_switch_fair's extract/xtb helpers."""
 import argparse, json, os, sys, tempfile
 import numpy as np
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qm_switch_fair as Q
 
 H2KCAL = Q.H2KCAL

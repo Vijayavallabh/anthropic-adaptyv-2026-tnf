@@ -21,7 +21,7 @@ import argparse, os, re, subprocess, sys, tempfile, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO, Select
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PDB2PQR = f"{REPO}/envs/apbs/bin/pdb2pqr30"
 APBS = f"{REPO}/envs/apbs/bin/apbs"
 

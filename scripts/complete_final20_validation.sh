@@ -4,7 +4,7 @@
 #   GPU0 = baseline MD (already running)   GPUs 1-7 = cross-react af2ig
 #   then  GPU1 = Boltz   ||   GPUs 2-7 = MD (2 rep x 1000ps, matches baseline for comparable d_occ)
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 MD="$REPO/envs/md/bin/python"
 mkdir -p logs
 awk -F'\t' '{print $2}' runs/md_final2_list.txt > runs/md_final2_paths.txt

@@ -3,7 +3,7 @@
 # candidates can dual-confirm (His433 PROPKA + MD) and compete in the family-capped selection.
 # Additive: run_md_campaign skips designs already scored in md_final2 (the 7 floor picks).
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "waiting for de novo w2 gen to finish... $(date -u +%T)"
 for i in $(seq 1 160); do
   grep -q RFD_CAMPAIGN_w2_DONE logs/rfd/w2_campaign.log 2>/dev/null && { echo "de novo gen done after ~$((i*30))s"; break; }

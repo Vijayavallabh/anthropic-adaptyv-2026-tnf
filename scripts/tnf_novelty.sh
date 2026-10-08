@@ -1,6 +1,6 @@
 #!/bin/bash
 # Sequence-novelty gate: no binder >70% id to a natural protein (PDB seqres). TNF target = fail-loud positive control (MUST hit).
-set -uo pipefail; cd /home/prachh/v/anthropic-adaptyv-2026-tnf
+set -uo pipefail; cd "$(dirname "$0")/.."
 NOV=runs/novelty; mkdir -p "$NOV"; export PATH="$NOV/mmseqs/bin:$PATH"
 die(){ echo "NOVELTY-FAIL: $*"; exit 1; }
 command -v mmseqs >/dev/null 2>&1 || { echo "fetching mmseqs..."; curl -fsSL https://mmseqs.com/latest/mmseqs-linux-avx2.tar.gz | tar xz -C "$NOV" || die "mmseqs fetch"; }

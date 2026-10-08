@@ -5,7 +5,7 @@
 # Usage: run_chai.sh <csv> <tag> [target_seq_file] [gpus]
 #   target_seq_file default = data/targets/human_domainIII.seq ; gpus default = 0-2 (user ≤3-GPU cap)
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CSV=${1:?usage: run_chai.sh <csv> <tag> [target_seq_file] [gpus]}; TAG=${2:-chai}
 TGTF=${3:-data/targets/human_domainIII.seq}; GPUS=${4:-0-2}   # default 0-2: user ≤3-GPU cap (2026-10-02); pass arg 4 to override
 MD="$REPO/envs/md/bin/python"

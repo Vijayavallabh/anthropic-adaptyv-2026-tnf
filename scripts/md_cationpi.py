@@ -17,7 +17,7 @@ Reuses md_pH_switch's OpenMM/forcefield machinery (chains, CA restraints, integr
 """
 import argparse, json, os, sys
 import numpy as np
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import md_pH_switch as M
 app, unit = M.app, M.unit
 

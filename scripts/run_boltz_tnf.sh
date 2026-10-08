@@ -4,7 +4,7 @@
 # mouse TNF (data/targets/mouse_TNF_P06804.fasta) for a cross-reactivity iptm delta.
 # Usage: run_boltz_tnf.sh <csv name,sequence> <target_seq_file> <tag> <gpu>
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 CSV=$1; TGTF=$2; TAG=${3:-tnf}; GPU=${4:-0}
 MD="$REPO/envs/md2/bin/python"
 # target seq: if a fasta, strip header lines; else take all non-space chars

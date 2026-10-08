@@ -6,7 +6,7 @@ import argparse, csv, glob, json, os, warnings
 import numpy as np
 warnings.filterwarnings("ignore")
 import sys
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from moonshot_prep_mpnn import load_cif, write_pdb
 
 TARGET_LEN = 191

@@ -17,16 +17,17 @@ conserved Asp460 (A436) on the proven-bindable His433 face:
     6.5-7.5A shell (CB inward), DELIBERATELY leaving the His-distal azimuth open (asymmetric solvent channel so
     the His stays titratable). Build-time pocket-QC: carboxylate solvent-hemisphere occlusion > 0.5.
 """
+import os
 import json, sys, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO
 from Bio.PDB.Chain import Chain
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_his_asp_theozyme import unit
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"
 OUTDIR = f"{REPO}/specs/rfd3"
 ELEM = {"N": "N", "CA": "C", "C": "C", "O": "O", "CB": "C", "CG": "C",

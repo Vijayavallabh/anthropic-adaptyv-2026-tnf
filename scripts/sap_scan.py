@@ -28,12 +28,13 @@ Read-only; writes results/sap_scan.csv. Never modifies a submission.
 
 Usage: envs/pyrosetta/bin/python scripts/sap_scan.py
 """
+import os
 import csv
 from pathlib import Path
 from collections import OrderedDict
 import numpy as np
 
-REPO = Path("/home/prachh/v/anthropic-adaptyv-2026-egfr")
+REPO = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SUB  = REPO/"results/submission_track3_v2.csv"
 HYD  = set("AVLIMFWY")
 EXP_THRESH = 10.0     # A^2 per-res hydrophobic SASA => "exposed enough to join a patch"

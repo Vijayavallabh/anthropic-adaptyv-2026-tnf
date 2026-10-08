@@ -5,7 +5,7 @@
 #   hotspots   : PDB author numbering, e.g. "A408,A409,A412,A440,A465"  (A409 = His433)
 # Writes runs/rfd/<out_subdir>/des_<i>.pdb (+ .trb, run.log).  Absolute paths (run.sh cd's into kit dir).
 set -euo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 OUTSUB=$1; LENSPEC=$2; HOTS=$3; NDES=$4; GPU=$5; START=${6:-0}; SCHED=${7:-}
 source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
 export RFD_ROOT="$REPO/third_party/RFdiffusion"

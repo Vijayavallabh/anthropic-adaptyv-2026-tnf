@@ -373,7 +373,7 @@ def main():
     with open(a.out,"w",newline="") as fh:
         w=csv.writer(fh); w.writerow(["name","sequence","molecule_class"])
         # molecule_class: Adaptyv portal renamed the single-chain class 'protein' -> 'single_chain' (2026-10)
-        for i,c in enumerate(final,1): w.writerow([f"egfr_phsw_{i:02d}", c["sequence"], "single_chain"])
+        for i,c in enumerate(final,1): w.writerow([f"tnf_phsw_{i:02d}", c["sequence"], "single_chain"])
     cols=["rank","name","source","design","version","length","ddg_pH","his433_dpKa","his433_driven",
           "md_docc","md_switch","dual_confirmed","af2_pae","iddg","cross_reactive","cross_mouse_pae",
           "cross_human_pae","boltz2","iface_hyd","cys","dev_penalty","sequence"]
@@ -393,7 +393,7 @@ def main():
     with open(a.manifest,"w",newline="") as fh:
         w=csv.DictWriter(fh,fieldnames=cols); w.writeheader()
         for i,c in enumerate(final,1):
-            w.writerow({"rank":i,"name":f"egfr_phsw_{i:02d}",**{k:c.get(k,"") for k in cols if k not in("rank","name")}})
+            w.writerow({"rank":i,"name":f"tnf_phsw_{i:02d}",**{k:c.get(k,"") for k in cols if k not in("rank","name")}})
     bycount={}
     for c in final: bycount[c["source"]]=bycount.get(c["source"],0)+1
     print(f"candidates={len(cand)} selected={len(final)} -> {a.out}")

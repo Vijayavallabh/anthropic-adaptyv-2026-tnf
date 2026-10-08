@@ -6,7 +6,7 @@
 # (RFd1 is backbone-only -> no His survives diffusion), via moonshot_prep_partial.py.
 # Usage: run_pd_inv02.sh [ndes_per_gpu]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 INP="$REPO/runs/moonshot/pd_inv02/moon01_complex.pdb"
 NDES=${1:-96}
 [ -s "$INP" ] || { echo "run_pd_inv02: input complex missing: $INP" >&2; exit 2; }

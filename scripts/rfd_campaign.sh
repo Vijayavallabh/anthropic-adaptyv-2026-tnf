@@ -5,7 +5,7 @@
 # GPUs other than the last use the extended His433 conserved-face patch; the last uses the tight patch
 # (unless hotspots_override is given, which applies to all).  His433 = A409.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 WAVE=${1:-w1}; NDES=${2:-300}; LENSPEC=${3:-60-110}; GPUS=${4:-"0 1 2 3 4 5 6 7"}; OVR=${5:-}
 EXT="A408,A409,A412,A440,A465"; TIGHT="A408,A409,A412"
 mkdir -p "$REPO/logs/rfd"

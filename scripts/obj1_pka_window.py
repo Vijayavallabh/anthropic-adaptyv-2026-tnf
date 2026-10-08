@@ -14,7 +14,7 @@ import argparse, os, re, subprocess, sys, tempfile, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO, Select
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROPKA = f"{REPO}/envs/pyrosetta/bin/propka3"
 
 

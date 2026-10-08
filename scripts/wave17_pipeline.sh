@@ -8,7 +8,7 @@
 # Mechanical SCORING only -- the dominate-or-discard SELECTION vs the live 20 is done by hand after,
 # on the priority order (pH-switch > cross-react > affinity), never swapping on noise.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 WAVELOG=${1:-scratchpad/win/waveA_pd.log}
 GLOB=${2:-runs/rfd/pd2_egfr_phsw_*}
 TAG=${3:-w17}

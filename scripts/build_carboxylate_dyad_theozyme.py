@@ -14,17 +14,18 @@ binder GLU climbing the groove mouth-normal, carboxyl H-bonding Asp460 at DYAD d
 toward the mouth, seated DEEP (maximize target contacts around the carboxyl = burial proxy). RFd3 spec fixes
 the Glu carboxyl, donor=Glu carboxyl, acceptor=Asp460 carboxyl. Adapts build_buried_theozyme.build_his_buried
 (binder residue His->Glu, NE2-H-bond -> carboxyl-carboxyl dyad)."""
+import os
 import json, sys, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO
 from Bio.PDB.Chain import Chain
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_his_asp_theozyme import unit
 from build_buried_theozyme import _rot_axis, _align
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"
 OUTDIR = f"{REPO}/specs/rfd3"
 ORDER_GLU = ["N", "CA", "C", "O", "CB", "CG", "CD", "OE1", "OE2"]

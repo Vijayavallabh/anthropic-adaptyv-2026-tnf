@@ -5,7 +5,7 @@
 # (T=50 default; ~10 gentle/retains binding, ~20 more diverse).
 # Usage: run_rfd_partial.sh <out_subdir> <input_complex.pdb> <num_designs> <gpu> [partial_T] [sched_dir]
 set -euo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 OUTSUB=$1; INP=$(readlink -f "$2"); NDES=$3; GPU=$4; PT=${5:-10}; SCHED=${6:-}
 source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
 export RFD_ROOT="$REPO/third_party/RFdiffusion" WEIGHTS="$REPO/weights/rfdiffusion1"

@@ -24,6 +24,7 @@ placed PARALLEL-stacked ~3.7 A over the Phe412 ring face, on the solvent side) +
 (fix the His ring atoms; hotspot Phe412 ring + the His433 face A409; NO h-bond donor/acceptor -- this is a
 pi contact, not a salt bridge). Reuses the clash-gated rotamer search pattern from build_his_asp_theozyme.
 """
+import os
 import json, sys, numpy as np, warnings
 warnings.filterwarnings("ignore")
 from Bio.PDB import PDBParser, PDBIO
@@ -31,7 +32,7 @@ from Bio.PDB.Chain import Chain
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = f"{REPO}/specs/rfd3/theozyme.pdb"   # chain A = DIII target (mature numbering 310-500)
 OUTDIR = f"{REPO}/specs/rfd3"
 

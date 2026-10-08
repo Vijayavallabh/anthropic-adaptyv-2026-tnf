@@ -3,7 +3,7 @@
 # -> install + score the His433 pH switch (PROPKA Wyman linkage). CPU/PyRosetta (runs alongside GPU work).
 # Usage: run_betA_switch.sh <tag> [max_pae] [workers]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 export TMPDIR="$REPO/runs/tmp"; mkdir -p "$TMPDIR"   # /tmp is read-only/stale here; obj1_switch writes temp PDBs
 export PATH="$REPO/envs/pyrosetta/bin:$PATH"          # propka3 lives here; obj1_switch execs it by name
 TAG=${1:-w1}; MAXPAE=${2:-12}; WORKERS=${3:-48}

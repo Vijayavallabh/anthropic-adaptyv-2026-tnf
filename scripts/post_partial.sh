@@ -2,7 +2,7 @@
 # After partial diffusion (binder=chain A, target=chain B): vanilla-MPNN design chain A (context B, 0-Cys),
 # rebuild full-atom target B, af2ig, report pass rate. Usage: post_partial.sh [gpus 0-3] [nseq]
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 GPUS=${1:-0-3}; NSEQ=${2:-8}
 echo "[pp] waiting for partial diffusion to finish $(date -u +%T)"
 for i in $(seq 1 180); do grep -q '\[partial\] done' runs/partial_tnf.log 2>/dev/null && break; sleep 20; done

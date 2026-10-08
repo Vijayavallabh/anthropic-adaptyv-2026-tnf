@@ -1,6 +1,6 @@
 #!/bin/bash
 set -uo pipefail
-R=/home/prachh/v/anthropic-adaptyv-2026-tnf
+R="$(cd "$(dirname "$0")/.." && pwd)"
 GPU=$1; MODE=$2; SPEC=$3; OUT=$4; NDES=$5; SEED=$6; BATCH=$7; shift 7
 unset VIRTUAL_ENV 2>/dev/null || true
 source "$R/envs/uplifting-boltzgen/bin/activate"

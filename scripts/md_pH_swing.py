@@ -18,7 +18,7 @@ import argparse, json, os, sys
 import numpy as np
 from openmm import app, unit, Platform, LangevinMiddleIntegrator, CustomExternalForce
 from pdbfixer import PDBFixer
-sys.path.insert(0, "/home/prachh/v/anthropic-adaptyv-2026-egfr/scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import md_pH_switch as M   # reuse detect_chains, scale_ionizable_charges, ECC machinery
 
 

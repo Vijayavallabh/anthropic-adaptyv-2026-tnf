@@ -10,7 +10,7 @@ unset VIRTUAL_ENV
 # shellcheck disable=SC1091
 source "$REPO/envs/uplifting-rfdiffusion1/bin/activate"
 export WEIGHTS="$REPO/weights/rfdiffusion1" RFD_ROOT="$REPO/third_party/RFdiffusion"
-export TMPDIR=/home/prachh/work/tmp   # MODEL_OPT_JIT_ROOT set per-length below (shared root deadlocks parallel shards on its compile lock)
+export TMPDIR="${TMPDIR:-/tmp}"   # MODEL_OPT_JIT_ROOT set per-length below (shared root deadlocks parallel shards on its compile lock)
 
 N="${1:-60}"                                   # designs per shard
 HOTSPOTS="${2:-[B86,B87,B88,B90,B91]}"          # BEST bindable conserved+EXPOSED patch (proper CB-nbr scan): Tyr87 aromatic + Val91 hydrophobic (de-novo anchors) + Lys90 (switch/cross-react anchor); all conserved h/mouse, CA-span 11.8A. (prev [B114,B115,B141,B65] had buried aromatics -> pae floor 21.7)

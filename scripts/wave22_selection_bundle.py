@@ -26,7 +26,7 @@ exchangeable wet-lab labels -> conformal/FDR guarantees are out of scope; this i
 import csv, json, glob, math, os, sys
 import numpy as np
 
-REPO = "/home/prachh/v/anthropic-adaptyv-2026-egfr"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rng = np.random.default_rng(20261006)
 
 # ---- modeled oracle noise (1 sigma); documented, not measured ----

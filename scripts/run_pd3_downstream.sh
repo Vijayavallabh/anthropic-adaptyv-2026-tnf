@@ -7,7 +7,7 @@
 # MD + cross-react + Boltz on the competitive pd3 picks, and the selector source-loop entry, are done
 # after this (targeted, only on designs that rank), to avoid validating the whole batch.
 set -uo pipefail
-REPO=/home/prachh/v/anthropic-adaptyv-2026-egfr; cd "$REPO"
+REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 echo "waiting for PD3 wave... $(date -u +%T)"
 for i in $(seq 1 240); do
   grep -q PD3_WAVE_DONE logs/pd3_wave.log 2>/dev/null && { echo "pd3 wave done after ~$((i*15))s"; break; }
