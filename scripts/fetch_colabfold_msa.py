@@ -8,7 +8,7 @@ Usage: fetch_colabfold_msa.py <seq|fastafile> <name> <out.a3m> [--mode env] [--t
 import sys, time, json, tarfile, io, os, urllib.request, urllib.parse
 
 HOST = "https://api.colabfold.com"
-UA = {"User-Agent": "adaptyv-egfr-af3-research (noncommercial academic)"}
+UA = {"User-Agent": "adaptyv-tnf-af3-research (noncommercial academic)"}
 
 def _get(url, data=None):
     req = urllib.request.Request(url, data=data, headers=UA)

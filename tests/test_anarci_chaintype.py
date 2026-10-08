@@ -5,7 +5,7 @@ Skipped automatically if anarcism is unavailable.
 """
 import pytest
 
-from adaptyv_egfr.submission import anarci_available, validate_rows
+from adaptyv_tnf.submission import anarci_available, validate_rows
 
 pytestmark = pytest.mark.skipif(not anarci_available(), reason="anarcism not installed")
 

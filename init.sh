@@ -1,12 +1,12 @@
 #!/bin/bash
-# adaptyv-egfr harness bootstrap + verification (uv-only).
+# adaptyv-tnf harness bootstrap + verification (uv-only).
 #   ./init.sh          core env + smoke tests (fast, CPU-only) -- the verification gate
 #   ./init.sh --tools  additionally scaffold isolated uv venvs for heavy design tools
 set -euo pipefail
 unset VIRTUAL_ENV 2>/dev/null || true
 cd "$(dirname "$0")"
 
-echo "=== adaptyv-egfr :: core environment (uv sync) ==="
+echo "=== adaptyv-tnf :: core environment (uv sync) ==="
 uv sync
 
 echo "=== compile check ==="
@@ -15,10 +15,7 @@ uv run python -m compileall -q src scripts
 echo "=== tests (pytest) ==="
 uv run pytest -q
 
-echo "=== stage 0: target/epitope prep ==="
-uv run python -m adaptyv_egfr.stage0_target_prep
-
-echo "=== submission validator self-check ==="
+echo "=== submission validator self-check (Track 3) ==="
 uv run python scripts/validate_submission.py submissions/example_track3.csv --track 3
 
 if [[ "${1:-}" == "--tools" ]]; then
@@ -43,6 +40,7 @@ fi
 echo ""
 echo "=== Verification Complete -- environment is clean and restartable ==="
 echo "Next steps:"
-echo "  1. Read AGENTS.md, then feature_list.json (active_feature) and progress.md."
-echo "  2. Work ONE feature; record Verification Evidence in progress.md before marking it done."
-echo "  3. Before every upload: uv run python scripts/validate_submission.py <csv> --track <N>"
+echo "  1. Read AGENTS.md, progress.md (current status), and docs/PLAN_TNF.md."
+echo "  2. The active submission is runs/submission/final_portfolio.{csv,fasta} + METHODS.md;"
+echo "     scripts/README.md maps the pipeline. Record evidence before claiming a change done."
+echo "  3. Before every upload: uv run python scripts/validate_submission.py <csv> --track 3"

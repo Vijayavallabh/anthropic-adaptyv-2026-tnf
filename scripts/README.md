@@ -29,5 +29,5 @@ conserved cb1 epitope → ProteinMPNN).
 **Assembly + novelty:** `assemble_v2.py` (the final, contact-gated, cluster-deduped assembler → `final_portfolio.{csv,fasta}`),
 `fold_diversity.py` (Foldseek TM-clustering), `build_core8.py` (cb1 family floor), `tnf_novelty.sh`.
 
-**Submission contract:** `validate_submission.py` + `src/adaptyv_egfr/submission.py` (shared Adaptyv 2026 upload format;
+**Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).

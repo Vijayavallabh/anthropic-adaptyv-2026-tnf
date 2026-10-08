@@ -2,7 +2,7 @@
 
 This repo targets **Challenge 2 (TNF-α)**; the Adaptyv upload CSV format and the
 per-track caps are shared across the 2026 challenges (the package was generalized
-into a challenge-agnostic toolkit — hence the legacy ``adaptyv_egfr`` name). Single
+into a challenge-agnostic toolkit — hence the legacy ``adaptyv_tnf`` name). Single
 source of truth for the submission CSV format, used by ``scripts/validate_submission.py``
 (the definition-of-done gate). The TNF portfolio itself is built by
 ``scripts/assemble_v2.py`` (which emits the internal table) and uploaded via the

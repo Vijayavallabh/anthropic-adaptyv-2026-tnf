@@ -6,6 +6,12 @@ trigger: a pH window, a cofactor, a conformational state). Swap in the target,
 epitope, and trigger per project. The specifics below are stated as transferable
 principles, not fixed numbers.
 
+> **This repo's application (TNF-α Challenge 2):** the executed pipeline, thresholds, and the 9-design
+> outcome are in [`PLAN_TNF.md`](PLAN_TNF.md); the submission write-up is `runs/submission/METHODS.md`
+> and the script map is [`../scripts/README.md`](../scripts/README.md). The TNF pH switch is validated by
+> four method-classes (two-state MD + Gln-isostere control, PROPKA–Wyman, pKAI, GFN2-xTB) — **not** Rosetta
+> `fa_elec`/`pH_mode`, which does not titrate and is not used.
+
 ## 1. Objective ordering
 
 Rank the objectives before designing, and design to the top one. For a

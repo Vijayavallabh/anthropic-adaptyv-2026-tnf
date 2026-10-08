@@ -1,5 +1,5 @@
 """Schema/contract tests for the submission validator."""
-from adaptyv_egfr.submission import validate_csv, validate_rows, write_submission
+from adaptyv_tnf.submission import validate_csv, validate_rows, write_submission
 
 GOOD_PROTEIN = "M" + "A" * 49  # 50 aa, all standard residues
 

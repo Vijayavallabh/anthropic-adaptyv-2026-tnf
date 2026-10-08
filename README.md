@@ -1,57 +1,61 @@
-# conditional-binder-design
+# anthropic-adaptyv-2026-tnf
 
-A reusable pipeline for designing de-novo protein binders with a *conditional*
-activity (bind only under a trigger such as a pH window, a cofactor, or a
-specific conformational state) and for proving that conditionality in silico
-before any wet-lab test.
+De-novo conditional (pH-switch) binders for **TNF-α** — the Anthropic × Adaptyv 2026 Protein Design
+Competition, **Challenge 2**. The designs bind TNF-α at **pH 7.4 and release at pH 6.0** (the
+endosomal-recycling direction), with **human↔mouse cross-reactivity**, and the switch is proven in
+silico before any wet-lab test.
 
-Environment: **uv** only. Compute: local multi-GPU, run CUDA directly. Set the
-target, epitope, and trigger per project in `configs/target.yaml`.
+Built on the reusable conditional-binder toolkit (generalized from the Challenge-1 EGFR project); the
+TNF-specific target, epitope, and switch live in `configs/` and `docs/`.
 
-## What "conditional" means here
+## Objective priority
 
-The hard, high-value property of a conditional binder is the switch itself:
-tight binding in the ON state and weak binding in the OFF state. A good fold or
-a high docking score does not prove a switch, because the common structure
-predictors are blind to the trigger. Proving selectivity needs explicit
-two-state physics (see `docs/METHODS.md`).
+1. **pH-selectivity** — bind ON at pH 7.4, release OFF at pH 6.0 (highest)
+2. **cross-reactivity** — one sequence binds human and mouse TNF-α
+3. **affinity** in the ON state
 
-## Objective ordering
+Novelty (distance from known proteins) is a hard gate, not a score — final novelty is the Proteinbase portal.
 
-Rank objectives up front and design to the top one. Default order for a
-conditional binder:
+## The submission
 
-1. conditional selectivity, ON vs OFF (highest)
-2. any required cross-reactivity (one sequence binds several orthologs)
-3. affinity in the ON state
+`runs/submission/final_portfolio.{csv,fasta}` — **9 designs across 6 distinct folds** (byte-verified
+FASTA==CSV), with `runs/submission/METHODS.md` as the write-up. Every design carries:
 
-Treat novelty (distance from known proteins) as a gate, not a score, when the
-host scores it.
+- a **pH-release switch** (interface His adjacent to a conserved target Lys → His⁺ repels Lys⁺ at pH 6),
+  confirmed by **three method-classes on all nine** — explicit two-state MD (+ Gln-isostere causal control),
+  PROPKA–Wyman linkage, pKAI linkage — plus a **GFN2-xTB** fourth class on the six single-His designs;
+- **cross-reactivity** by matched human/mouse Boltz-2 co-fold and worst-case-over-species **ipSAE > 0.5**;
+- a confident binder (AF2 initial-guess + Boltz-2), **0 Cys**, expression-screened, portal-novel (≥3/4; one 4/4).
+
+Upload to the Proteinbase portal is **user-gated**.
+
+## Pipeline (what actually ran)
+
+RFdiffusion3 (all-atom) at the conserved **cb1** aromatic/hydrophobic epitope → ProteinMPNN (0-Cys) →
+AF2 initial-guess + Boltz-2 binding → His pH-switch install at a conserved Lys → 4-method switch validation →
+ipSAE cross-reactivity → Foldseek TM-clustering for true-shape diversity → `assemble_v2.py` (contact-gated,
+one design per shape). `scripts/README.md` maps every stage to its scripts.
+
+## Environment & compute
+
+**uv** only for the core env; heavy design models install into isolated per-tool uv venvs under `envs/`
+(see `docs/TOOLS.md`). Compute is local multi-GPU (run CUDA directly, one process per GPU). All scripts
+resolve their repo root dynamically — no hardcoded paths.
 
 ## Quickstart
 
 ```bash
-./init.sh                 # build the core uv env + run smoke tests (the gate)
-uv run pytest             # tests (schema, length, numbering, liabilities)
-uv run python scripts/validate_submission.py <designs.csv> --track <N>   # submission gate
-bash scripts/novelty_check.sh <designs.csv>                              # novelty gate (fail-loud)
+./init.sh                 # uv sync + compile + pytest + validator self-check (the gate)
+uv run pytest -q          # tests (schema, length, numbering, liabilities)
+uv run python scripts/validate_submission.py <designs.csv> --track 3   # submission gate
 ```
-
-Heavy design models install into isolated per-tool uv venvs; see `docs/TOOLS.md`.
 
 ## Layout
 
-- `AGENTS.md` / `CLAUDE.md`: working contract and invariants (start here).
-- `configs/`: the target/epitope/trigger contract (`target.yaml`, a template),
-  filter thresholds (`filters.yaml`), and the tool matrix (`uplifting.yaml`).
-- `scripts/`: the pipeline implementation (generation, sequence design,
-  folding and binding scoring, switch install plus two-state scoring,
-  cross-reactivity, MD, novelty, selection, submission build).
-- `src/`: the stage-based skeleton (`stageN_*`) and the submission contract.
-- `docs/METHODS.md`: the method and validation playbook.
-- `docs/TOOLS.md`: the tool stack and install.
-
-The code under `scripts/` and `src/` is the working implementation carried over
-from a prior conditional-binder project. Reuse the patterns and the validation
-engine; swap the target-specific parts (the epitope anchors, the switching
-residue) for the new project.
+- `AGENTS.md` / `CLAUDE.md` — the working contract and invariants (start here)
+- `progress.md` — current status and next step
+- `configs/` — the target/epitope/switch contract (`target.yaml`), filter thresholds (`filters.yaml`), tool matrix (`uplifting.yaml`)
+- `scripts/` — the pipeline implementation (`scripts/README.md` is the manifest: active TNF pipeline vs reusable utils vs legacy EGFR code)
+- `src/adaptyv_tnf/` — the stage skeleton and the submission contract/validator
+- `docs/PLAN_TNF.md` — the campaign plan and outcome · `docs/METHODS.md` — the validation playbook · `docs/TOOLS.md` — the tool stack
+- `runs/submission/` — the final portfolio + methods (local-only; gitignored)

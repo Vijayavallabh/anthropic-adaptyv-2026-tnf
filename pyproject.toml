@@ -1,7 +1,7 @@
 [project]
-name = "adaptyv-egfr"
+name = "adaptyv-tnf"
 version = "0.1.0"
-description = "De-novo conditional protein-binder design and validation pipeline"
+description = "De-novo conditional (pH-switch) TNF-α binder design + in-silico validation — Anthropic x Adaptyv 2026 Challenge 2"
 readme = "README.md"
 authors = [
     { name = "Vijayavallabh" }
@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
-adaptyv-egfr = "adaptyv_egfr:main"
+adaptyv-tnf = "adaptyv_tnf:main"
 
 [build-system]
 requires = ["uv_build>=0.12.13,<0.13.0"]

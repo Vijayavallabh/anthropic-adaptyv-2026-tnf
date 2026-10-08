@@ -10,7 +10,7 @@ Builds the epitope "contract" every downstream stage targets:
 
 Residue numbering: FULL P00533 precursor numbering (signal peptide = residues 1-24).
 
-Run:  uv run python -m adaptyv_egfr.stage0_target_prep
+Run:  uv run python -m adaptyv_tnf.stage0_target_prep
 """
 from __future__ import annotations
 

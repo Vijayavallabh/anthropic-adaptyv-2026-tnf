@@ -1,5 +1,5 @@
 """Tests for the CDR/sequence liability scanner (stage 5)."""
-from adaptyv_egfr.stage5_validate import liability_count, scan_liabilities
+from adaptyv_tnf.stage5_validate import liability_count, scan_liabilities
 
 
 def test_n_glycosylation_sequon():

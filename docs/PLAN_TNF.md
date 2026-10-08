@@ -1,37 +1,42 @@
-# Challenge 2 (TNF-alpha) campaign plan
+# Challenge 2 (TNF-α) — campaign plan & outcome
 
-Deadline 2026-10-11 23:59 AoE (= 2026-10-12 11:59 UTC). Track 3, <=20 designs, minibinder-first.
-Objective priority: pH-selective (bind 7.4 / release 6.0) > mouse cross-reactive > affinity.
-GPU budget: 3 reserved (0,1,2) + any free others (verify nvidia-smi, never clobber a foreign job).
+Deadline 2026-10-11 23:59 AoE (= 2026-10-12 11:59 UTC). Track 3, ≤20 designs, Claude-selected on
+quality + novelty + method-novelty. Objective priority: **pH-selective (bind 7.4 / release 6.0) > mouse
+cross-reactive > affinity.** GPU budget: 3 reserved (0,1,2) + any verified-free others.
 
-## Stage 0 - setup
-- [x] workspace from the generalized toolkit; core uv env
-- [x] fetch 1TNF (chains A-C, res 6-157) + mouse P06804
-- [x] human<->mouse map: 79.5% id, anchors 65/67/135/146 conserved, 32 divergent (configs/target.yaml)
-- [ ] toolchain build (background: proteinmpnn, rfdiffusion1, af2ig, boltz2, chai1, boltzgen, caliby, esmc, pyrosetta)
-- [ ] ESMFold novelty-oracle env (envs/esmfold2-pinned) + foldseek/mmseqs
-- [ ] build full-atom TWO-protomer target (chains A+B) for af2ig; define hotspots (conserved anchors at the A-B cleft)
-- [ ] build mouse two-protomer model (thread P06804 on 1TNF) for the cross-react co-fold
+## Target & epitope
 
-## Stage 1 - generate (RFdiffusion1)
-De-novo hotspot binders at the A-B receptor-binding cleft + partial diffusion to amplify. Minibinder 40-100 aa lead; a few microbinders (<40) and larger (>100) for category coverage. One process per free GPU.
+Human TNF-α soluble trimer, PDB **1TNF** (chains A–C, res 6–157), UniProt P01375; mouse ortholog P06804
+(soluble domains ~79.5% id). The bindable, cross-react-friendly site is the **cb1** conserved
+aromatic/hydrophobic pocket (W114/Y115/Y141 + a conserved interface Lys) at the protomer interface — all
+anchors conserved human↔mouse (`configs/target.yaml`). The flat subunit-interface face (Region-I) and the
+K90 face **wall** de-novo binding; cb1 is the one epitope that breaks the wall.
 
-## Stage 2 - sequence (soluble-MPNN)
-0-Cys. Produce plain + His-biased variants (for both switch mechanisms).
+## What actually ran (as executed)
 
-## Stage 3 - fold/score binding
-af2ig on the full-atom two-protomer target (interface-PAE gate) + Boltz-2/Chai co-fold. Full-atom target is mandatory (backbone-only target = false 0% yield).
+1. **Generation — RFdiffusion3 (all-atom).** RFd1 + BoltzGen floored at af2ig PAE ~22 on this flat polar
+   target (×2 epitopes, ~6000 designs). RFd3 all-atom at cb1 → ProteinMPNN (0-Cys) broke it: af2ig
+   pae_interaction 3.6–4.8 at ~7% hit. (Re-MPNN RFd3 — self-seq folds poorly in AF2.)
+2. **Binding validation.** AF2 initial-guess on the full-atom two-protomer target (pae_int<10, pLDDT_binder>80,
+   rmsd<2) + Boltz-2 co-fold ipTM 0.89–0.94. Full-atom target is mandatory (backbone-only → false 0%).
+3. **pH-switch install.** Interface His next to a **conserved** target Lys → His⁺ repels Lys⁺ at pH 6 →
+   release. The cb1 family also carries a **cooperative 2-His** trio (Baker ≥2-His rule → strongest linkage, ddg to −2.34).
+4. **Switch validation — 4 method-classes, contact-gated.** Explicit two-state MD (OpenMM, Amber14+GBn2) with a
+   Gln-isostere causal control; a **contact gate** (ON-state His–Lys < 8 Å, d_switch > 2·max SEM incl. GLN) that
+   rejects non-contact drift artifacts; PROPKA–Wyman linkage; pKAI linkage; and GFN2-xTB buried-limit interaction
+   energy (on the six single-His designs). (Rosetta `pH_mode`/`fa_elec` is dead — it does not titrate; see METHODS.)
+5. **Cross-reactivity.** Matched human (1TNF) / mouse (P06804-threaded) Boltz-2 co-fold + worst-case-over-species
+   **ipSAE > 0.5**; switch anchors are conserved Lys (cross-react-preserving).
+6. **Expression / developability.** 0-Cys, instability/GRAVY, SolubleCaliby; no N-glyc/deamidation sequons.
+7. **Diversity & novelty.** Foldseek TM-clustering → one design per true shape (backbone-id ≠ shape; the bindable
+   surface clusters to ~7 portal-novel folds — the honest ceiling). Final novelty = the Proteinbase portal.
+8. **Select + submit.** `scripts/assemble_v2.py` (contact-gated, cross-react-robust, portal-gated, cluster-deduped).
 
-## Stage 4 - install + score the pH switch (release at low pH)
-Mechanism A: binder His next to CONSERVED target K65 -> protonation@6 -> repulsion -> release.
-Mechanism B: buried His charged H-bond network in the binder core -> acid destabilizes fold (target-independent, safest for cross-reactivity).
-Score: Rosetta fa_elec ddG_elec(pH5)-ddG_elec(pH7) >= 0 (repulsion rises at low pH) + PROPKA linkage + EXPLICIT-STATE MD occupancy gate (His-neutral interface intact @7.4 / His-protonated broken @6.0), tuned so the transition sits at pH 6.0. Re-validate every metric on the exact engineered sequence (submit==folded==simulated).
+## Outcome
 
-## Stage 5 - cross-reactivity (mouse)
-Mechanism severity (contacts must avoid the 32 divergent positions; hard-avoid D140K charge reversal) + matched mouse-vs-human co-fold delta. A switch via mechanism A must anchor on a CONSERVED basic (K65), not a divergent one (R31/R131/R138).
+**`runs/submission/final_portfolio.{csv,fasta}` = 9 designs / 6 distinct folds** (byte-verified FASTA==CSV):
+the **cb1** family (4 sequences, 1 fold: TNFpH01 single-His dSw 2.68 + a coop-2His trio) + **5 cb1-epitope**
+de-novo binders across folds C1/C2/C5/C8/C11. All nine: 3-method switch (MD + PROPKA + pKAI; +xTB on the six
+single-His), ipSAE > 0.5, 0-Cys, **portal-novel ≥3/4 (one 4/4)**. `runs/submission/METHODS.md` is the write-up.
 
-## Stage 6 - novelty + developability
-ESMFold oracle TM safe-harbor + sequence novelty; explicitly check vs the Baker 2025 pH-sensitive designs (bioRxiv 2025.09.29.678932). 0-Cys, SAP patch.
-
-## Stage 7 - select + submit
-Rank by priority order; diverse lineages; <=20; methods writeup + metrics; validate_submission.py PASS; CSV best-first. Upload USER-GATED.
+**Upload is USER-GATED** (Proteinbase, account j_v_v_07).

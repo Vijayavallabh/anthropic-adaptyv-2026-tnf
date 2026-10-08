@@ -11,7 +11,7 @@ resolution-markers = [
 ]
 
 [[package]]
-name = "adaptyv-egfr"
+name = "adaptyv-tnf"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

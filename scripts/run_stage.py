@@ -29,10 +29,10 @@ STAGES = {
 
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(description="Run an adaptyv-egfr pipeline stage.")
+    ap = argparse.ArgumentParser(description="Run an adaptyv-tnf pipeline stage.")
     ap.add_argument("stage", type=int, choices=sorted(STAGES), help="pipeline stage 0-6")
     a = ap.parse_args(argv)
-    mod = importlib.import_module(f"adaptyv_egfr.{STAGES[a.stage]}")
+    mod = importlib.import_module(f"adaptyv_tnf.{STAGES[a.stage]}")
     mod.main()
     return 0
 

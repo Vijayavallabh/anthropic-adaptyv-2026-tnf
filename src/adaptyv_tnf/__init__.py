@@ -1,4 +1,4 @@
-"""adaptyv_egfr - pipeline + submission tooling for the Anthropic x Adaptyv 2026
+"""adaptyv_tnf - pipeline + submission tooling for the Anthropic x Adaptyv 2026
 EGFR conditional-binder challenge (Challenge 1).
 
 Objective priority (this order IS the scoring priority):
@@ -17,13 +17,13 @@ OBJECTIVES = ("ph_selective", "cross_reactive", "human_affinity")
 
 
 def main() -> None:
-    """Entry point for the ``adaptyv-egfr`` console script."""
+    """Entry point for the ``adaptyv-tnf`` console script."""
     import textwrap
 
     print(
         textwrap.dedent(
             f"""
-            adaptyv-egfr v{__version__}
+            adaptyv-tnf v{__version__}
             Anthropic x Adaptyv 2026 - EGFR conditional-binder challenge (Challenge 1)
 
             Objective priority : pH-selectivity > cross-reactivity > affinity

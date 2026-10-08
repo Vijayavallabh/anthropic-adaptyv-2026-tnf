@@ -1,5 +1,5 @@
 """Length limits and scoring sub-category tests."""
-from adaptyv_egfr.submission import length_category, validate_rows
+from adaptyv_tnf.submission import length_category, validate_rows
 
 
 def test_length_categories():

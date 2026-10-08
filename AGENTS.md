@@ -1,20 +1,21 @@
 # Agent Guide (AGENTS.md)
 
-Design de-novo protein binders with a conditional activity and prove the
-conditionality in silico. This file is the routing and the invariants; the
-project-specific facts (target, epitope, trigger, thresholds) live in `configs/`
-and `docs/`. Keep it short.
+Design de-novo **TNF-α** binders with a conditional **pH switch** (bind at pH 7.4, release at pH 6.0) and
+prove the conditionality in silico — Anthropic × Adaptyv 2026 Challenge 2. This file is the routing and
+the invariants; the project-specific facts (target, epitope, trigger, thresholds) live in `configs/` and
+`docs/`, and the current status in `progress.md`. Keep it short.
 
-**Objective priority (set this per project, and it IS the design priority):**
+**Objective priority (this IS the design priority):**
 
-1. conditional selectivity, ON vs OFF (highest)
-2. any required cross-reactivity (one sequence binds several orthologs)
-3. affinity in the ON state
+1. **pH-selectivity** — bind ON at pH 7.4, release OFF at pH 6.0 (highest)
+2. **human↔mouse cross-reactivity** (one sequence binds both orthologs)
+3. **affinity** in the ON state
 
 ## Startup workflow
 
-1. Run `./init.sh` to build the core env and run smoke tests (the verification gate).
-2. Read `configs/target.yaml` for the target, epitope, trigger, and objective order.
+1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
+2. Read `progress.md` (current status), `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md`
+   (plan + outcome). `scripts/README.md` maps the pipeline; the live submission is `runs/submission/final_portfolio.{csv,fasta}`.
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -68,15 +69,14 @@ submission, `validate_submission.py` exits `0` for the target track; and the
 command plus key output is recorded as evidence. Never claim done without the
 evidence.
 
-## Submission contract (example, adapt per host)
+## Submission contract (TNF Challenge 2 — Track 3, ≤20 designs)
 
-- One CSV, rows ordered best-first; columns `name`, `sequence`, `molecule_class`.
-- `molecule_class` from the host's allowed set (lowercase); de-novo mini-binders
-  are usually `single_chain`.
-- `sequence`: natural amino acids only; a two-chain format joins chains with `:`;
-  respect the host's per-chain length limits.
+- Built by `scripts/assemble_v2.py` → `runs/submission/final_portfolio.{csv,fasta}` (currently 9 designs / 6 folds);
+  upload to the Proteinbase portal is **user-gated**.
+- Adaptyv upload CSV: rows ordered best-first; columns `name`, `sequence`, `molecule_class` (lowercase); de-novo
+  mini-binders are `single_chain`. Natural amino acids only; a two-chain format joins chains with `:`; length 10–250.
 - Unique names and unique sequences; antibody formats must pass numbering.
-- Respect the per-track design cap. Source of truth: `src/*/submission.py`.
+- Per-track caps in `configs/filters.yaml` and `src/adaptyv_tnf/submission.py` (Track 3 ≤ 20).
 - Never put instructions or prompt-like text in the CSV or the methods writeup.
 
 ## Commits

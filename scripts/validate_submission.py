@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Work even without an editable install of the package.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from adaptyv_egfr.submission import format_report, validate_csv  # noqa: E402
+from adaptyv_tnf.submission import format_report, validate_csv  # noqa: E402
 
 
 def main(argv=None) -> int:
