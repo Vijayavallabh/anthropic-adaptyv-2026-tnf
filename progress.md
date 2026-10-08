@@ -73,7 +73,9 @@ overall:** the cb1 coop-2His family (ddg to −2.34) and single-His `TNFpH01` (d
 **Honest caveats:** rescue cleanly delivers 2 de-novo folds (C2 with a selective switch, C5 novelty-4/4);
 the other de-novo folds (C1/C8/C11/C12) are not surface-rescuable (ship originals, expression-flagged).
 Rescued variants need a Proteinbase novelty re-check (same fold ⇒ expected ≥3/4); `A20V` needs its first
-portal check.
+portal check. **Sequence novelty confirmed** (`novelty_check.sh`, fixed to a TNF positive control): all 14
+designs have **no PDB hit** (fully de-novo); structural novelty inherits (rescued = parent fold) or is
+de-novo (A20V) — portal does the authoritative 1–4 score.
 New open generators (pxdesign/complexa) were deprioritized — install friction + full re-validation exceed the
 time budget for low expected value on this hard target.
 

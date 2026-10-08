@@ -35,15 +35,15 @@ for r in csv.DictReader(open('$CSV')):
 NQ=$(grep -c '^>' runs/novelty/final20.fasta)
 [ "$NQ" -gt 0 ] || die "no query sequences from $CSV"
 cp runs/novelty/final20.fasta runs/novelty/query.fasta
-printf ">POSCTRL_egfr_dom3\n%s\n" "$(tr -d '\n ' < data/targets/human_domainIII.seq)" >> runs/novelty/query.fasta
+printf ">POSCTRL_tnf\n%s\n" "$(tr -d '\n ' < data/targets/human_tnf.seq)" >> runs/novelty/query.fasta   # TNF-alpha (1TNF) is in the PDB -> must hit
 
 echo "searching $NQ designs (+1 positive control) vs PDB ..."
 rm -rf runs/novelty/tmp
 mmseqs easy-search runs/novelty/query.fasta "$DB/pdb_seqres.fasta" runs/novelty/hits.m8 runs/novelty/tmp \
   --format-output query,target,pident,alnlen,qlen,tlen,qcov,evalue -s 7.5 --max-seqs 50 \
   1>runs/novelty/mmseqs.log 2>&1 || die "mmseqs easy-search exited non-zero (see runs/novelty/mmseqs.log)"
-grep -q "^POSCTRL_egfr_dom3" runs/novelty/hits.m8 \
-  || die "positive control (EGFR DIII) produced NO PDB hit -> search is broken, result untrustworthy"
+grep -q "^POSCTRL_tnf" runs/novelty/hits.m8 \
+  || die "positive control (human TNF-alpha) produced NO PDB hit -> search is broken, result untrustworthy"
 echo "NOVELTY_SEARCH_DONE (positive control hit -> search verified working)"
 envs/md/bin/python -c "
 best={}
