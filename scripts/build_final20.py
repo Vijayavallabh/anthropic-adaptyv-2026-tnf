@@ -18,7 +18,7 @@ C=[
  ("TNFpH06_sh3","cb1","3/4","CO-LEAD: sharp FC 59x both species, MD His-causal (d_repel+1.18), x-react, expr-clean"),
  ("TNFpH06_sh5","cb1","3/4","sharp switch FC 31x/76x (pKAI 58x, sharpest by pKAI), x-react, expr-clean"),
  ("TNFpH07_sh4","cb1","3/4","physics-max thermodynamic FC 126x/50x (pKAI 40x); expr+MD-structural hedge"),
- ("TNFpH06_sh1","cb1","3/4","sharp switch FC 19x + best cb1 binding (iptm 0.74), expr-clean"),
+ ("TNFpH06_sh2","cb1","3/4","MD His-causal sharp cb1 (d_repel+1.25), FC 17x/11x both species, best cb1 binding iptm 0.75, expr-clean"),
  ("TNFpH06","cb1","3/4","validated coop-2His original (lineage anchor)"),
  ("TNFpH07","cb1","3/4","validated coop-2His original (2nd anchor)"),
  # b1m12 f5 -- 4/4 novel strong binders (novelty + affinity + x-react; modest switch)
