@@ -57,6 +57,12 @@ scores proved unreliable:
 **Human binding** is confirmed by a **three-folder consensus** — AF2-initial-guess, Boltz-2, and Chai-1 —
 all high on every design (Boltz/Chai interface ptm ≈ 0.78–0.94); binding is not a single-folder artifact.
 
+**Interface quality / affinity proxy (objective #3).** PyRosetta SC/ΔG is unavailable in this environment,
+so we report the geometric correlates the EGFR post-mortem found predictive (interface contacts and H-bond
+fraction, p<0.001 / p=0.004): every design has a substantial interface — **19–37 interface residues,
+207–455 heavy-atom contacts, 4–17 interface H-bonds, buried SASA 1.7–3.0k Å²** (`runs/push/iface_quality.tsv`).
+No design has a weak interface; TNFpH01 and the b1m12 fold rank highest on buried area and contacts.
+
 ## The portfolio (tiered by expression + switch quality + novelty)
 
 `final_portfolio_push.{csv,fasta}` — 14 designs across **7 distinct Foldseek folds**. All are
