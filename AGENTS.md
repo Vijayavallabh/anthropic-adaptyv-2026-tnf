@@ -71,8 +71,11 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — Track 3, ≤20 designs)
 
-- Built by `scripts/assemble_v2.py` → `runs/submission/final_portfolio.{csv,fasta}` (currently 9 designs / 6 folds);
-  upload to the Proteinbase portal is **user-gated**.
+- **Current canonical deliverable:** `scripts/build_final20.py` → `runs/push/final20.{csv,fasta}` +
+  `runs/push/upload_final20.csv` (20 designs / 7 folds; validator PASS Track 3; upload md5
+  `90bc4cd8ecbf598d76e6810feb0cb86a`). This supersedes the earlier `scripts/assemble_v2.py` →
+  `runs/submission/final_portfolio.{csv,fasta}` (a stale 9-design checkpoint, kept for reference only).
+  Upload to the Proteinbase portal (account j_v_v_07) is **user-gated** — do not auto-upload.
 - Adaptyv upload CSV: rows ordered best-first; columns `name`, `sequence`, `molecule_class` (lowercase); de-novo
   mini-binders are `single_chain`. Natural amino acids only; a two-chain format joins chains with `:`; length 10–250.
 - Unique names and unique sequences; antibody formats must pass numbering.

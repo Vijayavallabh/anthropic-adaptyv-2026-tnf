@@ -201,12 +201,38 @@ Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
   portal-confirmed >=3. All 20 pass the >=3/4 gate.
 - Deliverable re-validated **byte-consistent** (CSV==FASTA==upload, 20 uniq, 0-Cys; upload md5 77b6cd92...).
 
+## SESSION 7 (2026-10-08/09, Stop-hook cont.): expression rescue 15→17/20, two negatives closed, portfolio upgraded to 7 folds
+
+- **Region I de-novo — decisive test, NEGATIVE.** 7680 RFd3→MPNN designs at the CRO-validated
+  inter-subunit groove (V74/L75/I97 + W114/Y115), af2ig on the correct 2-protomer target. 4471 fold
+  self-consistently; the best engage the groove (4/5 epitope residues <8 Å) but none deeply dock (0 at
+  3/5 <5 Å), af2ig pae ~26. Boltz monomer cross-fold of the top 14: 3–4 dock the protomer-1 half
+  (V74/L75/I97 at 2.7–5.7 Å, human iptm 0.60–0.70) **but mouse iptm uniformly 0.15–0.18 — not
+  cross-reactive**. Existing portfolio binders (0.91–0.95 both species) dominate. De-novo at the flat
+  inter-subunit groove hits the known wall; not integrated. [[lesson-denovo-wall-flat-polar-target]]
+- **K90 new fold — MD refuted its switch.** Two-state MD on the installed His switch: d_repel −0.02
+  (sh4) / −0.27 (sh5), His-causal = **no**. K90 stays as the 7th fold / binder-first diversity hedge on
+  its own merit (cross-react binder iptm 0.59/0.54, docks 3/4, distinct conserved epitope), honestly
+  relabelled: thermodynamic switch FC 8× (PROPKA) but not MD-causal; expr-FLAG (Glu-overload artifact,
+  gravy −1.03 soluble). Expression rescue tested and **rejected** (6 E→Q dropped human iptm 0.59→0.31).
+- **Expression rescue — interface/His/core-frozen minimal edits, 15→17/20 PASS.** b1m7_sh5 (+3 surface
+  edits) and b1m9 parent (+1, E19N) rescued with binding **preserved** (Boltz rx-vs-parent: 0.92/0.89 and
+  0.87/0.78) and switch FC preserved (6×, 10×, recomputed on the rescued fold). Burial filter prevented
+  a buried-Ile→Asn and structural-proline removals. b2m0 (c20/c70) kept FLAG: the instability index is
+  inflated by two turn-prolines (CA bend 81°/116°) — [[lesson-instability-index-proline-false-positive]];
+  c70 is the f1 fold's MD-His-causal switch, so kept with the documented moderate expression risk.
+- Deliverable re-validated **byte-consistent** (CSV==FASTA==upload, 20 unique, 0-Cys; validator PASS
+  Track 3; upload md5 `90bc4cd8ecbf598d76e6810feb0cb86a`). _rx seqs byte-verified = parent ± exactly the
+  intended edits; K90 confirmed = parent (not the binding-damaged rescue).
+
 ## Next step
 
 **Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
-`upload_final20.csv` (20 designs / 6 folds / 15-20 expr-PASS / 3x novelty-4/4 / 4 MD-His-causal switches /
-FC to 126x / all seqs fully novel vs PDB). **Decision point (owner): upload** (Proteinbase account
-j_v_v_07; the portal re-checks novelty authoritatively at upload — expected >=3/4). Recommended core =
-the 3 dual-everything leads (b1m9_sh4, TNFpH06_sh3, TNFpH06_sh2) + the novelty/affinity anchors
-(b1m12 4/4, b4m2), filling to 20 for fold+risk diversity. Deadline **2026-10-12 11:59 UTC**. Upload is
-user-gated — do not auto-upload. Floor `runs/submission/final_portfolio.csv` (md5 f89d9173) preserved.
+`upload_final20.csv` (20 designs / **7 folds** / **17/20 expr-PASS** + 3 documented-soluble FLAGs /
+3× novelty-4/4 / **6 MD-His-causal switches** / sharp thermodynamic FC to 69× / all seqs fully novel vs
+PDB). This is the canonical Track-3 upload (supersedes the stale 9-design `runs/submission/final_portfolio.csv`).
+**Decision point (owner): upload** (Proteinbase account j_v_v_07; the portal re-checks novelty
+authoritatively at upload — expected ≥3/4). Recommended core = the 3 dual-everything leads (b1m9_sh4,
+TNFpH06_sh3, TNFpH06_sh2) + the novelty/affinity anchors (b1m12 4/4, b4m2), filling to 20 for fold+risk
+diversity. Deadline **2026-10-12 11:59 UTC** (2026-10-11 23:59 AoE). Upload is user-gated — do not
+auto-upload.

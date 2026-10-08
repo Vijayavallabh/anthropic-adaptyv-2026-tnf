@@ -50,11 +50,13 @@ split.
    4th-independent-engine check that the His⁺···Lys⁺ repulsion is real, not a forcefield artifact.
 
 **Honest reading of (3) vs (1,2), and the 4-His sweet spot.** The two-state MD and the thermodynamic
-linkage can disagree, and we report both. **Three designs are fully confirmed** — sharp *and* MD His-causal
-(repulsion real and exceeding the Gln control):
+linkage can disagree, and we report both. **Six designs are MD-His-causal** (repulsion real and exceeding
+the Gln control) — five on the cb1/f8 switch lineages plus one on a distinct fold:
 - `b1m9_1A55H_K93_sh4` (PROPKA 22× / pKAI 7×; MD d_repel **+0.91**, control −0.15) — rigid high-affinity f8 interface;
-- `TNFpH06_sh3` (PROPKA 59× / pKAI 26×, both species; MD d_repel **+1.18**, control +0.13);
-- `TNFpH06_sh2` (PROPKA 17×/11× both species; MD d_repel **+1.25**, control +0.17; best cb1 binding iptm 0.75).
+- `TNFpH06_sh3` (PROPKA 59× / pKAI 26×, both species; MD d_repel **+1.18**, control +0.13) — the sharpest MD-confirmed;
+- `TNFpH06_sh2` (PROPKA 17×/11× both species; MD d_repel **+1.25**, control +0.17);
+- `TNFpH06` (coop-2His original; MD d_repel **+0.81**, control −0.13) and `TNFpH07` (MD d_repel **+0.32**, control −0.98) — the two validated parents are themselves MD-His-causal;
+- `b2m0_c70` (distinct f1 fold; MD d_repel 3.2 Å, Gln control inert) — a sixth, independent fold-and-lineage confirmation.
 
 The MD cleanly resolves **2 of the 3** installed **4-His** cb1 variants (sh3, sh2) — so the structural
 switch is a robust property of the 4-His design, not a single lucky pose. The disagreements are equally
@@ -90,11 +92,21 @@ BLI actually measures) is intact. We therefore label the rescued variants **ther
 expression-PASS**, and reserve the **MD-His-causal** label for the three un-rescued leads below (and the
 distinct-fold `b2m0_c70`). This is deliberate: the BLI two-pH readout measures the thermodynamic switch,
 so a rescued expresser is a legitimate submission — we simply do not over-claim the stricter MD gate for it.
-(The 73-aa `b2m0` fold is expression-stubborn — too little free surface, 23–26 residues — so its 3 designs,
-one of which carries an MD-His-causal switch, stay FLAG as fold-diversity/switch hedges.) The portfolio is
-**15/20 expression-PASS**; the 5 FLAG designs are the stubborn `b2m0` fold (incl. the MD-confirmed
-`b2m0_c70`), a borderline `b1m9` single-His parent, and a second `b1m7` variant — all kept only as hedges
-strongest on another axis (switch, novelty, or fold diversity).
+**Second rescue round — minimal surgical edits (burial-aware).** Where the 48-seq SolubleMPNN resurface was
+unnecessary, we instead took the fewest solvent-surface point substitutions (neutral panel Q/N/S/T) that
+drop instability < 38, freezing the interface, **all His, and buried-core residues** (CB-neighbour count
+≥ 10) and guarding against new N-glyc sequons / charge runs. This fixed the `b1m9` single-His parent
+(+1 edit, E19N) and `b1m7_2A57H_K183_sh5` (+3 edits) with binding **preserved** (Boltz rescued-vs-parent
+iptm 0.87/0.78 and 0.92/0.89) and switch FC preserved (10×, 6×, recomputed on the rescued fold). The burial
+filter mattered: it blocked a fold-breaking buried-Ile→Asn and two structural-proline removals that an
+instability-only greedy had proposed.
+
+The portfolio is **17/20 expression-PASS**. The 3 remaining FLAGs are all *soluble* by the orthogonal
+signals: `b2m0_c20`/`b2m0_c70` FLAG only because the instability index is inflated by **two turn-prolines**
+(P38/P42, CA bend 81°/116° — genuine turns we will not remove to game a crude index; GRAVY 0.10, 0-Cys), and
+`b2m0_c70` is the f1 fold's MD-His-causal switch so it is kept with the documented risk; `tnf_K90…sh4` FLAGs
+on a 28 %-Glu MPNN surface-overload artifact but has GRAVY −1.03 (excellent solubility) — its 6×E→Q rescue
+was **rejected** because it halved human binding (iptm 0.59→0.31), so the parent is kept.
 
 ## Cross-reactivity — designed in, verified on the mature mouse ortholog
 
@@ -117,7 +129,7 @@ cation** as switch anchor, so both the interface and the switch survive the huma
 
 ## The 20-design portfolio
 
-6 distinct folds; `novelty ≥ 3/4` throughout (3 designs are **4/4**). Chosen for the judging axes, leading
+7 distinct folds; `novelty ≥ 3/4` throughout (3 designs are **4/4**). Chosen for the judging axes, leading
 with the most-validated design and spreading risk across folds.
 
 - **Leads — fully validated (sharp + MD His-causal + cross-react + express):**
@@ -134,8 +146,12 @@ with the most-validated design and spreading risk across folds.
 - **Strong cross-reactive binders (f2 / b4m2):** `b4m2_r1` (iptm 0.91, 97 % conserved), `b4m2_2A87H_K101`
   (iptm 0.93), `b4m2_r6`.
 - **MD-confirmed de-novo switches (f1 / b2m0):** `b2m0_c70` (**MD His-causal**, d_repel 3.2 Å),
-  `b2m0_c20`, `b2m0_1A67H_K84` — fold diversity with a structurally-confirmed switch (expression-risk).
-- **Fold diversity (f11 / b1m7):** `b1m7_2A57H_K183`, `b1m7_2A57H_K183_sh5`.
+  `b2m0_c20` — fold diversity with a structurally-confirmed switch (instability-index FLAG is a
+  turn-proline artifact; GRAVY/0-Cys clean).
+- **Fold diversity (f11 / b1m7):** `b1m7_2A57H_K183_r1`, `b1m7_2A57H_K183_sh5_rx` (expr-rescued).
+- **7th fold — all-atom RFd3 cross-react binder (fK90):** `tnf_K90…sh4` — distinct conserved epitope,
+  iptm 0.59 h/0.54 m, docks 3/4; thermodynamic His switch FC 8× but **not** MD-His-causal (binder-first
+  diversity hedge, see honest negative below).
 
 ## New-fold generation — attempted, and an honest negative
 
@@ -152,6 +168,35 @@ decisively-tested floor for this pipeline (Anthropic's hits came from thousands 
 Protenix-ipSAE and CRO-measured; our small-scale dual-metric+pose filter surfaced none). **The portfolio
 rests on designs that pass *both* af2ig (`pae_interaction` 3.7–4.2 for the cb1 lineage) and Boltz-2 iptm
 at the intended epitope** — not on a single optimistic oracle.
+
+**Binding-metric calibration — why we rank by epitope+pose+diversity, not by score.** We folded the 12
+CRO-measured TNF-α binders from the Anthropic/Adaptyv campaign through our own stack and found the
+in-silico interface scores **do not rank TNF affinity** — the tightest human binder (0.7 nM) scored
+Boltz iptm 0.20 while a 27× weaker one (18.8 nM) scored 0.64, and the best mouse binder (66 nM) scored the
+*lowest* mouse iptm (0.18). This matches the published TNF ranking AP of 0.16. We therefore do not use
+iptm/ipSAE/pae as hard affinity filters (they would discard the real binders); instead we (i) target the
+experimentally-validated, human↔mouse-conserved **Region I** groove and the conserved K90 sub-site,
+(ii) require the designed **pose to dock at the intended epitope**, (iii) anchor the pH switch on
+mouse-conserved cations (Lys65/90/98, Arg32; never Arg31→Gln or His73→Tyr), and (iv) **spread risk across
+distinct folds** — the exact strategy that produced the only CRO-validated cross-reactive de-novo TNF
+binders. Cross-reactivity is argued mechanistically (conserved epitope + conserved switch anchor), since a
+single folder's cross-species score is unreliable here.
+
+**New-fold diversity added (all-atom RFd3, the route that breaks the flat-polar wall).** Scaled RFd3 at the
+conserved, switch-compatible **K90** site (hotspots Y87/K90/V91/Y141, all mouse-conserved) yielded a
+new-fold **cross-reactive** binder (`tnf_K90…model_3_3`, iptm 0.59 h / 0.54 m, docks 3/4 at the epitope) —
+the 7th fold. Installing His near the conserved Lys85/Arg77 gives a thermodynamic pH switch (FC 8×,
+mouse-conserved anchors), but the explicit two-state MD **refuted** His-causality (d_repel −0.02), so K90
+enters as a **binder-first / cross-react diversity hedge**, not a validated switch.
+
+**Region I de-novo — a second honest negative.** We ran 7680 RFd3→MPNN designs at the full inter-subunit
+groove (2-protomer target) and folded them with af2ig against the correct 2-protomer target. 4471 fold
+self-consistently, and the best engage the groove (4/5 epitope residues < 8 Å), but none deeply dock (0 at
+3/5 < 5 Å) and af2ig `pae_interaction` ≈ 26. An orthogonal Boltz monomer cross-fold of the top 14 confirmed
+the ceiling: 3–4 dock the protomer-1 half (V74/L75/I97 at 2.7–5.7 Å, human iptm 0.60–0.70) **but mouse iptm
+is uniformly 0.15–0.18 — not cross-reactive**, so none beats the existing portfolio binders (0.91–0.95 both
+species). De-novo design straight at the flat inter-subunit groove hits the known wall; the all-atom K90
+route is the one that produced a usable cross-reactive new fold.
 
 ## Switch characterization — in-window Δn_H (Wyman)
 
@@ -173,5 +218,9 @@ cb1 leads are additionally sharp in *both* species). The 5-His cb1 hedges (`TNFp
 thermodynamic switch highest (to 126×, two pKa engines agreeing — the quantity BLI measures) but are
 MD-ambiguous, so we label them thermodynamic-only rather than overclaim. `b2m0_c70` adds a third,
 independent MD-His-causal switch on a different fold; the **b1m12 4/4** fold anchors structural novelty and
-**b4m2** the affinity. The spread across 6 folds with 15/20 expression-PASS hedges the dominant wet-lab
-risk. The remaining open item is upload (user-gated).
+**b4m2** the affinity. Six designs carry an explicit MD-His-causal switch (`b1m9_sh4`, `TNFpH06_sh3/sh2`,
+`TNFpH06`, `TNFpH07`, `b2m0_c70`); the rest carry the thermodynamic switch (the quantity BLI measures) or
+are binder-first diversity picks. The spread across **7 folds with 17/20 expression-PASS** (the 3 FLAGs
+soluble by GRAVY/0-Cys) hedges the dominant wet-lab risk. Two new-fold routes were tested and honestly
+reported: the all-atom K90 fold entered as a cross-react hedge, and de-novo Region I design was a negative.
+The remaining open item is upload (user-gated).

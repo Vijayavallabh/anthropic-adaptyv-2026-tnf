@@ -11,6 +11,7 @@ from Bio.SeqUtils import seq1
 import numpy as np
 R="/home/prachh/v/anthropic-adaptyv-2026-tnf"
 SEARCH=[f"{R}/runs/boltz_push_h/out/by_seed",f"{R}/runs/boltz_fin_h/out/by_seed",f"{R}/runs/boltz_coop_h/out/by_seed"]
+if os.environ.get("BOLTZ_SEARCH"): SEARCH=os.environ["BOLTZ_SEARCH"].split(":")+SEARCH  # extra complex dir(s), colon-separated (e.g. RFd3-winner Boltz folds)
 SEP=8.0           # min Cb-Cb separation between switch His (avoid anti-cooperativity)
 REACH=(3.0,8.5)   # binder Cb within this of a target cation charge atom -> His can reach it
 CAT={"LYS":["NZ"],"ARG":["NH1","NH2","CZ","NE"]}

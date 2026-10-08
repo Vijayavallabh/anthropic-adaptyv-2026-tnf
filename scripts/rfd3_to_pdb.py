@@ -3,7 +3,7 @@ import sys,gzip,glob,os
 outdir=sys.argv[2]; os.makedirs(outdir,exist_ok=True)
 n=0
 for fn in sorted(glob.glob(sys.argv[1])):
-    rows={'A':[],'B':[]}
+    rows={'A':[],'B':[],'C':[]}   # keep up to 2 target protomers (B,C) for the inter-subunit groove
     op=gzip.open if fn.endswith('.gz') else open
     for ln in op(fn,'rt'):
         if not ln.startswith('ATOM'): continue
@@ -14,7 +14,8 @@ for fn in sorted(glob.glob(sys.argv[1])):
         rows[ch].append((seqid,atom,resn,el,x,y,z))
     if not rows['A'] or not rows['B']: continue
     out=[]; serial=1
-    for ch in ['A','B']:
+    for ch in ['A','B','C']:
+        if not rows[ch]: continue
         for seqid,atom,resn,el,x,y,z in rows[ch]:
             out.append(f"ATOM  {serial:>5} {atom:<4} {resn:>3} {ch}{seqid:>4}    {x:8.3f}{y:8.3f}{z:8.3f}  1.00  0.00          {el:>2}\n")
             serial+=1
