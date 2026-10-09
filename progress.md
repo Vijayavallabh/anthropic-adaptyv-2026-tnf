@@ -248,11 +248,29 @@ Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
 - Deliverable re-validated **byte-consistent** (CSV==FASTA==upload, validator PASS Track 3, upload md5
   `f5f632962835d24dfd31a4ce29f6a670`); 3 winners byte-verified present.
 
+## SESSION 9 (2026-10-09, Stop-hook cont.): switch hunt 9→10 — f11 fold gap filled by a strict-upgrade switch
+
+- Extended the K98 switch hunt to the two folds still without an MD-causal switch (hunt3). Two variants
+  passed the identical MD gate (`b1m7_sh5rx__A60E2H` d_repel 0.32 / margin 1.72; `b4m2_r1__A37L2H`
+  d_repel 0.42 / margin 1.27). Devil's-advocate on each before integrating:
+  - **`b1m7_sh5rx__A60E2H` — ADOPTED.** Fills the **f11 fold gap** (the one strong binder fold with no
+    MD-causal switch). A single **E60→His** vs the sh5_rx parent; MD confirms His60 drives K98 repulsion
+    (Gln60 isostere control −1.40 inert → clean margin 1.72). Re-folded against full mature human+mouse
+    (same switchwin recipe, msa:empty, pinned Boltz): iptm **0.950 h / 0.898 m** — both *up* vs the parent
+    (0.916/0.894). Thermodynamic FC **8×** (parent 6×), instability **29.9** (parent 37.5). A **strict
+    upgrade on every axis** → swapped in for the parent `b1m7_2A57H_K183_sh5_rx`.
+  - **`b4m2_r1__A37L2H` — REJECTED.** Clean switch, but f2 already carries `b4m2_A37H` (MD-causal) and
+    `b4m2_r1` is f2's pure-binder hedge; a second redundant f2 switch at the cost of the hedge fails the
+    marginal-value bar. Not integrated (honest count, not inflated).
+- **MD-His-causal switches: 9 → 10**; f11 now carries a validated switch, so 6 of 7 folds do.
+  byte-verified submit==folded==MD'd==fasta; validator PASS Track 3; new upload md5
+  `53c741c99db4adf2781d926639110897`.
+
 ## Next step
 
 **Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
 `upload_final20.csv` (20 designs / **7 folds** / **17/20 expr-PASS** + 3 documented-soluble FLAGs /
-3× novelty-4/4 / **9 MD-His-causal switches** incl 2 dominant 4/4-novel (b1m12_A91H, b1m12_r6_A92S) /
+3× novelty-4/4 / **10 MD-His-causal switches** incl 2 dominant 4/4-novel (b1m12_A91H, b1m12_r6_A92S) /
 sharp thermodynamic FC to 69× / all seqs fully novel vs PDB). This is the canonical Track-3 upload (supersedes the stale 9-design `runs/submission/final_portfolio.csv`).
 **Decision point (owner): upload** (Proteinbase account j_v_v_07; the portal re-checks novelty
 authoritatively at upload — expected ≥3/4). Recommended core = the 3 dual-everything leads (b1m9_sh4,

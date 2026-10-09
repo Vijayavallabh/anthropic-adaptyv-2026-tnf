@@ -35,12 +35,12 @@ C=[
  ("tnf_K90_tnf_K90_2_model_3_3_sh4","fK90","3/4","NEW FOLD (RFd3 all-atom), distinct conserved epitope: CROSS-REACT binder iptm 0.59h/0.54m docks 3/4; thermodynamic His switch FC 8x (PROPKA) but NOT MD-His-causal (d_repel~0); expr-FLAG (instab 53.6 Glu-overload artifact, gravy -1.03 soluble); diversity/binder-first hedge"),
  # b1m7 f11
  ("b1m7_2A57H_K183_r1","f11-C11","3/4","RESCUED f11 binder: iptm 0.90/0.92, now expr-PASS"),
- ("b1m7_2A57H_K183_sh5_rx","f11-C11","3/4","f11 multi-His switch variant, expr-RESCUED (3 surface edits; iptm 0.92/0.89 preserved, FC 6x), now expr-PASS"),
+ ("b1m7_sh5rx__A60E2H","f11-C11","3/4","f11 switch UPGRADE: single E60H installs MD-His-causal switch on conserved K98 (d_repel 0.32, Gln ctrl -1.40 inert, margin 1.72) AND improves binding iptm 0.95h/0.90m (both up vs parent), FC 8x, expr-PASS (instab 30)"),
 ]
 
 def load_seqs():
     s={}
-    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv","rescue2/candidates.csv","k90sw/variants.csv","regionIsw/variants.csv","k90rescue/rescued.csv","exprrescue/rescued.csv","rxconfirm/all_rx.csv","switchwin/winners.csv","switchwin/winner3.csv"]:
+    for f in ["upload_push.csv","sharp/variants.csv","sharp2/variants.csv","coop/variants.csv","rescue2/candidates.csv","k90sw/variants.csv","regionIsw/variants.csv","k90rescue/rescued.csv","exprrescue/rescued.csv","rxconfirm/all_rx.csv","switchwin/winners.csv","switchwin/winner3.csv","switchwin/hunt3f11.csv"]:
         p=f"{PU}/{f}"
         if os.path.exists(p):
             for r in csv.DictReader(open(p)):
@@ -50,7 +50,7 @@ def load_tsv(path,key="design_id"):
     return {r[key]:r for r in csv.DictReader(open(path),delimiter="\t")} if os.path.exists(path) else {}
 seqs=load_seqs()
 SH_H={};
-for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv","rescue2/sharpness_h.tsv","k90sw/sharpness.tsv","regionIsw/sharpness.tsv","exprrescue/sharpness_rx.tsv","switchwin/sharpness.tsv","switchwin/sharpness3.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
+for f in ["switch_sharpness.tsv","sharp/sharpness.tsv","sharp2/sharpness.tsv","rescue2/sharpness_h.tsv","k90sw/sharpness.tsv","regionIsw/sharpness.tsv","exprrescue/sharpness_rx.tsv","switchwin/sharpness.tsv","switchwin/sharpness3.tsv","switchwin/sharpness_f11.tsv"]: SH_H.update(load_tsv(f"{PU}/{f}"))
 SH_M={}
 for f in ["sharp/sharpness_mouse.tsv","sharp2/sharpness_mouse.tsv"]: SH_M.update(load_tsv(f"{PU}/{f}"))
 PKAI=load_tsv(f"{PU}/sharp/pkai.tsv")

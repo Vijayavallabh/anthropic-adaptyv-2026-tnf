@@ -220,10 +220,14 @@ cb1 leads are additionally sharp in *both* species). The 5-His cb1 hedges (`TNFp
 thermodynamic switch highest (to 126×, two pKa engines agreeing — the quantity BLI measures) but are
 MD-ambiguous, so we label them thermodynamic-only rather than overclaim. `b2m0_c70` adds a third,
 independent MD-His-causal switch on a different fold; the **b1m12 4/4** fold anchors structural novelty and
-**b4m2** the affinity. **Nine** designs carry an explicit MD-His-causal switch — the six leads above
-(`b1m9_sh4`, `TNFpH06_sh3/sh2`, `TNFpH06`, `TNFpH07`, `b2m0_c70`) plus the three found by scanning His
-against the conserved cation **K98** on the strong binders (`b1m12_A91H`, `b1m12_r6_A92S`, `b4m2_A37H`);
-the rest carry the thermodynamic switch (the quantity BLI measures) or are binder-first diversity picks.
+**b4m2** the affinity. **Ten** designs carry an explicit MD-His-causal switch — the six leads above
+(`b1m9_sh4`, `TNFpH06_sh3/sh2`, `TNFpH06`, `TNFpH07`, `b2m0_c70`), the three found by scanning His
+against the conserved cation **K98** on the strong binders (`b1m12_A91H`, `b1m12_r6_A92S`, `b4m2_A37H`),
+and `b1m7_sh5rx__A60E2H` — a single **E60→His** that installs an MD-His-causal switch on K98 (d_repel
++0.32, Gln-isostere control −1.40, margin 1.72) on the f11 fold, the one strong fold previously without one,
+while *improving* binding on both species (iptm 0.916→0.950 h / 0.894→0.898 m vs its parent) and lowering
+the instability index — a strict upgrade on every axis. The rest carry the thermodynamic switch (the
+quantity BLI measures) or are binder-first diversity picks.
 The spread across **7 folds with 17/20 expression-PASS** (the 3 FLAGs soluble by GRAVY/0-Cys) hedges the
 dominant wet-lab risk. Several new-fold/new-switch routes were tested and honestly reported: the K98 switch
 hunt (adopted, +3 MD-causal), the all-atom K90 fold (a cross-react hedge), and two negatives — de-novo
