@@ -293,3 +293,8 @@ auto-upload.
 - QC added (4 orthogonal, ipSAE demoted to tiebreaker): structural SAP (all 20 low, buried-HYD false-positives), instability (b2m0 Pro-FP keep / tnf_K90 genuine), interface dSASA+contacts+Hbonds (real binding signal; TNFpH07_sh4_r4 strong iface despite low ipSAE), uniform Boltz re-fold human+mouse (cross-react delta). master table runs/push/master_v3.csv.
 - GENERATION BET CLOSED (all 3 proven generators → de-novo wall): RFd3 K90 ~0.1% (survivor k90_18 ruled out: dSASA1569 + noisy switch); RFd3 regionI 0; PXDesign recsite 0 (af2ig pae_int~25, Boltz iptm<0.5, both SolubleMPNN+vanilla); Genie3 prior fbb1 0. PXDesign was ACTIVATED (was never actually running — env recipe in memory).
 - NEXT: v4 awaits USER-GATED upload. v4 is the strongest evidence-backed strategy (validated partial-diffusion portfolio).
+
+## 2026-10-09 (cont) — confirmed submission locked; partial-diffusion upgrade hunt
+- CONFIRMED SUBMISSION: runs/push/submission_v4.csv (md5 c69f8c5d) Adaptyv format (name,sequence,molecule_class=single_chain), best-first. FINAL-TEST PASS (20 uniq, natural-AA, 0-Cys, len73-119, nov>=3/4). Upload USER-GATED.
+- partial3 cross-react "upgrades" REJECTED by brutal gate (ipSAE refuted iptm: des_55_2 m0.476/des_7_2 m0.446 < parent 0.533).
+- partial4: 5 b1m9 variants BEAT parent cross-react by ipSAE (des_69_2 m0.637, des_86_2 d0.16) BUT 4/5 lost the switch (0 His) + high instab; des_59_1 clean + latent H11 8.5A (MD running). His-bias MPNN screen launched to recover switch on cross-react backbones.
