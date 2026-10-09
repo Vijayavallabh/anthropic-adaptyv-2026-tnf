@@ -30,7 +30,7 @@ C=[
  ("b4m2_2A87H_K101_r3","f2-C2","3/4","RESCUED strongest binder: iptm 0.95/0.95 perfect cross-react, FC 10x, now expr-PASS"),
  ("b4m2_A37H","f2-C2","3/4","b4m2 binder + MD-His-causal switch (d_repel 0.45, control -2.16) on conserved K98; iptm 0.93h/0.80m x-react, FC 4x, expr-PASS"),
  # b2m0 f1 -- MD-confirmed de-novo switches (His-causal, Gln control inert)
- ("b2m0_c20","f1-C1","3/4","MD His-causal coop switch (d_repel+control inert), f1 fold"),
+ ("b2m0_c20","f1-C1","3/4","f1-fold coop switch, direction-right (d_repel +0.24, Gln control -1.30 inert) but BELOW the 0.3 MD-causal bar -> labelled thermodynamic-only (FC 8x); f1 diversity hedge alongside the MD-causal c70"),
  ("b2m0_c70","f1-C1","3/4","MD His-causal coop switch, strongest d_repel 3.2A, f1 fold"),
  ("tnf_K90_tnf_K90_2_model_3_3_sh4","fK90","3/4","NEW FOLD (RFd3 all-atom), distinct conserved epitope: CROSS-REACT binder iptm 0.59h/0.54m docks 3/4; thermodynamic His switch FC 8x (PROPKA) but NOT MD-His-causal (d_repel~0); expr-FLAG (instab 53.6 Glu-overload artifact, gravy -1.03 soluble); diversity/binder-first hedge"),
  # b1m7 f11
