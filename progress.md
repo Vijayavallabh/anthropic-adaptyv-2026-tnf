@@ -266,6 +266,16 @@ Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
   byte-verified submit==folded==MD'd==fasta; validator PASS Track 3; new upload md5
   `53c741c99db4adf2781d926639110897`.
 
+## SESSION 9b (2026-10-09, deep-research campaign): physics reframe + 3 levers killed decisively + buried-network bet
+
+- **5-agent SOTA literature sweep** (pubmed/biorxiv) → [[reference-binder-sota-levers-2026]] updated with runnable assets. **Decisive physics reframe (2 agents convergent):** a protonation switch's 10-90% width = 1.908/Δn_H; at Δn_H≈1 that's **1.9 pH — WIDER than the 1.4-pH window**, so a single-His switch cannot complete its swing in-window. The game is **effective in-window Δn_H ≥ 2**. My FCs confirm it: cb1 family FC 59-126x = Δn_H~1.3-1.5 (sharp, the real switches); b-fold single-His FC 3-4x = Δn_H~0.3-0.6 (weak switches, strong/novel binders). Portfolio already balances sharp-switch (cb1) vs novel-binder (b-fold).
+- **THREE improvement levers KILLED by decisive cheap tests (good discipline, don't re-chase):**
+  1. **H1 target-side His78 proton** (binder cation vs conserved target His) — His78 IS conserved human+mouse AND at Region I rim (6.5A), BUT PROPKA free pKa = **3.91** (far below the 6.0-7.4 window; buried, 120 neighbors) → won't titrate in-window. His73 in-window (6.70) but NOT conserved (mouse Tyr). DEAD.
+  2. **Genie3 full-backbone route** (PULCHRA CA→N/CA/C/O reconstruction → standard full MPNN, the untried fix for the CA-only cross-react failure) — mechanically WORKS (PULCHRA validated, `scripts/build_genie3_fullbb.py`, 1600 seqs vs 0 before) BUT af2ig gives **0/1566 binders (best pae_i 18.5, all >18)**: reconstruction+re-MPNN loses the pose under af2ig's single-seq fold. Deeper: af2ig can't rank TNF binders (AP 0.16) so generators (Genie3/PXDesign) are **unvalidatable in-silico** → can't select which to submit → low-EV for the submission. DEAD (as a selectable route).
+  3. **2nd separated interface His** (additive Δn_H→2) — GEOMETRICALLY DEAD: binders present only ONE reachable conserved cation (K98); K90/K65/R32 all out of 4.5-9A range (scan found 0-1 variants, the 1 clustered near K98). Interface is at single-His ceiling.
+- **partial2** (fresh partial-diffusion of 5 novel-fold seeds): 230/1920 strong binders (12% pass, matches the lesson) on b4m2+b1m12 — confirms those folds are ROBUST binders, but all COUSINS (diversity cap) → not integrated. (b1m9/b1m7 arm skipped at build_fullatom — artifact, not fragility.)
+- **LIVE BET: buried-His-NETWORK switch** (Baker `his_ph_exploder`, MIT, TNF-validated 79x, OFF-interface so preserves affinity+cross-react, the cooperativity/Δn_H>1 route — sidesteps the interface single-His ceiling). PyRosetta installing (free-academic). RISK: Baker says buried networks need LARGE cores; my binders are 82-101aa (small) → b1m12 (101aa, 4/4-novel) is the best candidate. The exploder is itself the go/no-go (finds buried His-pairs or reports none).
+
 ## Next step
 
 **Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
@@ -277,3 +287,9 @@ authoritatively at upload — expected ≥3/4). Recommended core = the 3 dual-ev
 TNFpH06_sh3, TNFpH06_sh2) + the novelty/affinity anchors (b1m12 4/4, b4m2), filling to 20 for fold+risk
 diversity. Deadline **2026-10-12 11:59 UTC** (2026-10-11 23:59 AoE). Upload is user-gated — do not
 auto-upload.
+
+## 2026-10-09 — v4 finalized; generation bet closed
+- SUBMISSION: runs/push/final20_v4.csv (md5 85ea7c75) — 20 validated seqs, byte-identical to v3, RE-RANKED expression-first (ipSAE demoted per EGFR post-mortem). FASTA runs/push/final20_v4.fasta. QC runs/push/final20_v4_qc.md. Floor final20.csv (3518cc6) unchanged. UPLOAD USER-GATED.
+- QC added (4 orthogonal, ipSAE demoted to tiebreaker): structural SAP (all 20 low, buried-HYD false-positives), instability (b2m0 Pro-FP keep / tnf_K90 genuine), interface dSASA+contacts+Hbonds (real binding signal; TNFpH07_sh4_r4 strong iface despite low ipSAE), uniform Boltz re-fold human+mouse (cross-react delta). master table runs/push/master_v3.csv.
+- GENERATION BET CLOSED (all 3 proven generators → de-novo wall): RFd3 K90 ~0.1% (survivor k90_18 ruled out: dSASA1569 + noisy switch); RFd3 regionI 0; PXDesign recsite 0 (af2ig pae_int~25, Boltz iptm<0.5, both SolubleMPNN+vanilla); Genie3 prior fbb1 0. PXDesign was ACTIVATED (was never actually running — env recipe in memory).
+- NEXT: v4 awaits USER-GATED upload. v4 is the strongest evidence-backed strategy (validated partial-diffusion portfolio).

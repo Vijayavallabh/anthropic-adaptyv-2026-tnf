@@ -1,0 +1,16 @@
+{
+  "tnf_regionI": {
+    "dialect": 2,
+    "infer_ori_strategy": "hotspots",
+    "input": "/home/prachh/v/anthropic-adaptyv-2026-tnf/data/targets/1TNF_AB.pdb",
+    "contig": "80-120,/0,A6-157,/0,B6-157",
+    "select_hotspots": {
+      "A74": "CB,CG1",
+      "A75": "CB,CG",
+      "A97": "CB,CG1",
+      "B114": "CB,CG,NE1",
+      "B115": "CB,CG,OH"
+    },
+    "is_non_loopy": true
+  }
+}

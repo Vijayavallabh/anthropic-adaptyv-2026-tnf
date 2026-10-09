@@ -39,7 +39,7 @@ IFACE_THRESH      = 0.08   # min d_iface_release to call a (secondary) release s
 def log(*a): print(*a, file=sys.stderr, flush=True)
 
 def pick_platform(device):
-    for name in ("CUDA", "OpenCL"):   # CUDA via envs/md2 (cuda12 build); OpenCL fallback
+    for name in ("OpenCL", "CUDA"):   # OpenCL first: envs/md nvrtc 13.4 > driver 580 breaks CUDA PTX   # CUDA via envs/md2 (cuda12 build); OpenCL fallback
         try: plat = Platform.getPlatformByName(name)
         except Exception: continue
         names = set(plat.getPropertyNames()); props = {}
