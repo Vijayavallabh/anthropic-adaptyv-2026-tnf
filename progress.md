@@ -298,3 +298,10 @@ auto-upload.
 - CONFIRMED SUBMISSION: runs/push/submission_v4.csv (md5 c69f8c5d) Adaptyv format (name,sequence,molecule_class=single_chain), best-first. FINAL-TEST PASS (20 uniq, natural-AA, 0-Cys, len73-119, nov>=3/4). Upload USER-GATED.
 - partial3 cross-react "upgrades" REJECTED by brutal gate (ipSAE refuted iptm: des_55_2 m0.476/des_7_2 m0.446 < parent 0.533).
 - partial4: 5 b1m9 variants BEAT parent cross-react by ipSAE (des_69_2 m0.637, des_86_2 d0.16) BUT 4/5 lost the switch (0 His) + high instab; des_59_1 clean + latent H11 8.5A (MD running). His-bias MPNN screen launched to recover switch on cross-react backbones.
+
+## 2026-10-09 (cont) — brutal devil's-advocate on upgrade hunt: all REJECTED; v4 CONFIRMED FINAL
+- partial3 cross-react upgrades: REJECTED (iptm artifact; ipSAE m0.44-0.48 < parent 0.53).
+- His-bias (H:2.0) cross-react+switch: REJECTED (His-saturated artifacts, nHis 14-24 = 16-29%; Baker bias is 0.5-1.5).
+- des_59_1 latent switch: REJECTED (MD d_repel -1.12, wrong direction).
+- Pattern: redesigning b1m9 for cross-react strips the switch (plain MPNN) or saturates His (bias) -> no clean cross-react+switch+expression upgrade exists in generated pool.
+- DECISION: v4 (runs/push/submission_v4.csv md5 c69f8c5d) is the CONFIRMED FINAL submission. 20 validated designs, brutally QC'd (ipSAE-demoted, SAP-clean, MD-audited switches, novelty>=3/4). Upload USER-GATED.
