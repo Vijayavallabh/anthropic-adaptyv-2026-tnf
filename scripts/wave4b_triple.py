@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""WAVE-3B multi-His triple-confirm (interface-adapted designs). Same as wave3_triple but reads
+"""WAVE-4B multi-His triple-confirm (His-biased interface-adapted designs). Same as wave3_triple but reads
 runs/wave4b/switch_ranked.json (switch=True), derives His FROM SEQUENCE (runs/wave4b/variants.csv),
 and uses the wv4bh Boltz folds. His switch-confirmed if PROPKA dpKa<0 AND xTB dE>0; design CONFIRMED if
 >=2 His confirmed. Writes runs/wave4b/triple.json. Run with .venv/bin/python -I."""

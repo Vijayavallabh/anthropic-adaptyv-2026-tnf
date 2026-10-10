@@ -7,6 +7,10 @@ R=/home/prachh/v/anthropic-adaptyv-2026-tnf; cd "$R"
 M="$R/runs/wave4b"; LM="$R/third_party/LigandMPNN"; CKPT="$LM/model_params/proteinmpnn_v_48_020.pt"
 mkdir -p "$M/mpnn"
 grep -P "^(des_4098_1|des_3050_6|des_180_6|des_818_4|des_875_5)\t" "$R/runs/wave3b/jobs.tsv" > "$M/jobs.tsv"
+[ -s "$M/jobs.tsv" ] || { echo "ERROR: jobs.tsv empty (runs/wave3b/jobs.tsv missing or scaffold names changed)"; exit 1; }
+# GPU idle guard (CLAUDE.md: never clobber a foreign job) — abort if any GPU is busy
+busy=$(nvidia-smi --query-gpu=index,utilization.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '$2>10||$3>2000{print $1}' | tr '\n' ' ')
+[ -n "$busy" ] && { echo "ERROR: GPU(s) busy [$busy]; refusing to clobber a foreign job"; exit 1; }
 echo "[wv4b $(date -u +%FT%TZ)] His-biased MPNN on $(wc -l <"$M/jobs.tsv") confirmed-lineage scaffolds"
 pids=(); g=0
 while IFS=$'\t' read -r scaffold pdb redes; do

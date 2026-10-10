@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""WAVE-3B analyze: for each MPNN interface-adapted design, derive His positions FROM THE SEQUENCE (all H),
-measure each His->nearest distinct target cation in the Boltz human fold, compute dual-strong (vs scaffold
-_wt baseline) + switch (>=2 distinct conserved cations <8A). Writes runs/wave4b/switch_ranked.json.
+"""WAVE-4B analyze: for each His-biased MPNN design (named {scaffold}_c{i}), derive His positions FROM THE
+SEQUENCE (all H), measure each His->nearest distinct target cation in the Boltz human fold, compute dual-strong
+(vs scaffold _wt baseline) + switch (>=2 distinct conserved cations <8A). Writes runs/wave4b/switch_ranked.json.
 Run with .venv/bin/python -I."""
 import json, os
 import numpy as np
@@ -36,6 +36,7 @@ def his_cat(v,his):
     return perh
 def base_of(n):
     if n.endswith("_wt"): return n[:-3]
+    if "_c" in n: return n.rsplit("_c",1)[0]   # wave4b names designs {scaffold}_c{i}
     if "_b" in n: return n.rsplit("_b",1)[0]
     return n
 wt={}

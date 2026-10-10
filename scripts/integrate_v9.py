@@ -48,9 +48,9 @@ with open("runs/push/new_for_portal_v9.csv","w",newline="") as fh:
 names=[r[0] for r in rows]; seqs=[r[1] for r in rows]
 assert len(names)==20==len(set(names)); assert all(set(s)<=set("ACDEFGHIKLMNPQRSTVWY") for s in seqs)
 assert all(60<=len(s)<=130 for s in seqs)
-print("FINAL-TEST ok. v9 md5:", hashlib.md5(open("runs/push/submission_v9.csv","rb").read()).hexdigest())
+assert len(set(seqs))==20, "duplicate sequence in submission (wastes a slot / portal may reject)"
+print("FINAL-TEST ok (20 unique names AND 20 unique sequences). v9 md5:", hashlib.md5(open("runs/push/submission_v9.csv","rb").read()).hexdigest())
 print("swaps vs v8: des_3050_6_b9->c39 (2->4 conf), des_4098_1_b1->c44 (0.787->0.861 min)")
-print("NEW switch core conf-His:", {meta[n][4]:0 for n in NEW_PICKS} if False else [(n.split('_H')[0] if '_H' in n else n, meta[n][4]) for n in NEW_PICKS])
+print("NEW switch core (variant, conf-His):", [(n, meta[n][4]) for n in NEW_PICKS])
 print("portal re-check needed: des_3050_6_c39, des_4098_1_c44 (new_for_portal_v9.csv); fallbacks b9/b1")
-lins=set(meta[n][0] for n in NEW_PICKS)|set(V7_KEEP)
 print("distinct lineages:", len({*[meta[n][0] for n in NEW_PICKS], *[v.split('_H')[0] if '_H' in v else v.rsplit('_',1)[0] for v in V7_KEEP]}))
