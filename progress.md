@@ -457,9 +457,17 @@ auto-upload.
 - EVIDENCE DOC: docs/SUBMISSION_v9_EVIDENCE.md (mechanism + 20-design table + triple-confirm incl SMD + expression +
   novelty + cross-react + portfolio + bold-campaign). Declined a quantitative fold-change (interface pKa predictors
   disagree 2-3u > pH window => false precision); conf-His count [4,3,2,2,2,2,1] is the honest selectivity proxy.
+- CHAI-1 ORTHOGONAL CO-FOLD (3rd independent predictor) on the 7 switch core vs human+mouse (runs/push/
+  chai_switchcore.tsv): 6/7 CONFIRM strong binding BOTH species with balanced matched delta 0.002-0.031 (c39
+  0.788/0.772, b14 0.865/0.870, c44 0.863/0.870, H16-74 0.839/0.841, H52-54-79 0.722/0.708, H3-57-80 0.836/0.805)
+  -> orthogonal #1+#2 confirmation + model-risk reduction. FLAG des_180_6_H9-14-38: Chai 0.42/0.37 (both species)
+  vs Boltz 0.734 = genuine Boltz/Chai disagreement + highest-SAP switch-core member; KEPT (portal-confirmed, 2-His
+  switch, distinct lineage, no DQ-safe swap) but logged lowest-binding-confidence. Selectivity-strength proxy ΣdE
+  (honest relative, NOT a fold-change): c44 17.8 ~= b14 17.6 > c39 13.7 strongest by per-His QM; c39 top by breadth.
 - OUTCOME: all 4 bold bets explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
   optimal, cousins excluded for diversity), expression (all 0.79-0.94, no DQ-safe swap), novelty (20/20 >=3/4),
-  diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED. Upload USER-GATED.
+  cross-react (2 co-folders agree balanced), diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED.
+  Upload USER-GATED. docs/SUBMISSION_v9_EVIDENCE.md = full record (§2b Chai, §3 SMD-null, §4 expression, §8 bold).
 - BET B (Mosaic de-novo, Escalante gradient seq-space; won Adaptyv Nipah/TREM2): ran GPU0, 8 human-TNF designs ->
   6/8 are 36-47% Ala (floor mode). INDEPENDENT held-out Boltz arbiter (runs/boltz_moshuman): 3 high (mosh_0 iptm
   0.917/ipSAE_min **0.778**, mosh_5 0.861/0.67, mosh_3 0.865/0.64). **Mosaic CAN bind** (mosh_0 ipSAE 0.78 >= most

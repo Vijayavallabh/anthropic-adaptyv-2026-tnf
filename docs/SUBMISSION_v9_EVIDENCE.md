@@ -31,6 +31,30 @@ anchors. At pH7.4 His is neutral → binds; at pH6.0 His⁺···cation⁺ repul
 conf-His = # His passing the per-His triple-confirm. min-ipSAE = min(human,mouse) Boltz ipSAE (binding).
 Δ_hm = |ipSAE_human − ipSAE_mouse| (balance; lower = more cross-reactive). SAP+/GRAVY = expression (lower).
 
+## 2b. Orthogonal binding confirmation (Chai-1, 3rd co-folder) + selectivity-strength
+
+Chai-1 single-seq co-fold vs human AND mouse (no MSA) — independent of Boltz/af2ig. `runs/push/chai_switchcore.tsv`.
+
+| name | conf-His | ΣdE | Chai_human | Chai_mouse | Chai Δ | Boltz min-ipSAE |
+|---|---|---|---|---|---|---|
+| des_3050_6_c39 | 4 | 13.7 | 0.788 | 0.772 | 0.016 | 0.666 |
+| des_4098_1_b14 | 3 | 17.6 | 0.865 | 0.870 | 0.005 | 0.587 |
+| des_4098_1_c44 | 2 | 17.8 | 0.863 | 0.870 | 0.007 | 0.861 |
+| des_180_6_H9-14-38 | 2 | 17.2 | **0.424** | **0.369** | 0.055 | 0.734 |
+| des_818_4_H16-74 | 2 | 1.6 | 0.839 | 0.841 | 0.002 | 0.713 |
+| des_3050_6_H52-54-79 | 2 | 1.9 | 0.722 | 0.708 | 0.014 | 0.631 |
+| des_875_5_H3-57-80 | 1 | 1.8 | 0.836 | 0.805 | 0.031 | 0.600 |
+
+- **6/7 confirmed by a 3rd independent co-folder** as strong binders to BOTH species, with small cross-species
+  **matched deltas (0.002–0.031)** = balanced cross-reactivity (the rigorous #2 metric; not single-folder).
+- **FLAG des_180_6_H9-14-38**: Chai weak on BOTH species (0.42/0.37) vs Boltz 0.734 — a genuine Boltz/Chai
+  binding disagreement (not cross-species pessimism). Also the highest-SAP switch-core member. KEPT (portal-
+  confirmed, 2-His triple-confirmed switch, distinct lineage; no DQ-safe switch-preserving replacement) — logged
+  as the lowest-binding-confidence switch-core member.
+- **ΣdE** = sum of confirmed-His GFN2-xTB dE (honest RELATIVE selectivity-strength proxy, NOT a fold-change):
+  c44/b14/c39 are the strongest switches by per-His QM destabilization; c39 strongest by His breadth (4 distinct
+  cations).
+
 ## 3. Switch-confirm gate (per His; design confirmed if ≥2 His pass) — two independent thermodynamic methods
 
 1. **PROPKA Wyman linkage** — bound-state His pKa suppressed by the cation (dpKa < 0 = protonation disfavors
@@ -62,8 +86,9 @@ portal-confirmed replacement exists. Audit: `expr_audit20.py`; metrics in `runs/
 ## 5. Cross-reactivity (#2) — scored by mechanism, not one co-folder
 
 Contacts land on conserved Region-I anchors (V74/L75/I97/W114/Y115) + conserved cations; balance measured as
-a matched human/mouse co-fold delta Δ_hm (0.016–0.106 across the switch core). A low single-folder ortholog
-score is folder pessimism, not a species signal.
+a matched human/mouse co-fold delta Δ_hm (0.016–0.106 Boltz across the switch core). A low single-folder ortholog
+score is folder pessimism, not a species signal. **Confirmed orthogonally** (§2b): Chai-1 human↔mouse matched
+delta 0.002–0.031 for 6/7 switch-core designs → two independent co-folders agree the cross-reactivity is balanced.
 
 ## 6. Novelty (hard gate, <3/4 = DQ) — all 20 ≥3/4
 
