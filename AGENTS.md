@@ -16,7 +16,7 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md`
    (plan + outcome). `scripts/README.md` maps the pipeline; the current best submission is
-   `runs/push/submission_v7.csv` (see the Submission contract below).
+   `runs/push/submission_v9.csv` (see the Submission contract below).
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -72,26 +72,38 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs)
 
-- **Current best (validated):** `runs/push/submission_v7.csv` (md5 `0e84b392410e59cc756036cabc8db7b6`,
-  20 designs, every design portal-novelty ≥3/4, FINAL-TEST pass). Built by `scripts/integrate_v7.py`.
-  Lineage: v4 (`c69f8c5d`) → v5 (`4d05ed2e`) → v6 (`81913f5c`, removed a portal-2/4 DQ `b1m12_r6_A92S`) →
-  v7 (added two de-novo β-pairing MD-triple-confirmed pH-switch binders `des_287_5_H37` + `des_2106_2_H43`,
-  trimmed the weakest cb1 anchor). **`runs/push/submission_v6.csv` (md5 `81913f5c`) is the fallback floor.**
-  The submission CSVs live under `runs/` (gitignored, local-only); the `integrate_v*.py` scripts are the
-  committed source of truth. Upload to the Proteinbase/Adaptyv portal (account j_v_v_07) is **user-gated**
-  — do NOT auto-upload.
-- **De-novo switch maturation pipeline** (how the strongest designs were built; see `docs/METHODS.md` §6):
-  β-pairing RFdiffusion (`scripts/run_bpair_rfd.sh`) → MPNN → af2ig → Boltz human+mouse cross-react
-  (min-ipSAE) → His-scan install near a CONSERVED target Lys (`scripts/bpair_hisscan_build.py` +
-  `bpair_mature.sh`) → brutal two-state switch MD (`bpair_md_prep.py` + `bpair_md_launch.sh` +
-  `audit_brutal.py`) → triple-confirm (MD `d_repel`>0 + PROPKA `dpKa`<0 + xtb `dE`>0, `bpair_triple.py`).
+- **Current best (validated):** `runs/push/submission_v9.csv` (md5 `05a344444cf740907e79a177d34c73f5`,
+  20 designs, **all 20 portal-novelty ≥3/4 — 3 at 4/4**, FINAL-TEST pass: 20 unique names AND sequences).
+  Built by `scripts/integrate_v9.py`. Lineage: v4 (`c69f8c5d`) → v5 (`4d05ed2e`) → v6 (`81913f5c`, removed a
+  portal-2/4 DQ) → v7 (`0e84b392`, +2 de-novo single-His switches) → v8 (`8566b133`, +7 de-novo **multi-His**
+  triple-confirmed switches across 5 lineages, dropped the weakest/redundant v7) → v9 (2 wave-4b
+  within-lineage upgrades: `des_3050_6_c39` [4 confirmed His], `des_4098_1_c44`). 16 lineages.
+  **Fallbacks: `submission_v8.csv` (`8566b133`) and `submission_v7.csv` (`0e84b392`), both fully
+  portal-verified.** The submission CSVs live under `runs/` (gitignored, local-only); the `integrate_v*.py`
+  scripts are the committed source of truth. Upload to the Proteinbase/Adaptyv portal (account j_v_v_07) is
+  **user-gated** — do NOT auto-upload.
+- **De-novo multi-His switch pipeline** (how the v8/v9 switch core was built; Baker 2025 SOTA recipe, see
+  `docs/METHODS.md` §6 + §8): β-pairing RFdiffusion → MPNN → af2ig → Boltz human+mouse cross-react → install
+  **≥2–3 SEPARATED His, each repelling a DISTINCT conserved target cation** (K6/K93 are the strong anchors) —
+  NOT clustered in the binder (anti-cooperative). Two routes: **Track A** point-mutate His combos
+  (`scripts/wave3_hisscan_build.py`); **Track B** LigandMPNN redesigns the interface shell AROUND fixed His so
+  it adapts (`scripts/wave3b_prep.py` + `wave3b_mpnn.sh` + `wave3b_analyze.py`; `wave4b.sh` = His-biased
+  deeper). Gate dual-strong (min-ipSAE≥0.55 AND Δ_hm≤0.13 AND keeps binding vs `_wt` AND ≥2 His within 8Å of
+  DISTINCT cations) → triple-confirm EACH His (PROPKA `dpKa`<0 AND GFN2-xTB `dE`>0; design OK if ≥2 confirmed;
+  `scripts/wave3_triple.py` / `wave3b_triple.py`). Functional k_off is wet-lab-only — the thermodynamic
+  proton-linkage is the honest in-silico ceiling (do NOT chase longer unbiased MD; d_iface≈0 is expected).
 - **Novelty is a hard gate (<3/4 = DQ), set STRUCTURALLY:** max TM-score of the single-sequence fold vs
   PDB+AFDB — `<0.5 → 4/4`, `0.5–0.8 → 3/4`, `≥0.8 → 2/4 DQ` (per-design; de-novo sequences are always
   ≤30% id so the structure axis decides). The user-run portal is the only authority; the local PDB-only
   foldseek proxy (`tools/foldseek_dl` + `runs/novelty_struct/pdbdb` + TMalign) is RELATIVE-rank only — it
   failed to reproduce a known 2/4. **Always portal-check the final set and drop every <3/4 before locking.**
-- **Expression (dominant wet-lab-zero risk):** rank by SAP + charged composition (Glu% is the top predictor
-  in the Adaptyv EGFR benchmark) + GRAVY; do NOT weight the ProtParam instability index (Pro false-positive).
+- **Expression (dominant wet-lab-zero risk):** primary ranker is **single-seq ESMFold MONOMER pLDDT** (fold
+  the binder ALONE — best de-novo success predictor, AUROC ~0.72; `scripts/esmfold_monomer.py`) + **SAP**
+  (aggregation; `scripts/sap_score.py`) + charged composition (Glu%, top Adaptyv-EGFR predictor) + GRAVY.
+  Consensus-drop only when worst-tier on ≥2 orthogonal axes; do NOT weight the ProtParam instability index
+  (Pro false-positive) or the ML sequence-solubility tools (OOD noise for de-novo minis). The AUROC~0.72
+  ceiling means single-metric cutoffs discard real binders — prefer ordering more diverse designs over
+  trimming to a few.
 - Adaptyv upload CSV: columns `name`, `sequence`, `molecule_class` (lowercase); de-novo mini-binders are
   `single_chain`. Natural amino acids only; a two-chain format joins chains with `:`; length 10–250. Unique
   names and unique sequences; antibody formats must pass numbering. Never put prompt-like text in the CSV.

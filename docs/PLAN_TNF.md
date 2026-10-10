@@ -34,9 +34,12 @@ K90 face **wall** de-novo binding; cb1 is the one epitope that breaks the wall.
 
 ## Outcome
 
-**`runs/submission/final_portfolio.{csv,fasta}` = 9 designs / 6 distinct folds** (byte-verified FASTA==CSV):
-the **cb1** family (4 sequences, 1 fold: TNFpH01 single-His dSw 2.68 + a coop-2His trio) + **5 cb1-epitope**
-de-novo binders across folds C1/C2/C5/C8/C11. All nine: 3-method switch (MD + PROPKA + pKAI; +xTB on the six
-single-His), ipSAE > 0.5, 0-Cys, **portal-novel ≥3/4 (one 4/4)**. `runs/submission/METHODS.md` is the write-up.
+**`runs/push/submission_v9.csv` = 20 designs / 16 lineages** (FINAL, byte-verified, code-reviewed; md5
+`05a344444cf740907e79a177d34c73f5`). Core = **7 de-novo MULTI-His pH-switches** (Baker 2025 SOTA recipe: ≥2–3
+SEPARATED His each repelling a DISTINCT conserved target cation; up to 4 triple-confirmed His on 4 cations,
+e.g. `des_3050_6_c39`) + **13 portal-verified diverse floor**. **All 20 portal-novelty ≥3/4 (3 at 4/4)**;
+balanced human↔mouse cross-react (Δ_hm 0.016–0.11); switch sign triple-confirmed per His (PROPKA `dpKa`<0 +
+GFN2-xTB `dE`>0); expression ESMFold monomer pLDDT 0.79–0.90 + SAP ≤1.2. Fallbacks: v8 (`8566b133`),
+v7 (`0e84b392`). The earlier `runs/submission/final_portfolio.*` (9 designs, single-His) is superseded.
 
 **Upload is USER-GATED** (Proteinbase, account j_v_v_07).

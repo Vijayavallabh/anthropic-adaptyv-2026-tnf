@@ -424,3 +424,9 @@ auto-upload.
 - PORTAL NOVELTY v9 (user, 20/20): ALL >=3/4 -> 3 at 4/4 (des_3050_6_c39, des_875_5_H3-57-80, b1m12_A41H_vsR27),
   rest 3/4. c39 (4-conf-His switch) AND c44 both pass -> v9 LOCKED. portal_novelty_v9_full.json; byte-verified
   submission_v9.csv md5 05a344444cf740907e79a177d34c73f5 (submit==validated). FINAL best-20. v7=floor. Upload USER-GATED.
+- CODE-REVIEW (background /code-review, 7 findings) RESOLVED (commit 2c42ceb): fixed wave4b_analyze.base_of to
+  handle {scaffold}_c{i} names (the sed-copy had silently disabled the keeps-binding gate for all wave4b
+  designs; re-verified c39/c44 keep binding under the active gate -> no v9 impact; switch candidates 31->26);
+  added 20-unique-SEQUENCES assert to integrate_v9; wave4b.sh fail-loud empty-jobs + nvidia-smi GPU-idle guard;
+  WAVE-3B->WAVE-4B docstrings; removed dead code. submission_v9.csv bytes UNCHANGED (05a34444). HARNESS SYNCED
+  (AGENTS.md + session-handoff.md + docs/METHODS.md §8 + scripts/README.md + docs/PLAN_TNF.md -> v9).

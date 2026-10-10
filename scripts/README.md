@@ -26,8 +26,18 @@ conserved cb1 epitope → ProteinMPNN).
 
 **Cross-reactivity:** `thread_mouse_tnf.py`, `make_mouse_complex.py`, `mouse_mutate.py` (mouse TNF model + per-ortholog Boltz/ipSAE).
 
-**Assembly + novelty:** `assemble_v2.py` (the final, contact-gated, cluster-deduped assembler → `final_portfolio.{csv,fasta}`),
+**Assembly + novelty:** `assemble_v2.py` (earlier contact-gated, cluster-deduped assembler → `final_portfolio.{csv,fasta}`),
 `fold_diversity.py` (Foldseek TM-clustering), `build_core8.py` (cb1 family floor), `tnf_novelty.sh`.
+
+**De-novo MULTI-His pH-switch campaign (v8/v9 — CURRENT submission path, Baker 2025 SOTA; see METHODS §8):**
+`wave3_hisscan_build.py` (Track A: point-mutate ≥2–3 His combos, each on a DISTINCT conserved cation) ·
+`wave3b_prep.py` + `wave3b_mpnn.sh` + `wave3b_analyze.py` (Track B: LigandMPNN redesign the interface shell
+AROUND fixed His so it adapts) · `wave4b.sh` + `wave4b_analyze.py` + `wave4b_triple.py` (His-biased deeper run) ·
+`wave3_fold.sh` (generic Boltz human+mouse fold + ipSAE, args: rundir tagpfx) · `wave3_contacts2.py`
+(His→distinct-cation 8Å gate) · `wave3_triple.py` / `wave3b_triple.py` (per-His PROPKA `dpKa` + GFN2-xTB `dE`
+sign confirm) · `esmfold_monomer.py` (single-seq MONOMER pLDDT expression ranker) · `sap_score.py`
+(aggregation) · **`integrate_v9.py`** (assemble switch core + diverse portal-verified floor →
+`runs/push/submission_v9.csv`, the current best).
 
 **Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).

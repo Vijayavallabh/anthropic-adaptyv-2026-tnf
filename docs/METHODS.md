@@ -164,3 +164,34 @@ PDB-only foldseek proxy (`tools/foldseek_dl/foldseek` + `runs/novelty_struct/pdb
 RELATIVE-rank only — it failed to reproduce a known 2/4 (AFDB half missing). Always portal-check the final
 set and remove every <3/4 before locking. Expression: rank by SAP + charged composition (Glu% is the top
 Adaptyv-benchmark predictor) + GRAVY; do not weight the ProtParam instability index (Pro false-positive).
+
+## 8. De-novo multi-His pH-switch (Baker 2025 SOTA) — the v8/v9 switch core
+
+Single-His was the WEAK end of the published method (Ahn, Coventry, … Baker, bioRxiv 2025.09.29.678932):
+every wet-lab-validated pH-sensitive binder there carried ≥2 His-cation contacts, fold-change scales with
+the NUMBER of independent His→target-cation repulsions, and TNF-α itself hit 79× (at pH 5.4). Recipe =
+install **≥2–3 SEPARATED His, each repelling a DISTINCT conserved TARGET cation**, spread across the epitope
+— NOT clustered in the binder (clustering is anti-cooperative, the old dead-end). Conserved human↔mouse TNF
+cations (mature-seq index): 1,6,27,39,60,77,85,93,98,107,123; **K6 and K93** are the strong close anchors.
+
+Two build routes, both validated here:
+- **Track A** (`wave3_hisscan_build.py`): point-mutate His COMBINATIONS (2–3 distinct-cation positions) onto
+  already-binding balanced groove scaffolds. Fast; reuses the Boltz x-react pipeline.
+- **Track B** (`wave3b_prep.py` → `wave3b_mpnn.sh` → `wave3b_analyze.py`): pre-set His at the chosen
+  distinct-cation positions, then LigandMPNN (vanilla `proteinmpnn_v_48_020`) REDESIGNS the interface shell
+  AROUND the fixed His so the interface packs to accommodate them (backbone unchanged → novelty = parent's).
+  Higher yield AND can FIX a wrong switch sign (des_4098_1 failed as a point-mutant, confirmed after
+  shell-adaptation). `wave4b.sh` = His-biased (`--bias_AA H:1.5`) deeper run → designs with 4 confirmed His
+  on 4 distinct cations (e.g. `des_3050_6_c39`).
+
+Gates (both tracks): fold vs human AND mouse (Boltz) → **dual-strong** = min-ipSAE≥0.55 AND Δ_hm≤0.13
+(balanced = genuine cross-react) AND keeps binding vs the `_wt` scaffold AND ≥2 His within 8Å of DISTINCT
+target cations in the bound pose → **triple-confirm EACH His** (PROPKA Wyman `dpKa`<0 AND GFN2-xTB
+`dE_switch`>0; design confirmed if ≥2 His pass; `wave3_triple.py` / `wave3b_triple.py`). Expression: ESMFold
+single-seq MONOMER pLDDT (`esmfold_monomer.py`, AUROC~0.72) + SAP. Assembly: `integrate_v9.py` (switch core +
+diverse portal-verified floor, cap ~2/lineage). All de-novo switch lineages were portal-novelty-confirmed ≥3/4.
+
+Honest ceiling: functional (kinetic) release is seconds-scale and NOT observable in unbiased MD (d_iface≈0
+is EXPECTED, not a failure); the thermodynamic proton-linkage (PROPKA + xTB, cross-checked by His-cation
+contact count) is the honest in-silico selectivity evidence. pH 6.0 (vs Baker's 5.4) is intrinsically harder
+(His pKa ~6.5), so maximize the number/placement of His-cation contacts to push the predicted linkage.
