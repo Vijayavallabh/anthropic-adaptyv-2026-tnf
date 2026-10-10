@@ -45,3 +45,11 @@ logs/
 
 # Model params (caliby etc. — bootstrapped by init.sh, local-only)
 model_params/
+
+# session scratch + downloads (local-only, untrusted)
+_pdb_raw/
+_research_downloads/
+_research_scripts/
+_scratch/
+_uniprot_raw/
+research_scratch/

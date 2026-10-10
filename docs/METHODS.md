@@ -130,3 +130,37 @@ isolated per-tool uv venvs (see `docs/TOOLS.md`). The pipeline lives in
 `scripts/` and the stage skeleton plus submission contract in `src/`. The
 submission gate is `scripts/validate_submission.py`; the novelty gate is
 `scripts/novelty_check.sh` (fail-loud, with a positive control).
+
+## 6. De-novo β-pairing switch maturation (2026-10 — the strongest designs)
+
+Breaks the de-novo wall on the flat/polar TNF target by backbone-directing a binder β-strand to pair with
+the target's exposed edge strand, then installs and triple-confirms the pH switch. Pipeline:
+
+1. **Generate:** β-pairing RFdiffusion (SS+ADJ fold-conditioning, `--mode off`, binder-first contig,
+   edge-strand hotspots) — `scripts/run_bpair_rfd.sh`; interface tensors via
+   `scripts/make_interface_tensor_nopyr.py` (biotite, pyrosetta-free). ~2400 backbones.
+2. **Sequence + filter:** vanilla ProteinMPNN → af2ig gate (pae<10, plddt_binder>85, rmsd<2) → unique passers.
+3. **Cross-react:** Boltz-2 fold each passer vs human AND mouse mature TNF; score min-ipSAE (worst ortholog).
+   Top de-novo min-ipSAE 0.54–0.70 (meets/beats best partial-diffusion).
+4. **Install switch:** His-scan each binder interface position whose CB is <~8 Å of a CONSERVED target Lys
+   in the af2pred bound pose; re-fold human+mouse; keep His variants that preserve cross-react
+   (`scripts/bpair_hisscan_build.py` + `scripts/bpair_mature.sh`).
+5. **Confirm (decisive gate):** brutal two-state MD (`scripts/bpair_md_prep.py` + `bpair_md_launch.sh`;
+   `md_release_tnf.py` runs HIP/HIE/GLN × 3 replicas; `audit_brutal.py` gates ON-state contact<8 Å +
+   d_repel>2·SEM + control-margin vs the Gln isostere + direction>0) → triple-confirm (`bpair_triple.py`:
+   PROPKA Wyman `dpKa`<0 + GFN2-xTB `dE_switch`>0). Ship only designs where all three method classes
+   agree in sign, on a target Lys conserved in both orthologs.
+
+**Lesson:** the candidate with the strongest raw MD signal (des_962_5_H37, d_repel 2.23) FAILED triple-confirm
+(PROPKA dpKa +1.05 — wrong sign); MD alone would have shipped a backwards switch. The orthogonal classes are
+not optional. Fully-confirmed de-novo survivors `des_287_5_H37` + `des_2106_2_H43` entered submission_v7.
+
+## 7. Novelty gate (structural; hard, <3/4 = DQ)
+
+Adaptyv/Proteinbase novelty is per-design and STRUCTURAL: max TM-score of the single-sequence (ESMFold2) fold,
+>70% coverage, vs PDB + AFDB. De-novo sequences are always ≤30% id, so the structure axis decides:
+`<0.5 → 4/4`, `0.5–0.8 → 3/4`, `≥0.8 → 2/4 (DQ)`. The user-run portal is the ONLY authority; the local
+PDB-only foldseek proxy (`tools/foldseek_dl/foldseek` + `runs/novelty_struct/pdbdb` + `TMalign`) is
+RELATIVE-rank only — it failed to reproduce a known 2/4 (AFDB half missing). Always portal-check the final
+set and remove every <3/4 before locking. Expression: rank by SAP + charged composition (Glu% is the top
+Adaptyv-benchmark predictor) + GRAVY; do not weight the ProtParam instability index (Pro false-positive).

@@ -305,3 +305,71 @@ auto-upload.
 - des_59_1 latent switch: REJECTED (MD d_repel -1.12, wrong direction).
 - Pattern: redesigning b1m9 for cross-react strips the switch (plain MPNN) or saturates His (bias) -> no clean cross-react+switch+expression upgrade exists in generated pool.
 - DECISION: v4 (runs/push/submission_v4.csv md5 c69f8c5d) is the CONFIRMED FINAL submission. 20 validated designs, brutally QC'd (ipSAE-demoted, SAP-clean, MD-audited switches, novelty>=3/4). Upload USER-GATED.
+
+## 2026-10-09 (session: breakthrough cross-react + de-novo bet)
+- CROSS-REACT BREAKTHROUGH: des_59_1 (partial-diffusion, 82-mer, 0-Cys). hiscan His-position scan min-ipSAE: WT 0.564, H48 0.577 (best), H30 0.559, H59 0.544, H80 0.537 — all >> v4 parent b1m9_A12H min 0.387.
+- des_59_1 HARD GATES PASS: novelty 3/4 (seq 0.0% id vs PDB; struct TM 0.885 = de-novo bundle floor, vs b1m9_A12H v4-passer TM 0.778); expression SAP+ 2.7, instab 36.5, gravy -0.13, pI 4.9, 0-Cys.
+- switch-MD running (envs/md2, OpenCL): H48/H30 gpu2/3, H51/H55 gpu0/1. audit_brutal verdict pending = last gate before v4 integration (swap for weak b1m9_A12H).
+- joint tied-MPNN cross-react (jxr): FAILED — re-seq of interface killed binding (ipSAE ~0.01 both orthologs). Abandoned. Reconfirms: don't re-MPNN a validated binder.
+- de-novo bet: β-pairing targeted RFd (Sappington/Baker, MIT) on TNF edge strand B111-126 (Region I) — fork a363299234dd52b22, gpu4-7. Backbone-directed = intrinsically cross-react. 149 tensors built, RFd pilot running.
+- 4 SOTA research agents returned: AIMNet2/g-xTB (charged near-DFT, ~0.5x GFN2-xTB err) noted as orthogonal switch-energy confirmation; Baker dddG_elec (fa_elec-only ddG) = validated switch discriminator.
+- v4 submission stands as the floor; upload USER-GATED.
+
+## 2026-10-09 cont (integration -> submission_v5)
+- 2 switch SURVIVORS triple-confirmed (MD audit_brutal + PROPKA pKa-drop + qm GFN2-xTB dE, 3-method sign-consensus):
+  des_59_1_H51 (xreact min-ipSAE 0.521, d_repel 3.26, SAP 2.7, 3/4-nov) + des_76_2_H55 (xreact 0.633 BEST, d_repel 0.65, SAP 5.7, 4/4-nov). Both iptm 0.89-0.95, dSASA 2128/2245.
+- CUT: des69_H56 (best xreact 0.646 but switch wrong-dir -3.60), des59_H48/H30/H55 (not sig / wrong dir).
+- submission_v5.csv (md5 4d05ed2): swapped weak f8 ranks 10/20 (b1m9_1A55H_K93 sh6_r1/rx, xreact 0.36/0.26) for the 2 winners. FINAL-TEST ALL PASS (20 uniq, 0-Cys, natural AA, len 73-119).
+- ranking fix: score() cross-react now min(h,m) not delta_hm gap (rewards worst-ortholog = judging); SAP penalty graded not binary-at-2.0. v5 ranks: des_59_1_H51 #15, des_76_2_H55 #20.
+- v4 = fallback floor (unchanged). v5 = new best. Upload USER-GATED.
+- GPU: 8x RFd beta-pairing streams generating de-novo backbones (wall broken pae 5.6); bpair_full.sh pending RFd completion.
+
+## 2026-10-10 — portal novelty check -> submission_v6 (DQ fix); bpair de-novo maturation
+- Adaptyv PORTAL novelty check run on submission_v5 (GROUND TRUTH). 19/20 pass (>=3/4); ONE FAIL:
+  **b1m12_r6_A92S = 2/4** (internal estimate had it 4/4 AND ranked #1) -> submit-blocker, REMOVED.
+- Portal also corrected several internal 4/4 -> 3/4; only b1m12_A41H_vsR27 is truly 4/4. f5-C5 lineage
+  split 2/4, 3/4, 4/4 across 3 members -> lineage does NOT guarantee the novelty score; a specific seq
+  can hit a DB match. The portal check is the only hard-gate authority; internal estimates can be off 2 levels.
+- **submission_v6.csv (md5 81913f5caec2bd3e6f2985b6464c1b37)** = 19 portal-confirmed >=3/4 designs,
+  re-ranked with the v5 score(). New guaranteed-valid FLOOR. v4/v5 kept as history. `scripts/integrate_v6.py`.
+  Upload USER-GATED.
+- bpair full run DONE: 2400 backbones -> 14400 MPNN -> 28807 af2ig -> 118 pass -> 58 uniq. De-novo
+  cross-react winners (human+mouse mature TNF) MEET/BEAT best partial-diffusion: des_287_5 min-ipSAE 0.609,
+  des_2140_5 0.602, des_962_5 0.601, des_84_3 0.573, des_2106_2 0.570 (ref des_59_1 0.564, parent 0.387).
+  Cross-react DID transfer at scale (earlier pilot's mouse-0.0 was pilot-size noise). 4/4-novel de-novo folds.
+- Switch-feasibility POSITIVE: af2pred bound poses present binder interface positions <8A of target cations
+  (prior "0 positions" was from scanning the pre-prediction af2in input, not the bound pose).
+- MATURATION launched (task #29): 72 His-switch variants (8 designs x 8 closest-cation positions + wt),
+  Boltz human+mouse on all 8 GPUs (`scripts/bpair_hisscan_build.py` + `scripts/bpair_mature.sh`) ->
+  min-ipSAE gate (keep cross-react) -> MD brutal + PROPKA + xtb triple-confirm. Target: de-novo 4/4 +
+  cross-react + confirmed-switch design for the 20th slot (stronger than the removed r6_A92S).
+
+## 2026-10-10 cont — de-novo switch matured -> submission_v7 CANDIDATE (user-gated novelty)
+- bpair maturation: 72 His-switch variants (8 de-novo winners) -> Boltz h+m min-ipSAE (38 keep cross-react,
+  top improved to 0.744) -> brutal two-state MD (3 batches, 24 candidates) -> 4 SURVIVORS triple-confirmed
+  (MD d_repel>0 + PROPKA dpKa<0 + xtb dE>0), switch on CONSERVED Lys6/Lys93 (fires human+mouse):
+  des_2106_2_H43 (1.65/-1.66/+9.96, xreact 0.566, SAP0.0 instab24 Glu21% net-10, novTM 0.676 SAFEST),
+  des_287_5_H37 (2.10/-2.57/+17.35, xreact 0.703 BEST, SAP2.5, novTM 0.686),
+  des_962_5_H37 (2.23 strongest MD but noisy, xreact 0.542, novTM 0.758 RISKY, net0),
+  des_495_1_H78 (1.69/-0.15 weak, xreact 0.619, novTM 0.720).
+- NOVELTY gate (research-pinned: struct max-TM vs PDB+AFDB, <0.5=4/4 /0.5-0.8=3/4 />=0.8=DQ). Local PDB
+  proxy RELATIVE-ONLY (failed to reproduce known r6_A92S=2/4 -> AFDB missing). Absolute DEFERRED to user portal.
+- EXPRESSION research (Adaptyv EGFR benchmark): Glu% is #1 predictor (AUC0.77 > GRAVY/iptm); DROPPED ProtParam
+  instab penalty (Pro-FP) from score(). All 4 survivors express well (Glu% 19-22%); des_495_1 instab70 was FP.
+- **submission_v7.csv CANDIDATE (md5 9a21ea9965e2a438cefa481ea49d6aed)** = v6's 19 portal-verified + LEAD
+  des_2106_2_H43 (#20, ranked #6). FINAL-TEST ALL PASS. `scripts/integrate_v7.py`. runs/push/bpair_candidates.csv
+  = 4 survivors (metrics+seqs+rec) for USER portal novelty-check + swap. v6 (81913f5c) = floor. Upload USER-GATED.
+- SOTA sweep (4 agents) net: stack confirmed open-SOTA; ArcRefine has no public footprint; KaML-CBtree optional
+  4th switch vote (deferred); refinement = contingency if portal DQs a de-novo pick.
+
+## 2026-10-10 cont — ALL 4 de-novo PORTAL-NOVELTY 3/4 -> submission_v7 (validated new best)
+- USER portal novelty check on all 4 de-novo survivors: des_287_5_H37, des_2106_2_H43, des_962_5_H37,
+  des_495_1_H78 = ALL 3/4 (PASS hard gate). Novelty risk RESOLVED (mixed-a/b bpair fold is novel enough;
+  local proxy was correctly cautious but all clean).
+- **submission_v7.csv (md5 0e84b392410e59cc756036cabc8db7b6)** = v6's 19 portal-verified MINUS TNFpH07
+  (weakest cb1: FC13/xreact0.185/thermo-only) PLUS des_287_5_H37 (switch 2.10/-2.57/+17.35, xreact 0.703
+  BEST) + des_2106_2_H43 (1.65/-1.66/+9.96, xreact 0.566, pristine expr). 20 designs, FINAL-TEST PASS,
+  11 distinct lineages, cb1 6->5, 4 de-novo switch designs total. `scripts/integrate_v7.py`.
+- v7 is now a fully-validated upgrade over v6 (all 20 portal-novel >=3/4; +2 MD-confirmed-switch de-novo,
+  stronger cross-react + diversity; -1 weak cb1). v6 (81913f5c) = fallback floor. **Upload USER-GATED.**
+  backups: des_962_5_H37/des_495_1_H78 in runs/push/bpair_candidates.csv.

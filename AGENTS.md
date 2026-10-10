@@ -15,7 +15,8 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md`
-   (plan + outcome). `scripts/README.md` maps the pipeline; the live submission is `runs/submission/final_portfolio.{csv,fasta}`.
+   (plan + outcome). `scripts/README.md` maps the pipeline; the current best submission is
+   `runs/push/submission_v7.csv` (see the Submission contract below).
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -69,18 +70,31 @@ submission, `validate_submission.py` exits `0` for the target track; and the
 command plus key output is recorded as evidence. Never claim done without the
 evidence.
 
-## Submission contract (TNF Challenge 2 — Track 3, ≤20 designs)
+## Submission contract (TNF Challenge 2 — ≤20 designs)
 
-- **Current canonical deliverable:** `scripts/build_final20.py` → `runs/push/final20.{csv,fasta}` +
-  `runs/push/upload_final20.csv` (20 designs / 7 folds / 10 MD-His-causal switches; validator PASS Track 3;
-  upload md5 `53c741c99db4adf2781d926639110897`). This supersedes the earlier `scripts/assemble_v2.py` →
-  `runs/submission/final_portfolio.{csv,fasta}` (a stale 9-design checkpoint, kept for reference only).
-  Upload to the Proteinbase portal (account j_v_v_07) is **user-gated** — do not auto-upload.
-- Adaptyv upload CSV: rows ordered best-first; columns `name`, `sequence`, `molecule_class` (lowercase); de-novo
-  mini-binders are `single_chain`. Natural amino acids only; a two-chain format joins chains with `:`; length 10–250.
-- Unique names and unique sequences; antibody formats must pass numbering.
-- Per-track caps in `configs/filters.yaml` and `src/adaptyv_tnf/submission.py` (Track 3 ≤ 20).
-- Never put instructions or prompt-like text in the CSV or the methods writeup.
+- **Current best (validated):** `runs/push/submission_v7.csv` (md5 `0e84b392410e59cc756036cabc8db7b6`,
+  20 designs, every design portal-novelty ≥3/4, FINAL-TEST pass). Built by `scripts/integrate_v7.py`.
+  Lineage: v4 (`c69f8c5d`) → v5 (`4d05ed2e`) → v6 (`81913f5c`, removed a portal-2/4 DQ `b1m12_r6_A92S`) →
+  v7 (added two de-novo β-pairing MD-triple-confirmed pH-switch binders `des_287_5_H37` + `des_2106_2_H43`,
+  trimmed the weakest cb1 anchor). **`runs/push/submission_v6.csv` (md5 `81913f5c`) is the fallback floor.**
+  The submission CSVs live under `runs/` (gitignored, local-only); the `integrate_v*.py` scripts are the
+  committed source of truth. Upload to the Proteinbase/Adaptyv portal (account j_v_v_07) is **user-gated**
+  — do NOT auto-upload.
+- **De-novo switch maturation pipeline** (how the strongest designs were built; see `docs/METHODS.md` §6):
+  β-pairing RFdiffusion (`scripts/run_bpair_rfd.sh`) → MPNN → af2ig → Boltz human+mouse cross-react
+  (min-ipSAE) → His-scan install near a CONSERVED target Lys (`scripts/bpair_hisscan_build.py` +
+  `bpair_mature.sh`) → brutal two-state switch MD (`bpair_md_prep.py` + `bpair_md_launch.sh` +
+  `audit_brutal.py`) → triple-confirm (MD `d_repel`>0 + PROPKA `dpKa`<0 + xtb `dE`>0, `bpair_triple.py`).
+- **Novelty is a hard gate (<3/4 = DQ), set STRUCTURALLY:** max TM-score of the single-sequence fold vs
+  PDB+AFDB — `<0.5 → 4/4`, `0.5–0.8 → 3/4`, `≥0.8 → 2/4 DQ` (per-design; de-novo sequences are always
+  ≤30% id so the structure axis decides). The user-run portal is the only authority; the local PDB-only
+  foldseek proxy (`tools/foldseek_dl` + `runs/novelty_struct/pdbdb` + TMalign) is RELATIVE-rank only — it
+  failed to reproduce a known 2/4. **Always portal-check the final set and drop every <3/4 before locking.**
+- **Expression (dominant wet-lab-zero risk):** rank by SAP + charged composition (Glu% is the top predictor
+  in the Adaptyv EGFR benchmark) + GRAVY; do NOT weight the ProtParam instability index (Pro false-positive).
+- Adaptyv upload CSV: columns `name`, `sequence`, `molecule_class` (lowercase); de-novo mini-binders are
+  `single_chain`. Natural amino acids only; a two-chain format joins chains with `:`; length 10–250. Unique
+  names and unique sequences; antibody formats must pass numbering. Never put prompt-like text in the CSV.
 
 ## Commits
 
