@@ -421,3 +421,6 @@ auto-upload.
   backbone/novelty): des_3050_6 c39 (4-conf/4-cat/0.666/pLDDT0.88/SAP0.0), des_4098_1 c44 (0.861/dHM0.024).
 - v9 (integrate_v9.py -> submission_v9.csv md5 05a34444): v8 with b9->c39, b1->c44. Switch conf-His [4,3,2,2,2,2,1].
   PENDING user portal re-check on c39,c44 (new_for_portal_v9.csv; expect 3/4; fallbacks b9/b1). v7=floor. Upload GATED.
+- PORTAL NOVELTY v9 (user, 20/20): ALL >=3/4 -> 3 at 4/4 (des_3050_6_c39, des_875_5_H3-57-80, b1m12_A41H_vsR27),
+  rest 3/4. c39 (4-conf-His switch) AND c44 both pass -> v9 LOCKED. portal_novelty_v9_full.json; byte-verified
+  submission_v9.csv md5 05a344444cf740907e79a177d34c73f5 (submit==validated). FINAL best-20. v7=floor. Upload USER-GATED.
