@@ -550,3 +550,18 @@ auto-upload.
 - Members NOT upgradeable (stay as v9/v10): des_875_5 (0 robust His, but 4/4-novel binder), des_180_6, des_2106_2,
   des_287_5, des_59_1, b2m0, b1m12_2A67H, TNFpH06, tnf_K90 -- geometry-limited or already-robust. v10 is the ceiling
   of the fold-robust-switch-upgrade campaign.
+
+## 2026-10-10 (SESSION 12 cont. — Stop-hook persistence): BOLD de-novo RFd3 campaign for NOVEL-fold (4/4) switches
+- Hook pushed for SUSTAINED bold exploration, not convergence. Challenged the deepest assumption: that the
+  submission must be built from EXISTING (3/4-novel, derived) backbones. BOLD play = de-novo generation of BRAND-NEW
+  folds designed for the switch -> potential **4/4-novel AND strong-switch** designs (dominate novelty + #1).
+- Prior RFd3 "tnf_K90" run gave 2 de-novo binders pae<15 (model_3_4 pae13 plddt90 rmsd0.67; model_15_8 pae14) BUT
+  they contact 0 conserved cations (bind a cation-free non-conserved epitope) -> DEAD END for switch + cross-react.
+  Lesson: the de-novo binder must target the CONSERVED-CATION epitope.
+- Launched scaled RFd3 de-novo on the REGION-I spec (runs/rfd3_v11, GPUs3-6, ~1024 designs, SEED_BASE=5000): hotspots
+  V74/L75/I97/W114/Y115 neighbor Lys6/Lys93 -> binders will be switch-capable. All 4 GPUs healthy. Downstream (hours):
+  eval_rfd3_regionI.sh (MPNN soluble 0-Cys + af2ig) -> de-novo binders (plddt_binder>80, pae_int<15) -> add multi-His
+  switch (F2-style His-lock at cations) -> fold-robust triple-confirm (Boltz+Chai) -> cross-react + expression +
+  local novelty (expect 4/4) -> v11 novel-fold strong switches.
+- v10 (5 fold-robust upgrades, md5 4e0b4ce6) remains the current best improved candidate; v9 (05a344) fallback. The
+  RFd3 campaign is the sustained high-ceiling play for genuinely novel additions. Upload USER-GATED.
