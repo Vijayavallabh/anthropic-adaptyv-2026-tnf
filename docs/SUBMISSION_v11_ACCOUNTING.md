@@ -86,3 +86,16 @@ as the flagship is well-justified; "revert to c39" is a low-probability continge
    → revert c19→c39 (fallback keeps a portal-confirmed 4/4 but loses the 4-His flagship).
 2. **Upload** v10 (md5 `4e0b4ce6b294a924a416581b5bac2645`) — or v9 (md5 `05a344444cf740907e79a177d34c73f5`)
    for zero novelty-recheck risk. Upload remains USER-GATED; nothing auto-uploaded.
+
+## v11 PRODUCED — `runs/push/submission_v11.csv` md5 `ef72d8e09f11d75d7aef959b4b18a2eb`
+Beats v10 on the #1 axis via ONE defensible swap (6th-campaign wave9 confirmed no new flagship is generable):
+- OUT: `des_287_5_H37` — 0 fold-robust His AND an anti-switch (Chai linkage +0.482 = wrong sign on one fold).
+- IN: `des_4098_1_c44_w6_3` — fold-robust 2 His on the NEW cation pair [93,107] (His6/His10; distinct from
+  every other member's [6,93]/[6,60]), binds both species (iptm/ipSAE h0.85 m0.70), ESMFold pLDDT 0.88, 0-Cys.
+- Net #1 gain: total fold-robust His 19→21; removes the only wrong-sign member; adds a 3rd distinct switch
+  cation site. Other axes held: all 20 express (min pLDDT 0.79), all bind both species, 0-Cys, unique.
+- Cost: des_4098_1 now has 3 members (b14/c44 target [6,93]; c44_w6_3 targets [93,107] — mechanistically
+  distinct, not a redundant cousin); lineages 16→15. Portfolio still led by flagship c19 (4 His/3 cations).
+- Validation gate: PASS (20 / 0-Cys / unique / single_chain / pLDDT>=0.75). Novelty of the new member needs
+  the USER portal check (des_4098_1 lineage is portal-confirmed 3/4 for b14 & c44 → inherits).
+v11 is the new current-best; v10 (`4e0b4ce6…`) and v9 (`05a344…`) retained. Upload USER-GATED.
