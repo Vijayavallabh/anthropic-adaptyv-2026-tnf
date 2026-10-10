@@ -430,3 +430,44 @@ auto-upload.
   added 20-unique-SEQUENCES assert to integrate_v9; wave4b.sh fail-loud empty-jobs + nvidia-smi GPU-idle guard;
   WAVE-3B->WAVE-4B docstrings; removed dead code. submission_v9.csv bytes UNCHANGED (05a34444). HARNESS SYNCED
   (AGENTS.md + session-handoff.md + docs/METHODS.md §8 + scripts/README.md + docs/PLAN_TNF.md -> v9).
+
+## 2026-10-10 (SESSION 11, Stop-hook /goal bold campaign): v9 verified-robust; 4 bold bets A/B/C/D stress-tested
+- GOAL = bold/unconventional to deadline; test rigorously, distinguish speculation from results. Synthesis
+  (stress-test agent + own analysis): v9 near-optimal, multi-His separated-cation lever mined out; run cheap
+  bounded gates for a diversity hedge / legibility figure, then harden + write-up + USER-GATED upload. v9 UNCHANGED.
+- EXPRESSION HARDEN (dominant wet-lab-zero risk): expr_audit20.py over ALL 20 -> primary axis ESMFold monomer
+  pLDDT **0.79-0.94 (every member strong)**; orthogonal SAP+/GRAVY/acidic%/netQ. 1 consensus-drop (b1m9_A12H:
+  SAP+6.7 top-decile + GRAVY+0.30) but **KEPT** -> it is portal-confirmed >=3/4 so a swap trades soft yield-risk
+  for HARD novelty-DQ; no lineage-preserving portal-confirmed replacement exists (v8-not-v9 = same-lineage b9/b1);
+  pLDDT0.87 => primary predictor says it expresses. No action improves v9 without DQ risk. master_v9.csv completed
+  (all 20 expression cols + novelty corrected: 3 at 4/4). submission md5 05a344 UNCHANGED.
+- BET A (buried His-network, Baker method-2 cooperative Hill>1): cheapest probe = pre-existing buried His...cation
+  pair in a de-novo core -> NONE (c39/des_180_6/des_4098_1_b14 scanned, 0 buried His-cation pairs <8A). Building one
+  de-novo mutates core => risks fold + dominant expression axis for an UNVERIFIABLE cooperativity claim -> **DROPPED
+  (no low-risk path)**. Honest negative.
+- BET C (multi-state tied MPNN cross-react): **refuted by bytes** earlier (runs/jxr 0/256). Dropped.
+- BET D (SMD functional-release, md_pull_tnf.py; Jarzynski pull-work in both His states, implicit solvent):
+  **c39** (His49,50,54,79) W_HIE 406.3+/-9.9 > W_HIP 390.2+/-3.9 -> dW_release **+16.1 kcal (release sign OK)**;
+  GLN control 403.7 tracks the NEUTRAL state (not protonated) => signal is **His-specific**. 3rd orthogonal switch
+  leg (dynamic), same sign as PROPKA+xTB; QUALITATIVE (~1.5sigma@3rep, not converged). GENERALIZATION: c44
+  (His6,74) dW_release **+4.88 kcal** correct sign but weak (within noise; c44 rests on xTB dE8.9+PROPKA) -> 2/2
+  designs correct release sign. runs/pull/{des_3050_6_c39,des_4098_1_c44}_pull.json; c39_more(+6rep) GPU3 firming SEM.
+- EVIDENCE DOC: docs/SUBMISSION_v9_EVIDENCE.md (mechanism + 20-design table + triple-confirm incl SMD + expression +
+  novelty + cross-react + portfolio + bold-campaign). Declined a quantitative fold-change (interface pKa predictors
+  disagree 2-3u > pH window => false precision); conf-His count [4,3,2,2,2,2,1] is the honest selectivity proxy.
+- OUTCOME: all 4 bold bets explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
+  optimal, cousins excluded for diversity), expression (all 0.79-0.94, no DQ-safe swap), novelty (20/20 >=3/4),
+  diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED. Upload USER-GATED.
+- BET B (Mosaic de-novo, Escalante gradient seq-space; won Adaptyv Nipah/TREM2): ran GPU0, 8 human-TNF designs ->
+  6/8 are 36-47% Ala (floor mode). INDEPENDENT held-out Boltz arbiter (runs/boltz_moshuman): 3 high (mosh_0 iptm
+  0.917/ipSAE_min **0.778**, mosh_5 0.861/0.67, mosh_3 0.865/0.64). **Mosaic CAN bind** (mosh_0 ipSAE 0.78 >= most
+  v9) BUT fails the DECISIVE axes: (1) EXPRESSION mosh_0 GRAVY **+0.63** / mosh_5 **+0.69** (worse than ANY v9
+  member; worst v9 was +0.30) + 36-38% Ala => severe aggregation, near-zero wet-lab; the 0.78 DEPENDS on the Ala
+  helix that dooms expression. (2) SWITCH mosh_5=0 His, mosh_0=1 incidental His (@70) -> NO multi-His architecture,
+  scores 0 on #1 axis. (3) EPITOPE diffuse 20-26 target residues (non-specific wrap), only incidental Region-I
+  {114,115}/cation overlap. High iptm = oracle self-consistency trap (Ala-helix on hydrophobic patch). Salvage =
+  rebuild v9 wave-3/4b+triple+portal on an inferior non-switchable seed, no time to validate -> **Bet B CLOSED**.
+  JOINT bispecific NOT run (same floor mode; won't fix expression/switch). Confirms de-novo generators floor on the
+  flat TNF target => v9's multi-His-on-validated-binders is correct.
+- v9 remains THE submission (byte-verified 05a344444cf740907e79a177d34c73f5). Bold-bet outputs are HEDGES ONLY;
+  fold in only a demonstrable pass that beats v9 AND is portal-novel. Upload USER-GATED.
