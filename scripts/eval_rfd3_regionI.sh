@@ -21,7 +21,7 @@ for g in $GL; do mkdir -p "$W/gpu$g"; printf '[%s]' "${LS[$g]%,}" > "$W/gpu$g/mu
 for p in "${pids[@]}"; do wait "$p"||true; done
 echo "[$TAG] MPNN: $(find "$W" -path '*/backbones/*.pdb'|wc -l)"
 uv run python scripts/build_fullatom_af2in_tnf.py --mpnn "$W/gpu*/backbones/*.pdb" \
-    --target data/targets/1TNF_AB.pdb --target-chains "B,C" --binder-chain A --out "$AIN" 2>&1|grep -v VIRTUAL_ENV|tail -2
+    --target data/targets/1TNF_BC.pdb --target-chains "B,C" --binder-chain A --out "$AIN" 2>&1|grep -v VIRTUAL_ENV|tail -2
 uv run python scripts/run_af2ig.py --pdbdir "$AIN" --out "$AIG" --gpus "$GPUS" --mode fast > "$REPO/runs/${TAG}_af2ig_run.log" 2>&1
 echo "=== ${TAG} Region-I RFd3->MPNN PASS RATE ==="
 awk 'NR>1 && $4!="nan"{n++; if($4+0<10&&$6+0>80&&$2+0<2)p++; if($4+0<14)p14++; if($4+0<18)p18++} END{printf "scored=%d PASS(pae<10)=%d pae<14=%d pae<18=%d\n",n,p+0,p14+0,p18+0}' "$AIG/out.sc"
