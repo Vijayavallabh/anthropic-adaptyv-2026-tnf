@@ -413,3 +413,11 @@ auto-upload.
 - v8 (integrate_v8.py -> runs/push/submission_v8.csv md5 8566b133): 7 new multi-His switches (5 lineages) + 13 diverse
   portal-verified v7 floor (dropped 3 excess cb1 + des_76_2 SAP + b2m0_c20 twin + b1m7_A66H decoupled + b4m2 3rd).
   16 lineages/20. PENDING user portal novelty on 8 new (new_for_portal.csv); backfill = 7 dropped v7. v7=floor. Upload GATED.
+- PORTAL NOVELTY (user, 8/8): ALL >=3/4 -> des_875_5_H3-57-80 **4/4**, other 7 = 3/4. v8 LOCKED (portal_novelty_wave3.json).
+  des_4098_1 b1/b3 (HIGH-risk proxy ~0.75) came back 3/4 (AFDB did NOT push >=0.8).
+- WAVE-4B (His-biased deeper interface-adapt MPNN on the 5 confirmed lineages, bias_AA H:1.5, 48 samples): 245
+  designs -> 31 switch candidates (now 4 DISTINCT cations/design) -> 16 TRIPLE-CONFIRMED (double wave-3's 8).
+  His-loaded (8-12%) but monomer pLDDT 0.82-0.88 + SAP<=0.1 (His is polar). Within-lineage UPGRADES (same verified
+  backbone/novelty): des_3050_6 c39 (4-conf/4-cat/0.666/pLDDT0.88/SAP0.0), des_4098_1 c44 (0.861/dHM0.024).
+- v9 (integrate_v9.py -> submission_v9.csv md5 05a34444): v8 with b9->c39, b1->c44. Switch conf-His [4,3,2,2,2,2,1].
+  PENDING user portal re-check on c39,c44 (new_for_portal_v9.csv; expect 3/4; fallbacks b9/b1). v7=floor. Upload GATED.
