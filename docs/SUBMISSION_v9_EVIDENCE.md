@@ -63,6 +63,17 @@ co-folder prior); tnf_K90 (0.42/0.20) weak on both (genuine Boltz/Chai disagreem
 stratification: 15/20 strong on both co-folders (Boltz+Chai); 5 lower-confidence (2 both-species, 3 mouse-only),
 logged.** This is honest risk disclosure, not a submission change — Boltz-validated + portal-confirmed throughout.
 
+**Fold-robustness of the switch (honest #1 refinement; `runs/push/foldrobust_his.tsv`).** The conf-His counts in
+§2 are from the triple-confirm on the Boltz complex. His-confirmation is fold-dependent (a single-structure count
+overcounts), so each switch-core design was re-triple-confirmed on the independent Chai complex. Confirmed His
+(Boltz / Chai): c44 2/2, b14 3/2, des_3050_6_H52-54-79 2/2, des_180_6 2/3, c39 4/2, des_818_4 2/1, des_875_5 1/0.
+**Robust multi-His = ≥2 confirmed on BOTH folds: 5/7.** STRONGEST: **c44 & b14** — 2 strong distinct-cation His
+(His→Lys93 + His→Lys6, dE +2.5…+6.8) on both folds. c39's Boltz "4 His" was structure-specific (2 weak
+same-cation His on Chai). Fold-sensitive/weaker: des_818_4 (1 on Chai), des_875_5 (0 on Chai) — single/marginal
+switches kept as portal-novel validated binders (diversity hedge), not strong-switch showcases. This conservative
+cross-fold check tempers the headline counts; it does not change the submission (all 7 remain multi-/single-His
+pH-switch binders, portal-novel and expression-verified). The honest #1-axis bets are c44 and b14.
+
 ## 3. Switch-confirm gate (per His; design confirmed if ≥2 His pass) — two independent thermodynamic methods
 
 1. **PROPKA Wyman linkage** — bound-state His pKa suppressed by the cation (dpKa < 0 = protonation disfavors

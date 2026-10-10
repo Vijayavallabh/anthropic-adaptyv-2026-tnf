@@ -478,7 +478,13 @@ auto-upload.
   50/52 are fold-dependent artifacts, His52 flips dpKa +0.05). => His-confirmation is FOLD-DEPENDENT; the Boltz
   4-His was overcounted. **BET E NEGATIVE — REJECT c44_R50H_E52H; lever robustly mined-out.** scripts/
   triple_confirm_mut.py; [[lesson-his-confirm-is-fold-dependent]].
-- OUTCOME: all bold bets (A/B/C/D + E His-headroom) explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
+- FOLD-ROBUST HIS (applied the Bet-E lesson to v9 itself; runs/push/foldrobust_his.tsv): re-triple-confirmed the 7
+  switch core on independent CHAI structures. Confirmed His Boltz/Chai: c44 2/2, b14 3/2, 3050_6_H52 2/2, 180_6 2/3,
+  c39 **4/2** (Boltz-inflated: 2 weak same-cation on Chai), 818_4 2/1, 875_5 1/0. **Robust multi-His (>=2 both folds)
+  = 5/7**; STRONGEST c44 & b14 (2 strong distinct-cation His, dE+2.5..6.8, both folds). 818_4/875_5 fold-sensitive
+  (single/marginal) — kept as portal-novel hedge binders. Tempers headline counts; submission UNCHANGED. Honest #1
+  bets = c44, b14. docs/SUBMISSION_v9_EVIDENCE.md §2b updated.
+- OUTCOME: all bold bets (A/B/C/D + E His-headroom) explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (robust multi-His 5/7 + selection
   optimal, cousins excluded for diversity), expression (all 0.79-0.94, no DQ-safe swap), novelty (20/20 >=3/4),
   cross-react (2 co-folders agree balanced), diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED.
   Upload USER-GATED. docs/SUBMISSION_v9_EVIDENCE.md = full record (§2b Chai, §3 SMD-null, §4 expression, §8 bold).
