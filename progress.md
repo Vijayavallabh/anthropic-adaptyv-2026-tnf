@@ -373,3 +373,43 @@ auto-upload.
 - v7 is now a fully-validated upgrade over v6 (all 20 portal-novel >=3/4; +2 MD-confirmed-switch de-novo,
   stronger cross-react + diversity; -1 weak cb1). v6 (81913f5c) = fallback floor. **Upload USER-GATED.**
   backups: des_962_5_H37/des_495_1_H78 in runs/push/bpair_candidates.csv.
+
+## 2026-10-10 cont — adversarial stress-test (8-agent workflow) -> best-20-on-all-metrics campaign
+- USER mandate: best 20 on ALL metrics at all costs, willing to discard ALL current designs.
+- Stress-test workflow (wl9lmukbb, 8 independent adversarial verifiers reading evidence by bytes): under the
+  strict all-metrics bar only 2 current designs are STRONG-ON-ALL: des_287_5_H37, des_2106_2_H43. 3 MARGINAL
+  (b2m0_c70 mouse-biased Dhm0.318; b1m12_A41H_vsR27 best-binder+only-4/4 but modest switch; des_59_1_H51 mouse
+  0.521+expr2.7). 15 DISCARD incl ALL 5 cb1 (switch thermo-only/MD-CONTRADICTED neg d_repel + weak x-react),
+  des_76_2_H55 (SAP5.7 expr risk), and (caught my blind spots) b1m7_A66H (switch DECOUPLED from binding, d_iface
+  0.003 = constitutive binder), b4m2_A57H (mouse 0.370), b1m9_A12H (mouse 0.387), b2m0_c20 (97% twin of c70).
+- **KEY METHOD CATCH: audit_brutal gates d_repel (His-Lys separation) NOT d_iface (interface release).** Both KEEPs
+  have d_iface~0 (des_287_5 0.03, des_2106_2 -0.005) -> switch MECHANISM confirmed (interface His-Lys repulsion,
+  His-specific via Gln ctrl) but FUNCTIONAL release unconfirmed in 3ns (unbinding is us-scale); single-His fold-change
+  is modest (Baker TNF: 79x only via buried-His-networks). des_287_5/des_2106_2 are interface (not internal/decoupled
+  like b1m7) so remain valid, with honest modest-magnitude caveat.
+- **BIGGEST RISK: one-deep on des_287_5_H37** (only design strong on BOTH switch AND balanced mouse x-react).
+  Mouse x-react across the set is folder-optimistic; gate the new wave on balanced two-species binding (small Dhm /
+  matched co-fold delta, NOT raw mouse ipSAE) AND triple-confirmed in-contact switch in the SAME molecule -> >=3-4
+  dual-strong anchors.
+- REFINED wave-2 gate: dual-strong (min-ipSAE>=0.55 AND Dhm<=~0.12 balanced) + triple-confirm + report d_iface;
+  longer-MD (10ns) d_iface functional-switch confirmation for finalists. v7 (0e84b392) = fallback floor (contains
+  discarded designs -> NOT the best-20; the new campaign targets v8). Upload USER-GATED.
+
+## 2026-10-10 (SESSION 10): research pivot -> multi-His (Baker SOTA) -> wave-3 -> v8
+- RESEARCH SWEEP (5-agent) corrected strategy: single-His = WEAK end of Baker 2025 (bioRxiv 2025.09.29.678932);
+  validated recipe = >=2-3 SEPARATED His each repelling a DISTINCT conserved TARGET cation (TNF-alpha 79x).
+  d_iface~0 is EXPECTED (dissociation seconds-scale, unobservable in MD); honest ceiling = thermodynamic linkage
+  (PROPKA+xTB). Expression frontier AUROC~0.72 = monomer ESMFold pLDDT + SAP (ML seq-solubility tools = OOD noise).
+  Cross-react: multi-state tied MPNN puts mouse in the OBJECTIVE (Odin-Multi 3-10x); footprint-count REFUTED (rho0.07).
+  ArcRefine REAL but fold-preserving (no novelty). No tool breaks the flat-polar+pH6.0 wall -> execution-bound.
+  Killed the futile 15ns d_iface MD; see [[lesson-ph-switch-multi-his-separated-cations-baker-sota]].
+- WAVE-3 pipeline (conserved cations from human<->mouse align: idx 1,6,27,39,60,77,85,93,98,107,123; K6/K93 strong):
+  TRACK A (wave3_hisscan_build.py) multi-His point-combos on top-10 balanced binders -> 139 variants -> fold h+m
+  (wave3_fold.sh) -> 31 dual-strong, 11 multi-His switch (>=2 distinct cations <8A) -> triple-confirm 4 OK.
+  TRACK B (wave3b_prep/mpnn/analyze) LigandMPNN redesigns interface SHELL around FIXED multi-His (backbone kept ->
+  novelty=parent) -> 160 designs -> 13 switch -> triple-confirm 4 OK (interface-adaptation FIXED des_4098_1 wrong sign).
+  8 triple-confirmed multi-His switches / 5 lineages; monomer pLDDT 0.79-0.90, SAP<=1.2, novTM proxy 0.59-0.76 (~3/4,
+  calibrated vs portal-verified des_287_5/des_2106_2/des_59_1 at 0.56-0.67). des_4098_1 b1/b3 = HIGH novelty risk (~0.75).
+- v8 (integrate_v8.py -> runs/push/submission_v8.csv md5 8566b133): 7 new multi-His switches (5 lineages) + 13 diverse
+  portal-verified v7 floor (dropped 3 excess cb1 + des_76_2 SAP + b2m0_c20 twin + b1m7_A66H decoupled + b4m2 3rd).
+  16 lineages/20. PENDING user portal novelty on 8 new (new_for_portal.csv); backfill = 7 dropped v7. v7=floor. Upload GATED.

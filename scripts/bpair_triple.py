@@ -7,7 +7,7 @@ switch-His dpKa<0 (pKa DROPS on binding = Dn_H<0 = release at low pH); GFN2-xTB 
 import sys, json, subprocess, os
 R="/home/prachh/v/anthropic-adaptyv-2026-tnf"; os.chdir(R)
 VENV=f"{R}/.venv/bin/python"; MD2=f"{R}/envs/md2/bin/python"
-mani={x["variant"]:x for x in json.load(open("runs/bpair_mature/md_manifest_all.json"))}
+mani={x["variant"]:x for x in json.load(open(os.environ.get("BPAIR_MANIFEST","runs/bpair_mature/md_manifest_all.json")))}
 survs=sys.argv[1:]
 if not survs:
     print("usage: bpair_triple.py <survivor_variant> ..."); sys.exit(1)
