@@ -536,3 +536,17 @@ auto-upload.
 - **CAUGHT a liability**: F2 MPNN (no omit-Cys) put 1 Cys in c13 -> Cys->Ser (c13S) re-folded+re-confirmed 0-Cys,
   fold-robust 2 His intact, binding 0.895/0.807. v10 is 0-Cys.
 - v9 (05a344) remains byte-locked FALLBACK. Upload USER-GATED. If any new design <3/4 portal -> revert that swap.
+
+## 2026-10-10 (SESSION 12 cont.): wave5b/5c exhausted the upgrade search — v10 (5 upgrades) is the improved frontier
+- wave5b (more variants of non-yielding F2 lineages) + wave5c (des_875_5, des_180_6 F2 treatment, --omit_AA C):
+  all BIND well both folds (Chai 0.84-0.88) but FAIL the fold-robust >=2-His gate. b1m12_2A67H_w5_5 = fold-robust 1
+  His (2nd fails on Chai); des_875_5_w5c_1 / des_180_6 = fold-robust 0-1. CONCLUSION: these lineages are
+  GEOMETRY-LIMITED -- they contact Lys93+Lys6 but cannot present 2 fold-robust His (a backbone property, not fixable
+  by more MPNN). Honest negative; upgrade search EXHAUSTED.
+- **FINAL improved candidate = v10** (5 fold-robust upgrades: c13S, c19, b1m7_w5_3, b4m2_r1_w5_3, b1m9_w5_3;
+  md5 4e0b4ce6, 0-Cys). ~Doubles strong fold-robust multi-His switches (~5->~9) vs v9, 16 lineages preserved.
+  5 NEW need USER portal-check (new_for_portal_v10.csv; novelty inherits from portal-confirmed parents, proxy-OK).
+  v9 (05a344) = byte-locked FALLBACK. Upload USER-GATED. docs/SUBMISSION_v10_CANDIDATE.md.
+- Members NOT upgradeable (stay as v9/v10): des_875_5 (0 robust His, but 4/4-novel binder), des_180_6, des_2106_2,
+  des_287_5, des_59_1, b2m0, b1m12_2A67H, TNFpH06, tnf_K90 -- geometry-limited or already-robust. v10 is the ceiling
+  of the fold-robust-switch-upgrade campaign.
