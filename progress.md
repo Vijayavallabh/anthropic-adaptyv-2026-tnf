@@ -501,3 +501,24 @@ auto-upload.
   flat TNF target => v9's multi-His-on-validated-binders is correct.
 - v9 remains THE submission (byte-verified 05a344444cf740907e79a177d34c73f5). Bold-bet outputs are HEDGES ONLY;
   fold in only a demonstrable pass that beats v9 AND is portal-novel. Upload USER-GATED.
+
+## 2026-10-10 (SESSION 12, Stop-hook: resumed improving — fold-robust upgrades + v10 candidate)
+- Stop-hook pushed back: v9 unchanged, I held instead of improving. CHALLENGED the "frontier" assumption + the
+  self-imposed "can't change the 20 (portal-gated)" limit -> the gate is a STEP not a wall: GENERATE stronger
+  designs + stage for user portal-check. Target = v9's fold-robust-weakest #1 members (des_875_5 0-robust-His,
+  des_818_4_H16-74 1-robust, c39 Boltz-inflated).
+- CAMPAIGN F. **F1 (mine non-v9 wave4b under the new FOLD-ROBUST bar)**: Chai-fold + Chai-triple-confirm the 14
+  non-v9 Boltz-confirmed designs. All 14 bind on Chai (>=0.72). Fold-robust GEMS found:
+  - **des_818_4_c13**: fold-robust 2 His on DISTINCT cations [Lys6,Lys93] (same positions both folds), dHM 0.008
+    (best in pool), pLDDT 0.86, SAP 1.1, Chai bind 0.818. CLEAR UPGRADE for des_818_4_H16-74 (1 robust His, dHM
+    0.105, SAP 5.4): wins #1+#2+expression, only #3 slightly lower. novelty proxy 0.885 ~= parent 0.888 (3/4).
+  - **des_3050_6_c19**: fold-robust 3 His on 2 cations [Lys93,Lys60], pLDDT 0.83; upgrade for c39 (2 weak His/1
+    cation). proxy 0.845 < c39 0.859 (more novel). Binding 0.586 (slightly < c39 0.666).
+  - des_3050_6_c34 (fold-robust 2, dHM 0.016), des_4098_1_c39 (fold-robust 2) also solid.
+- **v10 CANDIDATE** (runs/push/submission_v10.csv md5 6776d3d0): v9 with des_818_4_H16-74->c13 + des_3050_6_c39->c19.
+  2 NEW designs need USER portal-check (new_for_portal_v10.csv); likely inherit parent novelty (proxy-confirmed).
+  v9 remains byte-locked FALLBACK (05a344). v10 is stronger on fold-robust #1 if both pass portal.
+- **F2 (multi-His on DIVERSE backbones = new lineages)**: 11 diverse v7-floor backbones contact BOTH strong anchors
+  Lys93+Lys6 (des_2106_2 1.5/2.9A, des_287_5, des_59_1, b2m0, b1m7...). Ran the proven wave3b method (His-lock at
+  anchors + LigandMPNN local-shell redesign) -> 176 variants -> Boltz fold h+m RUNNING (then Chai + fold-robust
+  triple-confirm). Goal: strong-robust switches in NEW lineages (strong #1 + diversity). scripts/wave5_prep.py.
