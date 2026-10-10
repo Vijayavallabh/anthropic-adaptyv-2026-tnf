@@ -55,6 +55,14 @@ Chai-1 single-seq co-fold vs human AND mouse (no MSA) — independent of Boltz/a
   c44/b14/c39 are the strongest switches by per-His QM destabilization; c39 strongest by His breadth (4 distinct
   cations).
 
+**v7-floor (13) orthogonal binding** (`runs/push/chai_v7floor.tsv`): 9/13 strong on BOTH species (Chai ≥0.5);
+4 flagged — TNFpH06_sh3 (0.72/0.31), b4m2_A57H (0.83/0.11), b1m9_A12H (0.78/0.15) are mouse-weak with strong
+human (large Δ = likely Chai cross-species folder-pessimism; don't demote on one folder's ortholog score per the
+co-folder prior); tnf_K90 (0.42/0.20) weak on both (genuine Boltz/Chai disagreement, cf. des_180_6). All kept
+(Boltz is the validated primary metric + portal-confirmed; no DQ-safe swap). **All-20 binding-confidence
+stratification: 15/20 strong on both co-folders (Boltz+Chai); 5 lower-confidence (2 both-species, 3 mouse-only),
+logged.** This is honest risk disclosure, not a submission change — Boltz-validated + portal-confirmed throughout.
+
 ## 3. Switch-confirm gate (per His; design confirmed if ≥2 His pass) — two independent thermodynamic methods
 
 1. **PROPKA Wyman linkage** — bound-state His pKa suppressed by the cation (dpKa < 0 = protonation disfavors

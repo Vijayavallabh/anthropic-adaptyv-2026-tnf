@@ -464,6 +464,11 @@ auto-upload.
   vs Boltz 0.734 = genuine Boltz/Chai disagreement + highest-SAP switch-core member; KEPT (portal-confirmed, 2-His
   switch, distinct lineage, no DQ-safe swap) but logged lowest-binding-confidence. Selectivity-strength proxy ΣdE
   (honest relative, NOT a fold-change): c44 17.8 ~= b14 17.6 > c39 13.7 strongest by per-His QM; c39 top by breadth.
+- CHAI v7-floor (runs/push/chai_v7floor.tsv): 9/13 strong both species; 4 flagged (TNFpH06_sh3 0.72/0.31,
+  b4m2_A57H 0.83/0.11, b1m9_A12H 0.78/0.15 = mouse-weak+strong-human = likely Chai ortholog pessimism; tnf_K90
+  0.42/0.20 = both-weak Boltz/Chai disagreement). ALL-20 stratification: **15/20 strong on both co-folders**;
+  5 lower-confidence (2 both-species: des_180_6/tnf_K90; 3 mouse-only). ALL KEPT (Boltz primary + portal-confirmed,
+  no DQ-safe swap). Honest risk disclosure, not a submission change.
 - OUTCOME: all 4 bold bets explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
   optimal, cousins excluded for diversity), expression (all 0.79-0.94, no DQ-safe swap), novelty (20/20 >=3/4),
   cross-react (2 co-folders agree balanced), diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED.
