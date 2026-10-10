@@ -61,7 +61,9 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 - `./init.sh`: core env plus smoke tests (fast, CPU-only).
 - `uv run pytest`: test suite (schema, length, numbering, liabilities).
 - `uv run python -m compileall -q src scripts`: compile check.
-- `uv run python scripts/validate_submission.py <csv> --track <N>`: submission gate.
+- `uv run python scripts/validate_submission.py <csv> --track <N>`: submission gate (EGFR Challenge 1 — stale).
+- `bash scripts/validate_v9.sh`: **TNF Challenge 2 definition-of-done gate** (current) — submission bytes/format
+  + recorded evidence (expression pLDDT, portal novelty, Chai binding provenance); exit 0 = PASS. v9 = PASS.
 
 ## Definition of done
 
