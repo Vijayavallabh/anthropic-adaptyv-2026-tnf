@@ -447,11 +447,13 @@ auto-upload.
   (no low-risk path)**. Honest negative.
 - BET C (multi-state tied MPNN cross-react): **refuted by bytes** earlier (runs/jxr 0/256). Dropped.
 - BET D (SMD functional-release, md_pull_tnf.py; Jarzynski pull-work in both His states, implicit solvent):
-  **c39** (His49,50,54,79) W_HIE 406.3+/-9.9 > W_HIP 390.2+/-3.9 -> dW_release **+16.1 kcal (release sign OK)**;
-  GLN control 403.7 tracks the NEUTRAL state (not protonated) => signal is **His-specific**. 3rd orthogonal switch
-  leg (dynamic), same sign as PROPKA+xTB; QUALITATIVE (~1.5sigma@3rep, not converged). GENERALIZATION: c44
-  (His6,74) dW_release **+4.88 kcal** correct sign but weak (within noise; c44 rests on xTB dE8.9+PROPKA) -> 2/2
-  designs correct release sign. runs/pull/{des_3050_6_c39,des_4098_1_c44}_pull.json; c39_more(+6rep) GPU3 firming SEM.
+  **NULL — small-n false positive caught by adding reps.** c39 (His49,50,54,79) at 3 reps dW_release +16.1 kcal
+  looked clean (GLN control His-specific), BUT at **9 reps dW=+0.1 +/-~11** (HIE 398.5+/-7.8 ~= HIP 398.5+/-7.1,
+  consistent with ZERO) — the +16.1 was noise. c44 (His6,74) +4.88@3rep also within noise. CONCLUSION: steered MD
+  at feasible sampling does NOT resolve the pH-release signal (dissociation seconds-scale) -> CONFIRMS the
+  thermodynamic ceiling (PROPKA+xTB are the switch evidence, NOT SMD). Honest negative; does not weaken the
+  switch-core (gated on PROPKA+xTB). runs/pull/{des_3050_6_c39_pull.json, c39_more/des_3050_6_c39_pull.json,
+  des_4098_1_c44_pull.json}. [[lesson-ensemble-win-on-small-n-is-noise]] vindicated.
 - EVIDENCE DOC: docs/SUBMISSION_v9_EVIDENCE.md (mechanism + 20-design table + triple-confirm incl SMD + expression +
   novelty + cross-react + portfolio + bold-campaign). Declined a quantitative fold-change (interface pKa predictors
   disagree 2-3u > pH window => false precision); conf-His count [4,3,2,2,2,2,1] is the honest selectivity proxy.

@@ -31,24 +31,25 @@ anchors. At pH7.4 His is neutral → binds; at pH6.0 His⁺···cation⁺ repul
 conf-His = # His passing the per-His triple-confirm. min-ipSAE = min(human,mouse) Boltz ipSAE (binding).
 Δ_hm = |ipSAE_human − ipSAE_mouse| (balance; lower = more cross-reactive). SAP+/GRAVY = expression (lower).
 
-## 3. Triple-confirm gate (per His; design confirmed if ≥2 His pass)
+## 3. Switch-confirm gate (per His; design confirmed if ≥2 His pass) — two independent thermodynamic methods
 
 1. **PROPKA Wyman linkage** — bound-state His pKa suppressed by the cation (dpKa < 0 = protonation disfavors
    binding = correct switch sign). `scripts/collective_his_linkage.py`.
 2. **GFN2-xTB** capped-cluster interaction energy — dE_switch = E_int(HIP) − E_int(HIE) > 0 (protonated state
    destabilized). `scripts/qm_switch_fair.py` (`envs/xtb`). Example c39: His49 dE +3.68, His79 dE +4.66.
-3. **SMD dynamic corroboration** (this session, `scripts/md_pull_tnf.py`) — steered-MD binder↔target
-   separation work in both His states (implicit solvent, Jarzynski). des_3050_6_c39 (His 49,50,54,79):
-   W(HIE,neutral) 406.3±9.9 > W(HIP,protonated) 390.2±3.9 kcal → **dW_release +16.1 kcal** (neutral binds
-   tighter). GLN (His→Gln) control 403.7 tracks the NEUTRAL state → signal is **His-specific**. Generalization:
-   des_4098_1_c44 (His 6,74) dW_release **+4.88 kcal** — correct sign but weak (within noise; c44's switch rests
-   on its strong xTB dE 8.9 + PROPKA, under-resolved by 3ns SMD). 2/2 designs correct sign. Qualitative
-   (~1.5σ@3rep; sign, not converged magnitude) — a 3rd orthogonal leg, same sign as PROPKA+xTB.
 
-The honest in-silico pH-selectivity ceiling is the thermodynamic proton-linkage sign + confirmed-His count;
-protein–protein dissociation is seconds-scale and unobservable in unbiased MD (d_iface≈0 is EXPECTED). We do
-NOT report a quantitative fold-change: interface pKa predictors disagree by 2–3 units (> the pH window), so a
-numeric FC would be false precision. conf-His count is the honest selectivity proxy.
+The honest in-silico pH-selectivity ceiling is this thermodynamic proton-linkage sign + confirmed-His count;
+protein–protein dissociation is seconds-scale and unobservable in MD (d_iface≈0 is EXPECTED). We do NOT report a
+quantitative fold-change: interface pKa predictors disagree by 2–3 units (> the pH window), so a numeric FC would
+be false precision. conf-His count [4,3,2,2,2,2,1] is the honest selectivity proxy.
+
+**SMD bold-bet probe (Bet D) — NULL, by design-honesty.** `scripts/md_pull_tnf.py` steered-MD binder↔target
+separation work in both His states. At LOW sampling (3 reps) des_3050_6_c39 showed dW_release +16.1 kcal, but it
+**did not survive**: at 9 reps dW = **+0.1 ± ~11 kcal** (HIE 398.5±7.8 ≈ HIP 398.5±7.1, consistent with zero);
+des_4098_1_c44 (3 reps) +4.88 was likewise within noise. The +16.1 was a small-n fluctuation. Conclusion: steered
+MD at feasible sampling does **not** resolve the pH-release signal — which **confirms** the thermodynamic ceiling
+above. The switch evidence rests on PROPKA + xTB, NOT SMD. (Recorded as a negative; it does not weaken the
+switch-core, which was gated on the two thermodynamic methods.)
 
 ## 4. Expression (dominant wet-lab-zero risk) — all 20 verified
 
@@ -87,7 +88,9 @@ redundant lineage-cousins of included members; excluding them is deliberate (div
   non-specific epitope. Salvage = rebuild v9's pipeline on an inferior seed → **CLOSED**. Confirms de-novo
   generators floor on the flat TNF target → v9's multi-His-on-validated-binders is correct.
 - **C multi-state tied MPNN** (cross-react in the objective): **refuted by bytes** (runs/jxr, 0/256).
-- **D SMD functional-release**: delivered the §3 dynamic sign (corroborative, qualitative).
+- **D SMD functional-release**: **NULL** — the 3-rep +16.1 kcal did not survive to 9 reps (+0.1, consistent with
+  zero; §3). MD does not resolve the release signal at feasible sampling; confirms the thermodynamic ceiling. A
+  rigorously-caught small-n false positive, not a win.
 
 ## 9. Reproduce
 
