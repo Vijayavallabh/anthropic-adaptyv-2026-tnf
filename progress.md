@@ -522,3 +522,17 @@ auto-upload.
   Lys93+Lys6 (des_2106_2 1.5/2.9A, des_287_5, des_59_1, b2m0, b1m7...). Ran the proven wave3b method (His-lock at
   anchors + LigandMPNN local-shell redesign) -> 176 variants -> Boltz fold h+m RUNNING (then Chai + fold-robust
   triple-confirm). Goal: strong-robust switches in NEW lineages (strong #1 + diversity). scripts/wave5_prep.py.
+
+## 2026-10-10 (SESSION 12 cont.): F2 YIELDED — v10 candidate with 5 fold-robust upgrades (user-portal-gated)
+- F2 multi-His on diverse backbones: 176 variants, 159 bind both species (Boltz); top-2/lineage triple-confirmed
+  on BOTH folds. Fold-robust (Boltz∩Chai 2-His/2-cation) WINNERS: b1m7_w5_3 (bind 0.879/0.878 Δ0.001, SAP 1.1),
+  b4m2_r1_w5_3 (0.796/0.825). b1m9_w5_3 = 1 robust His (mild). Non-robust (fold-dependent His, dropped): des_2106_2,
+  b1m12, des_287_5 (Chai-weak bind), b2m0 (0 His).
+- v10 CANDIDATE (submission_v10.csv md5 4e0b4ce6, 0-Cys, 16 lineages): 5 same-lineage fold-robust upgrades vs v9 --
+  des_818_4_H16-74->c13S (2 His, dHM~0.008, SAP0.9; Cys->Ser fix of c13), des_3050_6_c39->c19 (3 His/2 cat),
+  b1m7->b1m7_w5_3 (2 His), b4m2_r1->b4m2_r1_w5_3 (2 His), b1m9_A12H->b1m9_w5_3 (1 His + better expr). ~DOUBLES strong
+  fold-robust multi-His switches (~5->~9) while preserving diversity. 5 NEW need USER portal-check (new_for_portal_v10;
+  MPNN reseqs on portal-confirmed parent folds -> novelty inherits, proxy-confirmed). docs/SUBMISSION_v10_CANDIDATE.md.
+- **CAUGHT a liability**: F2 MPNN (no omit-Cys) put 1 Cys in c13 -> Cys->Ser (c13S) re-folded+re-confirmed 0-Cys,
+  fold-robust 2 His intact, binding 0.895/0.807. v10 is 0-Cys.
+- v9 (05a344) remains byte-locked FALLBACK. Upload USER-GATED. If any new design <3/4 portal -> revert that swap.
