@@ -469,7 +469,16 @@ auto-upload.
   0.42/0.20 = both-weak Boltz/Chai disagreement). ALL-20 stratification: **15/20 strong on both co-folders**;
   5 lower-confidence (2 both-species: des_180_6/tnf_K90; 3 mouse-only). ALL KEPT (Boltz primary + portal-confirmed,
   no DQ-safe swap). Honest risk disclosure, not a submission change.
-- OUTCOME: all 4 bold bets explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
+- BET E (His-headroom: push confirmed-His past c39's 4). Diagnostic: each switch-core epitope contacts 5-7
+  conserved cations but His-targets only 0-3 (headroom). Tested placeable NEW His: c39_E77H(->Arg1), c44_R50H
+  (->Lys107), c44_E52H(->Lys60), c44_R50H_E52H. Binding gate (ipSAE vs parent): only c39_E77H + c44_R50H_E52H
+  survived (singles broke binding). Triple-confirm on BOLTZ structure: c39_E77H DEGRADED (4->3 His, the mutation
+  broke His49's confirm); c44_R50H_E52H looked like 4 His (+binding maintained per Chai 0.864, expr pLDDT0.82/SAP0.6).
+  BUT re-triple-confirm on the INDEPENDENT CHAI structure: c44_R50H_E52H confirms only **2 His** (orig 6,74; new
+  50/52 are fold-dependent artifacts, His52 flips dpKa +0.05). => His-confirmation is FOLD-DEPENDENT; the Boltz
+  4-His was overcounted. **BET E NEGATIVE — REJECT c44_R50H_E52H; lever robustly mined-out.** scripts/
+  triple_confirm_mut.py; [[lesson-his-confirm-is-fold-dependent]].
+- OUTCOME: all bold bets (A/B/C/D + E His-headroom) explored, NONE beats v9. v9 VERIFIED-OPTIMAL on switch (multi-His mined out + selection
   optimal, cousins excluded for diversity), expression (all 0.79-0.94, no DQ-safe swap), novelty (20/20 >=3/4),
   cross-react (2 co-folders agree balanced), diversity (16 lineages). v9 is FINAL. submission md5 05a344 UNCHANGED.
   Upload USER-GATED. docs/SUBMISSION_v9_EVIDENCE.md = full record (§2b Chai, §3 SMD-null, §4 expression, §8 bold).

@@ -124,6 +124,12 @@ redundant lineage-cousins of included members; excluding them is deliberate (div
 - **D SMD functional-release**: **NULL** — the 3-rep +16.1 kcal did not survive to 9 reps (+0.1, consistent with
   zero; §3). MD does not resolve the release signal at feasible sampling; confirms the thermodynamic ceiling. A
   rigorously-caught small-n false positive, not a win.
+- **E His-headroom (push confirmed-His past c39's 4)**: diagnostic found each binder contacts 5–7 conserved
+  cations but His-targets only 0–3. Tested placeable new His (c39_E77H, c44_R50H/E52H/both). c39_E77H DEGRADED
+  (4→3 His — perturbing the network broke His49). c44_R50H_E52H looked like 4 His + maintained binding/expression
+  on the Boltz structure — BUT the independent Chai structure confirms only 2 His (the new ones are fold-dependent
+  artifacts). **NEGATIVE**: His-confirmation is fold-dependent; the lever is robustly mined-out. v9's conf-His
+  counts (c39=4 etc.) are the robust per-backbone optima.
 
 ## 9. Reproduce
 
