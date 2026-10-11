@@ -17,7 +17,7 @@ R="/home/prachh/v/anthropic-adaptyv-2026-tnf"; os.chdir(R)
 DMAX=8.0     # binder CB -> target cation: an installable repulsion anchor
 SEP=8.0      # min His-His separation in binder space (anti-clustering -> cooperative switch)
 MAXVAR=16    # cap variants per design (keep Boltz tractable)
-OUT="runs/wave10"; os.makedirs(OUT, exist_ok=True)
+OUT=os.environ.get("MHOUT","runs/wave10"); os.makedirs(OUT, exist_ok=True)
 
 DEFAULT=["des_962_5","des_84_3","des_2140_5","des_287_5","des_2106_2","des_962_6","des_495_1","des_495_2",
          "des_962_2","des_495_3","des_737_2","des_1447_6","des_2375_4","des_935_4"]
