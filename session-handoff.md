@@ -67,6 +67,60 @@ That one switcher was **fully re-validated on the exact His-variant sequence**:
 v16 with `b4m2_A57H` → des_6025 (18/20 MD-confirmed, 3 de-novo lineages). Dossier:
 `docs/SUBMISSION_v17_candidate.md`.
 
+## BOLD thrust IN FLIGHT (SESSION 11 cont.) — Genie3 at the CRO-validated Region-I GROOVE
+
+Re-examined the "bold headroom exhausted" claim (goal-hook pushback) and found a genuinely untried,
+evidence-grounded lever: **the Anthropic paper's CRO-measured TNF campaign got 8% (12/150) and EVERY binder
+came from Genie3 + PXDesign (RFd3+BoltzGen=0); Genie3 gave ALL 3 human/mouse cross-reactive binders — but I
+only ever ran Genie3 at K90 (wrong site). Genie3 at the validated Region-I GROOVE is UNTRIED**
+(the `runs/regionI*` dirs are RFd3, which walls at 0). See [[lesson-tnf-generators-genie3-pxdesign-not-rfd3]].
+
+STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreign job):
+- **Generation:** `scripts/gen_genie3_regI.sh "<gpus>" [N=600] [seedbase] [tag]` — shards `g3batch.py` on the
+  `tnf_regIbench`/`tnf_regI` dataset (hotspots B69/B70/B92 + C109/C110 = groove V74/L75/I97 + W114/Y115),
+  ~26 s/design, per-GPU triton cache. Output: `runs/genie3_regI/shard_g*/tnf_regI/pdbs/*.pdb` (binder=A).
+- **Target for funnel:** `data/targets/1TNF_regI_BC.pdb` (304 CA, two protomers B+C). `build_fullatom_af2in_tnf.py`
+  supports a 2-chain target via `--target-chains "B,C"` (maps to B,C). Funnel = MPNN(chain A, 0-Cys) →
+  build_fullatom(2-chain) → af2ig — BUT af2ig is near-chance for TNF (AP 0.16), so OVERSAMPLE + pose-gate at
+  the groove, don't hard-floor (see [[reference-anthropic-tnf-dataset-regionI-recipe]]). Then switch → two-state
+  MD → novelty, as v16/v17.
+- **LIVE (2026-10-11 ~20:15Z):** GPU window opened (mmbu released 4-7); **Genie3 generation RUNNING on GPUs
+  4,5,6,7** (PID in `$CLAUDE_JOB_DIR/tmp/gen_regI_main.log`, N=800, ~182/800 so far, ~70min left). mmbu still
+  holds 0-3 — do NOT touch. Gen-completion waiter running (re-invokes to run the funnel).
+- **fbb builder works + Genie3 BREAKS the groove-placement floor:** `scripts/build_genie3_fullbb_bc.py`
+  (PULCHRA at `.../recon_venv/bin/pulchra`) reconstructs binder full-backbone + joint-Kabsch grafts the real
+  2-protomer target; 69/69 built, and the binder **docks the groove (min CA 4.9 Å, 13/93 binder res <8 Å)** —
+  PXDesign couldn't (0/320). So Genie3 CAN place at the two-protomer groove.
+- **Funnel built + validated:** `scripts/funnel_genie3_regI.sh "<gpus>" [nseq] [tag]` = fullbb_bc → ProteinMPNN
+  (chain A, 0-Cys, oversample) → `build_fullatom_af2in_tnf.py --target data/targets/1TNF_regI_BC.pdb
+  --target-chains "B,C"` → af2ig (WIDE filter: af2ig is weak for TNF). Then ipSAE+pose ranking (Boltz h+m +
+  tools/ipsae.py + groove-hotspot pose-gate) does the REAL ranking, calibrated on the 12 CRO binders
+  (`_research_downloads/tnfa_claude_validated_binders.fasta`). Then switch (bpair_multihis_build.py near
+  conserved K65/K90/K98) → two-state MD → novelty.
+- **Research (2 agents) findings adopted:** (1) Genie3-at-groove is THE method that broke TNF + gave mouse
+  x-react — confirms the thrust. (2) Rank by **ipSAE_min ensemble** (ESMFold2+Protenix-v2, 5 seeds, z-avg) +
+  Protenix∧af2ig AND-gate + pose-gate; NOT raw ipTM/af2ig. (3) **MEMORY CORRECTION:** the "0.16" is the
+  Spearman ρ(co-fold score, AFFINITY) among binders (weakly +), NOT a TNF AP, and NOT anti-correlation; af2ig/
+  ipSAE DO separate binder/non-binder above chance (ipSAE 1.4× af2ig AP, Overath). So my bpair af2ig pae<10
+  passes are valid positives. (4) pH-switch: separated-His-on-conserved-cations is the FRONTIER, not superseded;
+  His uniquely matched to 6.0-7.4; Proton-PottsMPNN de-prioritized (window 4.0-5.8). Optional CPU upgrade:
+  JustHISpKa (His-specific burial-aware pKa, JCIM 2025) as a 3rd pKa class — logged, not chased (Amber-heavy).
+- **DERISKED POSITIVE (2026-10-11 ~20:30Z):** (a) Genie3 PLACES at the two-protomer groove — on a 20-backbone
+  sample, **50% cover ≥2 groove hotspots at <6 Å** (PXDesign floored 0/320). (b) The groove has **3 CONSERVED
+  cations within reach** (dataset→mature offset +5, verified by residue identity): **K98 (3.8 Å), K65 (4.4 Å),
+  K112 (6.6 Å)** — all human=mouse conserved. So a separated multi-His switch repelling K65+K98+K112 is
+  installable AND cross-reactive on the same conserved cations = the Baker SOTA form; all 3 scored axes align
+  at the groove. (Avoid R138/dataset-R133, divergent.)
+- **Pipeline fully staged + validated:** `build_genie3_fullbb_bc.py` (2-protomer fbb, 69/69 built),
+  `funnel_genie3_regI.sh` (fullbb→MPNN→af2ig, syntax OK), `rank_genie3_regI.sh` (2-protomer Boltz h+m →
+  ipSAE_min + groove-pose-gate + cross-react, python compiles; ipSAE col=f[5] type=f[4]),
+  `runs/genie3_regI_calib.csv` (12 CRO binders + 12 scrambles for ranker calibration). SWITCH-STAGE TODO: tweak
+  `bpair_multihis_build.py` to scan chain C cations too (currently chain B only, line ~43 `cc=="B"`) — the
+  groove's K65 is on chain C.
+- **Next (GPU-gated, waiter re-invokes on gen completion ~20min):** funnel on all 800 → calibrate ranker on the
+  12 → rank Genie3 binders by ipSAE+pose → multi-His (K65/K98/K112) → two-state MD → novelty → v18 hedge.
+- **v16/v17 stand regardless;** this thrust can only ADD a Genie3-Region-I cross-react/novelty hedge (v18).
+
 ## Open items / decision (USER)
 
 - **Upload decision (USER-gated, nothing uploaded):**

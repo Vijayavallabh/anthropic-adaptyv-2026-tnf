@@ -17,6 +17,7 @@ R="/home/prachh/v/anthropic-adaptyv-2026-tnf"; os.chdir(R)
 DMAX=8.0     # binder CB -> target cation: an installable repulsion anchor
 SEP=8.0      # min His-His separation in binder space (anti-clustering -> cooperative switch)
 MAXVAR=16    # cap variants per design (keep Boltz tractable)
+TCHAINS=set(os.environ.get("MH_TARGET_CHAINS","B"))  # target chains to scan for cations (two-protomer groove: "BC")
 OUT=os.environ.get("MHOUT","runs/wave10"); os.makedirs(OUT, exist_ok=True)
 
 DEFAULT=["des_962_5","des_84_3","des_2140_5","des_287_5","des_2106_2","des_962_6","des_495_1","des_495_2",
@@ -40,8 +41,8 @@ for d in designs:
         cc=l[21]; res=l[17:20].strip(); at=l[12:16].strip(); rn=int(l[22:26])
         crd=np.array([float(l[30:38]),float(l[38:46]),float(l[46:54])])
         if cc=="A" and at=="CB": bCB[rn]=(crd,res)
-        if cc=="B" and ((res=="LYS" and at=="NZ") or (res=="ARG" and at in("CZ","NH1","NH2"))):
-            tcat.setdefault(rn,[]).append(crd)
+        if cc in TCHAINS and ((res=="LYS" and at=="NZ") or (res=="ARG" and at in("CZ","NH1","NH2"))):
+            tcat.setdefault((cc,rn),[]).append(crd)   # key by (chain,resnum) so B/C cations don't collide
     if not tcat: print(f"{d}: no target cations, skip"); continue
     # for each binder position, nearest target cation + dist
     pos_cat={}
