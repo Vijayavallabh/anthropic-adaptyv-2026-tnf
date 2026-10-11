@@ -41,3 +41,17 @@ sign confirm) · `esmfold_monomer.py` (single-seq MONOMER pLDDT expression ranke
 
 **Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).
+
+**LONG-SHOT de-novo NEW-shape pipeline (v16 — CURRENT submission path, SESSION 11; see `session-handoff.md`):**
+genuinely new shapes for the weak MD-NONRESPOND slots (not partial-diffusion cousins of confirmed lineages).
+Stage drivers (all parameterized, reusable):
+`run_bpair_rfd.sh <subdir> <ndes> <gpu> [startnum]` (β-pairing RFd1 fold-conditioned to Region-I edge strand;
+new de-novo shapes) · `denovo_stage2.sh "<glob>" <base> "<gpus>" [nseq]` (ProteinMPNN chain-A 0-Cys →
+full-atom af2in → af2ig binding filter; works on any flat/nested backbone set) · `v15_xreact.sh`
+(env `XRBASE`; Boltz human+mouse co-fold, cross-react min-iptm≥0.70, per-lineage cap) · **`partial_denovo.sh`**
+(env `PD_BASE`,`PD_GPUS`; partial-diffuse the cross-reactive new shapes into backbone-diverse cousins — HIGH
+~25-30% yield, the multiplier; ⚠ renumber seed chain B to 1-152 first) · `v15_multihis.sh` (env `MHBASE`,
+`MHPOSEGLOB`; separated multi-His via `bpair_multihis_build.py` → Boltz → `mh_screen.py` linkage) ·
+`run_md_release.sh` + `md_verdict.py` (two-state MD trigger gate — the decider; static linkage ≠ MD trigger) ·
+`v15_stage2.sh` (partial-diffusion-track stage-2, analogous). Outputs: `runs/bpair/*`, `runs/partial_denovo*/*`;
+v16 CSV `runs/push/submission_v16.csv` (`a524d77f`). Dossier: `docs/SUBMISSION_v16_candidate.md`.

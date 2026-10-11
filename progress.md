@@ -565,3 +565,24 @@ auto-upload.
   local novelty (expect 4/4) -> v11 novel-fold strong switches.
 - v10 (5 fold-robust upgrades, md5 4e0b4ce6) remains the current best improved candidate; v9 (05a344) fallback. The
   RFd3 campaign is the sustained high-ceiling play for genuinely novel additions. Upload USER-GATED.
+
+## SESSION 11 (2026-10-11) — v12→v16, the two-state-MD trigger matrix, and the de-novo LONG SHOT
+
+- **Two-state MD His-causality gate adopted as the #1 (pH-selectivity) decider.** dSwitch = d(His-Lys|HIP) −
+  d(His-Lys|HIE), CONFIRMED iff >2·SEM AND >0 AND dIso(HIP-GLN)>0. Measures the charge TRIGGER (repulsion),
+  not wet-lab release (d_iface≈0 in 3ns is expected). Full 20-design v14 matrix: **13 CONFIRMED / 7 NONRESPOND**
+  (2 wrong-sign) — `docs/TRIGGER_MATRIX_v14.md`. STATIC Wyman linkage ≠ MD trigger (reconfirmed repeatedly).
+- **v12→v13→v14** (verified axis-complete swaps; v14 `7994cf46` = v13 + fix worst cross-reactor; all portal ≥3/4).
+- **Proton-PottsMPNN** (SOTA pH inverse-folder) tested → ANTI-correlated with our MD (AUC 0.167) → NOT adopted.
+- **LONG SHOT (user directive "go with the long shot"): de-novo NEW shapes for the weak NONRESPOND slots.**
+  β-pairing RFd → 480 new shapes → 3 cross-reactive (des_138_7, des_4082_8, des_2044_8) → **partial-diffuse
+  AMPLIFY** (the multiplier, ~25% yield) → cross-react → multi-His → two-state MD → **5 MD-CONFIRMED new-shape
+  switchers** (lead parent was MD-NONRESPOND; only diversified cousins confirmed). All portal-novelty **3/4**
+  (seq-novel + structural-capped; calibration: TM 0.86-0.93 still 3/4 — refutes the old "≥0.8→2/4" heuristic).
+- **v16 `runs/push/submission_v16.csv` md5 `a524d77fa7a63ef33b28346ce3a7d87d`, validator PASS = CURRENT BEST.**
+  v14 + 4 new-shape switchers (2 new lineages, ≤2 each) for the 4 weakest v14 NONRESPOND → portfolio MD trigger
+  13/20→17/20 CONFIRMED, x-react 0.87-0.91, diversity preserved. Fallback v14 (`7994cf46`). Upload USER-GATED.
+- **v17 push (in flight):** more de-novo lineages (des_6025 strong; des_6126/des_8xxx weaker) to displace the
+  3 remaining NONRESPOND; des_6025 MD + a batched novelty check pending. Additive; v16 stands regardless.
+- Pipeline drivers promoted to `scripts/` (denovo_stage2, partial_denovo, v15_xreact, v15_multihis, v15_stage2);
+  see `scripts/README.md` + `session-handoff.md`. GPUs 0,1,6,7 intermittently foreign (VLLM/scGPT) — never clobber.

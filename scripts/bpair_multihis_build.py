@@ -22,10 +22,10 @@ OUT=os.environ.get("MHOUT","runs/wave10"); os.makedirs(OUT, exist_ok=True)
 DEFAULT=["des_962_5","des_84_3","des_2140_5","des_287_5","des_2106_2","des_962_6","des_495_1","des_495_2",
          "des_962_2","des_495_3","des_737_2","des_1447_6","des_2375_4","des_935_4"]
 designs=sys.argv[1:] or DEFAULT
-seqs={r["name"]:r["sequence"] for r in csv.DictReader(open("runs/bpair/xreact_full.csv"))}
+seqs={r["name"]:r["sequence"] for r in csv.DictReader(open(os.environ.get("MH_SEQS","runs/bpair/xreact_full.csv")))}
 
 def pose_for(d):
-    c=glob.glob(f"{R}/runs/bpair/af2ig_full/gpu*/pdbs/{d}_af2pred.pdb")
+    c=glob.glob(f"{R}/"+os.environ.get("MH_POSEGLOB","runs/bpair/af2ig_full/gpu*/pdbs")+f"/{d}_af2pred.pdb")
     return c[0] if c else None
 
 rows=[("name","sequence")]; manifest=[]

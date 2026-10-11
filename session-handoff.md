@@ -1,51 +1,70 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-10 (SESSION 10). Deadline **2026-10-11 23:59 AoE** (2026-10-12 11:59 UTC).
+Updated 2026-10-11 (SESSION 11). Deadline **2026-10-11 23:59 AoE = 2026-10-12 11:59 UTC**.
 
-## Current best submission (validated, code-reviewed)
+## Current best submission (validated, portal-novelty-verified)
 
-- **`runs/push/submission_v9.csv`** (md5 `05a344444cf740907e79a177d34c73f5`) — 20 designs, **all 20
-  portal-novelty ≥3/4 (3 at 4/4)**, FINAL-TEST pass (20 unique names AND sequences). **Recommended upload.**
-- **Fallbacks (both fully portal-verified):** `submission_v8.csv` (md5 `8566b133`) and `submission_v7.csv`
-  (md5 `0e84b392`, 20 designs / original floor).
-- **Upload is USER-GATED** — do not auto-upload any submission. CSVs live under `runs/` (gitignored); the
-  `scripts/integrate_v*.py` scripts are the committed source of truth. Rebuild v9:
-  `.venv/bin/python -I scripts/integrate_v9.py`.
-- Portal CSV format: columns `name,sequence,molecule_class`; de-novo minis are `single_chain`; length 10–250;
-  unique names AND sequences. Account `j_v_v_07`.
+- **`runs/push/submission_v16.csv`** (md5 **`a524d77fa7a63ef33b28346ce3a7d87d`**) — 20 designs, validator
+  **PASS**, all swap-ins portal-novelty **3/4**. **Recommended upload.**
+- **Fallbacks (fully portal-verified):** `submission_v14.csv` (md5 `7994cf46f0a55921a986cf73cee5e13d`),
+  `submission_v13.csv` (`4c682b80…`), `submission_v12.csv` (`e34ca96d…`).
+- **Upload is USER-GATED** — do not auto-upload. CSVs under `runs/` (gitignored). Account `j_v_v_07`.
+- Portal CSV format: `name,sequence,molecule_class`; de-novo minis `single_chain`; unique names AND seqs.
 
-## What v9 is
+## What v16 is (the LONG SHOT win)
 
-**7 de-novo multi-His pH-switches** (Baker 2025 SOTA recipe: ≥2–3 SEPARATED His each repelling a DISTINCT
-conserved target cation; triple-confirmed sign PROPKA `dpKa`<0 + GFN2-xTB `dE`>0) across **5 lineages**, plus
-**13 portal-verified diverse v7 floor** = **16 lineages**. Switch core (confirmed-His / min-ipSAE / Δ_hm /
-pLDDT / novelty):
-- `des_3050_6_c39` 4 / 0.666 / 0.063 / 0.88 / **4/4** — strongest switch (wave-4b His-biased)
-- `des_4098_1_b14` 3 / 0.587 / 0.106 / 0.90 / 3/4
-- `des_4098_1_c44` 2 / 0.861 / 0.024 / 0.82 / 3/4 — highest binding + balance
-- `des_180_6_H9-14-38` 2 / 0.734 / 0.058 / 0.81 / 3/4
-- `des_818_4_H16-74` 2 / 0.713 / 0.105 / 0.88 / 3/4
-- `des_3050_6_H52-54-79` 2 / 0.631 / 0.095 / 0.79 / 3/4
-- `des_875_5_H3-57-80` 1 / 0.600 / 0.016 / 0.85 / **4/4** — most novel + best balance
+v16 = v14 with **4 genuinely NEW-shape de-novo switchers** swapped in for the **4 weakest v14 members**
+(2 wrong-sign + 1 noisy + 1 flat, all MD-NONRESPOND). Portfolio two-state-MD trigger **13/20 → 17/20
+CONFIRMED**; +2 new lineages; diversity preserved.
 
-Provenance + metrics for all 20: `runs/push/master_v9.csv`; portal scores: `runs/push/portal_novelty_v9_full.json`.
+Swap-IN (new lineages des_138_7, des_4082_8 — ≤2 each):
+- `des_138_7_T10_pd_24_4_mh_49_58_77`  dSwitch +1.11, x-react 0.87, pLDDT 0.87, novelty 3/4
+- `des_138_7_T10_pd_39_4_mh_49_77`     dSwitch +1.09, x-react 0.90, pLDDT 0.90, novelty 3/4
+- `des_4082_8_T10_pd_10_4_mh_51_79`    dSwitch +0.95, x-react 0.90, pLDDT 0.81, novelty 3/4
+- `des_4082_8_T10_pd_9_1_mh_43_55_57_79` dSwitch +0.46, x-react 0.91, pLDDT 0.86, novelty 3/4
 
-## Open items
+Swap-OUT: `b1m7_2A57H_K183_r1_w5_3` (−1.08 wrong-sign), `des_59_1_H51` (−0.62 wrong-sign),
+`b1m12_A41H_vsR27` (+0.07, 2·SEM 1.70 noisy), `des_3050_6_c19` (+0.25 flat). Full dossier:
+`docs/SUBMISSION_v16_candidate.md`; the complete 20-design v14 MD trigger matrix: `docs/TRIGGER_MATRIX_v14.md`.
 
-- **Upload decision (user):** upload `submission_v9.csv` (or v8/v7). Nothing is uploaded.
-- Optional: draft the submission methods write-up (offered). The high-value compute is exhausted (strong
-  balanced-scaffold pool ≈10 lineages fully mined; 24+ triple-confirmed multi-His switches; cap-2 diversity).
+## The long-shot pipeline (reproducible; all in scripts/)
 
-## Key invariants (see AGENTS.md + docs/METHODS.md §8)
+User directive "go with the long shot" = genuinely NEW shapes, not partial-diffusion cousins of the 4
+already-confirmed lineages. The winning chain:
+1. **de-novo generation** — `scripts/run_bpair_rfd.sh <subdir> <ndes> <gpu> [startnum]` (β-pairing RFd1,
+   fold-conditioned to the conserved Region-I edge strand B114-120). Scaffold-guided → structural TM high
+   (novelty caps at 3/4, seq-novel) but cross-reactive.
+2. **binding funnel** — `scripts/denovo_stage2.sh "<glob>" <base> "<gpus>" [nseq]` (ProteinMPNN chain A
+   0-Cys → full-atom af2in → af2ig). De-novo binding yield ~0.5% → few shapes.
+3. **cross-react** — `XRBASE=<base> scripts/v15_xreact.sh [TOPN] "<gpus>"` (Boltz human+mouse, min-iptm≥0.70).
+4. **AMPLIFY the cross-reactive new shapes** — `PD_BASE=<base2> PD_GPUS="..." scripts/partial_denovo.sh [ndes]`
+   (partial-diffuse the proven cross-reactive de-novo shapes; HIGH yield ~25-30% → backbone-diverse cousins
+   of the NEW lineages). **This is the multiplier that made the long shot work.**
+   ⚠ renumber seed chain B to 1-152 first (af2pred poses number it 81-232; contig `B1-152` else finds nothing).
+5. funnel the cousins (step 2) → cross-react (step 3) → **multi-His** `MHBASE=<base> MHPOSEGLOB=<poses>
+   scripts/v15_multihis.sh [CAP] "<gpus>"` (bpair_multihis_build.py separated-His + Boltz + mh_screen) →
+   **two-state MD** `scripts/run_md_release.sh <manifest> <out> "<gpus>" 3000 4` + `md_verdict.py`.
+6. expression: `esmfold_monomer.py` (pLDDT) + `fold_monomer_boltz.sh` + `solubility_predict.py`; novelty
+   proxy: foldseek TMalign vs `runs/novelty_struct/pdbdb/pdb` (<0.80=novel) + mmseqs seq-id; portal = USER.
 
-- **pH-switch = ≥2–3 SEPARATED His on DISTINCT conserved target cations** (not clustered). Prove the sign per
-  His by triple-confirm (PROPKA `dpKa`<0 AND xTB `dE`>0; design OK if ≥2 confirmed), on the exact submitted
-  sequence. Functional k_off is wet-lab-only — d_iface≈0 in unbiased MD is EXPECTED, not a failure; the
-  thermodynamic proton-linkage is the honest in-silico ceiling. pH 6.0 is harder than Baker's 5.4.
-- **Novelty is a hard structural gate (<3/4 = DQ)**; portal-check the final set before locking. MPNN re-seqs
-  on an already-verified backbone inherit its novelty (backbone-determined). Local foldseek proxy is
-  relative-rank only (no AFDB).
-- **Cross-react** by folding BOTH orthologs + balanced min-ipSAE/Δ_hm (not a single folder, not footprint count).
-- **Expression** ranks on ESMFold MONOMER pLDDT (primary) + SAP + Glu%; ignore ProtParam instability + ML
-  seq-solubility tools (OOD). Consensus-drop only on ≥2 orthogonal axes.
-- Commit source/docs/harness only; `runs/ results/ envs/ third_party/ tools/ weights/` are local-only.
+**KEY LESSON (reconfirmed):** static Wyman linkage ≠ MD trigger. The lead parent `des_138_7_mh_47_53_80`
+was MD-NONRESPOND (wrong-sign −0.78) despite static −1.05; only the backbone-diversified cousins MD-confirmed.
+Always gate on the two-state MD, never static linkage alone.
+
+## Open items / in-flight (SESSION 11)
+
+- **v17 push (in progress):** more de-novo lineages (des_6025 strong, des_6126/des_8xxx weaker) funnelled to
+  displace the 3 remaining NONRESPOND in v16 (des_3050_6_H52-54-79, b4m2_A57H, des_818_4_c13S). des_6025 MD
+  + a batched novelty check pending. If des_6025 confirms + is ≥3/4 → v17 (18/20 CONFIRMED). This is additive;
+  **v16 stands regardless.**
+- **Upload decision (USER):** upload v16 (`a524d77f`) or a fallback. Nothing uploaded.
+
+## Key invariants (see AGENTS.md + docs/METHODS.md)
+- pH-switch = ≥2–3 SEPARATED His on DISTINCT conserved target cations; prove sign per His (PROPKA dpKa<0 AND
+  xTB dE>0) AND the two-state MD trigger (dSwitch>2·SEM, >0, dIso>0) on the exact submitted sequence. k_off is
+  wet-lab-only; d_iface≈0 in 3ns is EXPECTED (trigger, not release).
+- Novelty is a hard gate (≥3/4). Scaffold-guided de-novo = seq-novel + structural-capped → 3/4 (passes).
+  Portal-check before locking; USER-gated.
+- GPUs: 8× H100 local, run CUDA 0-7 directly; NEVER clobber a foreign job (verify nvidia-smi; VLLM/scGPT
+  cycle on 0,1,6,7 — kill only by explicit PID). Per-GPU Triton cache isolation for parallel RFdiffusion.
+- Commit source/docs/harness only; `runs/ results/ envs/ third_party/ tools/ weights/` local-only.

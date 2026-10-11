@@ -74,16 +74,22 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs)
 
-- **Current best (validated):** `runs/push/submission_v9.csv` (md5 `05a344444cf740907e79a177d34c73f5`,
-  20 designs, **all 20 portal-novelty ≥3/4 — 3 at 4/4**, FINAL-TEST pass: 20 unique names AND sequences).
-  Built by `scripts/integrate_v9.py`. Lineage: v4 (`c69f8c5d`) → v5 (`4d05ed2e`) → v6 (`81913f5c`, removed a
-  portal-2/4 DQ) → v7 (`0e84b392`, +2 de-novo single-His switches) → v8 (`8566b133`, +7 de-novo **multi-His**
-  triple-confirmed switches across 5 lineages, dropped the weakest/redundant v7) → v9 (2 wave-4b
-  within-lineage upgrades: `des_3050_6_c39` [4 confirmed His], `des_4098_1_c44`). 16 lineages.
-  **Fallbacks: `submission_v8.csv` (`8566b133`) and `submission_v7.csv` (`0e84b392`), both fully
-  portal-verified.** The submission CSVs live under `runs/` (gitignored, local-only); the `integrate_v*.py`
-  scripts are the committed source of truth. Upload to the Proteinbase/Adaptyv portal (account j_v_v_07) is
-  **user-gated** — do NOT auto-upload.
+- **Current best (validated, portal-novelty-verified):** `runs/push/submission_v16.csv` (md5
+  **`a524d77fa7a63ef33b28346ce3a7d87d`**, 20 designs, validator PASS, all swap-ins portal-novelty **3/4**).
+  v16 = v14 with **4 de-novo NEW-shape MD-confirmed switchers** (2 new lineages des_138_7, des_4082_8)
+  swapped for the 4 weakest v14 members (2 wrong-sign + 1 noisy + 1 flat, all two-state-MD NONRESPOND);
+  portfolio MD trigger **13/20 → 17/20 CONFIRMED**. Recent lineage: v9 (`05a34444`) → v12 (`e34ca96d`) →
+  v13 (`4c682b80`) → v14 (`7994cf46`, v13+1 axis-complete swap) → **v16 (`a524d77f`, the long-shot de-novo
+  new-shape win)**. **Fallbacks: v14 (`7994cf46`), v13 (`4c682b80`), v12 (`e34ca96d`), all portal-verified.**
+  See `docs/SUBMISSION_v16_candidate.md`, `docs/TRIGGER_MATRIX_v14.md`, `session-handoff.md`. CSVs under
+  `runs/` (gitignored, local-only); submission is **USER-GATED** (portal account j_v_v_07) — do NOT auto-upload.
+- **Long-shot de-novo NEW-shape pipeline (how v16's switchers were built, SESSION 11):** β-pairing RFd
+  (`run_bpair_rfd.sh`) → binding funnel (`denovo_stage2.sh`) → cross-react (`v15_xreact.sh`, Boltz h+m
+  min-iptm≥0.70) → **AMPLIFY the cross-reactive new shapes by partial diffusion** (`partial_denovo.sh`, ~25%
+  yield — the multiplier; renumber seed chain B to 1-152 first) → funnel cousins → multi-His
+  (`v15_multihis.sh`) → **two-state MD** (`run_md_release.sh` + `md_verdict.py`). KEY: static Wyman linkage
+  ≠ MD trigger — the lead parent was MD-NONRESPOND (wrong-sign) despite static −1.05; only diversified cousins
+  confirmed. Gate on the MD trigger, never static linkage alone.
 - **De-novo multi-His switch pipeline** (how the v8/v9 switch core was built; Baker 2025 SOTA recipe, see
   `docs/METHODS.md` §6 + §8): β-pairing RFdiffusion → MPNN → af2ig → Boltz human+mouse cross-react → install
   **≥2–3 SEPARATED His, each repelling a DISTINCT conserved target cation** (K6/K93 are the strong anchors) —
@@ -94,11 +100,14 @@ evidence.
   DISTINCT cations) → triple-confirm EACH His (PROPKA `dpKa`<0 AND GFN2-xTB `dE`>0; design OK if ≥2 confirmed;
   `scripts/wave3_triple.py` / `wave3b_triple.py`). Functional k_off is wet-lab-only — the thermodynamic
   proton-linkage is the honest in-silico ceiling (do NOT chase longer unbiased MD; d_iface≈0 is expected).
-- **Novelty is a hard gate (<3/4 = DQ), set STRUCTURALLY:** max TM-score of the single-sequence fold vs
-  PDB+AFDB — `<0.5 → 4/4`, `0.5–0.8 → 3/4`, `≥0.8 → 2/4 DQ` (per-design; de-novo sequences are always
-  ≤30% id so the structure axis decides). The user-run portal is the only authority; the local PDB-only
-  foldseek proxy (`tools/foldseek_dl` + `runs/novelty_struct/pdbdb` + TMalign) is RELATIVE-rank only — it
-  failed to reproduce a known 2/4. **Always portal-check the final set and drop every <3/4 before locking.**
+- **Novelty is a hard gate (≥3/4 required; <3/4 = DQ), scored by the portal on 4 criteria (seq-id + structural
+  TM + 2 more); ≥3/4 passes, helical bundles cap at 3/4.** CALIBRATION (SESSION 11, v16): scaffold-guided
+  de-novo shapes with local foldseek max-TM **0.86–0.93** (well above the old "<0.8 safe" proxy) were
+  portal-verified **3/4** — because de-novo sequences are seq-novel (no PDB hit) and that + the other criteria
+  carry them past the structural-TM criterion. So the old local heuristic "`≥0.8 → 2/4 DQ`" OVER-predicts DQ
+  and must NOT be used to pre-reject de-novo designs. The local PDB-only foldseek proxy
+  (`tools/foldseek_dl` + `runs/novelty_struct/pdbdb` + TMalign) is RELATIVE-rank / risk-flag only; **the
+  user-run portal is the only authority — always portal-check the final set and drop every <3/4 before locking.**
 - **Expression (dominant wet-lab-zero risk):** primary ranker is **single-seq ESMFold MONOMER pLDDT** (fold
   the binder ALONE — best de-novo success predictor, AUROC ~0.72; `scripts/esmfold_monomer.py`) + **SAP**
   (aggregation; `scripts/sap_score.py`) + charged composition (Glu%, top Adaptyv-EGFR predictor) + GRAVY.
