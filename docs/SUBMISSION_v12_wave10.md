@@ -50,12 +50,15 @@ Validated on the identical pipeline (both folders, both-fold linkage, cross-spec
 `runs/push/submission_v12.csv` **md5 `e34ca96d0674cf85872f5b1976f396b5`** — validation gate PASS (20 / 0-Cys /
 unique / single_chain).
 
-## Upload ladder (USER-GATED — portal re-checks novelty at upload)
-1. **v12** (`e34ca96d…`) — RECOMMENDED. Strongest on #1+#2+expression. **One contingency:** `des_962_2` is a
-   de-novo lineage whose novelty is portal-UNCHECKED (expected ≥3/4, but de-novo ≠ guaranteed —
-   [[lesson-portal-novelty-structural-calibrate-oracle]]). USER portal-check it before upload.
-2. **v12_safe** (`0fbfe60f8c7ff0729bd44d8e669efde2`) — if `des_962_2` fails ≥3/4: the novelty-SAFE 1-swap
-   (only tnf_K90→des_2106_2_mh, which inherits portal 3/4; keeps b1m12). Still beats v11 on #1+#2, zero novelty risk.
+## Upload ladder (USER-GATED)
+1. **v12** (`e34ca96d…`) — RECOMMENDED and now **FULLY PORTAL-VERIFIED**: the USER ran the Proteinbase novelty
+   check on all 20 → **every design ≥3/4** (`runs/push/portal_novelty_v12.tsv`), with **both new de-novo
+   members passing** (des_962_2_mh_9_32_35 and des_2106_2_mh_37_43_50_75; several designs at 4/4). The earlier
+   "des_962_2 novelty-pending" contingency is RESOLVED. v12 beats v11 on #1 (switch) + #2 (cross-react) +
+   expression + novelty, with no remaining caveat. (Consistent with the local PDB proxy: des_962_2 max PDB
+   TM 0.62 < 0.80.)
+2. **v12_safe** (`0fbfe60f8c7ff0729bd44d8e669efde2`) — the novelty-SAFE 1-swap, retained as a conservative
+   alternate; no longer needed as a novelty fallback (v12 fully passed).
 3. **v11** (`ef72d8e09f11d75d7aef959b4b18a2eb`) — portal-verified floor. v9 (`05a344…`) byte-locked fallback.
 
 Nothing auto-uploaded. Deadline 2026-10-12 11:59 UTC.
