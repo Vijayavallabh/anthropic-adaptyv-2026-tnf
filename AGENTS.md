@@ -74,14 +74,23 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs)
 
-- **Current best (validated, portal-novelty-verified):** `runs/push/submission_v16.csv` (md5
+- **Current best, SAFE default (fully portal-novelty-verified):** `runs/push/submission_v16.csv` (md5
   **`a524d77fa7a63ef33b28346ce3a7d87d`**, 20 designs, validator PASS, all swap-ins portal-novelty **3/4**).
   v16 = v14 with **4 de-novo NEW-shape MD-confirmed switchers** (2 new lineages des_138_7, des_4082_8)
   swapped for the 4 weakest v14 members (2 wrong-sign + 1 noisy + 1 flat, all two-state-MD NONRESPOND);
   portfolio MD trigger **13/20 → 17/20 CONFIRMED**. Recent lineage: v9 (`05a34444`) → v12 (`e34ca96d`) →
   v13 (`4c682b80`) → v14 (`7994cf46`, v13+1 axis-complete swap) → **v16 (`a524d77f`, the long-shot de-novo
   new-shape win)**. **Fallbacks: v14 (`7994cf46`), v13 (`4c682b80`), v12 (`e34ca96d`), all portal-verified.**
-  See `docs/SUBMISSION_v16_candidate.md`, `docs/TRIGGER_MATRIX_v14.md`, `session-handoff.md`. CSVs under
+- **v17 candidate — STRONGER on #1, but USER-PORTAL-GATED:** `runs/push/submission_v17.csv` (md5
+  **`9357b6905ed81179da5137a16dd9dd5a`**, validator PASS). v17 = v16 with the weakest redundant NONRESPOND
+  `b4m2_A57H` (+0.22) swapped for a **3rd de-novo new-lineage MD-CONFIRMED switcher**
+  `des_6025_4_T20_pd_64_1_mh_34_50_52_74` (d_repel **+0.372**, isostere ctrl +0.308; cross-react re-folded
+  on the His-variant **human 0.962 / mouse 0.938**; solub 0.87; **seq-novel, no PDB hit**). Portfolio MD
+  trigger **17/20 → 18/20 CONFIRMED**, de-novo lineages 2 → 3 (b4m2 keeps CONFIRMED `b4m2_r1_w5_3`). The
+  ONE open risk: local foldseek structural max-TM **0.945** (above v16's 0.86–0.93) → **likely 3/4 but
+  portal-UNVERIFIED**. **Decision: upload v16 by default; if one portal novelty check can be spared, check
+  des_6025 — ≥3/4 → upload v17, else v16.** See `docs/SUBMISSION_v17_candidate.md`.
+- See also `docs/SUBMISSION_v16_candidate.md`, `docs/TRIGGER_MATRIX_v14.md`, `session-handoff.md`. CSVs under
   `runs/` (gitignored, local-only); submission is **USER-GATED** (portal account j_v_v_07) — do NOT auto-upload.
 - **Long-shot de-novo NEW-shape pipeline (how v16's switchers were built, SESSION 11):** β-pairing RFd
   (`run_bpair_rfd.sh`) → binding funnel (`denovo_stage2.sh`) → cross-react (`v15_xreact.sh`, Boltz h+m

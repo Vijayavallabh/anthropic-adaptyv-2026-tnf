@@ -51,13 +51,29 @@ already-confirmed lineages. The winning chain:
 was MD-NONRESPOND (wrong-sign −0.78) despite static −1.05; only the backbone-diversified cousins MD-confirmed.
 Always gate on the two-state MD, never static linkage alone.
 
-## Open items / in-flight (SESSION 11)
+## v17 candidate — RESOLVED, USER-PORTAL-GATED (SESSION 11 continued)
 
-- **v17 push (in progress):** more de-novo lineages (des_6025 strong, des_6126/des_8xxx weaker) funnelled to
-  displace the 3 remaining NONRESPOND in v16 (des_3050_6_H52-54-79, b4m2_A57H, des_818_4_c13S). des_6025 MD
-  + a batched novelty check pending. If des_6025 confirms + is ≥3/4 → v17 (18/20 CONFIRMED). This is additive;
-  **v16 stands regardless.**
-- **Upload decision (USER):** upload v16 (`a524d77f`) or a fallback. Nothing uploaded.
+The v17 push played out: **des_6025 yielded ONE MD-confirmed new-lineage switcher**
+(`des_6025_4_T20_pd_64_1_mh_34_50_52_74`); **des_6126 and des_8xxx were dead ends** (des_8xxx 0/17 strong).
+That one switcher was **fully re-validated on the exact His-variant sequence**:
+- #1 switch: two-state MD d_repel **+0.372 CONFIRMED** (2·SEM ≈0.27), isostere ctrl +0.308, selective_release true.
+- #2 cross-react: **re-folded** the His-variant (the mouse Boltz output had been cleaned up) — human iptm
+  **0.962**, mouse iptm **0.938**, min **0.938 PASS**. (The earlier "0.887" was stale/parent — actual is stronger.)
+- expression: solub 0.87 PASS. Seq-novelty: **NO PDB hit (novel)**.
+- **One open risk:** foldseek structural max-TM **0.945** (above v16's 0.86–0.93) → likely 3/4 but
+  **portal-UNVERIFIED**. Novelty is a hard per-design gate; only the portal (USER) is authoritative.
+
+→ `runs/push/submission_v17.csv` (md5 **`9357b6905ed81179da5137a16dd9dd5a`**, validator PASS) =
+v16 with `b4m2_A57H` → des_6025 (18/20 MD-confirmed, 3 de-novo lineages). Dossier:
+`docs/SUBMISSION_v17_candidate.md`.
+
+## Open items / decision (USER)
+
+- **Upload decision (USER-gated, nothing uploaded):**
+  1. **Default (zero extra work): upload v16** (`a524d77f`) — fully portal-verified, 20/20 ≥3/4 novelty.
+  2. **If one portal novelty check can be spared: check des_6025.** ≥3/4 → **upload v17** (`9357b690`,
+     stronger on #1: 18/20 confirmed + a 3rd de-novo lineage). <3/4 → stay on v16.
+- De-novo long shot is **played out** — strong yield captured in v16 (+1 marginal in v17). Diminishing returns.
 
 ## Key invariants (see AGENTS.md + docs/METHODS.md)
 - pH-switch = ≥2–3 SEPARATED His on DISTINCT conserved target cations; prove sign per His (PROPKA dpKa<0 AND

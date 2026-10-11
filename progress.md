@@ -582,7 +582,13 @@ auto-upload.
 - **v16 `runs/push/submission_v16.csv` md5 `a524d77fa7a63ef33b28346ce3a7d87d`, validator PASS = CURRENT BEST.**
   v14 + 4 new-shape switchers (2 new lineages, ≤2 each) for the 4 weakest v14 NONRESPOND → portfolio MD trigger
   13/20→17/20 CONFIRMED, x-react 0.87-0.91, diversity preserved. Fallback v14 (`7994cf46`). Upload USER-GATED.
-- **v17 push (in flight):** more de-novo lineages (des_6025 strong; des_6126/des_8xxx weaker) to displace the
-  3 remaining NONRESPOND; des_6025 MD + a batched novelty check pending. Additive; v16 stands regardless.
+- **v17 candidate (RESOLVED, USER-PORTAL-GATED):** de-novo lineage **des_6025 yielded 1 MD-confirmed
+  new-lineage switcher** `des_6025_4_T20_pd_64_1_mh_34_50_52_74` (des_6126/des_8xxx = dead ends). Re-validated
+  on the exact His-variant: d_repel **+0.372 CONFIRMED** (isostere ctrl +0.308), cross-react **re-folded**
+  human 0.962 / mouse 0.938 (min 0.938 PASS), solub 0.87, **seq-novel (no PDB hit)**. ONE open risk: foldseek
+  structural TM **0.945** (above v16's 0.86-0.93) → likely 3/4 but portal-UNVERIFIED. `submission_v17.csv`
+  md5 `9357b6905ed81179da5137a16dd9dd5a` (validator PASS) = v16 with `b4m2_A57H`→des_6025 (18/20 MD-confirmed,
+  3 de-novo lineages). **Decision: default upload v16; if a portal novelty check can be spared, check des_6025 —
+  ≥3/4→v17, else v16.** Dossier `docs/SUBMISSION_v17_candidate.md`. De-novo long shot now played out.
 - Pipeline drivers promoted to `scripts/` (denovo_stage2, partial_denovo, v15_xreact, v15_multihis, v15_stage2);
   see `scripts/README.md` + `session-handoff.md`. GPUs 0,1,6,7 intermittently foreign (VLLM/scGPT) — never clobber.
