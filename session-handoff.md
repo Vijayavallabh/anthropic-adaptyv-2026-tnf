@@ -145,7 +145,17 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   (parallel 16-worker fullbb → MPNN → af2ig, 800 backbones × 4 seq, ~1h). Completion waiter alive. Process-kill
   note: `pkill -f` self-matches the shell (exit 144) — kill funnel-pipeline procs by PID or /proc scan;
   af2ig children are `uplifting-af2ig/bin/python` (not matched by 'funnel'/'build_genie3' patterns).
-- **v16/v17 stand regardless;** this thrust can only ADD a Genie3-Region-I cross-react/novelty hedge (v18).
+- **THRUST RESULT — rigorous NO-GO (2026-10-11 ~21:40Z):** Genie3 at the groove PLACES binders (~50% cover
+  ≥2 hotspots <6 Å; PXDesign floored 0/320) but **af2ig FLOORS: 0/3200 at pae<16, distribution min 23.2 /
+  median 27.5** — the flat-polar wall (binders fold great, af2ig never believes the interface). Ruled out the
+  2-protomer dilution confound: single-protomer re-score of the top-16 gave pae 26-27, EVEN WORSE. Boltz ipSAE
+  calibration also missed all 8 Genie3-L83 known binders. **No in-silico tool (af2ig/Boltz) can confirm or rank
+  Genie3-type TNF binders — Anthropic needed WET LAB.** So a Genie3-groove design can't be shown to bind and
+  would be a blind bet displacing an af2ig-confirmed bpair design. **v16/v17 stand as the submission.** The bold
+  headroom for improving the in-silico-confirmable portfolio is exhausted (every generator walls at af2ig for
+  de-novo TNF binding). See [[lesson-genie3-groove-floors-af2ig-like-all-generators]]. Pipeline committed
+  (gen/fullbb/funnel/select/rank/switch_screen/merge_protomers) for reuse if a better binding oracle appears.
+- **v16/v17 stand regardless;** this thrust could only have ADDED a Genie3 hedge — it floored at binding.
 
 ## Open items / decision (USER)
 
