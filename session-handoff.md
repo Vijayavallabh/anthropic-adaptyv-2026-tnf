@@ -155,7 +155,29 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   headroom for improving the in-silico-confirmable portfolio is exhausted (every generator walls at af2ig for
   de-novo TNF binding). See [[lesson-genie3-groove-floors-af2ig-like-all-generators]]. Pipeline committed
   (gen/fullbb/funnel/select/rank/switch_screen/merge_protomers) for reuse if a better binding oracle appears.
-- **v16/v17 stand regardless;** this thrust could only have ADDED a Genie3 hedge — it floored at binding.
+- **RECONSIDERED (bold hedge, 2026-10-11 ~21:50Z):** af2ig is near-chance for TNF AND my v16/v17 rest on a
+  pipeline never CRO-validated for TNF, while Genie3+groove is the ONLY CRO-validated cross-reactive recipe.
+  So betting all 20 slots on af2ig-pass (bpair) isn't obviously optimal — a DIVERSIFICATION hedge (1-2
+  Genie3-groove designs from the validated recipe) is defensible. Key enabler: **169/800 Genie3-groove designs
+  place at the groove (≥3 hotspots) AND reach ALL 3 conserved cations K65/K98/K112 within switch-range** — a
+  BETTER cross-reactive multi-His switch setup than bpair/cb1 (which reach 1-2). So a Genie3-groove hedge can
+  carry separated His on all 3 conserved cations = strongest cross-reactive switch, at the validated epitope;
+  the ONLY unconfirmed axis is binding (af2ig floors, but af2ig is near-chance + this is THE recipe). Top-16
+  selected → `runs/genie3_regI/hedge_top.txt`. **PREPPED (2026-10-11 ~22:05Z):** `scripts/prep_genie3_hedge_md.py`
+  builds the MD switch-probe. Pivoted 2-protomer-merge → **SINGLE-protomer target**: merging B+C into one chain
+  gave OpenMM internal-terminus template errors (fused C-term/N-term across protomers); TNF is a HOMOTRIMER so
+  all 3 conserved cations (mature K65/K98/K112 = dataset 60/93/107) exist on EACH protomer — keeping binder A +
+  the one protomer the His best cover loses nothing for the switch test and is topologically clean. Result: **12
+  variants, 12/12 MD-loadable (CPU dry-run through build()), 11/12 install separated His on ALL 3 conserved
+  cations** (manifest `$CLAUDE_JOB_DIR/tmp/hedge_md/manifest.tsv`; regenerable from the committed script +
+  hedge_top.txt + runs/genie3_regI/af2in). GPU-gated behind the bpair MD. NEXT (when GPUs free):
+  `bash scripts/run_md_release.sh $CLAUDE_JOB_DIR/tmp/hedge_md/manifest.tsv <out> "0..7" 3000 4` → `md_verdict.py`
+  → any CONFIRMED = an MD-switch-confirmed, groove-placed, all-3-conserved-cation, novel Genie3 design. Present
+  as a USER-decided diversification hedge — binding stays a recipe-bet (af2ig floors; af2ig near-chance for TNF),
+  labeled honestly; NOT submitted over confirmed designs unilaterally. A positive switch result strengthens the
+  #1-axis pitch; a negative result closes the hedge.
+- **v16/v17 stand regardless;** the two live improvement tracks are the bpair switch-harvest (v18 core, MD
+  running) + the Genie3-groove switch-hedge (diversification, queued behind it).
 
 ## Open items / decision (USER)
 
