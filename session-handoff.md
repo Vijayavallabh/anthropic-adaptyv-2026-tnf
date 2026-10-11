@@ -176,6 +176,16 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   as a USER-decided diversification hedge — binding stays a recipe-bet (af2ig floors; af2ig near-chance for TNF),
   labeled honestly; NOT submitted over confirmed designs unilaterally. A positive switch result strengthens the
   #1-axis pitch; a negative result closes the hedge.
+- **LIVE (2026-10-11 ~22:35Z, ~13.4h to deadline): BOTH MD tracks running in PARALLEL (no conflict).**
+  Track A (bpair harvest, 13 variants) on GPUs 0-4, 8/13 verdicts done, ~30min to finish — waiter PID
+  1590848 (fires on n>=13) re-invokes me → run `harvest_v18.sh` (Boltz xreact on freed 0-4) → assemble v18.
+  Hedge switch-probe (12 variants) on the freed GPUs 5,6,7, ~3-4h — waiter (bg job) re-invokes me on 12/12 →
+  `md_verdict.py $CLAUDE_JOB_DIR/tmp/hedge_md_out`. **SEQ-NOVELTY PRE-COMPUTED (mmseqs vs PDB, CPU):** ALL 13
+  Track A candidates incl BOTH des_6126 variants = FULLY seq-novel (0 PDB hits, <<30% id; POSCTRL TNF hit 100%
+  = valid). So the seq axis of portal novelty is satisfied for every v18 candidate; only the STRUCTURAL axis
+  (foldseek TM, GPU single-seq fold) remains — des_6025 variants ≈ des_6025 (TM 0.945, 3/4), des_6126 TBD.
+  **harvest_v18 solubility step FIXED** (was wrong `-o` invocation + wrong column `solubility_score`; was
+  silently dropping the expression signal). md_verdict parse (CONFIRMED=$NF, dSwitch=f[5]) verified correct.
 - **v16/v17 stand regardless;** the two live improvement tracks are the bpair switch-harvest (v18 core, MD
   running) + the Genie3-groove switch-hedge (diversification, queued behind it).
 
