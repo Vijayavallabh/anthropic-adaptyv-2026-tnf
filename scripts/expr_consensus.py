@@ -41,6 +41,28 @@ def boltz_conf(name):
             return round(d.get("complex_plddt",0),3), round(d.get("ptm",0),3), cif
     return None, None, None
 
+def _indexed_ca_tm(esm_pdb, boltz_cif):
+    """Fallback TM for the SAME-sequence monomer pair: indexed-CA Kabsch superposition + TM-score.
+    Valid because both structures are the identical sequence (residue i <-> residue i); robust where
+    foldseek's structural search glitches to an empty alignment."""
+    import numpy as np
+    from Bio.PDB import PDBParser, MMCIFParser
+    def ca(path, parser):
+        m = parser.get_structure("x", path)[0]
+        ch = sorted(m, key=lambda c: -sum(1 for _ in c))[0]
+        return np.array([res['CA'].coord for res in ch if 'CA' in res])
+    try:
+        P = ca(esm_pdb, PDBParser(QUIET=True)); Q = ca(boltz_cif, MMCIFParser(QUIET=True))
+        n = min(len(P), len(Q)); P = P[:n]; Q = Q[:n]
+        Pc = P - P.mean(0); Qc = Q - Q.mean(0)
+        H = Qc.T @ Pc; U, S, Vt = np.linalg.svd(H); d = np.sign(np.linalg.det(Vt.T @ U.T))
+        Rr = Vt.T @ np.diag([1, 1, d]) @ U.T; Qa = (Rr @ Qc.T).T
+        di = np.linalg.norm(Pc - Qa, axis=1)
+        d0 = 1.24 * (n - 15) ** (1/3) - 1.8 if n > 21 else 0.5
+        return round(float(np.mean(1 / (1 + (di / d0) ** 2))), 3)
+    except Exception:
+        return None
+
 def tm(esm_pdb, boltz_cif):
     if not (os.path.exists(esm_pdb) and os.path.exists(boltz_cif)): return None
     TMP.mkdir(parents=True, exist_ok=True)
@@ -51,12 +73,11 @@ def tm(esm_pdb, boltz_cif):
                         "-e","100","--tmscore-threshold","0.0"],
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=120)
         txt = out.read_text().strip()
-        if not txt: return 0.0
+        if not txt: return _indexed_ca_tm(esm_pdb, boltz_cif)   # foldseek glitch -> robust fallback
         f = txt.splitlines()[0].split("\t")
-        # min of query/target-normalized TM = conservative agreement (same residue count here anyway)
         return round(min(float(f[3]), float(f[4])), 3)
     except Exception:
-        return None
+        return _indexed_ca_tm(esm_pdb, boltz_cif)
 
 def base_p(pl):
     """Literature-anchored P(de-novo success | ESMFold monomer pLDDT), Garcia/Dixit/Rocklin 2026 regime."""
