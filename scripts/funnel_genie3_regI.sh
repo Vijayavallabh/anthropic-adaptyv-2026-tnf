@@ -13,10 +13,18 @@ TGT="$REPO/data/targets/1TNF_regI_BC.pdb"
 ESMC="$REPO/envs/uplifting-esmc/bin/python"
 L="$REPO/third_party/LigandMPNN"; MPY="$L/.venv/bin/python"; CKPT="$L/model_params/proteinmpnn_v_48_020.pt"
 FBB="$REPO/runs/${TAG}/fbb"; W="$REPO/runs/${TAG}/mpnn"; AIN="$REPO/runs/${TAG}/af2in"; AIG="$REPO/runs/${TAG}/af2ig"
-rm -rf "$FBB" "$W" "$AIN" "$AIG"; mkdir -p "$FBB" "$W"
-# 1) full-backbone (2-protomer) from all generated CA-trace backbones
-echo "[funnel] fullbb $(date -u +%FT%TZ)"
-"$ESMC" scripts/build_genie3_fullbb_bc.py "$PULCHRA" "$REPO/runs/${TAG}/shard_g*/tnf_regI/pdbs/*.pdb" "$FBB" "$TGT" "B,C" 2>&1 | tail -2
+rm -rf "$W" "$AIN" "$AIG"; mkdir -p "$FBB" "$W"   # keep FBB (reuse already-built complexes)
+# 1) full-backbone (2-protomer), PARALLELIZED across NW workers (reuses existing outputs via skip-existing)
+NW="${FBB_WORKERS:-16}"
+echo "[funnel] fullbb x$NW workers $(date -u +%FT%TZ)"
+fpids=()
+for i in $(seq 0 $((NW-1))); do
+  SHARD_I=$i SHARD_N=$NW "$ESMC" scripts/build_genie3_fullbb_bc.py "$PULCHRA" \
+    "$REPO/runs/${TAG}/shard_g*/tnf_regI/pdbs/*.pdb" "$FBB" "$TGT" "B,C" > "$FBB/.w$i.log" 2>&1 &
+  fpids+=($!)
+done
+for p in "${fpids[@]}"; do wait "$p" || true; done
+echo "[funnel] fullbb done: $(ls "$FBB"/*.pdb 2>/dev/null | wc -l) complexes"
 NFBB=$(ls "$FBB"/*.pdb 2>/dev/null | wc -l); echo "[funnel] fullbb complexes: $NFBB"
 [ "$NFBB" -ge 1 ] || { echo "NO FBB COMPLEXES — stop"; exit 1; }
 # 2) ProteinMPNN design chain A (0-Cys), sharded across GPUs, oversample NSEQ

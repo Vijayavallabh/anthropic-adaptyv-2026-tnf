@@ -119,6 +119,32 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   groove's K65 is on chain C.
 - **Next (GPU-gated, waiter re-invokes on gen completion ~20min):** funnel on all 800 → calibrate ranker on the
   12 → rank Genie3 binders by ipSAE+pose → multi-His (K65/K98/K112) → two-state MD → novelty → v18 hedge.
+- **MD-STAGE 2-PROTOMER FIX (identified, apply when survivors exist):** `md_release_tnf.py` picks binder/target
+  by CHAIN SIZE (2 largest), so a 3-chain groove complex (binder A 88 + B 152 + C 152) mis-identifies a
+  protomer as the binder. FIX before MD: merge the two target protomers into ONE 304-res target chain
+  (relabel C→B, renumber C residues +152) → standard 2-chain complex (target 304 + binder 88) → run
+  md_release_tnf.py unmodified (correct: the MD restrains the whole target rigid; nearest-Lys then searches
+  both protomers for the conserved anchor K65/K98/K112). Don't build this until the funnel yields binders.
+- **LIVE (2026-10-11 ~20:45Z):** funnel RUNNING on 4-7 (PID 667950, fullbb→MPNN→af2ig, ~2h); ranker
+  CALIBRATION RUNNING on 6,7 (PID 687999, 12 CRO binders + 12 scrambles, decisive ranker validation, ~18min).
+  Waiters set. mmbu holds 0-3. Rational order: WAIT for the calibration + funnel gates before building more
+  downstream (don't speculatively plumb past an unconfirmed gate).
+- **CALIBRATION RESULT — Boltz ipSAE ranker is UNUSABLE for Genie3-type (rigorous, via 12 CRO binders):**
+  with corrected parsing, Boltz-msa-empty ipSAE recovers only 3/12 known binders (all PXDesign-type:
+  rank23 ipSAE 0.447/iptm 0.69, rank9, rank19) and MISSES all 8 Genie3-L83 binders (ipSAE 0.0, incl the 2nM
+  cross-reactive ones) — Boltz blind-fold can't place the Genie3 fold-type. So `rank_genie3_regI.sh` (Boltz
+  ipSAE) is DROPPED for selection. Use instead: **af2ig (initial-guess, NOT blind-dock — the funnel) +
+  groove-placement + the MD-confirmable switch + mechanism-based cross-react** (conserved cations). Do NOT
+  set up Protenix-v2 ensemble (heavy; even the Anthropic ensemble was only "above chance" for TNF). The
+  calib run also showed Boltz DOES dock+score PXDesign-type, so the method isn't broken — it's fold-specific.
+- **BUG FIXED — fbb name collision (was losing 600/800 backbones):** the 4 generation shards each emit
+  `tnf_regI_0..199.pdb`, so basenames collided across shards (last-writer-wins → only 200 distinct fbb).
+  Fixed `build_genie3_fullbb_bc.py` to prefix the shard (`g4_tnf_regI_0`); now 800 distinct. (Same class as
+  the denovo_stage2 collision.) Also added SHARD_I/SHARD_N env for parallel fullbb workers + skip-existing.
+- **LIVE (2026-10-11 ~21:06Z):** mmbu FINISHED (all 8 GPUs free). Funnel RE-running clean on ALL 8 GPUs
+  (parallel 16-worker fullbb → MPNN → af2ig, 800 backbones × 4 seq, ~1h). Completion waiter alive. Process-kill
+  note: `pkill -f` self-matches the shell (exit 144) — kill funnel-pipeline procs by PID or /proc scan;
+  af2ig children are `uplifting-af2ig/bin/python` (not matched by 'funnel'/'build_genie3' patterns).
 - **v16/v17 stand regardless;** this thrust can only ADD a Genie3-Region-I cross-react/novelty hedge (v18).
 
 ## Open items / decision (USER)

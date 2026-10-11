@@ -9,7 +9,7 @@ For each Genie3 complex:
 Output feeds standard full ProteinMPNN (design chain A) -> build_fullatom_af2in_tnf.py --target-chains B,C.
 Usage: build_genie3_fullbb_bc.py <pulchra_bin> <backbone_glob> <out_dir> [target_pdb] [chains=B,C]
 """
-import sys, os, glob, subprocess, tempfile
+import sys, os, glob, subprocess, tempfile, re
 import numpy as np
 REPO="/home/prachh/v/anthropic-adaptyv-2026-tnf"
 PULCHRA=sys.argv[1]; GLOB=sys.argv[2]; OUT=sys.argv[3]
@@ -46,9 +46,15 @@ TGT_ALL=np.array([[float(l[30:38]),float(l[38:46]),float(l[46:54])] for l in TGT
 
 files=[]
 for pat in GLOB.split(): files+=glob.glob(pat)
-n_ok=0; n_fail=0
-for p in sorted(files):
-    name=os.path.basename(p).replace(".pdb","")
+# optional sharding for parallel workers: process files[SHARD_I::SHARD_N]
+SI=int(os.environ.get("SHARD_I","0")); SN=int(os.environ.get("SHARD_N","1"))
+files=sorted(files)[SI::SN]
+n_ok=0; n_fail=0; n_skip=0
+for p in files:
+    # include the generation shard in the name: shard_g4/.../tnf_regI_0.pdb -> g4_tnf_regI_0
+    _m=re.search(r'shard_(g\d+)', p); _pfx=(_m.group(1)+"_" if _m else "")
+    name=_pfx+os.path.basename(p).replace(".pdb","")
+    if os.path.exists(os.path.join(OUT,f"{name}.pdb")): n_skip+=1; n_ok+=1; continue  # reuse already-built
     binderA=atom_lines(p,"A")
     # genie3 target CA in CHAINS order (must match real target CA count/order)
     g_ca=[]
@@ -88,4 +94,4 @@ for p in sorted(files):
             fh.write(l); prev=l[21]
         fh.write("TER\nEND\n")
     n_ok+=1
-print(f"built {n_ok} two-protomer full-backbone complexes -> {OUT}  (failed {n_fail}; chains={CHAINS})")
+print(f"built {n_ok-n_skip} (+{n_skip} reused) two-protomer full-backbone complexes -> {OUT}  (failed {n_fail}; chains={CHAINS}; shard {SI}/{SN})")
