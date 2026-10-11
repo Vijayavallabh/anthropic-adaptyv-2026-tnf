@@ -83,16 +83,20 @@ MD-confirmed additions are genuinely orthogonal evidence, not a restatement of t
   out-of-distribution design; it is reported as a sanity check, not counted toward independence. Honest
   caveat: the ANCHOR is still ESM-family + the Boltz/Protein-Sol/physics hedges; makeability remains a
   calibrated prediction, used only as a soft tie-breaker, never to override the #1/#2/novelty ordering.
-- **novelty (hard gate):** structural proxy calibrated against known-passing v12 analogues (v12-pass maxTM
-  0.807–0.955; des_962_2_mh passed at 0.955). Both swap-ins sit **below** that ceiling (0.896, 0.869) → in
-  the ≥3/4 regime. **User must confirm on the Proteinbase portal before upload.**
+- **novelty (hard gate): PORTAL-VERIFIED (2026-10-11).** The user ran the Proteinbase novelty check on all
+  20 v13 designs → **every design ≥3/4** (`runs/push/portal_novelty_v13.tsv`), with **both new members
+  passing** (des_495_6_mh_41_49 3/4, des_1559_3_mh_48_75 3/4) and four at 4/4 (des_818_4, des_875_5,
+  b1m12, des_2106_2_mh). The structural proxy correctly predicted both swap-ins would pass (in-regime,
+  maxTM 0.896/0.869 < the 0.955 known-pass ceiling). **No remaining novelty contingency on v13.**
 - **diversity:** +2 distinct new lineages (des_495, des_1559); caps respected (des_1060 held at 0 in final).
 
 ## Upload ladder (USER-GATED — nothing auto-uploaded)
 
-1. **v13** (`4c682b80…`) — RECOMMENDED. Requires the user to run the portal novelty check on the 2 new
-   members (des_495_6_mh_41_49, des_1559_3_mh_48_75); proxy predicts ≥3/4 for both.
-2. **v12** (`e34ca96d…`) — fully portal-verified floor; the fallback if either new member fails the portal.
+1. **v13** (`4c682b80…`) — RECOMMENDED and now **FULLY PORTAL-VERIFIED**: all 20 ≥3/4
+   (`runs/push/portal_novelty_v13.tsv`), both new members passing (3/4 each). No remaining contingency.
+   Beats v12 on #1 (switch-confident 9→11, strongest MD triggers) and #2 (cross-react floor up), with
+   expression held (non-ESM legs clear) and novelty verified. Ready for upload (USER-GATED).
+2. **v12** (`e34ca96d…`) — fully portal-verified floor, retained as the conservative fallback.
 3. v11 (`ef72d8e0…`) / v9 (`05a34444…`) — prior byte-locked fallbacks.
 
 Deadline 2026-10-12 11:59 UTC.
