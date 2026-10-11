@@ -48,7 +48,7 @@ for g in "${GA[@]}"; do
 done
 for p in "${pids[@]}"; do wait "$p"||true; done
 # 4) solubility
-uv run python scripts/solubility_predict.py "$OUT/confirmed_seqs.csv" "$OUT/solub.csv" 2>&1 | tail -2 || true
+uv run python -I scripts/solubility_predict.py "$OUT/confirmed_seqs.csv" -o "$OUT/solub.csv" 2>&1 | tail -2 || true
 # 5) collect: dSwitch + xr(min iptm) + solub -> ranked table
 "$PY" - "$OUT" "${GA[*]}" <<'PY'
 import sys,glob,json,csv,os
@@ -68,7 +68,7 @@ for ln in open(f"{out}/md_verdict.txt"):
 solub={}
 if os.path.exists(f"{out}/solub.csv"):
     for r in csv.DictReader(open(f"{out}/solub.csv")):
-        try: solub[r["name"]]=float(r.get("solubility") or r.get("scaled_solubility") or 0)
+        try: solub[r["name"]]=float(r.get("solubility_score") or r.get("solubility") or r.get("scaled_solubility") or 0)
         except: pass
 names=[r["name"] for r in csv.DictReader(open(f"{out}/confirmed_seqs.csv"))]
 rows=[]
