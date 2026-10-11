@@ -14,7 +14,9 @@ re-rank redoes keep/cut on the strict check so the strong core does not rest on 
 - **MD (two-state His-causality):** HIP vs HIE vs GLN-isostere control, 4 replicas × 3 ns each. A design
   is MD-confirmed if d_switch = His–Lys(HIP) − His–Lys(HIE) > 2·SEM AND > 0 AND the GLN control is
   passed. This equilibrates geometry and bypasses the raw-folder xTB sign-flip; it is an independent
-  line of evidence, not a re-run of the strict check.
+  line of evidence, not a re-run of the strict check. **Scope:** this confirms the protonation TRIGGER
+  (charge-driven His–cation repulsion), which is a necessary first step, NOT full pH-dependent release —
+  dissociation is a slow event invisible to 3 ns MD. "MD-confirmed/causal" below means trigger-confirmed.
 - **AGGREGATE (what the cull over-weighted):** collective linkage, both folds negative = correct
   direction. Useful as a screen; insufficient alone to claim a confirmed switch.
 

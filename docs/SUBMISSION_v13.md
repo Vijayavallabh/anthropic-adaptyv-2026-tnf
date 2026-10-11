@@ -1,8 +1,29 @@
-# v13 — strict-metric-respecting rebuild: aggregate-only/MD-refuted members replaced by MD-confirmed switches
+# v13 — strict-metric-respecting rebuild: aggregate-only/MD-refuted members replaced by MD-confirmed triggers
 
 v13 answers two reviewer steers: (1) re-rank the core by the **strict** per-His fold-robust switch metric,
 not the noisier aggregate linkage; (2) a design earns a slot only if **switch AND makeability both hold** —
 more His sharpens the switch but hurts expression, so low-His designs that still switch are preferred.
+
+## What the switch validation shows — and what it does NOT (read this first)
+
+All switch numbers here are **computational proxies for a designed mechanism**, not a demonstration of
+pH-dependent release. Be precise when ranking and writing methods:
+
+- **MD `dSwitch` (+2.30 etc.) = a confirmed TRIGGER, not confirmed release.** It measures one thing: on
+  protonation (pH7.4→6.0), does the His push *away* from its target TNF cation, beyond replicate noise,
+  with a GLN-isostere control proving the motion is charge-caused and correctly directed. That is the
+  first step of the mechanism. **Full dissociation is a slow (ms–s) event invisible to 3 ns MD**; the
+  interface-contact metric stays ~0 over that window. A bigger dSwitch = a stronger trigger, not a
+  guarantee the binder detaches in the lab (which is what the contest scores).
+- **Aggregate Wyman linkage (−0.90/−0.93 etc.) = the closest *thermodynamic* estimate of the scored
+  quantity** (the pH-dependent binding ΔΔG), but it is PROPKA-based, static and approximate — a
+  prediction, not proof.
+- **Strict per-His = fold-robust confirmation of linkage DIRECTION only.**
+
+The defensible claim for v13's new members is: a **validated, causal, correctly-directed trigger** that
+is *also* backed by a negative both-fold thermodynamic linkage — i.e. the designed release mechanism is
+present and points the right way on two orthogonal computational measures. Real release is a wet-lab
+question. "Switch-confident" below is shorthand for "trigger + linkage confirmed", never "release proven".
 
 ## What changed: exactly 2 swaps (v12 → v13)
 
@@ -12,16 +33,18 @@ more His sharpens the switch but hurts expression, so low-His designs that still
 | TNFpH06 | 0 | **NONRESPOND** | 0.648 | **des_1559_3_mh_48_75** | **2** | **+1.32 (CONFIRMED)** | 0.78 | sol 0.81, 2-fold | **DOMINATES** |
 
 Both swaps raise the top axis (#1) AND the next (#2) with no axis traded down (per
-[lesson] verify-all-axes-before-swap). des_495_6_mh_41_49 has the **strongest MD switch of any design
-tested** (dSwitch +2.30). Both swap-ins are **2-His** (lowest makeability risk) yet switch the hardest —
-the 4-His des_1060 variants both NONRESPOND, confirming the His-load/expression tradeoff empirically.
+[lesson] verify-all-axes-before-swap). des_495_6_mh_41_49 shows the **strongest MD trigger response of any
+design tested** (dSwitch +2.30) and a strong both-fold linkage (−0.90/−0.93). Both swap-ins are **2-His**
+(lowest makeability risk) yet trigger the hardest — the 4-His des_1060 variants both NONRESPOND (no trigger
+fires), confirming the His-load/expression tradeoff empirically.
 
 `runs/push/submission_v13.csv` — md5 **`4c682b80ee007c3957833daacdb91bb4`** — validator PASS (20 / 0-Cys /
 unique / single_chain). TNFpH06_sh3 (not TNFpH06) stays: its 4th His makes it **MD-CONFIRMED (+0.88)**.
 
-## Two-state MD His-causality matrix (the decisive selectivity gate)
+## Two-state MD His-causality matrix (the TRIGGER gate — not a release assay)
 
-HIP vs HIE vs GLN-isostere, 4 replicas × 3 ns. CONFIRMED = dSwitch > 2·SEM AND > 0 AND dIso > 0.
+HIP vs HIE vs GLN-isostere, 4 replicas × 3 ns. CONFIRMED = the protonation TRIGGER fires: dSwitch > 2·SEM
+AND > 0 AND dIso > 0. This gate confirms the charge-driven push, not full detachment (see caveat above).
 
 | design | role | dSwitch | verdict |
 |---|---|---|---|
@@ -41,8 +64,11 @@ MD-confirmed additions are genuinely orthogonal evidence, not a restatement of t
 
 ## Why v13 beats v12 on the judged axes
 
-- **#1 pH-selectivity:** switch-confident (strict≥2 OR MD-causal) **9 → 11/20**, and the two new members
-  carry the strongest MD switches found (+2.30, +1.32). The two removed members were MD-refuted.
+- **#1 pH-selectivity:** mechanism-confirmed members (strict≥2 OR MD-trigger-causal) **9 → 11/20**, and the
+  two new members carry the strongest MD trigger responses found (+2.30, +1.32) with correctly-directed
+  both-fold linkage. The two removed members were MD-refuted (no trigger fired). This is confirmed-trigger
+  evidence that the pH-release mechanism is present and correctly directed — not a demonstration of
+  wet-lab release, which these short MD runs cannot show.
 - **#2 cross-reactivity:** removes the portfolio's weakest cross-reactor (TNFpH06, 0.648) and des_962_2_mh
   (0.846); both replacements bind both species (0.78, 0.91). #2 floor rises.
 - **expression (dominant risk):** both swap-ins are 2-His, Tier-A (ESMFold 0.87/0.85, Boltz-mono 0.92/0.89,
