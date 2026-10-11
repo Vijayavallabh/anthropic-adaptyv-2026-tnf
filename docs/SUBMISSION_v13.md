@@ -72,7 +72,11 @@ MD-confirmed additions are genuinely orthogonal evidence, not a restatement of t
 - **#2 cross-reactivity:** removes the portfolio's weakest cross-reactor (TNFpH06, 0.648) and des_962_2_mh
   (0.846); both replacements bind both species (0.78, 0.91). #2 floor rises.
 - **expression (dominant risk):** both swap-ins are 2-His, Tier-A (ESMFold 0.87/0.85, Boltz-mono 0.92/0.89,
-  2-fold TM-agree, solubility 0.95/0.81, 0 liabilities). No expression regression.
+  2-fold TM-agree, solubility 0.95/0.81, 0 liabilities). No expression regression. **Third orthogonal
+  signal added** (ESM-C 600M pseudo-log-likelihood sequence naturalness, a modality independent of
+  structure-pLDDT and the Protein-Sol heuristic): across the 20, des_1559_3_mh_48_75 is the **most natural
+  (rank 20/20, z +2.03)** and des_495_6_mh_41_49 is in-distribution (z −0.80); no design is an outlier-low.
+  (This signal was surfaced by the ToolUniverse assessment but run locally — I already had `esmc_pll.py`.)
 - **novelty (hard gate):** structural proxy calibrated against known-passing v12 analogues (v12-pass maxTM
   0.807–0.955; des_962_2_mh passed at 0.955). Both swap-ins sit **below** that ceiling (0.896, 0.869) → in
   the ≥3/4 regime. **User must confirm on the Proteinbase portal before upload.**
