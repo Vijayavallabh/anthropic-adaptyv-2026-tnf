@@ -71,12 +71,18 @@ MD-confirmed additions are genuinely orthogonal evidence, not a restatement of t
   wet-lab release, which these short MD runs cannot show.
 - **#2 cross-reactivity:** removes the portfolio's weakest cross-reactor (TNFpH06, 0.648) and des_962_2_mh
   (0.846); both replacements bind both species (0.78, 0.91). #2 floor rises.
-- **expression (dominant risk):** both swap-ins are 2-His, Tier-A (ESMFold 0.87/0.85, Boltz-mono 0.92/0.89,
-  2-fold TM-agree, solubility 0.95/0.81, 0 liabilities). No expression regression. **Third orthogonal
-  signal added** (ESM-C 600M pseudo-log-likelihood sequence naturalness, a modality independent of
-  structure-pLDDT and the Protein-Sol heuristic): across the 20, des_1559_3_mh_48_75 is the **most natural
-  (rank 20/20, z +2.03)** and des_495_6_mh_41_49 is in-distribution (z −0.80); no design is an outlier-low.
-  (This signal was surfaced by the ToolUniverse assessment but run locally — I already had `esmc_pll.py`.)
+- **expression (dominant risk):** both swap-ins are 2-His, Tier-A. **Independence structure of the
+  makeability call (reviewer, 2026-10-11):** the consensus ANCHORS on ESMFold pLDDT (ESM-2 family), so the
+  genuinely-independent hedges are what matter — and the swap-ins clear all of them: **Boltz-2 monomer
+  pLDDT 0.92/0.89 (AF3-style diffusion folder, architecturally NON-ESM)**, **cross-architecture TM
+  agreement 0.94/0.89 (ESMFold×Boltz — would flag an ESM-only hallucination)**, **Protein-Sol 0.95/0.81
+  (experimental eSOL solubility, a non-model modality)**, and **0 developability liabilities (physics/
+  rules)**. The makeability does NOT rest on ESM alone. ESM-C pseudo-LL naturalness was also run
+  (des_1559_3 most-natural of the 20, des_495_6 in-distribution), but it is **within-ESM-family
+  corroboration, NOT an independent vote** — ESMFold and ESM-C share a lineage and can fail together on an
+  out-of-distribution design; it is reported as a sanity check, not counted toward independence. Honest
+  caveat: the ANCHOR is still ESM-family + the Boltz/Protein-Sol/physics hedges; makeability remains a
+  calibrated prediction, used only as a soft tie-breaker, never to override the #1/#2/novelty ordering.
 - **novelty (hard gate):** structural proxy calibrated against known-passing v12 analogues (v12-pass maxTM
   0.807–0.955; des_962_2_mh passed at 0.955). Both swap-ins sit **below** that ceiling (0.896, 0.869) → in
   the ≥3/4 regime. **User must confirm on the Proteinbase portal before upload.**
