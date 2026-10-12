@@ -37,7 +37,8 @@ AROUND fixed His so it adapts) · `wave4b.sh` + `wave4b_analyze.py` + `wave4b_tr
 (His→distinct-cation 8Å gate) · `wave3_triple.py` / `wave3b_triple.py` (per-His PROPKA `dpKa` + GFN2-xTB `dE`
 sign confirm) · `esmfold_monomer.py` (single-seq MONOMER pLDDT expression ranker) · `sap_score.py`
 (aggregation) · **`integrate_v9.py`** (assemble switch core + diverse portal-verified floor →
-`runs/push/submission_v9.csv`, the current best).
+`runs/push/submission_v9.csv`; superseded by later assemblies v10–v21 — current strongest
+`submission_v21.csv` (leaner diverse), gated-safe `submission_v19.csv`).
 
 **Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).

@@ -1,12 +1,25 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-12 (SESSION 12). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
+Updated 2026-10-12 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
 2026-10-12 ~08:25Z — the Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that, real runway ~7 days).
 
-## Current best submission (fully portal-novelty-gated)
+## Current strongest candidate (SESSION 13) — v21, USER-PORTAL-GATED
+
+- **`runs/push/submission_v21.csv`** (md5 **`30915564027fdcea0da997675d29e904`**) — 13 LEANER DIVERSE designs,
+  validator **PASS**, LOCAL-ONLY. Committed+pushed `5cc6a83`. = v20b minus same-fold cousins + weakest-switch
+  members, + 3 NEW-lineage regen refills (des_732_1_r3_sa15 / des_1169_2_r3_sa7 / des_243_3_r3_sa2, MD-direction-
+  confirmed His-causal); sh3_sa11 replaces sa10 (novelty-safety, struct-TM 0.913 vs 0.959). **Selection
+  principle:** switch magnitude is NOT reliably rankable in-silico (pKa err 2-3u > 1.4u window; two-engine Wyman
+  rank disagrees ρ=0.56) → pick many foldseek-DISTINCT direction-confirmed switchers, each strong on binding /
+  cross-react ≥90% / novelty TM<~0.80 / solubility, NOT a magnitude rank. Dossier `docs/SUBMISSION_v21_candidate.md`.
+  **IN FLIGHT:** regen round-3 (8 new-lineage substrates, GPUs 1-7) + des_243 MD (GPU 0) to expand toward ≤20.
+  **REQUIRED before upload: USER portal novelty re-check on the reseqenced members (sh3_sa11 + 3 regen refills;
+  10 carryovers byte-identical to portal-confirmed).**
+
+## Gated-safe default (fully portal-novelty-gated)
 
 - **`runs/push/submission_v19.csv`** (md5 **`7756055f0b20bcd6994fefb644271db7`**) — 20 designs, validator
-  **PASS**, user portal-checked **all 20 ≥3/4**, 20/20 switchers. **Recommended upload.**
+  **PASS**, user portal-checked **all 20 ≥3/4**, 20/20 switchers. **Recommended upload if no portal re-check.**
 - **Gated fallback:** `submission_v18.csv` (md5 **`524722158467273c0e9f57f5402650ed`**, 19/20 switchers,
   4×4/4-novel). Floor: `submission_v16.csv` (`a524d77f`).
 - **Upload is USER-GATED** — do not auto-upload. CSVs under `runs/` (gitignored). Account `j_v_v_07`.

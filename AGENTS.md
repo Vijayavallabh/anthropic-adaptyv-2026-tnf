@@ -16,8 +16,8 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `session-handoff.md` (latest session state + next steps),
    `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md` (plan + outcome). `scripts/README.md`
-   maps the pipeline; the current best submission is `runs/push/submission_v19.csv` (see the Submission
-   contract below), with `v20` the fold-robust candidate.
+   maps the pipeline; the gated-safe submission is `runs/push/submission_v19.csv` (see the Submission
+   contract below); `v21` is the current STRONGEST candidate (leaner + diverse), `v20` its predecessor.
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -63,7 +63,7 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 - `uv run pytest`: test suite (schema, length, numbering, liabilities).
 - `uv run python -m compileall -q src scripts`: compile check.
 - `uv run python scripts/validate_submission.py <csv> --track 3`: **submission gate** (current;
-  rows/format/length/uniqueness; it does NOT check Cys). v18/v19/v20 all PASS. Record the md5 + `rows=N errors=0` as evidence.
+  rows/format/length/uniqueness; it does NOT check Cys). v18/v19/v20/v21 all PASS. Record the md5 + `rows=N errors=0` as evidence.
 - `bash scripts/novelty_check.sh <csv>`: sequence-novelty pre-screen (mmseqs vs PDB, cached); 0 flagged >70% id
   = all de novo. STRUCTURAL novelty + the 4/4 portal score are USER-run (Proteinbase) — always portal-check swaps.
 
@@ -74,15 +74,27 @@ submission, `validate_submission.py` exits `0` for the target track; and the
 command plus key output is recorded as evidence. Never claim done without the
 evidence.
 
-## Submission contract (TNF Challenge 2 — ≤20 designs)
+## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **Current best, FULLY portal-novelty-gated (user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
+- **v21 — CURRENT STRONGEST candidate (leaner + DIVERSE), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
+  (md5 **`30915564027fdcea0da997675d29e904`**, validator PASS, 13 designs, expanding toward ≤20 — regen
+  round-3 in flight). Built from the brutal 4-agent devil's-advocate review: cut same-fold cousins + weakest-
+  switch members, refill with foldseek-DISTINCT NEW lineages (3 regen refills des_732_1_r3_sa15 / des_1169_2_r3_sa7
+  / des_243_3_r3_sa2, MD-direction-confirmed His-causal), sh3_sa11 replaces sa10 (novelty-safety: struct-TM
+  0.913 vs 0.959, NOT a sharper-switch claim). **Selection principle (recorded):** switch MAGNITUDE is not
+  reliably rankable in-silico (pKa-predictor error 2-3u > the 1.4u 7.4↔6.0 window; two-engine Wyman rank
+  disagrees ρ=0.56) → select on confirmed release DIRECTION + reliable axes (binding floor, cross-react ≥90%,
+  novelty TM<~0.80, solubility) + DIVERSITY, maximizing the chance the set CONTAINS the sharpest switch (which
+  can't be identified in-silico). Diversity also hedges the dominant expression/wet-lab-zero risk. **REQUIRED
+  before upload: USER portal novelty re-check on the reseqenced members (sh3_sa11 swap + 3 regen refills; the 10
+  carryovers are byte-identical to portal-confirmed).** See `docs/SUBMISSION_v21_candidate.md`.
+- **Gated-safe default (FULLY portal-novelty-gated, user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
   (md5 **`7756055f0b20bcd6994fefb644271db7`**, 20 designs, validator PASS). v19 = v18 with des_818_4_c13S →
   des_84_3_mh_49_56_76 (the more fold-robust flagship, 1 both-fold His); **20/20 switchers**. **Recommended
   upload.**
 - **Gated fallback:** `runs/push/submission_v18.csv` (md5 **`524722158467273c0e9f57f5402650ed`**, validator
   PASS, 19/20 switchers, 4×4/4-novel). Conservative floor: `submission_v16.csv` (`a524d77f`).
-- **v20 candidate — STRONGER on #1 (fold-robustness), USER-PORTAL-GATED:** `runs/push/submission_v20.csv`
+- **v20 — predecessor to v21 (fold-robust shell-adaptation; superseded by v21's leaner diverse cut):** `runs/push/submission_v20.csv`
   (md5 **`6f4b61d0a55de2e4e0db205970ec6821`**, validator PASS). v20 = v19 with **9 fold-FRAGILE switchers
   replaced by shell-adapted fold-ROBUST variants** (switch-His engages a cross-conserved TNF cation in BOTH
   folders Boltz∩Chai, not one). Portfolio fold-robust **8/20 → 17/20** (round-2 adds b2m0_c70 + des_875_5 →

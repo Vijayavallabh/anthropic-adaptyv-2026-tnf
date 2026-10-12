@@ -18,14 +18,24 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 ## The submission
 
-`runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
-carrying a pH-release switch. This is the current best / recommended upload (fallback `submission_v18.csv`).
+`runs/push/submission_v21.csv` — **the current strongest candidate** (md5 `30915564027fdcea0da997675d29e904`,
+13 designs, validator PASS; expanding toward ≤20, regen round-3 in flight). A leaner, more **diverse** portfolio:
+a brutal multi-agent devil's-advocate review cut same-fold cousins and the weakest-switch members, and refilled
+with foldseek-distinct **new lineages**. Selection follows the finding that switch *magnitude* is not reliably
+rankable in-silico (predictor error exceeds the pH window; two linkage engines disagree on rank) — so the set is
+built from many distinct, **direction-confirmed** switchers, each strong on binding, cross-reactivity, novelty and
+solubility, to maximize the chance it contains the sharpest switch and to hedge expression risk. USER portal
+novelty re-check on the reseqenced members is required before upload. Dossier `docs/SUBMISSION_v21_candidate.md`.
 
-`runs/push/submission_v20.csv` — the **fold-robust candidate** (dossier `docs/SUBMISSION_v20_candidate.md`):
+`runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
+carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done
+(fallback `submission_v18.csv`).
+
+`runs/push/submission_v20.csv` — the **fold-robust predecessor to v21** (dossier `docs/SUBMISSION_v20_candidate.md`):
 v19 with 9 fold-fragile switchers replaced by **shell-adapted fold-ROBUST** variants whose switch-His engages a
 cross-conserved TNF cation in **both** independent folders (Boltz∩Chai), lifting the portfolio from 8/20 to
-17/20 (→19/20) fold-robust. Binding re-confirmed per design (AF2 initial-guess). USER portal novelty re-check on
-the reseqenced swaps is required before upload. Every design carries:
+17/20 (→19/20) fold-robust. Binding re-confirmed per design (AF2 initial-guess). Superseded by v21's leaner
+diverse cut, but its fold-robust members carry into v21. Every design carries:
 
 - a **pH-release switch** (interface His adjacent to a conserved target Lys → His⁺ repels Lys⁺ at pH 6),
   validated by explicit two-state MD (+ Gln-isostere causal control), PROPKA–Wyman and pKAI linkage, and
