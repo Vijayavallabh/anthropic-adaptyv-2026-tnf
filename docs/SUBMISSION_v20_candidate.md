@@ -27,18 +27,20 @@ All 9 adopted winners PASS; 8/9 match or beat their parent's binding (see table)
 | des_6126_3_T20_pd_45_3_mh_9_56_78 | sa1 | H9-K6 (1) | 3.92/95/0.37 | n/a | 0.69/0.82 | 95% |
 | des_1060_4_mh_46_74 | sa2 | H78-K6 (1) | 5.45/86/0.87 | 5.26/89 | 0.60/0.84 | 95% |
 
-**Leads by GEOMETRY vs by PHYSICS:** des_2106_2 sa2 has the most both-fold His (3, the only bc=3 of 176) BUT
-2 of them crowd the same K93 (anti-cooperative) and two-state MD rates it NON-selective — so it is NOT the
-functional flagship. The **MD-selective leads are des_6025 sa10 and des_4082_8_pd_10_4 sa7** (each 2 His on 2
-SEPARATED distinct cations → clean HIP>HIE>GLN release, selective_release=TRUE). This vindicates the
-separated-His principle: distinct-cation count, not raw His count, drives the functional switch.
+**Two-state MD (physics corroboration):** 7/9 adopted winners are MD-selective at 3-rep; 6-rep firming
+(less noisy) holds 5/7 of the re-run set. The cleanest His-causal leads (d_repel ≫ Gln-isostere control):
+**des_4082_8_pd_10_4 sa7 (d_repel 1.69), des_6025 sa10 (1.2)** — each 2 His on 2 SEPARATED distinct cations.
+des_2106_2 sa2 (3 His, 2 on K93) read NON-selective at 3-rep but **FLIPPED to selective at 6-rep** (d_repel
+1.1, Gln −1.07) — the 3-rep call was replicate noise, so the earlier "crowded/MD-weak" framing is retracted;
+it is MD-selective, just not the cleanest. Only des_4082_8_pd_9_1 sa15 stays non-selective (weak d_repel).
+Lesson: 3-rep MD is a noisy flagger; the separated-cation designs are the firmest switches.
 
 **Filter stringency (devil's-advocate on "both-fold = higher confidence"):** across all 176
 shell-adapts, 51% show a Boltz-only His on a conserved cation but only 28% survive the both-fold
 (Boltz AND Chai agree) requirement — the second folder rejects ~45% of single-fold hits, so
 both-fold is a stringent cross-validation of the LOCAL switch geometry, not a chance-permissive
 label. bc distribution over 176: {0:127, 1:40, 2:8, 3:1} — des_2106_2 (bc=3) is the ONLY one
-to reach 3 (top 0.6%, though 2 of its His crowd K93 → MD-weak, see above); the bc=2 winners are the top ~5%. This is a confidence/reliability
+to reach 3 (top 0.6%; MD-selective at 6-rep — see above); the bc=2 winners are the top ~5%. This is a confidence/reliability
 gain on the #1 switch axis; it does NOT claim in-silico proof of global binding (TNF co-folders
 stay near-chance for docking — binding/affinity #3 are wet-lab-decided).
 

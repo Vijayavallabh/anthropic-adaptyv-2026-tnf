@@ -255,6 +255,7 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
 
 - **Upload decision (USER-gated, nothing uploaded):**
   1. **Default (zero extra work): upload v19** (`7756055f`) — fully portal-verified, 20/20 ≥3/4, 20/20 switchers.
+  1b. **STRONGEST (recommended): upload v21** (`30915564`) — 13 LEANER DIVERSE designs (brutal-review cut of cousins/weak-switch + 3 NEW-lineage regen refills). LOCAL-ONLY. REQUIRES USER portal novelty re-check on the reseqenced members (sh3_sa11 swap + 3 regen refills; 10 carryovers are byte-identical to portal-confirmed). Expansion to ~16-18 diverse members in flight (regen round-3). Dossier docs/SUBMISSION_v21_candidate.md.
   2. **Stronger on #1, needs portal re-checks: v20** (`6f4b61d0`) — 17/20 (→19/20 w/ round-2) fold-robust,
      binding re-confirmed per design. REQUIRES USER portal novelty re-check on the 9 (soon 11) reseqenced swaps
      (sequence changed ~60-75/80 residues; backbone unchanged → expect ≥3/4, but hard-gated so must be verified).

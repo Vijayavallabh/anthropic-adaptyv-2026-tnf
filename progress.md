@@ -622,3 +622,27 @@ auto-upload.
 - **Honest scope:** v20 is a higher-CONFIDENCE switch-geometry gain on #1 (more members reliably switch), NOT
   in-silico binding proof (TNF docking stays wall-limited; #3 affinity wet-lab-decided). Campaign-2 (1200 fresh
   bpair-RFd → funnel) in flight for new-lineage binders (novelty/diversity). v18/v19 gated; v20 USER-portal-gated.
+
+
+## SESSION 13 (2026-10-12) — v21 leaner DIVERSE portfolio (brutal cut + new-lineage refills)
+```json
+{
+ "title": "SESSION 13 (2026-10-12) \u2014 v21 leaner DIVERSE portfolio (brutal cut + new-lineage refills)",
+ "v21_csv": "runs/push/submission_v21.csv",
+ "v21_md5": "30915564027fdcea0da997675d29e904",
+ "v21_n": 13,
+ "v21_status": "validator PASS, LOCAL-ONLY, upload USER-GATED",
+ "v21_vs_v20b": "dropped same-fold cousins + weakest-switch members; +3 NEW-lineage regen refills; sh3_sa11 replaces sa10",
+ "dossier": "docs/SUBMISSION_v21_candidate.md (JSON-dump of validation_results)",
+ "brutal_review": "4 subagents (redundancy / novelty-DQ / group-A / group-B) -> cut the majority; refill with foldseek-DISTINCT new lineages, not cousins",
+ "KEY_LESSON": "switch MAGNITUDE not reliably rankable in-silico (pKa err 2-3u > 1.4u window; PROPKA vs pKAI rank DISAGREE rho=0.56). Only release DIRECTION robust (all designs sign-agree). Select on direction + reliable axes (bind/xreact/novelty/sol) + DIVERSITY, NOT magnitude rank.",
+ "sh3_sa11": "kept for novelty-safety (struct-TM 0.913 vs sa10 0.959) + binding, NOT a claimed sharper switch",
+ "regen_refills_NEW_lineages": {
+  "des_732_1_r3_sa15": "3-cation; MD dir 0.568>>Gln-0.322 OK; xr93 nov0.842 sol0.72",
+  "des_1169_2_r3_sa7": "MD dir 0.627>>Gln-0.738 OK; xr97 nov0.934 sol0.83",
+  "des_243_3_r3_sa2": "best novelty 0.808; MD dir running; xr92 sol0.815 bind-marginal(plddt83)"
+ },
+ "expansion_in_flight": "regen round-3 (8 new-lineage substrates, GPUs 1-7) + des_243 MD (GPU0) -> fill remaining slots with more foldseek-distinct direction-confirmed switchers (lottery tickets on #1 + expression hedge)",
+ "fallback": "v19 (7756055f, portal-confirmed >=3/4 all 20) remains the gated default"
+}
+```
