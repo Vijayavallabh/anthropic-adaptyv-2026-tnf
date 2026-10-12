@@ -80,6 +80,14 @@ only proves switch DIRECTION; sign-consensus across orthogonal physics is the ho
 | des_6126_…mh_9_56_78 | **+1.36** (>2·SEM 0.58), 4/4 reps + | His–Lys 7.88 Å (<8 ✓) | iface 0.84, rmsd 2.0 ✓ | +0.39 | **−0.837** | **−2.475** | **+12.3** (H56·K173); +14.9 (H9·K86, strained) | **release, 4-class sign-consensus** |
 | des_6025_…mh_52_74 | **+0.93** (>2·SEM 0.43) | His–Lys 6.46 Å (<8 ✓) | iface 0.88–0.92, rmsd 1.4 ✓ | +2.18 | **−1.09** | **−1.989** | **+12.5** (H74·K86); +15.0 (H52·K140) | **release, 4-class sign-consensus** |
 
+**Quantified magnitude (Wyman Δn_H on the Boltz co-fold — a 3rd structural context).** Integrating the
+proton-uptake difference (complex vs apo PROPKA pKas) across the 6.0→7.4 window gives a predicted release
+factor Kd(6.0)/Kd(7.4): **des_6126 = 22× (peak Δn_H 1.58, SHARP)** — all three His titrate in-window and in
+the release direction (H9 6.68→4.59, H56 6.31→5.19, H78 6.53→6.04); **des_6025 = 8× (peak Δn_H 0.78)** — the
+weaker of the two (two His, unequal). des_6126's three His titrate near-independently (little
+anti-cooperative pKa-splitting), which is why it is both the strongest MD switcher and the sharpest linkage.
+(Reference scale: Δn_H 1≈25×, 2≈630×; Baker's TNF SOTA hit 79× at the easier pH 5.4 window.)
+
 All signs agree: protonation at pH 6.0 (HIP) raises the His⁺–Lys⁺ repulsion / destabilises the contact
 (MD d_repel>0, xTB dE_switch>0) and the proton-linkage releases (PROPKA & pKAI ddg<0). Both switches sit on
 an **MD-stable** bound pose (the gate the Genie3-groove hedge failed — those drifted rmsd 4.5–7 Å, so their
