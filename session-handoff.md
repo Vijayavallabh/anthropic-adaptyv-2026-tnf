@@ -195,6 +195,13 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   Doc: docs/SUBMISSION_v18_candidate.md. Bugs fixed in harvest/assemble this session: solub -o/column,
   _af2pred seq lookup, v18_candidates needs a sequence column (augment from confirmed_seqs.csv).
   **Upload USER-GATED; v16 safe default, v17 one-check, v18 three-checks (portal-novelty the 2 new members).**
+- **Genie3-groove switch-HEDGE: rigorous NO-GO (2026-10-12 ~02:20Z).** Full 12-variant two-state MD: 4
+  CONFIRMED / 7 NONRESPOND / 1 crashed — BUT the 4 "confirmed" are pose-INSTABILITY artifacts: binder_rmsd
+  4.5–7.1 Å, iface_frac 0.44–0.66 (the binder DRIFTS + sheds 35–55% interface over 3 ns; vs v18 des_6126
+  stable rmsd ~2.0 / iface 0.84). So the His-Lys "switch" (noisy 2·SEM 1.0–1.3) is on a DETACHING pose, not a
+  bound-state repulsion. The af2ig binding wall shows up as MD instability. Genie3-groove can't be confirmed to
+  bind OR to switch-while-bound → NOT submitted. v18 (bpair, af2ig pae<10 + MD-stable + clean switch) stands.
+  Method lesson: gate switch-MD verdicts on binder_rmsd/iface, not just His-Lys dSwitch.
 - **v16/v17 stand regardless;** the two live improvement tracks are the bpair switch-harvest (v18 core, MD
   running) + the Genie3-groove switch-hedge (diversification, queued behind it).
 
