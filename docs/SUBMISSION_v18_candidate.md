@@ -79,8 +79,11 @@ the conserved-cation mechanism.**
 
 | member | MD d_repel (HIP−HIE) | ON-state contact (HIE) | MD-stable? | Gln control | PROPKA ddg | pKAI ddg | GFN2-xTB dE_switch | verdict |
 |---|---|---|---|---|---|---|---|---|
-| des_6126_…mh_9_56_78 | **+1.36** (>2·SEM 0.58), 4/4 reps + | His–Lys 7.88 Å (<8 ✓) | iface 0.84, rmsd 2.0 ✓ | +0.39 | **−0.837** | **−2.475** | **+12.3** (H56·K173); +14.9 (H9·K86, strained) | **release, 4-class sign-consensus** |
-| des_6025_…mh_52_74 | **+0.93** (>2·SEM 0.43) | His–Lys 6.46 Å (<8 ✓) | iface 0.88–0.92, rmsd 1.4 ✓ | +2.18 | **−1.09** | **−1.989** | **+12.5** (H74·K86); +15.0 (H52·K140) | **release, 4-class sign-consensus** |
+| des_6126_…mh_9_56_78 | **+1.36** (>2·SEM 0.58), 4/4 reps + | His–Lys 7.88 Å (<8 ✓) | iface 0.84, rmsd 2.0 ✓ | +0.39 | **−0.837** | **−2.475** | **+12.3** (H56·K93); +14.9 (H9·K6, strained) | **release (af2ig pose)** |
+| des_6025_…mh_52_74 | **+0.93** (>2·SEM 0.43) | His–Lys 6.46 Å (<8 ✓) | iface 0.88–0.92, rmsd 1.4 ✓ | +2.18 | **−1.09** | **−1.989** | **+12.5** (H74·K6); +15.0 (H52·K60) | **release (af2ig pose)** |
+
+(Target cations in **mature** numbering, consistent with the cross-react table; the raw af2pred pose numbers
+them K86/K173/K140 ≡ mature K6/K93/K60.)
 
 **Quantified magnitude (Wyman Δn_H on the Boltz co-fold — a 3rd structural context).** Integrating the
 proton-uptake difference (complex vs apo PROPKA pKas) across the 6.0→7.4 window gives a predicted release
@@ -91,8 +94,8 @@ anti-cooperative pKa-splitting), which is why it is both the strongest MD switch
 (Reference scale: Δn_H 1≈25×, 2≈630×; Baker's TNF SOTA hit 79× at the easier pH 5.4 window.)
 
 *4-His sharpening probe — tested NO-GO.* Direct structural analysis of the des_6126 bound pose: the
-interface presents only three target cations (Lys86, Lys173, Arg81), and all three are already engaged by
-His9/His56/His78. The only mutable chain-A positions near a cation (pos 1→Lys86, pos 61→Lys173) point at
+interface presents only three target cations (mature K6, K93, R1), and all three are already engaged by
+His9/His56/His78. The only mutable chain-A positions near a cation (pos 1→K6, pos 61→K93) point at
 *already-engaged* cations, so a 4th His would double up (anti-cooperative — the known dead-end), not add an
 independent Δn_H unit. des_6126 is **saturated at 3 distinct-cation His**; its 3-His form is the irreducible
 optimum for this backbone, not an under-exploited one.
@@ -102,7 +105,7 @@ All signs agree: protonation at pH 6.0 (HIP) raises the His⁺–Lys⁺ repulsio
 an **MD-stable** bound pose (the gate the Genie3-groove hedge failed — those drifted rmsd 4.5–7 Å, so their
 "switch" was measured on a detaching pose and was rejected). Honest caveats: the des_6126 Gln-isostere
 margin (+0.39) is positive but within noise, and its His9·Lys86 xTB pair is strained (raw-pose clash,
-relaxed under `--opt`; consistent sign, unreliable magnitude) — the clean His56·Lys173 pair (+12.3) and the
+relaxed under `--opt`; consistent sign, unreliable magnitude) — the clean His56·K93 pair (+12.3) and the
 primary HIP−HIE MD delta (+1.36, 4/4 reps) carry that member. Artifacts (durable, local-only under
 gitignored `runs/`): `runs/v18_switch/pka_consensus.tsv` (PROPKA+pKAI), `runs/v18_switch/qm_switch.tsv`
 (GFN2-xTB, 4 pairs, all release=True), `runs/v18_switch/md_des_{6126,6025}.json` (two-state MD aggregates).
