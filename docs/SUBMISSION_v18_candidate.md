@@ -45,9 +45,8 @@ losing a distinct lineage and the lone 4/4).
 |  | isostere control (HIP−GLN) | +0.39 | positive (His-causal ablation holds) |
 |  | `selective_release` | `true` | — |
 |  | binder RMSD / interface frac | ~2.0 Å / 0.84 | complex MD-stable across states |
-| **#2 cross-react** | human iptm (Boltz-2) | **0.970** | — |
-|  | mouse iptm (Boltz-2) | **0.911** | — |
-|  | min(h,m) | **0.911** | **PASS** (≥0.70) |
+| **#2 cross-react** | **conserved-cation engagement** (the real evidence) | His9→**K6**, His56→**K93**, His78→**R1** — all 3 identical in mouse | **mechanistic PASS** |
+|  | Boltz-2 iptm h/m (NOT relied on) | 0.970 / 0.911 | *uninformative for TNF — see cross-react note* |
 | **expression** | Protein-Sol scaled solubility | 0.82 | PASS (≥0.50) |
 | **novelty seq** | mmseqs vs PDB seqres | **NO PDB hit (novel)** | passes seq criterion |
 | **novelty struct** | foldseek max-TM vs PDB → **portal** | **0.948** → portal | **3/4 — PORTAL-CONFIRMED** |
@@ -60,20 +59,23 @@ losing a distinct lineage and the lone 4/4).
 |---|---|---|---|
 | **#1 pH-switch** | two-state MD d_repel (HIP−HIE), 4 reps × 3 ns | **+0.93** (2·SEM ≈ 0.43, all arms) | **CONFIRMED** |
 |  | isostere control (HIP−GLN) | +2.18 | positive |
-| **#2 cross-react** | human / mouse iptm (Boltz-2) | 0.950 / 0.936 → **min 0.936** | **PASS** |
+| **#2 cross-react** | **conserved-cation engagement** | His52→**K60**, His74→**K6** — both identical in mouse | **mechanistic PASS** |
+|  | Boltz-2 iptm h/m (NOT relied on) | 0.950 / 0.936 | *uninformative for TNF — see cross-react note* |
 | **expression** | Protein-Sol scaled solubility | 0.92 | PASS |
 | **novelty** | mmseqs seq / foldseek struct TM → **portal** | NO PDB hit / **0.870** → portal | **3/4 — PORTAL-CONFIRMED** |
 
 Note: this is a **stronger** des_6025 switcher than v17's member (`mh_34_50_52_74`, +0.372) — v18 upgrades the
 des_6025 representative while using an independent variant.
 
-## The pH-switch is confirmed by FOUR method-classes, not MD alone
+## The pH-switch: four physics methods agree on the binding pose (answers "MD alone"; see fold caveat)
 
-The decisive (#1-ranked) axis is the pH switch. For both new members it agrees in sign across four
-independent method-classes — two-state MD (fixed-charge MM), the Gln-isostere ablation control, two
-empirical pKa predictors (PROPKA-Wyman, pKAI), and a QM single-point (GFN2-xTB). A positive static score
-only proves switch DIRECTION; sign-consensus across orthogonal physics is the honest selectivity evidence
-(magnitudes are not comparable across classes and are not claimed).
+The decisive (#1-ranked) axis is the pH switch. On the af2ig/MD binding pose, it agrees in sign across four
+orthogonal method-classes — two-state MD (fixed-charge MM), the Gln-isostere ablation control, two empirical
+pKa predictors (PROPKA-Wyman, pKAI), and a QM single-point (GFN2-xTB). So it is **not MD-alone**. A positive
+static score only proves switch DIRECTION; sign-consensus across orthogonal physics is the honest selectivity
+evidence (magnitudes are not comparable across classes and are not claimed). **Caveat (below): this agreement
+is on one fold family; an independent folder (Chai) does not reproduce it — the fold-independent evidence is
+the conserved-cation mechanism.**
 
 | member | MD d_repel (HIP−HIE) | ON-state contact (HIE) | MD-stable? | Gln control | PROPKA ddg | pKAI ddg | GFN2-xTB dE_switch | verdict |
 |---|---|---|---|---|---|---|---|---|
@@ -104,6 +106,40 @@ relaxed under `--opt`; consistent sign, unreliable magnitude) — the clean His5
 primary HIP−HIE MD delta (+1.36, 4/4 reps) carry that member. Artifacts (durable, local-only under
 gitignored `runs/`): `runs/v18_switch/pka_consensus.tsv` (PROPKA+pKAI), `runs/v18_switch/qm_switch.tsv`
 (GFN2-xTB, 4 pairs, all release=True), `runs/v18_switch/md_des_{6126,6025}.json` (two-state MD aggregates).
+
+**Honest limit — the consensus is NOT fold-independent.** The MD pose, the Boltz co-fold and the af2ig pose
+are the *same* fold family; the four methods agree *on that family*. A strict per-His check on an INDEPENDENT
+2nd folder (Chai) does **not** reproduce: des_6126 = 2 His confirmed on Boltz, **0 on Chai** (His9/His56 lose
+their cation contact in Chai's binding pose); des_6025 = 1 on Boltz, 0 on Chai (His74 flips sign). This is the
+common case — in the wave-10 campaign only the c19 flagship carried strictly fold-robust His, and TNF co-folders
+are near-chance anyway, so Chai's disagreement is itself not decisive. The takeaway: the switch is well-supported
+*on the af2ig/MD pose* by orthogonal physics, but strict cross-fold robustness is not established for these two
+members. The fold-INDEPENDENT evidence is the conserved-cation engagement below (a sequence/epitope fact, not a
+fold prediction). (`runs/v18_switch/bothfold_robustness.tsv`. Note: the v19 candidate des_84_3 has 1 *both-fold*
+confirmed His — more robust here than either v18 member.)
+
+## Cross-reactivity (human + mouse) — mechanistic, NOT the co-fold iptm
+
+**Do not rely on the Boltz mouse iptm.** Calibrated on the 12 CRO-validated TNF binders, the co-fold iptm
+ranks them *backwards* (best real mouse binder iptm 0.18 — would "fail" the 0.70 bar; co-fold AP on TNF ≈ 0.16,
+near the chance line). A 0.91 "PASS" is close to a coin flip for this target and is reported above only as a
+non-load-bearing number.
+
+**The real cross-react evidence is mechanistic and fold-independent:** every switch-His engages a target cation
+that is IDENTICAL in human and mouse mature TNF. The conserved cation set (aligned human↔mouse) is
+{R1, K6, R27, R39, K60, R77, K85, K93, R98, K107, K123}; the divergent ones (lost in mouse: R26→Q, R126→Q,
+R133→L) are all avoided. Engagement by member:
+
+| member | switch-His → conserved cation (mature) | all conserved? |
+|---|---|---|
+| des_6126 | His9→K6, His56→K93, His78→R1 | **yes (3/3)** |
+| des_6025 | His52→K60, His74→K6 | **yes (2/2)** |
+| des_84_3 (v19) | His56→K93, His76→K6, His49→R77 | **yes (3/3)** |
+
+K6 and K93 are the strongest close anchors in the Baker TNF recipe. Because the switch mechanism itself is
+anchored on residues conserved in both orthologs, the binder cannot distinguish human from mouse at those
+contacts — the cross-react argument that does not depend on a near-chance co-folder.
+(`runs/v18_switch/crossreact_mechanism.tsv`.)
 
 ## Portal-novelty result — RESOLVED (all 20 ≥3/4; was the one open risk)
 
@@ -191,7 +227,7 @@ The one clean survivor is **des_84_3_mh_49_56_76** (wave-10, a novel β-pairing 
 |---|---|---|
 | #1 switch d_repel | **−0.01 (non-switcher)** | **+1.77**, MD-stable (ON His–Lys 8.0 Å, iface 0.91, rmsd 2.8) |
 | switch fold-robustness | — | **His56·Lys93 confirmed on BOTH Boltz & Chai**; aggregate linkage right-signed on both folds (not an anti-switch) |
-| #2 cross-react (Boltz h/m) | — | **0.94 / 0.912** (min 0.912, balanced) |
+| #2 cross-react (mechanistic) | — | His engage **K93/K6/R77 — all conserved** in mouse (iptm 0.94/0.912 not relied on) |
 | expression (Protein-Sol) | **0.83** (excellent) | 0.452 (average — above the 0.446 population mean; monomer pLDDT 0.933, so likely expresses) |
 | novelty | **4/4** (portal) | de-novo helical/β-pair ⇒ expect 3/4 (NOT yet portal-checked) |
 
@@ -212,8 +248,9 @@ generator-provenance risk is identical across all three (every member is RFd-der
 - **#1 pH-selectivity:** 19/20 MD-confirmed switchers (v16 = 17, v17 = 18); the single strongest switcher of
   the whole campaign (des_6126, d_repel +1.36, 4/4 reps); both new members confirmed by a 4-method-class
   sign-consensus (MD + Gln control + PROPKA + pKAI + GFN2-xTB).
-- **#2 cross-reactivity:** all members min-iptm 0.91–0.95 (note: co-fold iptm is a weak TNF signal — the
-  mechanistic conserved-cation argument carries the real cross-react claim).
+- **#2 cross-reactivity:** carried by the **mechanistic conserved-cation argument** (every switch-His engages a
+  cation identical in human & mouse TNF), NOT the Boltz mouse iptm — which is near-chance for TNF (ranks the 12
+  CRO binders backwards) and is not load-bearing here. See "Cross-reactivity".
 - **novelty gate:** all 20 ≥3/4 (4 at 4/4), portal-confirmed. **expression:** all new members soluble
   0.82–0.92, 0-Cys.
 - **diversity:** 4 de-novo β-pairing lineages + groove `b*`/cb1 family + partial-diffusion variants (keeps
