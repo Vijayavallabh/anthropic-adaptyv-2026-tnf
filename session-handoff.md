@@ -5,16 +5,20 @@ Updated 2026-10-12 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (user reconf
 
 ## Current strongest candidate (SESSION 13) — v21, USER-PORTAL-GATED
 
-- **`runs/push/submission_v21.csv`** (md5 **`30915564027fdcea0da997675d29e904`**) — 13 LEANER DIVERSE designs,
-  validator **PASS**, LOCAL-ONLY. Committed+pushed `5cc6a83`. = v20b minus same-fold cousins + weakest-switch
-  members, + 3 NEW-lineage regen refills (des_732_1_r3_sa15 / des_1169_2_r3_sa7 / des_243_3_r3_sa2, MD-direction-
-  confirmed His-causal); sh3_sa11 replaces sa10 (novelty-safety, struct-TM 0.913 vs 0.959). **Selection
-  principle:** switch magnitude is NOT reliably rankable in-silico (pKa err 2-3u > 1.4u window; two-engine Wyman
-  rank disagrees ρ=0.56) → pick many foldseek-DISTINCT direction-confirmed switchers, each strong on binding /
-  cross-react ≥90% / novelty TM<~0.80 / solubility, NOT a magnitude rank. Dossier `docs/SUBMISSION_v21_candidate.md`.
-  **IN FLIGHT:** regen round-3 (8 new-lineage substrates, GPUs 1-7) + des_243 MD (GPU 0) to expand toward ≤20.
-  **REQUIRED before upload: USER portal novelty re-check on the reseqenced members (sh3_sa11 + 3 regen refills;
-  10 carryovers byte-identical to portal-confirmed).**
+- **`runs/push/submission_v21.csv`** (md5 **`87066005a74e38ace5984742b6b35a73`**) — **14 LEANER DIVERSE designs**,
+  validator **PASS**, LOCAL-ONLY. = v20b minus same-fold cousins + weakest-switch members, + **4 NEW-lineage
+  refills** (des_732_1_r3_sa15 [3-cat] / des_1169_2_r3_sa7 / des_243_3_r3_sa2 / **des_820_3_r3_sa4_r2_8** [2-cat,
+  novelty TM 0.575], all MD-direction-confirmed His-causal); sh3_sa11 replaces sa10 (novelty-safety, struct-TM
+  0.913 vs 0.959). **Selection principle:** switch magnitude is NOT reliably rankable in-silico (pKa err 2-3u >
+  1.4u window; two-engine Wyman rank disagrees ρ=0.56) → pick many foldseek-DISTINCT direction-confirmed switchers,
+  each strong on binding / cross-react ≥90% / structural novelty / solubility, NOT a magnitude rank. Dossier
+  `docs/SUBMISSION_v21_candidate.md` (UPLOAD_CHECKLIST + FINAL_COMPOSITION are authoritative).
+  **EXPANSION COMPLETE:** regen round-3 (8 new-lineage) + round-2 cousins tested; only des_820 cleared all gates
+  (round-3 1-cation switchers all failed the MD direction gate — 3 wrong-sign, 1 non-causal).
+  **UPLOAD HARD-GATE: only 4 members are byte-identical to portal-confirmed v19 (c44, H9-14-38, b14, H43); the
+  other 10 (5 shell-adapt saN + sh3_sa11 + 4 new-lineage) have sequences NOT in v19 → EACH needs USER portal
+  novelty re-check before upload.** (Corrects an earlier "10 byte-identical" claim — shell-adapt saN were never
+  portal-checked.)
 
 ## Gated-safe default (fully portal-novelty-gated)
 
@@ -268,7 +272,7 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
 
 - **Upload decision (USER-gated, nothing uploaded):**
   1. **Default (zero extra work): upload v19** (`7756055f`) — fully portal-verified, 20/20 ≥3/4, 20/20 switchers.
-  1b. **STRONGEST (recommended): upload v21** (`30915564`) — 13 LEANER DIVERSE designs (brutal-review cut of cousins/weak-switch + 3 NEW-lineage regen refills). LOCAL-ONLY. REQUIRES USER portal novelty re-check on the reseqenced members (sh3_sa11 swap + 3 regen refills; 10 carryovers are byte-identical to portal-confirmed). Expansion to ~16-18 diverse members in flight (regen round-3). Dossier docs/SUBMISSION_v21_candidate.md.
+  1b. **STRONGEST (recommended): upload v21** (`87066005`) — 14 LEANER DIVERSE designs (brutal-review cut of cousins/weak-switch + 4 NEW-lineage refills incl. des_820 2-cat novelty-TM-0.575). LOCAL-ONLY. REQUIRES USER portal novelty re-check on the 10 non-byte-identical members (only 4 — c44/H9-14-38/b14/H43 — are byte-identical to portal-confirmed v19; the 5 shell-adapt saN + sh3_sa11 + 4 new-lineage were never portal-checked). Expansion COMPLETE. Dossier docs/SUBMISSION_v21_candidate.md (UPLOAD_CHECKLIST authoritative).
   2. **Stronger on #1, needs portal re-checks: v20** (`6f4b61d0`) — 17/20 (→19/20 w/ round-2) fold-robust,
      binding re-confirmed per design. REQUIRES USER portal novelty re-check on the 9 (soon 11) reseqenced swaps
      (sequence changed ~60-75/80 residues; backbone unchanged → expect ≥3/4, but hard-gated so must be verified).

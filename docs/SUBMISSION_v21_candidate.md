@@ -1,78 +1,219 @@
 # v21 candidate (LOCAL-ONLY, upload USER-GATED)
 
-Source of record: this file dumps the structured validation JSON verbatim (classifier-safe).
-Counts and md5 are computed from the live submission CSV at generation time.
+**The SUBMISSION_STATUS / UPLOAD_CHECKLIST / FINAL_COMPOSITION / EXPANSION_RESULT sections below are
+AUTHORITATIVE** (clean final data). The detailed JSON records after them are working records that may
+contain superseded intermediate states (labels like 'pending'/'running' from before a run finished, or
+earlier decisions later reversed) and bare `saN` shorthand that can collide across designs — resolve any
+conflict in favor of the authoritative sections and the live CSV. Counts and md5 are computed from the CSV.
 
 ## SUBMISSION_STATUS
 ```json
 {
- "n_designs": 13,
- "md5": "30915564027fdcea0da997675d29e904",
+ "n_designs": 14,
+ "md5": "87066005a74e38ace5984742b6b35a73",
  "validator": "PASS (track 3, <=20 rows)",
  "upload": "USER-GATED (never auto-upload; portal account j_v_v_07)",
  "fallback": "v19 (portal-confirmed >=3/4 all 20)",
- "reseq_members_need_portal_novelty_recheck": "sh3_sa11 swap + 3 regen refills (sequence changed vs portal-confirmed carryovers)",
- "expansion_in_progress": "regen round-3 (GPUs 1-7, 8 new-lineage substrates) + des_243 MD direction (GPU 0)"
+ "expansion": "COMPLETE: regen round-3 (8 new-lineage) + round-2 cousins tested; 1 cleared all gates (des_820_3_r3_sa4_r2_8) -> v21 13->14"
 }
 ```
 
-## COMPOSITION (design ids + binder length)
+## UPLOAD_CHECKLIST (authoritative — portal re-check before upload)
 ```json
-[
- {
-  "name": "des_4098_1_c44",
-  "len": 80
+{
+ "byte_identical_v19_NO_recheck": [
+  "des_4098_1_c44",
+  "des_180_6_H9-14-38",
+  "des_4098_1_b14",
+  "des_2106_2_H43"
+ ],
+ "NEED_portal_novelty_recheck": [
+  "des_2106_2_mh_37_43_50_75_sa2",
+  "des_4082_8_T10_pd_10_4_mh_51_79_sa7",
+  "des_138_7_T10_pd_24_4_mh_49_58_77_sa12",
+  "des_6126_3_T20_pd_45_3_mh_9_56_78_sa1",
+  "b2m0_c70_sa17",
+  "des_6025_4_T10_pd_77_4_mh_52_sa10_sh3_sa11",
+  "des_732_1_r3_sa15",
+  "des_1169_2_r3_sa7",
+  "des_243_3_r3_sa2",
+  "des_820_3_r3_sa4_r2_8"
+ ],
+ "counts": {
+  "byte_identical": 4,
+  "need_recheck": 10,
+  "total": 14
  },
- {
-  "name": "des_2106_2_mh_37_43_50_75_sa2",
-  "len": 80
- },
- {
-  "name": "des_4082_8_T10_pd_10_4_mh_51_79_sa7",
-  "len": 80
- },
- {
-  "name": "des_138_7_T10_pd_24_4_mh_49_58_77_sa12",
-  "len": 80
- },
- {
-  "name": "des_6126_3_T20_pd_45_3_mh_9_56_78_sa1",
-  "len": 80
- },
- {
-  "name": "des_180_6_H9-14-38",
-  "len": 80
- },
- {
-  "name": "des_4098_1_b14",
-  "len": 80
- },
- {
-  "name": "b2m0_c70_sa17",
-  "len": 73
- },
- {
-  "name": "des_2106_2_H43",
-  "len": 80
- },
- {
-  "name": "des_6025_4_T10_pd_77_4_mh_52_sa10_sh3_sa11",
-  "len": 80
- },
- {
-  "name": "des_732_1_r3_sa15",
-  "len": 80
- },
- {
-  "name": "des_1169_2_r3_sa7",
-  "len": 80
- },
- {
-  "name": "des_243_3_r3_sa2",
-  "len": 80
- }
-]
+ "WHY": "novelty is a HARD gate (>=3/4; DQ if <3/4). Only the 4 byte-identical-to-v19 members are already portal-confirmed. The other 10 (5 shell-adapt saN + sh3_sa11 + 4 new-lineage) have sequences NOT present in v19 -> each MUST be portal-re-checked before upload.",
+ "fallback": "v19 (all 20 portal-confirmed >=3/4) if re-check not done; upload USER-GATED",
+ "CORRECTION": "supersedes any earlier '10 byte-identical' claim (that conflated v20b carryover with portal-confirmed; shell-adapt saN members were never portal-checked)."
+}
 ```
+
+## FINAL_COMPOSITION (authoritative per-member table)
+```json
+{
+ "n": 14,
+ "md5": "87066005a74e38ace5984742b6b35a73",
+ "validator": "PASS rows=14 errors=0",
+ "cys": 0,
+ "members": [
+  {
+   "name": "des_4098_1_c44",
+   "lin": "des_4098",
+   "cat": "multi",
+   "bind": 4.56,
+   "switch": "STRONG (Wyman -1.383/-2.666)",
+   "portal": "byte-identical v19 (confirmed >=3/4)"
+  },
+  {
+   "name": "des_180_6_H9-14-38",
+   "lin": "des_180",
+   "bind": 4.69,
+   "portal": "byte-identical v19 (confirmed)"
+  },
+  {
+   "name": "des_4098_1_b14",
+   "lin": "des_4098",
+   "bind": 4.7,
+   "portal": "byte-identical v19 (confirmed)"
+  },
+  {
+   "name": "des_2106_2_H43",
+   "lin": "des_2106",
+   "bind": 5.26,
+   "switch": "WEAK single-His (-0.275/-0.839); kept for binding+novelty+diversity",
+   "portal": "byte-identical v19 (confirmed)"
+  },
+  {
+   "name": "des_2106_2_mh_37_43_50_75_sa2",
+   "lin": "des_2106",
+   "cat": 2,
+   "bind": 6.3,
+   "switch": "STRONG (Wyman -1.054/-3.083); MD-selective 6-rep",
+   "sol": 0.91,
+   "xreact": 93,
+   "portal": "RE-CHECK (shell-adapt reseq vs v19)"
+  },
+  {
+   "name": "des_4082_8_T10_pd_10_4_mh_51_79_sa7",
+   "lin": "des_4082",
+   "cat": 2,
+   "bind": 5.59,
+   "md": "d_repel 1.69 (cleanest)",
+   "sol": 0.62,
+   "xreact": 92,
+   "nov_TM": 0.914,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "des_138_7_T10_pd_24_4_mh_49_58_77_sa12",
+   "lin": "des_138",
+   "cat": 1,
+   "bind": 6.13,
+   "sol": 0.86,
+   "xreact": 89,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "des_6126_3_T20_pd_45_3_mh_9_56_78_sa1",
+   "lin": "des_6126",
+   "cat": 1,
+   "bind": 3.92,
+   "sol": 0.69,
+   "xreact": 95,
+   "nov_TM": 0.903,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "b2m0_c70_sa17",
+   "lin": "b2m0",
+   "cat": 1,
+   "bind": 5.01,
+   "sol": 0.63,
+   "xreact": 94,
+   "nov_TM": 0.92,
+   "len": 73,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "des_6025_4_T10_pd_77_4_mh_52_sa10_sh3_sa11",
+   "lin": "des_6025",
+   "cat": 3,
+   "bind": 4.87,
+   "md": "0.653 >> Gln -0.053 (His-causal)",
+   "sol": 0.835,
+   "xreact": 91,
+   "nov_TM": 0.913,
+   "esm": 0.82,
+   "portal": "RE-CHECK",
+   "note": "shipped for novelty-safety (0.913 < sa10 0.959); switch a WASH vs sa10, NOT sharper"
+  },
+  {
+   "name": "des_732_1_r3_sa15",
+   "lin": "des_732 NEW",
+   "cat": 3,
+   "bind": 4.53,
+   "md": "0.568 >> -0.322 (His-causal)",
+   "sol": 0.723,
+   "xreact": 93,
+   "nov_TM": 0.842,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "des_1169_2_r3_sa7",
+   "lin": "des_1169 NEW",
+   "cat": 1,
+   "bind": 4.91,
+   "md": "0.627 >> -0.738 (His-causal)",
+   "sol": 0.83,
+   "xreact": 97,
+   "nov_TM": 0.934,
+   "portal": "RE-CHECK",
+   "note": "nov-risk 0.934"
+  },
+  {
+   "name": "des_243_3_r3_sa2",
+   "lin": "des_243 NEW",
+   "cat": 1,
+   "bind": 6.03,
+   "md": "0.617 >> 0.22 (His-causal)",
+   "sol": 0.815,
+   "xreact": 92,
+   "nov_TM": 0.808,
+   "portal": "RE-CHECK"
+  },
+  {
+   "name": "des_820_3_r3_sa4_r2_8",
+   "lin": "des_820 NEW",
+   "cat": 2,
+   "bind": 5.26,
+   "md": "0.728 >> -0.555 (His-causal, strongest gap)",
+   "sol": 0.659,
+   "xreact": 90.9,
+   "nov_TM": 0.575,
+   "esm": 0.52,
+   "portal": "RE-CHECK",
+   "note": "BEST novelty 0.575 (maybe 4/4); esm 0.52 expression flag plausibly novel-fold pessimism, offset by Boltz+Chai fold + af2ig plddt_binder 87.5"
+  }
+ ]
+}
+```
+
+## EXPANSION_RESULT
+```json
+{
+ "goal": "fill empty slots with foldseek-DISTINCT direction-confirmed switchers (lottery tickets on #1 + expression hedge)",
+ "round3": "8 new-lineage substrates shell-adapted; ALL 1-cation (0 reached >=2). 5 bound af2ig; MD direction killed 4 (3 wrong-sign, 1 non-causal) -> 0 kept.",
+ "round2_cousins": "3 re-shell-adapt 2-cation winners af2ig: des_1120_2 no-bind; des_732_r2_1 binds but cousin of shipped 3-cation des_732 (skip); des_820_3_r2_8 binds + MD His-causal.",
+ "net": "1 of ~14 candidates cleared ALL gates (bind+direction+xreact+novelty+expression+distinct-lineage) -> des_820_3_r3_sa4_r2_8. v21 13 -> 14.",
+ "discipline": "rejected every wrong-sign/non-causal/cousin/non-binder -> no dilution. 14 distinct-fold validated members; padding empty slots with correlated cousins or failures would reduce independent lottery tickets and raise DQ risk."
+}
+```
+
+---
+
+## ⚠ DETAILED WORKING RECORDS (secondary — may contain superseded intermediate states)
 
 ## gap_closed
 ```json
@@ -137,7 +278,7 @@ Counts and md5 are computed from the live submission CSV at generation time.
   "H9-14-38": -0.575,
   "H43": -0.275
  },
- "des_6025_decision": "KEEP sa10 as primary des_6025 rep (stronger switch by 2 methods). sh3_sa11 = novelty-safer sibling (TM0.913 vs sa10 0.959) held as fallback IF portal flags sa10<3/4. Do NOT headline sh3_sa11.",
+ "des_6025_decision": "SHIP sh3_sa11 (novelty-safer: struct-TM 0.913 vs sa10 0.959). Switch strength vs sa10 is a WASH (magnitude unrankable; engines disagree) -> sh3_sa11 chosen for the better novelty margin on the hard gate, NOT switch superiority. MD done: d_repel 0.653 >> Gln -0.053 (His-causal).",
  "portfolio_implications": {
   "c44": "TRUE switch leader (-1.383) -> strong keep vindicated",
   "sa2_2106": "2nd switch (-1.054) -> strong keep",
@@ -310,7 +451,12 @@ Counts and md5 are computed from the live submission CSV at generation time.
   "novelty_TM": 0.808,
   "sol": 0.815,
   "verdict": "best novelty 0.808, binding marginal(plddt83)",
-  "md_dir": "6rep running (GPU0)"
+  "md_dir": {
+   "d_repel": 0.617,
+   "dud_Gln": 0.22,
+   "sel": true,
+   "verdict": "His-causal, correct sign"
+  }
  },
  "marginal_binders": {
   "des_1120_2_r3_sa32": [
@@ -333,6 +479,17 @@ Counts and md5 are computed from the live submission CSV at generation time.
   "des_348_1_r3_sa32": "pae_int 26.4 (no bind)"
  },
  "summary": "regen yielded 1 strong new-lineage 3-cation(des_732_1_r3_sa15)+1 strong 1-cation(des_1169_2)+1 marginal-bind best-novelty(des_243_3); all NEW lineages, xreact 90-97%, sol>0.7. Diversity-expansion material for v21 refill."
+}
+```
+
+## KEEPER_BINDING_EXACT_SEQ
+```json
+{
+ "des_4098_1_c44": 4.56,
+ "des_180_6_H9-14-38": 4.69,
+ "des_4098_1_b14": 4.7,
+ "des_2106_2_H43": 5.26,
+ "note": "af2ig pae_interaction on exact submitted seq; all 4 byte-identical carryovers BIND (floor solid). Reseq'd/new members' binding in FINAL_COMPOSITION."
 }
 ```
 
@@ -389,7 +546,7 @@ Counts and md5 are computed from the live submission CSV at generation time.
   ]
  },
  "REPLACE": {
-  "des_6025_sa10": "-> sh3_sa11 (3-cation strict upgrade, MD pending)"
+  "des_6025_sa10": "-> sh3_sa11 (SHIPPED for novelty-safety TM 0.913<0.959; switch a WASH vs sa10, NOT a strict upgrade; MD DONE d_repel 0.653 >> Gln -0.053)"
  },
  "STRONG_KEEPS": [
   "des_4082_8_pd_10_4_sa7",

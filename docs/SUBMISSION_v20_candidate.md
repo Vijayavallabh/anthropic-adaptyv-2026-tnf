@@ -32,7 +32,10 @@ All 9 adopted winners PASS; 8/9 match or beat their parent's binding (see table)
 **des_4082_8_pd_10_4 sa7 (d_repel 1.69), des_6025 sa10 (1.2)** — each 2 His on 2 SEPARATED distinct cations.
 des_2106_2 sa2 (3 His, 2 on K93) read NON-selective at 3-rep but **FLIPPED to selective at 6-rep** (d_repel
 1.1, Gln −1.07) — the 3-rep call was replicate noise, so the earlier "crowded/MD-weak" framing is retracted;
-it is MD-selective, just not the cleanest. Only des_4082_8_pd_9_1 sa15 stays non-selective (weak d_repel).
+it is MD-selective, just not the cleanest. Among the v20 adopted set, des_4082_8_pd_9_1 sa15 stays non-selective
+at 6-rep. **Update (v21 deeper 6-rep analysis):** three more v20 shell-adapts later read non-causal and were CUT
+in v21 — des_495_6 sa10, des_1060_4 sa2, des_1559_3 sa3 (d_repel ≤ Gln-isostere control). So "only sa15 fails"
+describes the v20 snapshot, not the final set; the v21 CUT_DECISION is authoritative on which shell-adapts hold.
 Lesson: 3-rep MD is a noisy flagger; the separated-cation designs are the firmest switches.
 
 **Filter stringency (devil's-advocate on "both-fold = higher confidence"):** across all 176

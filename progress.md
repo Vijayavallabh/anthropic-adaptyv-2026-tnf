@@ -646,3 +646,16 @@ auto-upload.
  "fallback": "v19 (7756055f, portal-confirmed >=3/4 all 20) remains the gated default"
 }
 ```
+
+
+## SESSION 13 cont. (2026-10-12) — v21 EXPANSION COMPLETE (14) + code-review doc fixes
+```json
+{
+ "v21_final": "14 designs, md5 87066005a74e38ace5984742b6b35a73, validator PASS",
+ "expansion_result": "regen round-3 (8 new-lineage) ALL 1-cation (0 reached >=2); 5 bound af2ig but MD direction killed 4 (3 wrong-sign, 1 non-causal). round-2 cousins: des_1120_2 no-bind, des_732_r2_1 cousin-of-shipped, des_820_3_r3_sa4_r2_8 (2-cation, NEW lineage) binds + MD His-causal. NET +1 -> 14.",
+ "des_820": "NEW lineage des_820, 2-cation[6,93], af2ig 5.26/87.5/1.84, MD d_repel 0.728>>Gln-0.555 (strongest gap seen), xreact 90.9%, novelty TM 0.575 (best; maybe 4/4), sol 0.659, esm-mono 0.52 (expression flag, plausibly ESMFold pessimism on a novel fold; offset by Boltz+Chai fold + af2ig plddt87.5)",
+ "discipline": "rejected every wrong-sign/non-causal/cousin/non-binder -> NO dilution; 14 distinct-fold validated members; pool exhausted (all 23 campaign-2 binders processed).",
+ "code_review_fixes": "/code-review (max) found 14 doc inconsistencies; live CSV verified correct (md5 match, 14 rows, 0 Cys, validator PASS). Fixed: byte-identity CORRECTED to 4 byte-identical-v19 / 10 NEED-recheck (earlier '10 byte-identical' was wrong - shell-adapt saN were never portal-checked; DQ-risk averted); WYMAN/REPLACE records (sh3_sa11 shipped for novelty not switch); des_2106_2 'MD-weak' retracted; README v20 portal caveat restored; novelty-TM wording (portal 3/4 is the gate, not TM<0.80); added authoritative UPLOAD_CHECKLIST + FINAL_COMPOSITION to dossier + superseded-record notice for the raw dumps.",
+ "upload": "USER-GATED; 10 members need portal novelty re-check before upload; v19 remains gated-safe fallback."
+}
+```

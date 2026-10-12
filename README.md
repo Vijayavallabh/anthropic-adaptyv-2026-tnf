@@ -19,7 +19,7 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 ## The submission
 
 `runs/push/submission_v21.csv` — **the current strongest candidate** (md5 `30915564027fdcea0da997675d29e904`,
-13 designs, validator PASS; expanding toward ≤20, regen round-3 in flight). A leaner, more **diverse** portfolio:
+14 designs, validator PASS). A leaner, more **diverse** portfolio:
 a brutal multi-agent devil's-advocate review cut same-fold cousins and the weakest-switch members, and refilled
 with foldseek-distinct **new lineages**. Selection follows the finding that switch *magnitude* is not reliably
 rankable in-silico (predictor error exceeds the pH window; two linkage engines disagree on rank) — so the set is
@@ -41,7 +41,9 @@ diverse cut, but its fold-robust members carry into v21. Every design carries:
   validated by explicit two-state MD (+ Gln-isostere causal control), PROPKA–Wyman and pKAI linkage, and
   cross-folder (Boltz∩Chai) His–cation agreement for the v20 fold-robust set;
 - **cross-reactivity** by conserved-epitope mechanism (89–95% human↔mouse interface identity, cations K/R in both);
-- a confident binder (AF2 initial-guess), **0 Cys**, expression-screened, portal-novel (≥3/4).
+- a confident binder (AF2 initial-guess), **0 Cys**, expression-screened, and sequence-novel; **structural
+  novelty (the HARD portal ≥3/4 gate) must be re-checked on every reseqenced design before upload** — v20's 9
+  shell-adapted swaps, and in v21 the 10 members whose sequence is not byte-identical to portal-confirmed v19.
 
 Upload to the Proteinbase portal is **user-gated**. CSVs under `runs/` are local-only (gitignored).
 

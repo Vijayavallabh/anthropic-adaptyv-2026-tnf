@@ -77,17 +77,22 @@ evidence.
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
 - **v21 — CURRENT STRONGEST candidate (leaner + DIVERSE), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
-  (md5 **`30915564027fdcea0da997675d29e904`**, validator PASS, 13 designs, expanding toward ≤20 — regen
-  round-3 in flight). Built from the brutal 4-agent devil's-advocate review: cut same-fold cousins + weakest-
-  switch members, refill with foldseek-DISTINCT NEW lineages (3 regen refills des_732_1_r3_sa15 / des_1169_2_r3_sa7
-  / des_243_3_r3_sa2, MD-direction-confirmed His-causal), sh3_sa11 replaces sa10 (novelty-safety: struct-TM
-  0.913 vs 0.959, NOT a sharper-switch claim). **Selection principle (recorded):** switch MAGNITUDE is not
-  reliably rankable in-silico (pKa-predictor error 2-3u > the 1.4u 7.4↔6.0 window; two-engine Wyman rank
-  disagrees ρ=0.56) → select on confirmed release DIRECTION + reliable axes (binding floor, cross-react ≥90%,
-  novelty TM<~0.80, solubility) + DIVERSITY, maximizing the chance the set CONTAINS the sharpest switch (which
-  can't be identified in-silico). Diversity also hedges the dominant expression/wet-lab-zero risk. **REQUIRED
-  before upload: USER portal novelty re-check on the reseqenced members (sh3_sa11 swap + 3 regen refills; the 10
-  carryovers are byte-identical to portal-confirmed).** See `docs/SUBMISSION_v21_candidate.md`.
+  (md5 **`87066005a74e38ace5984742b6b35a73`**, validator PASS, **14 designs**). Built from the brutal 4-agent
+  devil's-advocate review: cut same-fold cousins + weakest-switch members, refill with foldseek-DISTINCT NEW
+  lineages — **4 new-lineage refills** des_732_1_r3_sa15 (3-cation) / des_1169_2_r3_sa7 / des_243_3_r3_sa2 /
+  **des_820_3_r3_sa4_r2_8** (2-cation, novelty TM 0.575 — the standout), all MD-direction-confirmed His-causal;
+  sh3_sa11 replaces sa10 (novelty-safety: struct-TM 0.913 vs 0.959, NOT a sharper-switch claim). **Selection
+  principle (recorded):** switch MAGNITUDE is not reliably rankable in-silico (pKa-predictor error 2-3u > the
+  1.4u 7.4↔6.0 window; two-engine Wyman rank disagrees ρ=0.56) → select on confirmed release DIRECTION + reliable
+  axes (binding floor, cross-react ≥90%, structural novelty, solubility) + DIVERSITY, maximizing the chance the
+  set CONTAINS the sharpest switch (which can't be identified in-silico). Diversity also hedges the dominant
+  expression/wet-lab-zero risk. Expansion is COMPLETE: regen round-3 (8 new-lineage) + round-2 cousins tested →
+  only des_820 cleared all gates (the round-3 1-cation switchers all failed the MD direction gate). **HARD-GATE
+  UPLOAD CHECK: only 4 members are byte-identical to portal-confirmed v19 (des_4098_1_c44, des_180_6_H9-14-38,
+  des_4098_1_b14, des_2106_2_H43); the other 10 (5 shell-adapt saN + sh3_sa11 + 4 new-lineage) have sequences NOT
+  in v19 → EACH needs USER portal novelty re-check before upload.** Novelty is a HARD gate (≥3/4). Note: several
+  members' structural TM is 0.81–0.93 (helical bundles cap structurally → pass via sequence novelty = 3/4); the
+  portal 4/4 score, not a TM<0.80 target, is the gate. See `docs/SUBMISSION_v21_candidate.md` (UPLOAD_CHECKLIST).
 - **Gated-safe default (FULLY portal-novelty-gated, user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
   (md5 **`7756055f0b20bcd6994fefb644271db7`**, 20 designs, validator PASS). v19 = v18 with des_818_4_c13S →
   des_84_3_mh_49_56_76 (the more fold-robust flagship, 1 both-fold His); **20/20 switchers**. **Recommended
@@ -103,8 +108,11 @@ evidence.
   residues): af2ig initial-guess on each NEW sequence, all 9 adopted PASS, 8/9 match/beat parent.
   Cross-react 89-95% epitope id, all cations cross-conserved. **HONEST SCOPE:** fold-robustness is a stricter
   switch-GEOMETRY filter (higher-confidence #1), NOT binding proof; two-state MD (3-rep, noisy confirmer)
-  shows fold-robust ≠ all MD-selective (des_6025 sa10 + des_4082_8 clean; the bc=3 des_2106_2 crowds 2 His on
-  K93 → MD-weak). **REQUIRED before upload: USER portal novelty re-check on the 9 (soon 11) reseqenced swaps.**
+  shows fold-robust ≠ all MD-selective (des_6025 sa10 + des_4082_8 sa7 cleanest). NOTE: the earlier "des_2106_2
+  sa2 crowds 2 His on K93 → MD-weak" call is RETRACTED — at 6-rep it is MD-selective (a shipped v21 strong-keep);
+  v21's deeper 6-rep analysis separately CUT 3 other v20 shell-adapts as non-causal (des_495_6 sa10, des_1060_4
+  sa2, des_1559_3 sa3). **REQUIRED before upload: USER portal novelty re-check on every reseqenced member (v21:
+  the 10 non-byte-identical designs — see the v21 UPLOAD_CHECKLIST).**
   See `docs/SUBMISSION_v20_candidate.md`.
 - See also `docs/SUBMISSION_v18_candidate.md`, `session-handoff.md`. CSVs under `runs/` (gitignored,
   local-only); submission is **USER-GATED** (portal account j_v_v_07) — do NOT auto-upload.
