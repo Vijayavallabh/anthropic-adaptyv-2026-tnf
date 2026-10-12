@@ -8,6 +8,13 @@ Updated 2026-10-12 (SESSION 11, continued). Deadline **2026-10-11 23:59 AoE = 20
 > read **4/4**. v18 is therefore **fully gated** — no portal-unverified member remains. The portal list was
 > byte-checked against the CSV (all 20 names match `md5 524722158467273c0e9f57f5402650ed`). See
 > "Portal-novelty result" below; it supersedes the old "one open risk" section.
+>
+> **2026-10-12 UPDATE 2 — v19 is ALSO fully gated, and the deadline is extended (~7 days).** The user ran the
+> portal check on v19 too: **des_84_3 reads 3/4; all 20 v19 designs ≥3/4.** So v19's one contingency is
+> resolved — both v18 and v19 are now fully-gated, valid submissions. With the extended runway, work has moved
+> from locking a submission to a **bold binding-oracle campaign** (cross-folder pose-consensus calibrated on
+> the 12 CRO-validated binders) aimed at the hook's real critique — that binding/cross-react are near-chance
+> in-silico for TNF. Status of that campaign is tracked separately; v18/v19 remain the standing picks meanwhile.
 
 ## TL;DR
 
