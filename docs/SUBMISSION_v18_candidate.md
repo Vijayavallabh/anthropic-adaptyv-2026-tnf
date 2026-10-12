@@ -88,6 +88,13 @@ weaker of the two (two His, unequal). des_6126's three His titrate near-independ
 anti-cooperative pKa-splitting), which is why it is both the strongest MD switcher and the sharpest linkage.
 (Reference scale: Δn_H 1≈25×, 2≈630×; Baker's TNF SOTA hit 79× at the easier pH 5.4 window.)
 
+*4-His sharpening probe — tested NO-GO.* Direct structural analysis of the des_6126 bound pose: the
+interface presents only three target cations (Lys86, Lys173, Arg81), and all three are already engaged by
+His9/His56/His78. The only mutable chain-A positions near a cation (pos 1→Lys86, pos 61→Lys173) point at
+*already-engaged* cations, so a 4th His would double up (anti-cooperative — the known dead-end), not add an
+independent Δn_H unit. des_6126 is **saturated at 3 distinct-cation His**; its 3-His form is the irreducible
+optimum for this backbone, not an under-exploited one.
+
 All signs agree: protonation at pH 6.0 (HIP) raises the His⁺–Lys⁺ repulsion / destabilises the contact
 (MD d_repel>0, xTB dE_switch>0) and the proton-linkage releases (PROPKA & pKAI ddg<0). Both switches sit on
 an **MD-stable** bound pose (the gate the Genie3-groove hedge failed — those drifted rmsd 4.5–7 Å, so their
