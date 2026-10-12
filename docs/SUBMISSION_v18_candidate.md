@@ -166,6 +166,42 @@ confirmable only on the RFd-derived poses, and v18 maximises them. Submitting a 
 design instead would trade a confirmable conditional binder for an unconfirmable raw-binding lottery ticket.
 This was tested and ruled out this session (`lesson-genie3-groove-floors-af2ig-like-all-generators`).
 
+## #1-axis profile across the whole portfolio, and a v19 option
+
+Characterising the top-ranked axis across all 20 members (two-state MD d_repel, the primary switch metric):
+
+| band | members (d_repel) |
+|---|---|
+| strong (>1.3) | des_495_6 **2.31**, des_2106_2_H43 1.94, des_875_5 1.44, des_2106_2_mh 1.40, des_6126 1.36, des_1559_3 1.32 |
+| mid (0.9–1.3) | des_138_7×2 1.11/1.09, des_4098_1_b14 1.08, des_1060_4 1.03, des_4082_8_mh51 0.95, des_6025 0.93 |
+| weak (0.4–0.9) | des_180_6 0.89, b2m0 0.83, b1m9 0.79, des_4098_1_c44×2 0.57, des_4082_8_mh43 0.46, b4m2 0.40 |
+| non-switcher | **des_818_4 −0.01** (kept for 4/4 novelty + 0.83 solubility, not for the switch) |
+
+Median d_repel 0.99; 19/20 positive. The one non-switcher, **des_818_4**, was originally kept as "the only
+4/4-novel design" — but the portal check shows **three other 4/4 members that ARE strong switchers**
+(des_875_5 1.44, des_2106_2_mh 1.40, des_1060_4 1.03), so the 4/4 showcase no longer needs it.
+
+**Floor-raising swap — rigorously tested; one genuine candidate (des_84_3).** I searched the confirmed-switcher
+pool outside v18 for a replacement that beats des_818_4 on the switch without a hidden-axis regression (the
+`portfolio-swap-verify-all-axes` discipline). Most strong-d_repel designs outside v18 are already dropped-for-cause
+(des_287_5 / des_962_5 / des_2375_4 anti-switch or wrong-sign on a 2nd fold; Genie3-groove MD-unstable; cousins).
+The one clean survivor is **des_84_3_mh_49_56_76** (wave-10, a novel β-pairing fold):
+
+| axis | des_818_4 (current) | des_84_3 (candidate) |
+|---|---|---|
+| #1 switch d_repel | **−0.01 (non-switcher)** | **+1.77**, MD-stable (ON His–Lys 8.0 Å, iface 0.91, rmsd 2.8) |
+| switch fold-robustness | — | **His56·Lys93 confirmed on BOTH Boltz & Chai**; aggregate linkage right-signed on both folds (not an anti-switch) |
+| #2 cross-react (Boltz h/m) | — | **0.94 / 0.912** (min 0.912, balanced) |
+| expression (Protein-Sol) | **0.83** (excellent) | 0.452 (average — above the 0.446 population mean; monomer pLDDT 0.933, so likely expresses) |
+| novelty | **4/4** (portal) | de-novo helical/β-pair ⇒ expect 3/4 (NOT yet portal-checked) |
+
+**v19** = v18 with des_818_4 → des_84_3 (`runs/push/submission_v19.csv`, md5 `7756055f0b20bcd6994fefb644271db7`,
+validator PASS). It makes the portfolio **20/20 switchers, all cross-reactive**, raising the #1-axis floor from
+−0.01 to +1.77. The honest cost is a trade *down* two lower-priority axes: novelty headroom (4/4→3/4 for that
+slot; v19 keeps 3×4/4) and expression headroom (0.83→0.452 — both are expected to express). The firm catch:
+**des_84_3 is not portal-novelty-checked**, so v19 is *not* fully gated until the user runs it; if des_84_3
+reads <3/4 it DQs and v18 is the fallback. Evidence in `runs/v19_option/`.
+
 ## Recommendation
 
 The portal-check ladder that previously separated v16/v17/v18 has collapsed: **all 20 v18 designs are now
@@ -183,9 +219,17 @@ generator-provenance risk is identical across all three (every member is RFd-der
 - **diversity:** 4 de-novo β-pairing lineages + groove `b*`/cb1 family + partial-diffusion variants (keeps
   the lone 4/4 des_818_4 rather than a des_6025 cousin).
 
-**Recommended upload: v18** (`runs/push/submission_v18.csv`, md5 `524722158467273c0e9f57f5402650ed`).
-**v16** (`a524d77f`) remains a valid conservative floor (identical gates, weaker only on the #1 axis) if a
-last-minute reason to minimise changes arises; there is no longer a novelty reason to prefer it.
+Two defensible picks, by appetite for one more portal check:
+
+- **v18** (`submission_v18.csv`, md5 `524722158467273c0e9f57f5402650ed`) — **fully gated, zero further action.**
+  All 20 portal-confirmed ≥3/4; 19/20 switchers + one max-novelty/max-expression non-switcher anchor. The safe
+  recommended upload.
+- **v19** (`submission_v19.csv`, md5 `7756055f0b20bcd6994fefb644271db7`) — **strongest on the #1 axis** (20/20
+  switchers, all cross-reactive) by swapping the non-switcher des_818_4 for the both-fold-confirmed switcher
+  des_84_3. **Requires one portal novelty check on des_84_3** (expect 3/4; if <3/4, fall back to v18). Pick this
+  if you can run that check and accept trading novelty/expression *headroom* for the switch-floor gain.
+
+**v16** (`a524d77f`) remains a valid conservative floor (identical gates, weaker on #1).
 
 **Upload remains USER-GATED. Nothing has been uploaded.** (Portal account j_v_v_07; the upload action is the
 user's.)
