@@ -186,6 +186,15 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   (foldseek TM, GPU single-seq fold) remains — des_6025 variants ≈ des_6025 (TM 0.945, 3/4), des_6126 TBD.
   **harvest_v18 solubility step FIXED** (was wrong `-o` invocation + wrong column `solubility_score`; was
   silently dropping the expression signal). md_verdict parse (CONFIRMED=$NF, dSwitch=f[5]) verified correct.
+- **v18 PRODUCED + VALIDATED (2026-10-12 ~00:20Z).** Track A done: 5/13 CONFIRMED (des_6126 1.36 [4th
+  lineage, 4/4 reps positive], des_6025 mh_52_74 0.93, +3 weaker des_6025). ALL 5 harvested: xr(min h/m)
+  0.91–0.95, solub 0.82–0.92, 0-Cys, seq-novel. **v18 = v16 with 2 swaps** (des_3050_6→des_6126,
+  b4m2→des_6025 mh_52_74), KEPT des_818_4 (4/4-novel, avoid a des_6025 cousin → "diverse not cousins").
+  19/20 MD-confirmed, 4 de-novo lineages, all ≥3/4 novel (foldseek TM des_6126 0.948 / des_6025 0.870, both
+  helical→3/4). `runs/push/submission_v18.csv` md5 **524722158467273c0e9f57f5402650ed**, validator PASS.
+  Doc: docs/SUBMISSION_v18_candidate.md. Bugs fixed in harvest/assemble this session: solub -o/column,
+  _af2pred seq lookup, v18_candidates needs a sequence column (augment from confirmed_seqs.csv).
+  **Upload USER-GATED; v16 safe default, v17 one-check, v18 three-checks (portal-novelty the 2 new members).**
 - **v16/v17 stand regardless;** the two live improvement tracks are the bpair switch-harvest (v18 core, MD
   running) + the Genie3-groove switch-hedge (diversification, queued behind it).
 
