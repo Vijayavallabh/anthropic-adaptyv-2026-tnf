@@ -22,9 +22,14 @@ var,conf,out=sys.argv[1:4]
 seqs={r["name"]:r["sequence"] for r in csv.DictReader(open(var))}
 names=[l.strip() for l in open(conf) if l.strip()]
 w=csv.writer(open(out,"w")); w.writerow(["name","sequence"])
+def lookup(n):  # md_verdict names carry the pose's _af2pred suffix; variants.csv uses the bare variant name
+    return seqs.get(n) or seqs.get(n.replace("_af2pred",""))
+nw=0
 for n in names:
-    if n in seqs: w.writerow([n,seqs[n]])
-print("wrote",sum(1 for n in names if n in seqs),"confirmed seqs")
+    s=lookup(n)
+    if s: w.writerow([n,s]); nw+=1
+    else: print("NO SEQ for",n)
+print("wrote",nw,"confirmed seqs")
 PY
 # 3) cross-react Boltz human + mouse (sharded), min-iptm
 "$PY" - "$OUT/confirmed_seqs.csv" "$OUT" "${GA[*]}" <<'PY'
