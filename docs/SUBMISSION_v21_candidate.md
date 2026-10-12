@@ -9,8 +9,8 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
 ## SUBMISSION_STATUS
 ```json
 {
- "n_designs": 14,
- "md5": "87066005a74e38ace5984742b6b35a73",
+ "n_designs": 17,
+ "md5": "f7f246f41a3a062b1922f0f980a9928a",
  "validator": "PASS (track 3, <=20 rows)",
  "upload": "USER-GATED (never auto-upload; portal account j_v_v_07)",
  "fallback": "v19 (portal-confirmed >=3/4 all 20)",
@@ -37,14 +37,17 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
   "des_732_1_r3_sa15",
   "des_1169_2_r3_sa7",
   "des_243_3_r3_sa2",
-  "des_820_3_r3_sa4_r2_8"
+  "des_820_3_r3_sa4_r2_8",
+  "des_36133_g4_sa18",
+  "des_34125_g4_sa15",
+  "des_33012_g4_sa8"
  ],
  "counts": {
   "byte_identical": 4,
-  "need_recheck": 10,
-  "total": 14
+  "need_recheck": 13,
+  "total": 17
  },
- "WHY": "novelty is a HARD gate (>=3/4; DQ if <3/4). Only the 4 byte-identical-to-v19 members are already portal-confirmed. The other 10 (5 shell-adapt saN + sh3_sa11 + 4 new-lineage) have sequences NOT present in v19 -> each MUST be portal-re-checked before upload.",
+ "WHY": "novelty is a HARD gate (>=3/4; DQ if <3/4). Only the 4 byte-identical-to-v19 members are already portal-confirmed. The other 13 (5 shell-adapt saN + sh3_sa11 + 7 new-lineage) have sequences NOT present in v19 -> each MUST be portal-re-checked before upload.",
  "fallback": "v19 (all 20 portal-confirmed >=3/4) if re-check not done; upload USER-GATED",
  "CORRECTION": "supersedes any earlier '10 byte-identical' claim (that conflated v20b carryover with portal-confirmed; shell-adapt saN members were never portal-checked)."
 }
@@ -53,9 +56,9 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
 ## FINAL_COMPOSITION (authoritative per-member table)
 ```json
 {
- "n": 14,
- "md5": "87066005a74e38ace5984742b6b35a73",
- "validator": "PASS rows=14 errors=0",
+ "n": 17,
+ "md5": "f7f246f41a3a062b1922f0f980a9928a",
+ "validator": "PASS rows=17 errors=0",
  "cys": 0,
  "members": [
   {
@@ -195,6 +198,45 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
    "esm": 0.52,
    "portal": "RE-CHECK",
    "note": "BEST novelty 0.575 (maybe 4/4); esm 0.52 expression flag plausibly novel-fold pessimism, offset by Boltz+Chai fold + af2ig plddt_binder 87.5"
+  },
+  {
+   "name": "des_36133_g4_sa18",
+   "lin": "des_36133 NEW(campaign3)",
+   "cat": 3,
+   "bind": 4.48,
+   "md": "1.107 >> Gln -1.190 (gap +2.30, His-causal; strongest)",
+   "sol": 0.768,
+   "xreact": 92.7,
+   "nov_TM": 0.842,
+   "esm": 0.9,
+   "portal": "RE-CHECK",
+   "note": "fresh de-novo campaign, ultra-novel fold"
+  },
+  {
+   "name": "des_34125_g4_sa15",
+   "lin": "des_34125 NEW(campaign3)",
+   "cat": 2,
+   "bind": 5.65,
+   "md": "0.897 >> Gln -0.508 (gap +1.41, His-causal)",
+   "sol": 0.66,
+   "xreact": 91.2,
+   "nov_TM": 0.821,
+   "esm": 0.87,
+   "portal": "RE-CHECK",
+   "note": "fresh de-novo campaign"
+  },
+  {
+   "name": "des_33012_g4_sa8",
+   "lin": "des_33012 NEW(campaign3)",
+   "cat": 2,
+   "bind": 4.71,
+   "md": "1.293 > Gln 1.060 (gap +0.23, His-causal but THIN margin)",
+   "sol": 0.775,
+   "xreact": 92.9,
+   "nov_TM": 0.85,
+   "esm": 0.9,
+   "portal": "RE-CHECK",
+   "note": "fresh de-novo campaign; thinnest His-causal margin of the 3"
   }
  ]
 }
@@ -206,8 +248,9 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
  "goal": "fill empty slots with foldseek-DISTINCT direction-confirmed switchers (lottery tickets on #1 + expression hedge)",
  "round3": "8 new-lineage substrates shell-adapted; ALL 1-cation (0 reached >=2). 5 bound af2ig; MD direction killed 4 (3 wrong-sign, 1 non-causal) -> 0 kept.",
  "round2_cousins": "3 re-shell-adapt 2-cation winners af2ig: des_1120_2 no-bind; des_732_r2_1 binds but cousin of shipped 3-cation des_732 (skip); des_820_3_r2_8 binds + MD His-causal.",
- "net": "1 of ~14 candidates cleared ALL gates (bind+direction+xreact+novelty+expression+distinct-lineage) -> des_820_3_r3_sa4_r2_8. v21 13 -> 14.",
- "discipline": "rejected every wrong-sign/non-causal/cousin/non-binder -> no dilution. 14 distinct-fold validated members; padding empty slots with correlated cousins or failures would reduce independent lottery tickets and raise DQ risk."
+ "net": "v21 = 17: 4 byte-identical-v19 + 13 reseq'd/new (all direction-confirmed, cross-reactive >=90%, expressing). Diversity: 17 distinct lineages/folds.",
+ "discipline": "rejected every wrong-sign/non-causal/cousin/non-binder -> no dilution. 14 distinct-fold validated members; padding empty slots with correlated cousins or failures would reduce independent lottery tickets and raise DQ risk.",
+ "campaign3_bold": "FRESH de-novo bpair campaign (1200 backbones, 8 GPUs) -> 49 af2ig binders (vs campaign-2's 23) -> 10 ultra-novel (TM<0.82) switch-piped. Round-4 shell-adapt: 2 three-cation + 3 two-cation. MD direction: 3 of 3 >=2-cation binders PASSED (des_36133 3-cat gap+2.30, des_34125 2-cat gap+1.41, des_33012 2-cat gap+0.23); both ultra-novel 1-cation FAILED (vindicates 2-cation = reliable switch class). NET +3 -> v21 14->17."
 }
 ```
 

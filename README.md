@@ -19,7 +19,7 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 ## The submission
 
 `runs/push/submission_v21.csv` — **the current strongest candidate** (md5 `30915564027fdcea0da997675d29e904`,
-14 designs, validator PASS). A leaner, more **diverse** portfolio:
+17 designs, validator PASS). A leaner, more **diverse** portfolio:
 a brutal multi-agent devil's-advocate review cut same-fold cousins and the weakest-switch members, and refilled
 with foldseek-distinct **new lineages**. Selection follows the finding that switch *magnitude* is not reliably
 rankable in-silico (predictor error exceeds the pH window; two linkage engines disagree on rank) — so the set is

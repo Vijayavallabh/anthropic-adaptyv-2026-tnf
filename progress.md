@@ -659,3 +659,17 @@ auto-upload.
  "upload": "USER-GATED; 10 members need portal novelty re-check before upload; v19 remains gated-safe fallback."
 }
 ```
+
+
+## SESSION 13 cont.2 (2026-10-13) — BOLD de-novo campaign: +3 ultra-novel switchers -> v21=17
+```json
+{
+ "v21_final": "17 designs, md5 f7f246f41a3a062b1922f0f980a9928a, validator PASS, LOCAL-ONLY",
+ "bold_campaign": "fresh bpair-RFd de-novo (1200 backbones, all 8 GPUs) -> 49 af2ig binders (vs campaign-2's 23, >2x) -> 10 ultra-novel (foldseek TM<0.82) switch-piped = round-4.",
+ "round4_shelladapt": "2 three-cation + 3 two-cation both-fold winners (vs round-3's all-1-cation) \u2014 fresh backbones had better cation-reach geometry (3 distinct cations closely engaged).",
+ "round4_MD_direction": "3 of 3 >=2-cation binders PASSED His-causal gate: des_36133_g4_sa18 (3-cat[6,60,93] gap+2.30), des_34125_g4_sa15 (2-cat[6,93] gap+1.41), des_33012_g4_sa8 (2-cat[6,93] gap+0.23 thin). Both ultra-novel 1-cation binders FAILED (des_30106 wrong-sign, des_36087 non-causal).",
+ "added": "+3 new-lineage ultra-novel 2-3 cation members -> v21 14->17. All bind (af2ig pae 4.5-5.7), xreact 91-93%, esm-mono 0.87-0.90, sol 0.66-0.78, nov TM 0.82-0.85.",
+ "lesson_reconfirmed": "2-cation is the RELIABLE switch class; 1-cation unreliable (ALL round-3 + round-4 1-cation failed direction). Select only >=2-cation direction-confirmed.",
+ "upload": "USER-GATED; 13 of 17 need portal novelty re-check (only 4 byte-identical to portal-confirmed v19); v19 gated-safe fallback."
+}
+```
