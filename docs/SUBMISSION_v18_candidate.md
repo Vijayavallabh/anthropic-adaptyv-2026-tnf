@@ -138,6 +138,15 @@ the af2ig pose but not cross-fold robustness. The fold-INDEPENDENT evidence for 
 conserved-cation engagement below (a sequence/epitope fact, not a fold prediction).
 (`runs/v18_switch/bothfold_robustness.tsv`, `runs/foldrobust/landscape.tsv`.)
 
+**Fold-robustness is ENGINEERABLE (validated).** Acting on the mechanism above, I shell-adapted the fold-fragile
+flagship des_6025 (LigandMPNN repack of the interface shell, His fixed). Result: parent 0 both-fold His →
+**9/16 shell-adapted variants gained ≥1, and `sa10` gained 2** (His52→K60, His74→K6, both conserved), with
+solubility **0.92 preserved** and backbone unchanged (so ~3/4 novelty retained). So the de-novo lineages' switch
+can be *converted* from single-fold to fold-robust without losing cross-react or expression — the direct,
+mechanism-informed answer to "the switch is fold-dependent." Pending GPU validation of `sa10`: af2ig binding
+(a large reseq) + two-state MD d_repel; if it passes it is a fold-robust drop-in for des_6025 (→ v20). Scaling
+shell-adaptation across all fold-fragile members + the fresh-generation binders. (`runs/foldrobust/shelladapt/`.)
+
 ## Cross-reactivity (human + mouse) — mechanistic, NOT the co-fold iptm
 
 **Do not rely on the Boltz mouse iptm.** Calibrated on the 12 CRO-validated TNF binders, the co-fold iptm
