@@ -117,16 +117,26 @@ primary HIP−HIE MD delta (+1.36, 4/4 reps) carry that member. Artifacts (durab
 gitignored `runs/`): `runs/v18_switch/pka_consensus.tsv` (PROPKA+pKAI), `runs/v18_switch/qm_switch.tsv`
 (GFN2-xTB, 4 pairs, all release=True), `runs/v18_switch/md_des_{6126,6025}.json` (two-state MD aggregates).
 
-**Honest limit — the consensus is NOT fold-independent.** The MD pose, the Boltz co-fold and the af2ig pose
-are the *same* fold family; the four methods agree *on that family*. A strict per-His check on an INDEPENDENT
-2nd folder (Chai) does **not** reproduce: des_6126 = 2 His confirmed on Boltz, **0 on Chai** (His9/His56 lose
-their cation contact in Chai's binding pose); des_6025 = 1 on Boltz, 0 on Chai (His74 flips sign). This is the
-common case — in the wave-10 campaign only the c19 flagship carried strictly fold-robust His, and TNF co-folders
-are near-chance anyway, so Chai's disagreement is itself not decisive. The takeaway: the switch is well-supported
-*on the af2ig/MD pose* by orthogonal physics, but strict cross-fold robustness is not established for these two
-members. The fold-INDEPENDENT evidence is the conserved-cation engagement below (a sequence/epitope fact, not a
-fold prediction). (`runs/v18_switch/bothfold_robustness.tsv`. Note: the v19 candidate des_84_3 has 1 *both-fold*
-confirmed His — more robust here than either v18 member.)
+**Fold-robustness landscape (strict per-His both-fold Boltz∩Chai check, ALL 20 members).** A switch-His is
+"fold-robust" only if PROPKA+xTB confirm it in BOTH the Boltz and the independent Chai binding pose — the gate
+that caught the des_287_5/des_2375_4 anti-switches. Sweeping the whole portfolio
+(`runs/foldrobust/landscape.tsv`):
+
+| both-fold His (on conserved cations) | members |
+|---|---|
+| **2** (fold-robust champions) | **des_4098_1_b14, des_4098_1_c44, des_4098_1_c44_w6_3, des_180_6_H9-14-38** |
+| 1 | des_84_3 (v19), des_2106_2_H43, b4m2_r1_w5_3, b1m9_A12H_w5_3 |
+| 0 (single-fold only) | des_6126, des_6025, des_875_5, des_1060_4, des_2106_2_mh, b2m0, des_495_6, des_1559_3, des_138_7×2, des_4082_8×2 |
+
+**8/20 members carry ≥1 fold-robust His, 4 carry 2** — so the "switch is fold-dependent" caveat is specific to
+the point-mutant / partial-diffusion members (des_6126, des_6025, the de-novo bpair lineages), NOT the whole
+portfolio. The fold-robust members are the **shell-adapted** ones: des_4098 was LigandMPNN-redesigned around its
+fixed His (METHODS §8 Track B), which *locks the His into the interface so both folders reproduce it* — the
+mechanistic reason it confirms on both folds where point-mutants don't. So the portfolio already carries
+genuinely fold-robust switchers; des_6126/des_6025 contribute switch *magnitude* (d_repel 1.36, 22× Wyman) on
+the af2ig pose but not cross-fold robustness. The fold-INDEPENDENT evidence for every member is the
+conserved-cation engagement below (a sequence/epitope fact, not a fold prediction).
+(`runs/v18_switch/bothfold_robustness.tsv`, `runs/foldrobust/landscape.tsv`.)
 
 ## Cross-reactivity (human + mouse) — mechanistic, NOT the co-fold iptm
 
