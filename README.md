@@ -30,7 +30,7 @@ the reseqenced swaps is required before upload. Every design carries:
 - a **pH-release switch** (interface His adjacent to a conserved target Lys → His⁺ repels Lys⁺ at pH 6),
   validated by explicit two-state MD (+ Gln-isostere causal control), PROPKA–Wyman and pKAI linkage, and
   cross-folder (Boltz∩Chai) His–cation agreement for the v20 fold-robust set;
-- **cross-reactivity** by conserved-epitope mechanism (89–98% human↔mouse interface identity, cations K/R in both);
+- **cross-reactivity** by conserved-epitope mechanism (89–95% human↔mouse interface identity, cations K/R in both);
 - a confident binder (AF2 initial-guess), **0 Cys**, expression-screened, portal-novel (≥3/4).
 
 Upload to the Proteinbase portal is **user-gated**. CSVs under `runs/` are local-only (gitignored).

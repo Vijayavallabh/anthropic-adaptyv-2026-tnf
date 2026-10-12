@@ -33,10 +33,11 @@ by_id = {c.id: c for c in chains}
 binder = by_id.get("A", min(chains, key=lambda c: len([r for r in c if r.id[0] == ' '])))
 targets = [c for c in chains if c is not binder]
 
+HIS_NAMES = {"HIS", "HIE", "HID", "HIP", "HSD", "HSE", "HSP"}  # accept protonation-state names too
 bres = [r for r in binder if r.id[0] == ' ']
 # verify His present at switch positions
 resmap = {r.id[1]: r for r in bres}
-bad = [p for p in his_pos if resmap.get(p) is None or resmap[p].resname != "HIS"]
+bad = [p for p in his_pos if resmap.get(p) is None or resmap[p].resname not in HIS_NAMES]
 if bad:
     print(json.dumps({"error": f"HIS not found at {bad} in binder (got "
                       + ",".join(f"{p}:{resmap[p].resname if resmap.get(p) else 'NA'}" for p in his_pos) + ")"}))
@@ -45,8 +46,13 @@ if bad:
 def atoms(res):
     return np.array([a.coord for a in res])
 
-tatoms = np.concatenate([atoms(r) for c in targets for r in c if r.id[0] == ' '])
-hatoms = np.concatenate([atoms(resmap[p]) for p in his_pos])
+tlist = [atoms(r) for c in targets for r in c if r.id[0] == ' ']
+if not tlist:
+    print(json.dumps({"error": "no target polymer residues found (need a binder-target complex)"}))
+    sys.exit(1)
+tatoms = np.concatenate(tlist)
+# His-shell distance is optional: with no switch-His (target-contact-only run) hatoms is empty -> skip d_h
+hatoms = np.concatenate([atoms(resmap[p]) for p in his_pos]) if his_pos else None
 
 redesign = []
 for r in bres:
@@ -55,11 +61,13 @@ for r in bres:
         continue
     ra = atoms(r)
     d_t = np.min(np.linalg.norm(ra[:, None, :] - tatoms[None, :, :], axis=-1))
-    d_h = np.min(np.linalg.norm(ra[:, None, :] - hatoms[None, :, :], axis=-1))
+    d_h = (np.min(np.linalg.norm(ra[:, None, :] - hatoms[None, :, :], axis=-1))
+           if hatoms is not None else np.inf)
     if d_t < CT or d_h < CH:
         redesign.append(i)
 
-# write clean PDB: binder -> chain A, first target -> chain B
+# write clean PDB: binder -> chain A, ALL target protomers kept -> chains B,C,D...
+# (full trimer context for LigandMPNN; the redesign set above was computed against all protomers)
 class Clean(Select):
     def accept_residue(self, res):
         return res.id[0] == ' '

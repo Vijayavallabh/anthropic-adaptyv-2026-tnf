@@ -62,8 +62,8 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 - `./init.sh`: core env plus smoke tests (fast, CPU-only).
 - `uv run pytest`: test suite (schema, length, numbering, liabilities).
 - `uv run python -m compileall -q src scripts`: compile check.
-- `envs/uplifting-esmc/bin/python scripts/validate_submission.py <csv> --track 3`: **submission gate** (current;
-  rows/format/length/uniqueness/0-Cys). v18/v19/v20 all PASS. Record the md5 + `rows=N errors=0` as evidence.
+- `uv run python scripts/validate_submission.py <csv> --track 3`: **submission gate** (current;
+  rows/format/length/uniqueness; it does NOT check Cys). v18/v19/v20 all PASS. Record the md5 + `rows=N errors=0` as evidence.
 - `bash scripts/novelty_check.sh <csv>`: sequence-novelty pre-screen (mmseqs vs PDB, cached); 0 flagged >70% id
   = all de novo. STRUCTURAL novelty + the 4/4 portal score are USER-run (Proteinbase) — always portal-check swaps.
 

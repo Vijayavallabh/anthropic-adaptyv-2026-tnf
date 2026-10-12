@@ -65,4 +65,4 @@ is the **9-swap / 17-of-20** snapshot; v20b (19/20) adds these 2 once their USER
 **Gating:** v20 is LOCAL-ONLY. Upload is USER-GATED. v18/v19 remain the gated fallbacks.
 Portal novelty re-check on the 9 swaps is a hard prerequisite to any v20 upload.
 
-**Artifact:** runs/push/submission_v20.csv  md5 `6f4b61d0a55de2e4e0db205970ec6821`  (validator PASS, 20 rows, 0-Cys).
+**Artifact:** runs/push/submission_v20.csv  md5 `6f4b61d0a55de2e4e0db205970ec6821`  (validator PASS, 20 rows; 0-Cys verified separately in the build, not by the validator).

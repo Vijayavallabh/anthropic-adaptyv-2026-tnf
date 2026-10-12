@@ -16,7 +16,7 @@ Current status and next step for the TNF-α Challenge 2 campaign. Append; don't 
 
 ## Evidence (current, 2026-10-12)
 
-- `envs/uplifting-esmc/bin/python scripts/validate_submission.py runs/push/submission_v{18,19,20}.csv --track 3` → PASS (20 rows, 0 errors)
+- `for v in 18 19 20; do uv run python scripts/validate_submission.py runs/push/submission_v$v.csv --track 3; done` → each PASS (20 rows, 0 errors)
 - md5: v18 `524722158467273c0e9f57f5402650ed` · v19 `7756055f0b20bcd6994fefb644271db7` · v20 `6f4b61d0a55de2e4e0db205970ec6821`
 - `scripts/novelty_check.sh runs/push/submission_v20.csv` → 0/20 flagged >70% id to PDB (all de novo)
 
