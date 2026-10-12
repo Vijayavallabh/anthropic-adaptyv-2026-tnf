@@ -2,22 +2,23 @@
 
 Current status and next step for the TNF-α Challenge 2 campaign. Append; don't rely on chat history.
 
-## Status: SUBMISSION READY — upload user-gated
+## Status: SUBMISSION READY — upload user-gated (CURRENT — the 9-design final_portfolio below is SUPERSEDED)
 
-- **Submission:** `runs/submission/final_portfolio.{csv,fasta}` — **9 designs / 6 distinct folds**, FASTA==CSV
-  byte-identical. Write-up: `runs/submission/METHODS.md`. Pipeline map: `scripts/README.md`.
-  - cb1 family (4 seqs, 1 fold): `TNFpH01` (single-His, d_switch 2.68) + `TNFpH06/07/08` (coop-2His, ddg −1.9…−2.34)
-  - cb1-epitope (5 folds): `b4m2` C2 (ipSAE 0.85) · `b2m0` C1 · `b1m9` C8 · `b1m12` C5 (novelty 4/4) · `b1m7` C11
-- **Every design:** contact-gated pH-release switch (3 classes: two-state MD + PROPKA + pKAI; +GFN2-xTB on the 6
-  single-His), cross-react ipSAE > 0.5, 0-Cys, **portal-novel ≥3/4** (all 9 confirmed; one 4/4).
-- **Repo:** pushed to `github.com/Vijayavallabh/anthropic-adaptyv-2026-tnf` (private). Hardened — portable paths,
-  5 active-path bugs fixed, 20 dead EGFR Challenge-1 scripts removed, package `adaptyv_egfr`→`adaptyv_tnf`.
+- **Current best (fully portal-gated):** `runs/push/submission_v19.csv` — **20 designs**, validator PASS, user
+  portal-checked **all 20 ≥3/4**, 20/20 switchers. md5 **`7756055f0b20bcd6994fefb644271db7`**. Fallback
+  `submission_v18.csv` (md5 `524722158467273c0e9f57f5402650ed`).
+- **Candidate (stronger on #1):** `runs/push/submission_v20.csv` (md5 **`6f4b61d0a55de2e4e0db205970ec6821`**) =
+  v19 with 9 fold-robust shell-adapt swaps (8/20 → 17/20, round-2 → 19/20 fold-robust). Binding re-confirmed per
+  design. Dossier `docs/SUBMISSION_v20_candidate.md`. Needs USER portal novelty re-check on the reseqenced swaps.
+- **Deadline ~2026-10-19.** Full history is append-only below; the authoritative latest state is the SESSION 12
+  tail. (The `runs/submission/final_portfolio` 9-design set was an earlier session-8/9 checkpoint — superseded.)
+- **Repo:** `github.com/Vijayavallabh/anthropic-adaptyv-2026-tnf` (private). Upload is USER-GATED — do not auto-upload.
 
-## Evidence (last verified 2026-10-08)
+## Evidence (current, 2026-10-12)
 
-- `uv run pytest -q` → 23 passed · `uv run python -m compileall -q src scripts` → clean
-- `scripts/validate_submission.py submissions/example_track3.csv --track 3` → PASS (exit 0)
-- `final_portfolio.csv` md5 `f89d9173…` (stable; re-running `switch_contact_gate.py` + `assemble_v2.py` reproduces it)
+- `envs/uplifting-esmc/bin/python scripts/validate_submission.py runs/push/submission_v{18,19,20}.csv --track 3` → PASS (20 rows, 0 errors)
+- md5: v18 `524722158467273c0e9f57f5402650ed` · v19 `7756055f0b20bcd6994fefb644271db7` · v20 `6f4b61d0a55de2e4e0db205970ec6821`
+- `scripts/novelty_check.sh runs/push/submission_v20.csv` → 0/20 flagged >70% id to PDB (all de novo)
 
 ## Final-push campaign (2026-10-08, autonomous to deadline)
 
@@ -276,7 +277,7 @@ Pursued the three Stop-hook items to completion and ran the bold new-fold bet.
 - **partial2** (fresh partial-diffusion of 5 novel-fold seeds): 230/1920 strong binders (12% pass, matches the lesson) on b4m2+b1m12 — confirms those folds are ROBUST binders, but all COUSINS (diversity cap) → not integrated. (b1m9/b1m7 arm skipped at build_fullatom — artifact, not fragility.)
 - **LIVE BET: buried-His-NETWORK switch** (Baker `his_ph_exploder`, MIT, TNF-validated 79x, OFF-interface so preserves affinity+cross-react, the cooperativity/Δn_H>1 route — sidesteps the interface single-His ceiling). PyRosetta installing (free-academic). RISK: Baker says buried networks need LARGE cores; my binders are 82-101aa (small) → b1m12 (101aa, 4/4-novel) is the best candidate. The exploder is itself the go/no-go (finds buried His-pairs or reports none).
 
-## Next step
+## Next step (SESSION 9 snapshot — SUPERSEDED; current submission is v19/v20, deadline ~2026-10-19; see the SESSION 12 tail)
 
 **Deliverable is final and validated on every axis** — `runs/push/final20.{csv,fasta}` +
 `upload_final20.csv` (20 designs / **7 folds** / **17/20 expr-PASS** + 3 documented-soluble FLAGs /
@@ -592,3 +593,32 @@ auto-upload.
   ≥3/4→v17, else v16.** Dossier `docs/SUBMISSION_v17_candidate.md`. De-novo long shot now played out.
 - Pipeline drivers promoted to `scripts/` (denovo_stage2, partial_denovo, v15_xreact, v15_multihis, v15_stage2);
   see `scripts/README.md` + `session-handoff.md`. GPUs 0,1,6,7 intermittently foreign (VLLM/scGPT) — never clobber.
+
+## SESSION 11 cont. → v18 / v19 (both fully gated)
+- **v18 `runs/push/submission_v18.csv` md5 `524722158467273c0e9f57f5402650ed`** (validator PASS) = v16 with 2
+  swaps (des_3050_6→des_6126 [4th lineage, MD d_repel 1.36], b4m2→des_6025 mh_52_74 0.93). 19/20 MD-confirmed,
+  4 de-novo lineages, all ≥3/4 novel. Genie3-groove hedge = rigorous NO-GO (af2ig floors; "confirmed" switches
+  were pose-instability artifacts, binder drifts 4.5-7.1Å). Pose-consensus binding oracle = NO-GO (AUC 0.39-0.55).
+- **v19 `runs/push/submission_v19.csv` md5 `7756055f0b20bcd6994fefb644271db7`** (validator PASS) = v18 with
+  des_818_4_c13S → des_84_3_mh_49_56_76 (more fold-robust: 1 both-fold His). **User portal-checked: all 20 ≥3/4,
+  FULLY GATED.** 20/20 switchers. = CURRENT BEST. Deadline extended to ~2026-10-19.
+
+## SESSION 12 (2026-10-12) — v20 fold-robust shell-adaptation (17→19/20 fold-robust; the live #1-axis win)
+- **Hypothesis VALIDATED:** shell-adaptation (LigandMPNN shell-redesign, His FIXED, repack interface + His
+  microenv; `scripts/shelladapt_shell.py`) upgrades fold-FRAGILE switchers to fold-ROBUST (switch-His engages a
+  cross-conserved cation in BOTH Boltz∩Chai). sa2 campaign: **9/11 fragile members upgraded**; round-2: +2/3 of
+  the stubborn (b2m0_c70, des_875_5). Portfolio **8/20 → 17/20 (→19/20) fold-robust.**
+- **v20 `runs/push/submission_v20.csv` md5 `6f4b61d0a55de2e4e0db205970ec6821`** (validator PASS) = v19 with 9
+  fold-robust swaps. Dossier `docs/SUBMISSION_v20_candidate.md`; picks `runs/foldrobust/v20_final_picks.tsv`.
+- **Binding re-confirmed per design** (shell-adapt rewrote 60-75/80 residues): af2ig initial-guess on each NEW
+  sequence, all 9 adopted PASS (8/9 match/beat parent). The most-soluble non-binding variants (sa5/sa3, pae 23/22)
+  correctly rejected — binding filter is load-bearing. des_6025 sa10 binding confirmed (4.78/92/0.45).
+- **Cross-react** 89-95% epitope id, all cations cross-conserved (`crossreact_interface_conservation.md`).
+  **Novelty** sequence 0/20 >70% id (all de novo); structural ~ parent (backbone unchanged) → USER portal re-check
+  REQUIRED on the reseqenced swaps. **Filter stringency:** both-fold 28% vs single-fold 51% across 176 variants.
+- **Two-state MD (physics corroboration, 3-rep):** fold-robust ≠ all MD-selective — des_6025 sa10 + des_4082_8
+  clean (2 His, 2 SEPARATED cations); the bc=3 des_2106_2 MD-weak (2 His crowd K93 = anti-cooperative). Vindicates
+  separated-His; MD is a noisy confirmer, not a hard cutter — v20 selection stands on fold-robustness + binding.
+- **Honest scope:** v20 is a higher-CONFIDENCE switch-geometry gain on #1 (more members reliably switch), NOT
+  in-silico binding proof (TNF docking stays wall-limited; #3 affinity wet-lab-decided). Campaign-2 (1200 fresh
+  bpair-RFd → funnel) in flight for new-lineage binders (novelty/diversity). v18/v19 gated; v20 USER-portal-gated.

@@ -18,23 +18,33 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 ## The submission
 
-`runs/submission/final_portfolio.{csv,fasta}` — **9 designs across 6 distinct folds** (byte-verified
-FASTA==CSV), with `runs/submission/METHODS.md` as the write-up. Every design carries:
+`runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
+carrying a pH-release switch. This is the current best / recommended upload (fallback `submission_v18.csv`).
+
+`runs/push/submission_v20.csv` — the **fold-robust candidate** (dossier `docs/SUBMISSION_v20_candidate.md`):
+v19 with 9 fold-fragile switchers replaced by **shell-adapted fold-ROBUST** variants whose switch-His engages a
+cross-conserved TNF cation in **both** independent folders (Boltz∩Chai), lifting the portfolio from 8/20 to
+17/20 (→19/20) fold-robust. Binding re-confirmed per design (AF2 initial-guess). USER portal novelty re-check on
+the reseqenced swaps is required before upload. Every design carries:
 
 - a **pH-release switch** (interface His adjacent to a conserved target Lys → His⁺ repels Lys⁺ at pH 6),
-  confirmed by **three method-classes on all nine** — explicit two-state MD (+ Gln-isostere causal control),
-  PROPKA–Wyman linkage, pKAI linkage — plus a **GFN2-xTB** fourth class on the six single-His designs;
-- **cross-reactivity** by matched human/mouse Boltz-2 co-fold and worst-case-over-species **ipSAE > 0.5**;
-- a confident binder (AF2 initial-guess + Boltz-2), **0 Cys**, expression-screened, portal-novel (≥3/4; one 4/4).
+  validated by explicit two-state MD (+ Gln-isostere causal control), PROPKA–Wyman and pKAI linkage, and
+  cross-folder (Boltz∩Chai) His–cation agreement for the v20 fold-robust set;
+- **cross-reactivity** by conserved-epitope mechanism (89–98% human↔mouse interface identity, cations K/R in both);
+- a confident binder (AF2 initial-guess), **0 Cys**, expression-screened, portal-novel (≥3/4).
 
-Upload to the Proteinbase portal is **user-gated**.
+Upload to the Proteinbase portal is **user-gated**. CSVs under `runs/` are local-only (gitignored).
 
 ## Pipeline (what actually ran)
 
-RFdiffusion3 (all-atom) at the conserved **cb1** aromatic/hydrophobic epitope → ProteinMPNN (0-Cys) →
-AF2 initial-guess + Boltz-2 binding → His pH-switch install at a conserved Lys → 4-method switch validation →
-ipSAE cross-reactivity → Foldseek TM-clustering for true-shape diversity → `assemble_v2.py` (contact-gated,
-one design per shape). `scripts/README.md` maps every stage to its scripts.
+Most submitted designs come from the **β-pairing RFdiffusion long-shot** at the conserved Region-I edge →
+ProteinMPNN (0-Cys) → **AF2 initial-guess binding** (pae_int<10, the load-bearing filter) → partial-diffusion
+amplification of the cross-reactive new shapes → install **≥2 SEPARATED His, each repelling a DISTINCT
+conserved target cation** (K6/K93/K60…) → **two-state MD** switch validation (+ Gln-isostere control) → PROPKA
++ pKAI linkage → conserved-epitope cross-reactivity → novelty (foldseek TM + mmseqs; portal is authoritative).
+**v20 adds LigandMPNN shell-adaptation** (`scripts/shelladapt_shell.py`): repack the His microenvironment with
+the His FIXED so BOTH independent folders (Boltz∩Chai) agree the His engages its conserved cation (fold-robust),
+re-confirming binding per design. `scripts/README.md` maps every stage to its scripts.
 
 ## Environment & compute
 

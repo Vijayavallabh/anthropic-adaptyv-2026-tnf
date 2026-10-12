@@ -14,9 +14,10 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 ## Startup workflow
 
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
-2. Read `progress.md` (current status), `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md`
-   (plan + outcome). `scripts/README.md` maps the pipeline; the current best submission is
-   `runs/push/submission_v9.csv` (see the Submission contract below).
+2. Read `progress.md` (current status), `session-handoff.md` (latest session state + next steps),
+   `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md` (plan + outcome). `scripts/README.md`
+   maps the pipeline; the current best submission is `runs/push/submission_v19.csv` (see the Submission
+   contract below), with `v20` the fold-robust candidate.
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -61,9 +62,10 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 - `./init.sh`: core env plus smoke tests (fast, CPU-only).
 - `uv run pytest`: test suite (schema, length, numbering, liabilities).
 - `uv run python -m compileall -q src scripts`: compile check.
-- `uv run python scripts/validate_submission.py <csv> --track <N>`: submission gate (EGFR Challenge 1 — stale).
-- `bash scripts/validate_v9.sh`: **TNF Challenge 2 definition-of-done gate** (current) — submission bytes/format
-  + recorded evidence (expression pLDDT, portal novelty, Chai binding provenance); exit 0 = PASS. v9 = PASS.
+- `envs/uplifting-esmc/bin/python scripts/validate_submission.py <csv> --track 3`: **submission gate** (current;
+  rows/format/length/uniqueness/0-Cys). v18/v19/v20 all PASS. Record the md5 + `rows=N errors=0` as evidence.
+- `bash scripts/novelty_check.sh <csv>`: sequence-novelty pre-screen (mmseqs vs PDB, cached); 0 flagged >70% id
+  = all de novo. STRUCTURAL novelty + the 4/4 portal score are USER-run (Proteinbase) — always portal-check swaps.
 
 ## Definition of done
 
@@ -74,24 +76,26 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs)
 
-- **Current best, SAFE default (fully portal-novelty-verified):** `runs/push/submission_v16.csv` (md5
-  **`a524d77fa7a63ef33b28346ce3a7d87d`**, 20 designs, validator PASS, all swap-ins portal-novelty **3/4**).
-  v16 = v14 with **4 de-novo NEW-shape MD-confirmed switchers** (2 new lineages des_138_7, des_4082_8)
-  swapped for the 4 weakest v14 members (2 wrong-sign + 1 noisy + 1 flat, all two-state-MD NONRESPOND);
-  portfolio MD trigger **13/20 → 17/20 CONFIRMED**. Recent lineage: v9 (`05a34444`) → v12 (`e34ca96d`) →
-  v13 (`4c682b80`) → v14 (`7994cf46`, v13+1 axis-complete swap) → **v16 (`a524d77f`, the long-shot de-novo
-  new-shape win)**. **Fallbacks: v14 (`7994cf46`), v13 (`4c682b80`), v12 (`e34ca96d`), all portal-verified.**
-- **v17 candidate — STRONGER on #1, but USER-PORTAL-GATED:** `runs/push/submission_v17.csv` (md5
-  **`9357b6905ed81179da5137a16dd9dd5a`**, validator PASS). v17 = v16 with the weakest redundant NONRESPOND
-  `b4m2_A57H` (+0.22) swapped for a **3rd de-novo new-lineage MD-CONFIRMED switcher**
-  `des_6025_4_T20_pd_64_1_mh_34_50_52_74` (d_repel **+0.372**, isostere ctrl +0.308; cross-react re-folded
-  on the His-variant **human 0.962 / mouse 0.938**; solub 0.87; **seq-novel, no PDB hit**). Portfolio MD
-  trigger **17/20 → 18/20 CONFIRMED**, de-novo lineages 2 → 3 (b4m2 keeps CONFIRMED `b4m2_r1_w5_3`). The
-  ONE open risk: local foldseek structural max-TM **0.945** (above v16's 0.86–0.93) → **likely 3/4 but
-  portal-UNVERIFIED**. **Decision: upload v16 by default; if one portal novelty check can be spared, check
-  des_6025 — ≥3/4 → upload v17, else v16.** See `docs/SUBMISSION_v17_candidate.md`.
-- See also `docs/SUBMISSION_v16_candidate.md`, `docs/TRIGGER_MATRIX_v14.md`, `session-handoff.md`. CSVs under
-  `runs/` (gitignored, local-only); submission is **USER-GATED** (portal account j_v_v_07) — do NOT auto-upload.
+- **Current best, FULLY portal-novelty-gated (user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
+  (md5 **`7756055f0b20bcd6994fefb644271db7`**, 20 designs, validator PASS). v19 = v18 with des_818_4_c13S →
+  des_84_3_mh_49_56_76 (the more fold-robust flagship, 1 both-fold His); **20/20 switchers**. **Recommended
+  upload.**
+- **Gated fallback:** `runs/push/submission_v18.csv` (md5 **`524722158467273c0e9f57f5402650ed`**, validator
+  PASS, 19/20 switchers, 4×4/4-novel). Conservative floor: `submission_v16.csv` (`a524d77f`).
+- **v20 candidate — STRONGER on #1 (fold-robustness), USER-PORTAL-GATED:** `runs/push/submission_v20.csv`
+  (md5 **`6f4b61d0a55de2e4e0db205970ec6821`**, validator PASS). v20 = v19 with **9 fold-FRAGILE switchers
+  replaced by shell-adapted fold-ROBUST variants** (switch-His engages a cross-conserved TNF cation in BOTH
+  folders Boltz∩Chai, not one). Portfolio fold-robust **8/20 → 17/20** (round-2 adds b2m0_c70 + des_875_5 →
+  19/20). Mechanism: LigandMPNN shell-redesign, His FIXED, repack interface + His microenv → locks the His
+  rotamer (`scripts/shelladapt_shell.py`). **Binding re-confirmed per design** (shell-adapt rewrote 60-75/80
+  residues): af2ig initial-guess on each NEW sequence, all 9 adopted PASS, 8/9 match/beat parent.
+  Cross-react 89-95% epitope id, all cations cross-conserved. **HONEST SCOPE:** fold-robustness is a stricter
+  switch-GEOMETRY filter (higher-confidence #1), NOT binding proof; two-state MD (3-rep, noisy confirmer)
+  shows fold-robust ≠ all MD-selective (des_6025 sa10 + des_4082_8 clean; the bc=3 des_2106_2 crowds 2 His on
+  K93 → MD-weak). **REQUIRED before upload: USER portal novelty re-check on the 9 (soon 11) reseqenced swaps.**
+  See `docs/SUBMISSION_v20_candidate.md`.
+- See also `docs/SUBMISSION_v18_candidate.md`, `session-handoff.md`. CSVs under `runs/` (gitignored,
+  local-only); submission is **USER-GATED** (portal account j_v_v_07) — do NOT auto-upload.
 - **Long-shot de-novo NEW-shape pipeline (how v16's switchers were built, SESSION 11):** β-pairing RFd
   (`run_bpair_rfd.sh`) → binding funnel (`denovo_stage2.sh`) → cross-react (`v15_xreact.sh`, Boltz h+m
   min-iptm≥0.70) → **AMPLIFY the cross-reactive new shapes by partial diffusion** (`partial_denovo.sh`, ~25%

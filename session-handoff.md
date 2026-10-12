@@ -1,15 +1,61 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-11 (SESSION 11). Deadline **2026-10-11 23:59 AoE = 2026-10-12 11:59 UTC**.
+Updated 2026-10-12 (SESSION 12). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
+2026-10-12 ~08:25Z — the Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that, real runway ~7 days).
 
-## Current best submission (validated, portal-novelty-verified)
+## Current best submission (fully portal-novelty-gated)
 
-- **`runs/push/submission_v16.csv`** (md5 **`a524d77fa7a63ef33b28346ce3a7d87d`**) — 20 designs, validator
-  **PASS**, all swap-ins portal-novelty **3/4**. **Recommended upload.**
-- **Fallbacks (fully portal-verified):** `submission_v14.csv` (md5 `7994cf46f0a55921a986cf73cee5e13d`),
-  `submission_v13.csv` (`4c682b80…`), `submission_v12.csv` (`e34ca96d…`).
+- **`runs/push/submission_v19.csv`** (md5 **`7756055f0b20bcd6994fefb644271db7`**) — 20 designs, validator
+  **PASS**, user portal-checked **all 20 ≥3/4**, 20/20 switchers. **Recommended upload.**
+- **Gated fallback:** `submission_v18.csv` (md5 **`524722158467273c0e9f57f5402650ed`**, 19/20 switchers,
+  4×4/4-novel). Floor: `submission_v16.csv` (`a524d77f`).
 - **Upload is USER-GATED** — do not auto-upload. CSVs under `runs/` (gitignored). Account `j_v_v_07`.
 - Portal CSV format: `name,sequence,molecule_class`; de-novo minis `single_chain`; unique names AND seqs.
+
+## SESSION 12 (2026-10-12) — v20 fold-robust shell-adaptation campaign (the live improvement)
+
+**v20 = v19 with 9 fold-FRAGILE switchers replaced by shell-adapted fold-ROBUST variants.** Fold-robust = the
+switch-His engages a cross-conserved TNF cation in BOTH folders (Boltz∩Chai), not one. Portfolio fold-robust
+**8/20 → 17/20** (round-2 adds b2m0_c70 sa17 + des_875_5 sa1-r2 → **19/20**; only des_138_7_pd_39_4 stays
+fragile — Chai never agrees in 2 rounds). `runs/push/submission_v20.csv` md5
+**`6f4b61d0a55de2e4e0db205970ec6821`**, validator PASS. Dossier `docs/SUBMISSION_v20_candidate.md`;
+picks `runs/foldrobust/v20_final_picks.tsv`.
+
+- **Mechanism:** `scripts/shelladapt_shell.py` — LigandMPNN shell-redesign, switch-His FIXED, repack binder
+  residues within 10Å of target OR 8Å of a switch-His → locks the His rotamer so both folders agree.
+  Per-member campaign = `shelladapt_shell.py` → LigandMPNN (protein_mpnn, 16 variants/member, omit-C) → Boltz +
+  Chai fold (`run_boltz_tnf.sh` / `run_chai.sh`, target `data/targets/human_tnf.seq`) → Boltz∩Chai per-His
+  triple-confirm (`scripts/triple_confirm_mut.py`) → `cif2pdb_af2ig.py` + `run_af2ig.py` for binding re-confirm.
+  sa2 = 176 variants / 11 members; round-2 = 96 / 3 stubborn. (Per-run driver shell scripts are session scratch,
+  regenerable from these durable scripts + the dossier.)
+- **Binding re-confirmed per design (REQUIRED — shell-adapt rewrote 60-75/80 residues).** af2ig initial-guess
+  on each NEW sequence (binder=chainA + 152aa protomer; `scripts/cif2pdb_af2ig.py` converts the Boltz fold).
+  **All 9 adopted PASS** (rmsd<2/pae_int<10/plddt_b>80); 8/9 match-or-beat parent. The most-SOLUBLE variants
+  sa5/sa3 FAILED binding (pae 23/22) → rejected: af2ig is seq-specific, the binding filter is load-bearing.
+  Scores `runs/sa2_af2ig{,2}/out.sc`. des_6025 sa10 binding CONFIRMED (4.78/92/0.45) — never actually run before.
+- **Joint re-selection** (fold-robust AND max-solubility over 16 variants/member): all 9 Protein-Sol ≥0.59.
+  Flagship by geometry = des_2106_2 sa2 (3 His, only bc=3 of 176) — BUT MD-weak (2 His crowd K93). Cleanest =
+  des_6025 sa10 + des_4082_8 ×2 (2 His on 2 SEPARATED distinct cations, MD-selective TRUE).
+- **Cross-react:** every adopted winner 89-95% epitope id human↔mouse, all engaged cations K/R in both species
+  (`runs/foldrobust/crossreact_interface_conservation.md`). Mechanistic, fold-independent.
+- **Novelty:** sequence 0/20 >70% id to PDB (all de novo). Backbone UNCHANGED + winners fold to parent backbone
+  (af2ig rmsd<2) → structural novelty ~ parent's portal ≥3/4. **REQUIRED: USER portal re-check on the 9 (soon 11)
+  reseqenced swaps before any v20 upload.** Local single-seq structural pre-screen staged (`tmp/sa2/struct_novelty.sh`,
+  esmfold→foldseek vs `runs/novelty_struct/pdbdb`).
+- **HONEST SCOPE:** both-fold = a STRICTER switch-GEOMETRY filter (51% single-fold → 28% both-fold across 176;
+  higher-confidence #1), NOT in-silico binding proof (TNF docking stays wall-limited; #3 affinity wet-lab-decided).
+  Two-state MD (3-rep, a noisy CONFIRMER not a hard cutter) corroborates the separated-cation designs and flags
+  the crowded-His ones — vindicates separated-His. Firming up: higher-rep MD + parent MD on final flagships.
+
+**RUNNING at handoff (all 8 GPUs):** two-state MD on the 9 adopted (`runs/sa2_md`, GPUs 0-3) + campaign-2 funnel
+(1200 fresh bpair-RFd backbones → MPNN→af2ig, GPUs 4-7, `runs/bpair/bpair_fresh/funnel`) for new-lineage binders
+(novelty/diversity). **Staged when GPUs free:** round-2 winners' af2ig (→19/20), structural-novelty pre-screen.
+
+**NEXT (7-day runway → bold, thorough):** (1) finish MD + round-2 af2ig → finalize v20/v20b. (2) Funnel passers
+→ new fold-robust switchers from diverse lineages (novelty-4/4 + expression hedge). (3) Push switch SHARPNESS:
+designs with His on 3 SEPARATED distinct conserved cations (des_2106_2 showed 2-on-K93 is anti-cooperative).
+(4) Assemble the optimal 20 = max fold-robust/MD-selective + novelty-diverse + cross-react + soluble. Keep
+v18/v19 gated; upload USER-GATED.
 
 ## What v16 is (the LONG SHOT win)
 
@@ -85,7 +131,7 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   the groove, don't hard-floor (see [[reference-anthropic-tnf-dataset-regionI-recipe]]). Then switch → two-state
   MD → novelty, as v16/v17.
 - **LIVE (2026-10-11 ~20:15Z):** GPU window opened (mmbu released 4-7); **Genie3 generation RUNNING on GPUs
-  4,5,6,7** (PID in `$CLAUDE_JOB_DIR/tmp/gen_regI_main.log`, N=800, ~182/800 so far, ~70min left). mmbu still
+  4,5,6,7** (PID in `$TMPDIR/tmp/gen_regI_main.log`, N=800, ~182/800 so far, ~70min left). mmbu still
   holds 0-3 — do NOT touch. Gen-completion waiter running (re-invokes to run the funnel).
 - **fbb builder works + Genie3 BREAKS the groove-placement floor:** `scripts/build_genie3_fullbb_bc.py`
   (PULCHRA at `.../recon_venv/bin/pulchra`) reconstructs binder full-backbone + joint-Kabsch grafts the real
@@ -169,9 +215,9 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   all 3 conserved cations (mature K65/K98/K112 = dataset 60/93/107) exist on EACH protomer — keeping binder A +
   the one protomer the His best cover loses nothing for the switch test and is topologically clean. Result: **12
   variants, 12/12 MD-loadable (CPU dry-run through build()), 11/12 install separated His on ALL 3 conserved
-  cations** (manifest `$CLAUDE_JOB_DIR/tmp/hedge_md/manifest.tsv`; regenerable from the committed script +
+  cations** (manifest `$TMPDIR/tmp/hedge_md/manifest.tsv`; regenerable from the committed script +
   hedge_top.txt + runs/genie3_regI/af2in). GPU-gated behind the bpair MD. NEXT (when GPUs free):
-  `bash scripts/run_md_release.sh $CLAUDE_JOB_DIR/tmp/hedge_md/manifest.tsv <out> "0..7" 3000 4` → `md_verdict.py`
+  `bash scripts/run_md_release.sh $TMPDIR/tmp/hedge_md/manifest.tsv <out> "0..7" 3000 4` → `md_verdict.py`
   → any CONFIRMED = an MD-switch-confirmed, groove-placed, all-3-conserved-cation, novel Genie3 design. Present
   as a USER-decided diversification hedge — binding stays a recipe-bet (af2ig floors; af2ig near-chance for TNF),
   labeled honestly; NOT submitted over confirmed designs unilaterally. A positive switch result strengthens the
@@ -180,7 +226,7 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
   Track A (bpair harvest, 13 variants) on GPUs 0-4, 8/13 verdicts done, ~30min to finish — waiter PID
   1590848 (fires on n>=13) re-invokes me → run `harvest_v18.sh` (Boltz xreact on freed 0-4) → assemble v18.
   Hedge switch-probe (12 variants) on the freed GPUs 5,6,7, ~3-4h — waiter (bg job) re-invokes me on 12/12 →
-  `md_verdict.py $CLAUDE_JOB_DIR/tmp/hedge_md_out`. **SEQ-NOVELTY PRE-COMPUTED (mmseqs vs PDB, CPU):** ALL 13
+  `md_verdict.py $TMPDIR/tmp/hedge_md_out`. **SEQ-NOVELTY PRE-COMPUTED (mmseqs vs PDB, CPU):** ALL 13
   Track A candidates incl BOTH des_6126 variants = FULLY seq-novel (0 PDB hits, <<30% id; POSCTRL TNF hit 100%
   = valid). So the seq axis of portal novelty is satisfied for every v18 candidate; only the STRUCTURAL axis
   (foldseek TM, GPU single-seq fold) remains — des_6025 variants ≈ des_6025 (TM 0.945, 3/4), des_6126 TBD.
@@ -208,10 +254,12 @@ STAGED + ready to fire the instant a GPU window opens (do NOT clobber the foreig
 ## Open items / decision (USER)
 
 - **Upload decision (USER-gated, nothing uploaded):**
-  1. **Default (zero extra work): upload v16** (`a524d77f`) — fully portal-verified, 20/20 ≥3/4 novelty.
-  2. **If one portal novelty check can be spared: check des_6025.** ≥3/4 → **upload v17** (`9357b690`,
-     stronger on #1: 18/20 confirmed + a 3rd de-novo lineage). <3/4 → stay on v16.
-- De-novo long shot is **played out** — strong yield captured in v16 (+1 marginal in v17). Diminishing returns.
+  1. **Default (zero extra work): upload v19** (`7756055f`) — fully portal-verified, 20/20 ≥3/4, 20/20 switchers.
+  2. **Stronger on #1, needs portal re-checks: v20** (`6f4b61d0`) — 17/20 (→19/20 w/ round-2) fold-robust,
+     binding re-confirmed per design. REQUIRES USER portal novelty re-check on the 9 (soon 11) reseqenced swaps
+     (sequence changed ~60-75/80 residues; backbone unchanged → expect ≥3/4, but hard-gated so must be verified).
+- **v18/v19 are the safe gated fallbacks.** The fold-robust v20 is the bold #1-axis improvement in flight; the
+  honest claim is higher-CONFIDENCE switch geometry across more members, corroborated (not proven) by MD.
 
 ## Key invariants (see AGENTS.md + docs/METHODS.md)
 - pH-switch = ≥2–3 SEPARATED His on DISTINCT conserved target cations; prove sign per His (PROPKA dpKa<0 AND
