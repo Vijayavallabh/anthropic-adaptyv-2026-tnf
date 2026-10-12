@@ -1,5 +1,10 @@
 # Expression de-risking dossier — treating "will it express" as a quantified prediction, not a solved fact
 
+> **Note (SESSION 13):** this is a v11-era snapshot. The *methodology* (orthogonal multi-signal expression
+> consensus) is current and still applied, but the "current best = v11" framing below is superseded — the
+> current strongest candidate is `submission_v21.csv` and the gated-safe default is `submission_v19.csv`
+> (see AGENTS.md / README.md / session-handoff.md).
+
 **Why this doc.** Expression is the dominant wet-lab-zero risk: a design that cannot be manufactured scores
 zero regardless of its pH-switch. Our prior confidence rested mainly on **one** predictor — ESMFold monomer
 pLDDT, whose published de-novo-success AUROC is ~0.72 (Garcia/Dixit/Rocklin 2026, PMC12817478). A single
