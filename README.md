@@ -20,26 +20,25 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 **The pick is priority-dependent** — options differ on re-check burden and on #1-axis depth, not on a provable
 domination (switch magnitude is unrankable in-silico, binding magnitude is wet-lab-decided, novelty is portal-gated).
-**A user portal upload of v22 (2026-10-13) revealed the portal also runs an internal cousin-dedup** ("Similar designs
-in this upload"): it flagged 4 v22 cousins (des_4098_1 ×3, des_2106_2 ×2), so v22 scores only 16 unique — and this
-hits v19/v21 too. The 2 new members (des_36133, des_732) **passed** (now confirmed).
+**User portal uploads (2026-10-13) revealed the portal also runs an internal cousin-dedup** ("Similar designs in
+this upload"): on v22 it flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 unique (hits v19/v21 too). The
+dedup-clean **v23 then uploaded with ALL 20 PASSED** — so v23 is fully portal-confirmed, 20 unique, 0 re-checks left.
 
-`runs/push/submission_v23.csv` — **the pragmatic best** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
-validator PASS). v22 with its 3 redundant cousins replaced by 3 distinct-lineage direction-confirmed switchers →
-**20 unique scored** (vs v22's effective 16) **and higher #1-axis depth** (5 both-fold members vs v22's 2), 19
-distinct lineages. Needs only **3 portal re-checks** (16 members already passed in the v22 upload). Dossier
-`docs/SUBMISSION_v23_candidate.md`.
+`runs/push/submission_v24.csv` — **max #1-axis** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20 designs, validator PASS).
+v23 with 3 same-lineage swaps to v21's solid ≥2-cat both-fold saN variants → **8 both-fold members (= v21's max
+#1-axis depth) in a dedup-clean 20-unique set, needing only 3 re-checks** (vs v21's 13). Supersedes v21. Dossier
+`docs/SUBMISSION_v24_candidate.md`.
 
-`runs/push/submission_v21.csv` — **strongest on the #1 axis** (md5 `f7f246f41a3a062b1922f0f980a9928a`, 17 designs,
-validator PASS). On pH-selectivity — proxied by the both-fold-confirmed count of separated in-window His (a sound
-*ordinal* for expected fold-change even though precise magnitude isn't rankable) — v21 leads: **8 members carry 2–3
-both-fold-geometry-confirmed cation-repelling His** (vs v22's 2, v19's 0). A leaner, more **diverse** portfolio (15
-lineages) from a brutal multi-agent review plus foldseek-distinct new lineages. Cost: **13 portal re-checks**.
-Dossier `docs/SUBMISSION_v21_candidate.md`.
+`runs/push/submission_v23.csv` — **fully confirmed now** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
+validator PASS, **all 20 portal-PASSED**). Dedup-clean 20 unique, 5 both-fold, 19 distinct lineages, **0 re-checks**
+— the strongest fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
 
-`runs/push/submission_v22.csv` — **SUPERSEDED by v23** (md5 `abaec06790766f25282133d929083187`, 20 designs). The set
-the user uploaded; v23 strictly improves it (fixes the 4-cousin dedup loss + raises #1 depth) at the same effort
-class. Kept only as the raw record of that upload. Dossier `docs/SUBMISSION_v22_candidate.md`.
+**Not in-silico-provable:** "dominate every metric" — binding magnitude (#3) is wet-lab-decided (Anthropic's own
+AP≈0.16 ≈ near-chance in-silico ranking) and switch magnitude is thermodynamically unrankable. The provable axes
+are maximized: novelty 20/20 confirmed (v23); #1 both-fold ordinal = 8 (v24, the ceiling — a 4-His campaign
+confirmed 3-cat/member is the max); diversity 19 lineages; switch direction all-confirmed.
+
+`runs/push/submission_v22.csv` / `submission_v21.csv` — **SUPERSEDED** (by v23 and v24 respectively); kept as records.
 
 `runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
 carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done

@@ -76,20 +76,24 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **PORTAL DEDUP (2026-10-13, from the user's v22 upload):** the portal runs an INTERNAL cousin-dedup ("Similar
-  designs in this upload") separate from the PDB-novelty gate. It flagged 4 v22 cousins (des_4098_1 ×3, des_2106_2
-  ×2) → v22 scores only **16 unique**; this hits v19/v21 too. The 2 new members (des_36133, des_732) **PASSED** and
-  are now portal-confirmed. Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT.
-- **v23 — PRAGMATIC BEST (dedup-clean):** `runs/push/submission_v23.csv` (md5 **`65bf89bb38f5498ad90522542655eae2`**,
-  validator PASS, 20 designs). = v22 − {des_4098_1_c44, des_4098_1_c44_w6_3, des_2106_2_H43} + 3 distinct-lineage
-  direction-confirmed 2-cat refills {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. **20 UNIQUE scored**
-  (vs v22's 16) + **#1-axis both-fold depth 5** (2 three-cat + 3 two-cat) vs v22's 2; 19 distinct lineages. **3
-  re-checks** (16 already portal-passed). Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **The pick is PRIORITY-DEPENDENT.** On the #1 judged axis (both-fold-confirmed COUNT of separated in-window His)
-  **v21 leads** (8 members) but needs 13 re-checks + its own dedup; **v23** is the pragmatic dedup-clean best (3
-  re-checks, #1-depth 5); **v19** (or v22 minus the 4 flagged = 16 unique) is zero-new-recheck. **v22 SUPERSEDED by
-  v23.** Switch MAGNITUDE itself is not rankable in-silico — these differ on re-check burden and #1-axis depth, not a
-  provable domination.
+- **PORTAL (2026-10-13, user uploads):** the portal runs an INTERNAL cousin-dedup ("Similar designs in this
+  upload") separate from the PDB-novelty gate. v22 → 4 cousins flagged (des_4098_1 ×3, des_2106_2 ×2) → only **16
+  unique** (hits v19/v21 too). **v23 → ALL 20 PASSED** → v23 FULLY portal-confirmed, 20 unique, 0 re-checks left.
+  Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED.
+- **v24 — MAX #1-axis (dedup-clean, 3 re-checks):** `runs/push/submission_v24.csv` (md5
+  **`34f3c096bf63dd9ef70d05308c6c3f1d`**, validator PASS, 20 designs). = v23 with 3 same-lineage swaps to v21's solid
+  ≥2-cat both-fold saN variants (des_2106_2→sa2, des_4082_8_pd_10_4→sa7 [d_repel 1.69], des_6025_4→sa10_sh3_sa11
+  [1.2]). **8 both-fold members (2 three-cat + 6 two-cat) = v21's max #1-depth, dedup-clean 20-UNIQUE, only 3
+  re-checks** (17 already portal-passed). **Supersedes v21.** Dossier `docs/SUBMISSION_v24_candidate.md`.
+- **v23 — FULLY CONFIRMED NOW (0 re-checks):** `runs/push/submission_v23.csv` (md5
+  **`65bf89bb38f5498ad90522542655eae2`**, validator PASS, 20 designs, **all 20 portal-PASSED**). = v22 − 3 cousins +
+  {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. 20 UNIQUE, 5 both-fold, 19 lineages. The strongest
+  fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
+- **The pick:** **v24** for max #1-axis depth (8 both-fold, 3 re-checks); **v23** for fully-confirmed-now (5
+  both-fold, 0 re-checks); **v19** zero-work fallback. **v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
+  is NOT in-silico-provable: binding magnitude (#3) is wet-lab-decided (Anthropic AP≈0.16 near-chance) and switch
+  MAGNITUDE is thermodynamically unrankable. The provable axes ARE maxed (novelty 20/20 for v23; #1 both-fold
+  ordinal = 8 ceiling, 4-His NO-GO; diversity 19; direction all-confirmed).
 - **v22 — pragmatic Pareto-improvement over confirmed v19 (minimal re-check):** `runs/push/submission_v22.csv`
   (md5 **`abaec06790766f25282133d929083187`**, validator PASS, 20 designs). = v19 with ONLY its **2 MD-FAILING
   switchers** replaced — b1m9_A12H (d_repel −1.307, wrong-sign) and des_138_7_pd_24_4 (−0.097, non-causal) → by

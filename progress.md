@@ -734,3 +734,13 @@ auto-upload.
  "also": "4-His campaign (cont.6) = NO-GO, both-fold ceiling 3 confirmed."
 }
 ```
+
+## SESSION 13 cont.8 (2026-10-13) — v23 FULLY portal-confirmed; v24 = max-#1 dedup-clean
+```json
+{
+ "v23_confirmed": "USER uploaded v23 -> ALL 20 PASSED ('20 included, 0 needing fixes'). Novelty + internal-dedup both clear. v23 now FULLY portal-confirmed, 20 UNIQUE, 0 re-checks. md5 65bf89bb38f5498ad90522542655eae2.",
+ "v24": "runs/push/submission_v24.csv md5 34f3c096bf63dd9ef70d05308c6c3f1d, 20 designs, validator PASS, LOCAL-ONLY. = v23 + 3 same-lineage swaps to v21's SOLID >=2-cat both-fold saN (des_2106_2 sa2, des_4082_8 sa7 d_repel1.69, des_6025_4 sa10_sh3_sa11 d_repel1.2). 8 both-fold (2 three-cat + 6 two-cat) = v21's MAX #1-depth, dedup-clean, only 3 re-checks (vs v21's 13). EXCLUDED des_6126_3 sa1 (1 both-fold cat only) + b2m0 sa17 (weak) after checking v20 bothfold data.",
+ "recommendation": "v24 = max #1-axis (3 re-checks). v23 = fully-confirmed-now (0 re-checks). v19 = fallback. v22->v23, v21->v24 SUPERSEDED.",
+ "domination_honest": "NOT in-silico-provable: binding magnitude (#3) wet-lab-decided (Anthropic AP~0.16 near-chance); switch MAGNITUDE thermodynamically unrankable. Provable axes MAXED: novelty 20/20 confirmed (v23); #1 both-fold ordinal=8 ceiling (4-His NO-GO cont.6); diversity 19 lineages; direction all-confirmed."
+}
+```
