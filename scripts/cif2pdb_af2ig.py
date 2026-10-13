@@ -24,7 +24,14 @@ chains = [c for c in model if npoly(c) > 0]
 if not chains:
     die("no polymer chains in input")
 by = {c.id: c for c in chains}
-binder = by.get(bchain) or min(chains, key=npoly)
+if len(sys.argv) > 3:
+    # an explicit binder chain was requested -> it MUST exist (fail-loud, per this script's contract);
+    # silently falling back to the smallest chain would emit a construct built around the wrong chain.
+    if bchain not in by:
+        die(f"requested binder chain {bchain!r} not found (polymer chains: {sorted(by)})")
+    binder = by[bchain]
+else:
+    binder = by.get("A") or min(chains, key=npoly)
 targets = [c for c in chains if c is not binder]
 if not targets:
     die("only one polymer chain present — need a binder-target complex")

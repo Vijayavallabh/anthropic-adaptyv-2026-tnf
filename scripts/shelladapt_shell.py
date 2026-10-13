@@ -24,13 +24,19 @@ CT = float(sys.argv[5]) if len(sys.argv) > 5 else 10.0
 CH = float(sys.argv[6]) if len(sys.argv) > 6 else 8.0
 his_pos = [int(x) for x in his_csv.split(",") if x.strip()]
 
-parser = MMCIFParser(QUIET=True) if struct.lower().endswith(".cif") else PDBParser(QUIET=True)
+parser = MMCIFParser(QUIET=True) if struct.lower().endswith((".cif", ".mmcif")) else PDBParser(QUIET=True)
 model = parser.get_structure("x", struct)[0]
 
 chains = list(model)
-# binder = chain A if present else the shortest chain; target = the rest
+def _npoly(c):
+    return len([r for r in c if r.id[0] == ' '])
+# binder = chain A if present (and non-empty) else the shortest POLYMER chain (never a het/solvent chain)
 by_id = {c.id: c for c in chains}
-binder = by_id.get("A", min(chains, key=lambda c: len([r for r in c if r.id[0] == ' '])))
+polymer = [c for c in chains if _npoly(c) > 0]
+if not polymer:
+    print(json.dumps({"error": "no polymer chains in input (need a binder-target complex)"}))
+    sys.exit(1)
+binder = by_id.get("A") or min(polymer, key=_npoly)
 targets = [c for c in chains if c is not binder]
 
 HIS_NAMES = {"HIS", "HIE", "HID", "HIP", "HSD", "HSE", "HSP"}  # accept protonation-state names too
@@ -44,7 +50,10 @@ if bad:
     sys.exit(1)
 
 def atoms(res):
-    return np.array([a.coord for a in res])
+    # heavy-atom coords only: the shell rule (CONTACT_TARGET/CONTACT_HIS) is a heavy-atom distance,
+    # so explicit H (if a protonated input is ever passed) must not shrink the measured distances.
+    hv = [a.coord for a in res if a.element != "H"]
+    return np.array(hv) if hv else np.empty((0, 3))
 
 tlist = [atoms(r) for c in targets for r in c if r.id[0] == ' ']
 if not tlist:
@@ -71,15 +80,18 @@ for r in bres:
 class Clean(Select):
     def accept_residue(self, res):
         return res.id[0] == ' '
-    def accept_chain(self, chain):
-        return True
 
-# relabel: ensure binder is 'A', targets become 'B','C',...
+# relabel binder -> 'A', targets -> 'B','C',... COLLISION-SAFE: assign unique temp ids first so a
+# non-canonical input order (e.g. A,C,B) cannot hit Biopython's "id already used for a sibling".
 used = "BCDEFGHIJK"
+if len(targets) > len(used):
+    print(json.dumps({"error": f"too many target chains ({len(targets)}) to relabel (max {len(used)})"}))
+    sys.exit(1)
+for k, c in enumerate([binder] + targets):
+    c.id = f"__T{k}__"
 binder.id = "A"
-ti = 0
-for c in targets:
-    c.id = used[ti]; ti += 1
+for ti, c in enumerate(targets):
+    c.id = used[ti]
 io = PDBIO()
 io.set_structure(model)
 io.save(out_pdb, Clean())
