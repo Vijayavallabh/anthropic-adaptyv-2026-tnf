@@ -63,6 +63,27 @@ an oracle to small Region-I minibinders is an out-of-regime extrapolation (`less
 4.1–6.7, plddt_binder 85–94, rmsd < 1 Å) — which v24 has — not a rank. This is a provably-correct design
 choice, not a concession. Binding *magnitude* dominance is wet-lab-decided and cannot be manufactured in-silico.
 
+## Protenix v2 — a THIRD folder, same wall (2026-10-13)
+
+A bold probe directly attacked the root wall: maybe Boltz/Chai just dock TNF binders wrong, and a *different*
+SOTA co-folder would pose the ground-truth binders and give a calibratable oracle. Tested **Protenix v2**
+(ByteDance, AF3-style — the oracle-survey's top-recommended new folder for TNF) on the **12 CRO wet-lab-validated
+binders + 12 composition-matched scrambles**, binder + human TNF **trimer**, no-MSA, 5 samples, full quality.
+
+Result: **real binders score LOWER than scrambles** — iptm_max real mean **0.172** vs scram **0.226**
+(AUC(real>scram) = **0.201**, anti-correlated, exactly like Boltz); binder–TNF chain_pair_iptm is flat (real
+0.079 vs scram 0.080); best real 0.297 < best scram 0.327; Spearman(iptm, log hKD) = **−0.12** (negligible,
+n=8). Protenix has near-zero confidence in *every* complex and cannot separate a real TNF binder from a scramble.
+(No standalone PAE dump, but iptm/chain_pair_iptm *are* the PAE-derived interface metrics — a signal ipSAE_min
+could only aggregate, not create.)
+
+**So the binding-oracle wall is confirmed across THREE independent SOTA folders — Boltz, Chai, Protenix v2.** The
+affinity (#3) and cross-species affinity *magnitude* axes are conclusively wet-lab-decided; no calibratable
+in-silico binding oracle exists for this target. (ESMFold2, the ensemble's other member, is monomer-lineage; even
+the reported Anthropic ESMFold2+Protenix ensemble reached only AP≈0.52 on TNF — a weak *negative filter*, not an
+affinity ranker, so it would not enable re-selection even if added.) This is the strongest possible vindication of
+treating #3 as a floor: the field's best TNF co-folder fails on the actual ground truth.
+
 ## Cross-reactivity (#2) footprint audit — all 20 members clean (2026-10-13)
 
 The provable sub-metric for #2 is the fraction of the binding footprint on human↔mouse-**identical**
