@@ -62,3 +62,18 @@ an oracle to small Region-I minibinders is an out-of-regime extrapolation (`less
 **Consequence:** the correct in-silico treatment of #3 is a **floor** (every member passes af2ig: pae_int
 4.1–6.7, plddt_binder 85–94, rmsd < 1 Å) — which v24 has — not a rank. This is a provably-correct design
 choice, not a concession. Binding *magnitude* dominance is wet-lab-decided and cannot be manufactured in-silico.
+
+## Cross-reactivity (#2) footprint audit — all 20 members clean (2026-10-13)
+
+The provable sub-metric for #2 is the fraction of the binding footprint on human↔mouse-**identical**
+residues (Anthropic's x-react determinant: cross-reactivity tracks # substituted footprint residues). All 20
+v24 members were re-folded (binder + human TNF, Boltz-2) and every contacted TNF residue (<5 Å) classified
+against the mouse ortholog. Result: **mean footprint conservation 93.2 % (min 90 %); zero genuine
+cross-reactivity liabilities** — i.e. no member has a non-conservative, deep (≥6 binder atoms <5 Å),
+non-N-terminal divergent core contact. The entire ~7 % divergent residual is the ragged flexible N-terminus
+(`T1>N`, `P2>S` — human `RTPSDK…` vs the mouse N-terminal extension; an alignment/flex artifact), conservative
+substitutions (`I→V`, `E→D`), or peripheral single-atom brushes. Separately, 100 % of switch-His engage the
+conserved cation set {1,6,27,39,60,77,85,93,98,107,123}, none the divergent set {26,126,133}. So #2 is maxed on
+the provable core across the whole portfolio and **no #2-motivated swap exists**. (Caveat: single-protomer
+msa-empty co-fold — TNF is a trimer — so footprints are approximate, but the residue-identity conclusion is
+robust to pose.)
