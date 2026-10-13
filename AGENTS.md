@@ -76,7 +76,7 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **v21 — CURRENT STRONGEST candidate (leaner + DIVERSE), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
+- **v21 — co-leading candidate with v19 (a TRADEOFF, not a domination — see head-to-head below), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
   (md5 **`f7f246f41a3a062b1922f0f980a9928a`**, validator PASS, **17 designs**). Built from the brutal 4-agent
   devil's-advocate review: cut same-fold cousins + weakest-switch members, refill with foldseek-DISTINCT NEW
   lineages — **7 new-lineage refills**: des_732_1_r3_sa15 (3-cation) / des_1169_2_r3_sa7 / des_243_3_r3_sa2 /
@@ -96,7 +96,12 @@ evidence.
   in v19 → EACH needs USER portal novelty re-check before upload.** Novelty is a HARD gate (≥3/4). Note: several
   members' structural TM is 0.81–0.93 (helical bundles cap structurally → pass via sequence novelty = 3/4); the
   portal 4/4 score, not a TM<0.80 target, is the gate. See `docs/SUBMISSION_v21_candidate.md` (UPLOAD_CHECKLIST).
-- **Gated-safe default (FULLY portal-novelty-gated, user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
+- **v21-vs-v19 HEAD-TO-HEAD (identical gauntlet, SESSION 13):** TIE on binding floor (af2ig pae 4–6), cross-react
+  (~90–97%), expression, and **switch DIRECTION** (v19 raw multi-His is already 13/15 MD His-causal — H43 MD-strong
+  +1.85 despite weak static Wyman); v19 WINS novelty-certainty (all 20 portal-confirmed vs v21's 13 pending); v21
+  WINS fold-robustness (Boltz∩Chai both-fold) + diversity (15 lineages). **Choose v21 only if the portal re-check
+  clears; else v19 is the safe strong pick.** Full data: dossier `COMPARISON_v21_vs_v19`.
+- **Strong fully-gated alternative (user-checked all 20 ≥3/4):** `runs/push/submission_v19.csv`
   (md5 **`7756055f0b20bcd6994fefb644271db7`**, 20 designs, validator PASS). v19 = v18 with des_818_4_c13S →
   des_84_3_mh_49_56_76 (the more fold-robust flagship, 1 both-fold His); **20/20 switchers**. **Recommended
   upload.**

@@ -673,3 +673,18 @@ auto-upload.
  "upload": "USER-GATED; 13 of 17 need portal novelty re-check (only 4 byte-identical to portal-confirmed v19); v19 gated-safe fallback."
 }
 ```
+
+
+## SESSION 13 cont.3 (2026-10-13) — HONEST v21-vs-v19 head-to-head (rigorous)
+```json
+{
+ "finding": "Ran identical in-silico gauntlet on v19 (20) and v21 (17). v21 is NOT 'better in every metric'.",
+ "binding_floor": "TIE (both all-pass af2ig pae_int 4-6)",
+ "cross_react": "TIE (~90-97% both)",
+ "expression": "~TIE (v21 better floor; cut des_84_3 sol 0.452)",
+ "switch_direction_#1": "TIE \u2014 v19 raw multi-His ALREADY 13/15 MD His-causal, strong gaps +0.06..+2.3; v21 also ~all His-causal. H43 MD-strong +1.85 despite weak static Wyman; cut des_84_3 MD-strong (+2.14) - cut for expression/novelty not switch.",
+ "novelty": "v19 WINS (all 20 portal-confirmed >=3/4 vs v21 13 pending re-check)",
+ "fold_robustness_diversity": "v21 WINS (Boltz\u2229Chai both-fold confidence + 15 lineages)",
+ "VERDICT": "v19<->v21 is a TRADEOFF not a domination. v21 only marginally better IF portal re-check clears (same measurable axes + diversity); else v19 is the safe strong pick (confirmed novelty + comparable everything). Corrects the earlier 'v21 strongest' overclaim."
+}
+```

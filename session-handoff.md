@@ -1,9 +1,21 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-12 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
+Updated 2026-10-12/13 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
 2026-10-12 ~08:25Z — the Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that, real runway ~7 days).
 
-## Current strongest candidate (SESSION 13) — v21, USER-PORTAL-GATED
+## ⚖ v21-vs-v19 HEAD-TO-HEAD (SESSION 13, identical gauntlet on both — HONEST verdict)
+
+Ran the SAME in-silico gauntlet on v19's 20 and v21's 17. **v21 is NOT "better in every metric":**
+- **Binding floor:** TIE (both all-pass af2ig pae_int 4–6).
+- **Cross-react:** TIE (both ~90–97%).
+- **Expression:** ~TIE (v21 better floor — it cut des_84_3 at sol 0.452).
+- **Switch DIRECTION (#1):** TIE — v19 raw multi-His switchers are ALREADY 13/15 MD His-causal with strong gaps; v21 also ~all His-causal. (H43 is MD-strong +1.85 despite weak static Wyman; des_84_3 cut for expression/novelty, NOT switch.)
+- **Novelty (hard gate):** **v19 WINS** — all 20 portal-confirmed ≥3/4 vs v21's 13 pending re-check.
+- **Fold-robustness (Boltz∩Chai both-fold) + diversity (15 lineages):** **v21 WINS** (confidence + hedge, not judged magnitude).
+
+**So the v19↔v21 choice is a TRADEOFF, not a domination.** v19 = fully-gated, strong switches, comparable everything. v21 = same measurable axes + more diversity + fold-robust confidence, BUT needs the portal re-check on 13 members. Recommend v21 only IF the re-check clears; otherwise v19 is the safe strong pick. Full data: dossier `COMPARISON_v21_vs_v19`.
+
+## Current candidate (SESSION 13) — v21, USER-PORTAL-GATED (co-leading with v19; see head-to-head above)
 
 - **`runs/push/submission_v21.csv`** (md5 **`f7f246f41a3a062b1922f0f980a9928a`**) — **17 LEANER DIVERSE designs**,
   validator **PASS**, LOCAL-ONLY. = v20b minus same-fold cousins + weakest-switch members, + **7 NEW-lineage

@@ -255,6 +255,22 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
 }
 ```
 
+## COMPARISON_v21_vs_v19 (authoritative head-to-head)
+```json
+{
+ "method": "identical in-silico gauntlet on both: af2ig exact binding, two-state MD direction (His-causal = d_repel>0 AND >Gln-isostere), xreact_direct, solubility; novelty = portal (v19) vs pending (v21)",
+ "binding_floor": "TIE \u2014 v19 all 20 pass af2ig pae_int 4.1-6.0; v21 all 17 pass pae 3.9-6.65. Both af2ig-floor-solid, wet-lab-undecided.",
+ "cross_react": "TIE \u2014 v19 ~88-97% (mean 93%); v21 90.9-97.1%. v21 marginally tighter.",
+ "expression": "~TIE \u2014 v19 sol mean 0.78 min 0.452 (des_84_3); v21 mean 0.74 min 0.56. v21 better FLOOR (cut des_84_3). ",
+ "switch_direction_#1": "TIE \u2014 v19 13/15 MD His-causal (87%), strong gaps +0.06..+2.3; v21 also ~all His-causal. RAW v19 multi-His switchers are ALREADY MD-direction-confirmed. H43 MD-strong (+1.85) despite weak static Wyman; des_84_3 (CUT) MD-strong (+2.14 gap) \u2014 cut for expression/novelty not switch.",
+ "novelty": "v19 WINS \u2014 all 20 portal-confirmed >=3/4; v21 only 4 byte-identical confirmed, 13 pending re-check (hard gate).",
+ "fold_robustness": "v21 WINS \u2014 shell-adapt gives Boltz\u2229Chai both-fold confirmation (28% vs single-fold 51%); v19 single-fold. A CONFIDENCE metric, not judged magnitude.",
+ "diversity": "v21 WINS \u2014 15 distinct lineages/folds in 17 (cut cousins, + 4 fresh new-lineage); v19 has more within-lineage cousins.",
+ "VERDICT": "v21 is NOT better in every metric. TIES v19 on binding/cross-react/expression/switch-direction; BEHIND on novelty-certainty (pending re-check); AHEAD only on fold-robustness-confidence + diversity. v19 is a genuinely STRONG, fully-gated alternative, not merely a fallback.",
+ "RECOMMENDATION": "If USER does the portal re-check and the 13 pass: v21 marginally better (same measurable axes + more diversity + fold-robust confidence). If NOT re-checking: v19 is the safe strong choice (confirmed novelty + comparable everything). The choice is a TRADEOFF, not a domination."
+}
+```
+
 ---
 
 ## ⚠ DETAILED WORKING RECORDS (secondary — may contain superseded intermediate states)
