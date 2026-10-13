@@ -710,3 +710,16 @@ auto-upload.
  "recorded_in": "validation_results.json keys SWITCH_FC_ORDINAL + COMPARISON_v21_vs_v19; memory lesson-switch-magnitude-not-rankable-select-diversity.md (refined)."
 }
 ```
+
+## SESSION 13 cont.6 (2026-10-13) — BOLD 4-His campaign (regen5): NO-GO, both-fold ceiling=3 confirmed
+```json
+{
+ "thesis": "Challenge the 'bold space exhausted' claim on the TOP axis: v21's #1-axis ordinal tops out at 3 both-fold cations; a 4-His shell-adapt campaign had never been run. If a variant locked 4 both-fold + binding + MD direction -> beats v21 on pH-selectivity -> v23.",
+ "geom_gate_PASSED": "geom4_screen over 34 af2ig-passing bpair binders: 10 reach 4 separated conserved cations (CB<=9A, seq-sep>=8). chainB=mature+80 numbering VERIFIED (all 11 CONS positions are K/R vs human mature TNF).",
+ "campaign": "regen5: 8 distinct backbones (6 NEVER tried at 4-His incl des_30043 tight cluster all d<=4.7A), 4 His each, 256 LigandMPNN shell-adapt variants, fold-confirmed Boltz∩Chai.",
+ "result": "MAX both_cons=3 (des_32121_g5 sa26 [6,60,93]); des_30043 tight cluster -> only 1 both-fold; NO variant locked 4.",
+ "verdict": "NO-GO. both-fold ceiling=3 CONFIRMED by a 2nd independent test (regen4's 4-His installs also maxed 3; des_30106 4-His->1, MD d_repel -0.07 dead). The 4th His does not lock in both folds even from 4-cation geometry. No step-change over v21; no new member adopted (des_32121_g5 sa26 is only a 3-cat = v21's level). Thread CLOSED.",
+ "recorded_in": "validation_results.json REGEN5_4HIS_CEILING; memory lesson-his-confirm-is-fold-dependent.md.",
+ "recommendation_unchanged": "v21/v22/v19 stand (priority-dependent). This result re-confirms v21 as the #1-axis frontier."
+}
+```
