@@ -15,6 +15,11 @@ Current status and next step for the TNF-α Challenge 2 campaign. Append; don't 
 - **SUPERSEDED (records only):** v22→v23, v21→v24, v20 (fold-robust predecessor), v18 (md5 `524722158467273c0e9f57f5402650ed`).
 - See the SESSION 13 cont.1–11 entries at the tail for the full chain (portal dedup → v23/v24; 4-His NO-GO;
   xtb switch-magnitude flat; in-silico frontier reached). The 9-design final_portfolio below is historical/SUPERSEDED.
+- **SESSION 13 cont.12 (2026-10-13) — full-portfolio axis audit (see `session-handoff.md`):** every PROVABLE
+  sub-metric verified maxed on v24 — #1 both-fold ordinal=8 + cross-validated dE (v24≥v19 within-lineage;
+  single-fold v19 edge is noise); #2 cross-react footprint **0/20 core liabilities** (commit f23f70a); #3
+  binding ranker **structurally moot** at 20/20 (commit 5657e9b). v24 = non-dominated frontier; magnitude axes
+  wet-lab-decided. ~230 G scratch cleared from `runs/` (deliverables/envs/weights preserved).
 - **Deadline ~2026-10-19.** Full history is append-only below; the authoritative latest state is the SESSION 12
   tail. (The `runs/submission/final_portfolio` 9-design set was an earlier session-8/9 checkpoint — superseded.)
 - **Repo:** `github.com/Vijayavallabh/anthropic-adaptyv-2026-tnf` (private). Upload is USER-GATED — do not auto-upload.

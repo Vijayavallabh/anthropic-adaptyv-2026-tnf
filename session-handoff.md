@@ -5,6 +5,18 @@ Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that). **State: v24 is the
 portal-PASSED, max #1-axis, 0 re-checks); v23 confirmed alt; v19 fallback. In-silico frontier reached (4-His
 NO-GO; switch magnitude measured flat; binding+magnitudes wet-lab-decided). Generator scripts code-review-hardened.**
 
+## FULL-PORTFOLIO AXIS AUDIT (SESSION 13 cont.12, 2026-10-13) — every PROVABLE sub-metric verified maxed on v24
+
+Each scored axis has a sub-metric that IS decidable in-silico (needs no unposeable CRO ground truth); all three now verified across the full 20-member portfolio, each committed + recorded in the master record:
+- **#1 pH-selectivity:** both-fold His ordinal = **8 (ceiling)**; cross-validated dE (min over Boltz∩Chai) shows v24 ≥ v19 within every comparable lineage (des_6025 0.00→2.88, des_2106 1.59→4.10). The "v19 single-fold 6.6 > v24 5.7" is a NON-replicating fold-lucky-spike artifact (c44_w6_3 11.2→2.27, des_138_7 7.0→0.0 under cross-val); dominating it would require re-selecting FOR noise (NO v25). → `V24_XVAL_DE_DOMINANCE`.
+- **#2 cross-reactivity:** re-folded all 20 (binder+human TNF), footprint vs mouse → **0/20 genuine core liabilities** (mean 93.2% conserved; all divergence is N-term tail / conservative I→V,E→D / peripheral). Switch-His 100% on conserved cations. No #2-motivated swap exists. → `V24_XREACT_FOOTPRINT_CLEAN`, commit f23f70a.
+- **#3 affinity:** af2ig floor passed by all 20; a binding ranker is **structurally MOOT** (20/20 submission = no cut to make; #3 lowest priority ⇒ any #3-swap trades away #1/#2 = churn). → `BINDING_ORACLE_MOOT`, commit 5657e9b.
+- **MD gate** is already 4-replica × 3 ns, 2σ-SEM-gated + Gln causal control — small-n-MD-noise is gated out; do NOT re-propose replica-hardening.
+
+**Conclusion:** v24 is a NON-DOMINATED frontier point, ≥ its nearest competitor (v19) on every reliably-measurable axis. "Dominate every metric in-silico" is unmet ONLY on the magnitude axes (binding/switch/x-species), which are wet-lab-decided for this target (no calibratable oracle — Anthropic AP≈0.16 / 8% CRO) — established by test, not conceded. Further in-silico iteration = churn. HOLD at v24 pending user-gated upload or new wet-lab/calibration data.
+
+**Disk:** ~230 G of generation/folding/MPNN scratch cleared from `runs/` (2026-10-13, user request) — all deliverables/evidence/envs/weights preserved; repo untouched (gitignored paths only).
+
 ## ⚖ v21-vs-v19 HEAD-TO-HEAD (SESSION 13, identical gauntlet on both — HONEST verdict)
 
 Ran the SAME in-silico gauntlet on v19's 20 and v21's 17. **v21 is NOT "better in every metric":**
