@@ -754,3 +754,14 @@ auto-upload.
  "domination_honest": "binding magnitude (#3) + switch MAGNITUDE remain in-silico-unprovable (Anthropic AP~0.16 near-chance; pKa err>window) -> further gains are WET-LAB only. v24 is the ceiling of what in-silico establishes. Upload is USER-GATED."
 }
 ```
+
+## SESSION 13 cont.10 (2026-10-13) — MEASURED switch magnitude (xtb dE): flat across v19/v23/v24
+```json
+{
+ "probe": "Hook pushed: switch-magnitude never MEASURED as an improvement. Answered directly: aggregated per-His GFN2-xTB dE_switch (kcal) per design (the triple-confirm already computes dE; the both-fold COUNT just thresholds it away). Deterministic QM, not MD/SMD/pKa-predictor.",
+ "single_fold_total_dE_mean_kcal": {"v24":5.7,"v23":6.1,"v19":6.6},
+ "both_fold_total_dE_mean_kcal": {"v24":3.0,"v23":3.0,"v19":2.3},
+ "finding": "RAW switch magnitude is FLAT (v19 marginally highest). v24 does NOT beat v19 on measured switch MAGNITUDE; its edge is both-fold CONFIDENCE (+30%) + dedup (20 vs 16 unique) + diversity + direction. Per-member dE noisy/fold-dependent (4 MD-direction-confirmed members read dE=0) -> not a reliable rank -> a dE-informed swap would chase noise. NO v25.",
+ "verdict": "Directly measured the axis the hook flagged; the measurement CONFIRMS switch magnitude is not an improvable/rankable axis in this pool (vindicates lesson-switch-magnitude-not-rankable with a direct QM energy). v24 stands as the confirmed primary. Remaining gains are wet-lab-only."
+}
+```
