@@ -2,7 +2,8 @@
 
 > **Note (SESSION 13):** this is a v11-era snapshot. The *methodology* (orthogonal multi-signal expression
 > consensus) is current and still applied, but the "current best = v11" framing below is superseded — the
-> current strongest candidate is `submission_v21.csv` and the gated-safe default is `submission_v19.csv`
+> **confirmed primary is `submission_v24.csv`** (all 20 portal-PASSED, max #1-axis, 0 re-checks), with
+> `submission_v23.csv` the confirmed alternative and `submission_v19.csv` the zero-work fallback
 > (see AGENTS.md / README.md / session-handoff.md).
 
 **Why this doc.** Expression is the dominant wet-lab-zero risk: a design that cannot be manufactured scores

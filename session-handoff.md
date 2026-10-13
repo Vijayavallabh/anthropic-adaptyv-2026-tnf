@@ -1,7 +1,9 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-12/13 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (user reconfirmed 7d 02h 59m left on
-2026-10-12 ~08:25Z — the Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that, real runway ~7 days).
+Updated 2026-10-13 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (~6 days runway as of 2026-10-13 — the
+Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that). **State: v24 is the confirmed primary (all 20
+portal-PASSED, max #1-axis, 0 re-checks); v23 confirmed alt; v19 fallback. In-silico frontier reached (4-His
+NO-GO; switch magnitude measured flat; binding+magnitudes wet-lab-decided). Generator scripts code-review-hardened.**
 
 ## ⚖ v21-vs-v19 HEAD-TO-HEAD (SESSION 13, identical gauntlet on both — HONEST verdict)
 
@@ -60,10 +62,13 @@ unique, 0 re-checks. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED + V24_P
   novelty re-check before upload.** (Corrects an earlier "10 byte-identical" claim — shell-adapt saN were never
   portal-checked.)
 
-## Gated-safe default (fully portal-novelty-gated)
+## Gated-safe fallbacks (fully portal-novelty-gated)
 
+- **Both v24 and v23 are now fully portal-confirmed (all 20 PASSED, 0 re-checks)** — they are the primary/alt
+  upload and need no further gating. The entries below are the older zero-work fallbacks.
 - **`runs/push/submission_v19.csv`** (md5 **`7756055f0b20bcd6994fefb644271db7`**) — 20 designs, validator
-  **PASS**, user portal-checked **all 20 ≥3/4**, 20/20 switchers. **Recommended upload if no portal re-check.**
+  **PASS**, user portal-checked **all 20 ≥3/4**, 20/20 switchers. Carries 4 cousins → ~16 unique under the
+  portal's internal dedup, so **dominated by v24/v23**; keep only as a last-resort fallback.
 - **Gated fallback:** `submission_v18.csv` (md5 **`524722158467273c0e9f57f5402650ed`**, 19/20 switchers,
   4×4/4-novel). Floor: `submission_v16.csv` (`a524d77f`).
 - **Upload is USER-GATED** — do not auto-upload. CSVs under `runs/` (gitignored). Account `j_v_v_07`.

@@ -2,14 +2,19 @@
 
 Current status and next step for the TNF-α Challenge 2 campaign. Append; don't rely on chat history.
 
-## Status: SUBMISSION READY — upload user-gated (CURRENT — the 9-design final_portfolio below is SUPERSEDED)
+## Status: SUBMISSION READY — upload user-gated. CONFIRMED PRIMARY = v24 (all 20 portal-PASSED, 0 re-checks)
 
-- **Current best (fully portal-gated):** `runs/push/submission_v19.csv` — **20 designs**, validator PASS, user
-  portal-checked **all 20 ≥3/4**, 20/20 switchers. md5 **`7756055f0b20bcd6994fefb644271db7`**. Fallback
-  `submission_v18.csv` (md5 `524722158467273c0e9f57f5402650ed`).
-- **Candidate (stronger on #1):** `runs/push/submission_v20.csv` (md5 **`6f4b61d0a55de2e4e0db205970ec6821`**) =
-  v19 with 9 fold-robust shell-adapt swaps (8/20 → 17/20, round-2 → 19/20 fold-robust). Binding re-confirmed per
-  design. Dossier `docs/SUBMISSION_v20_candidate.md`. Needs USER portal novelty re-check on the reseqenced swaps.
+- **CONFIRMED PRIMARY:** `runs/push/submission_v24.csv` (md5 **`34f3c096bf63dd9ef70d05308c6c3f1d`**) — 20 designs,
+  validator PASS, **user portal-uploaded 2026-10-13 → ALL 20 PASSED** (novelty + internal dedup). 20 UNIQUE,
+  8 both-fold multi-His (2 three-cat + 6 two-cat = the #1-axis ceiling), 19 distinct lineages, all
+  direction-confirmed, **0 re-checks**. The MAX in-silico-provable set. Dossier `docs/SUBMISSION_v24_candidate.md`.
+- **CONFIRMED ALT:** `runs/push/submission_v23.csv` (md5 **`65bf89bb38f5498ad90522542655eae2`**) — all 20
+  portal-PASSED; 5 both-fold, 19 lineages, fewer shell-adapt members than v24. Dossier `docs/SUBMISSION_v23_candidate.md`.
+- **ZERO-WORK FALLBACK:** `runs/push/submission_v19.csv` (md5 **`7756055f0b20bcd6994fefb644271db7`**) — 20 designs,
+  all portal-confirmed ≥3/4 (but carries 4 cousins → ~16 unique under the portal's internal dedup; dominated by v24/v23).
+- **SUPERSEDED (records only):** v22→v23, v21→v24, v20 (fold-robust predecessor), v18 (md5 `524722158467273c0e9f57f5402650ed`).
+- See the SESSION 13 cont.1–11 entries at the tail for the full chain (portal dedup → v23/v24; 4-His NO-GO;
+  xtb switch-magnitude flat; in-silico frontier reached). The 9-design final_portfolio below is historical/SUPERSEDED.
 - **Deadline ~2026-10-19.** Full history is append-only below; the authoritative latest state is the SESSION 12
   tail. (The `runs/submission/final_portfolio` 9-design set was an earlier session-8/9 checkpoint — superseded.)
 - **Repo:** `github.com/Vijayavallabh/anthropic-adaptyv-2026-tnf` (private). Upload is USER-GATED — do not auto-upload.

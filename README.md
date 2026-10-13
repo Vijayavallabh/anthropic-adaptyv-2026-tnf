@@ -41,8 +41,9 @@ confirmed 3-cat/member is the max); diversity 19 lineages; switch direction all-
 `runs/push/submission_v22.csv` / `submission_v21.csv` — **SUPERSEDED** (by v23 and v24 respectively); kept as records.
 
 `runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
-carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done
-(fallback `submission_v18.csv`).
+carrying a pH-release switch. The **zero-work fallback** — but it carries 4 cousins (→ ~16 unique under the
+portal's internal dedup), so it is **dominated by the fully-confirmed v24/v23**; use only as a last resort
+(further fallback `submission_v18.csv`).
 
 `runs/push/submission_v20.csv` — the **fold-robust predecessor to v21** (dossier `docs/SUBMISSION_v20_candidate.md`):
 v19 with 9 fold-fragile switchers replaced by **shell-adapted fold-ROBUST** variants whose switch-His engages a

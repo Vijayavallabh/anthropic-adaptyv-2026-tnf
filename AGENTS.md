@@ -16,8 +16,9 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `session-handoff.md` (latest session state + next steps),
    `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md` (plan + outcome). `scripts/README.md`
-   maps the pipeline; the gated-safe submission is `runs/push/submission_v19.csv` (see the Submission
-   contract below); `v21` is the current STRONGEST candidate (leaner + diverse), `v20` its predecessor.
+   maps the pipeline; the **confirmed primary submission is `runs/push/submission_v24.csv`** (all 20
+   portal-PASSED, max #1-axis, 0 re-checks — see the Submission contract below); `v23` is the confirmed
+   alternative; `v19` is the zero-work fallback. (`v20`/`v21`/`v22` superseded — kept as records.)
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -119,9 +120,10 @@ evidence.
   axes (binding floor, cross-react ≥90%, structural novelty, solubility) + DIVERSITY, maximizing the chance the
   set CONTAINS the sharpest switch (which can't be identified in-silico). **ORDINAL refinement:** while precise
   magnitude is unrankable, the COUNT of separated in-window His confirmed in BOTH folders IS a sound ordinal for
-  expected FC (Wyman additive; Baker multi-His SOTA) — and v21 is STRONGEST on it (both-fold counts: v21 has 3
-  three-cat + 5 two-cat = 8 members with 2–3 confirmed His; v22 has 2 three-cat; v19 has 0 both-fold-confirmed).
-  So on the #1 axis v21 leads via confirmed His-count depth. Diversity also hedges the dominant
+  expected FC (Wyman additive; Baker multi-His SOTA) — both-fold counts: v21 has 8 (3 three-cat + 5 two-cat),
+  v22 has 2, v19 has 0. **v24 now MATCHES v21's depth (8 both-fold) in a dedup-clean, fully-confirmed 20-set,
+  so v24 ≥ v21 on this axis and supersedes it.** (Switch MAGNITUDE itself was measured flat via xtb dE —
+  see SWITCH_MAGNITUDE_MEASURED_XTB — so the COUNT is the usable #1-axis ordinal, not the energy.) Diversity also hedges the dominant
   expression/wet-lab-zero risk. Expansion is COMPLETE: regen round-3 + round-2 cousins → des_820; then a FRESH
   de-novo campaign (1200 bpair backbones → 49 binders → 10 ultra-novel switch-piped) → round-4 added 3 more
   (des_36133/des_34125/des_33012). Pattern confirmed: all 1-cation switchers fail the MD direction gate; the
