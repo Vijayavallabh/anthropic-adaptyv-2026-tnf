@@ -41,3 +41,24 @@ strict both-fold switch, and pose-consensus all near-chance). Therefore:
 - Binding/affinity (#3, lowest-weighted) is genuinely wet-lab-decided for TNF — as Anthropic found (they
   selected by an ipSAE ensemble that still only reached 8% CRO hit rate). No in-silico method available here
   changes that; claiming in-silico binding *dominance* would be unsupported.
+
+## A binding oracle is MOOT for the final submission (2026-10-13)
+
+An untested angle was considered: calibrate a binding oracle on **real PDB TNF-α complexes with published Kd**
+(already crystallographically posed — a continuous Kd gradient, no fold-generation noise), rather than on the
+de-novo CRO folds above (binary labels, ~35 Å Boltz↔Chai pose disagreement). Two reasons make it moot before
+any compute is spent, independent of whether it could calibrate:
+
+1. **No cut to make.** Track 3 caps at 20 designs; the submission (v24) is *exactly 20*. A ranker only adds
+   value when candidates must be dropped to fit a cap — here there is nothing to drop.
+2. **#3 is the lowest-priority axis.** Any swap justified by a better #3 score would eject a member selected
+   for its #1 (switch direction/depth), #2 (cross-react) or novelty strength — trading a higher-ranked axis
+   for a lower one, which is churn, not improvement (`lesson-portfolio-swap-verify-all-axes-same-pipeline`).
+
+Also, a PDB-Kd set is dominated by antibody/receptor interfaces (large CDR/loop contacts); transferring such
+an oracle to small Region-I minibinders is an out-of-regime extrapolation (`lesson-validate-in-target-regime`,
+`lesson-powered-mechanism-can-still-be-nogo-in-target-regime`). So the oracle is both out-of-regime AND moot.
+
+**Consequence:** the correct in-silico treatment of #3 is a **floor** (every member passes af2ig: pae_int
+4.1–6.7, plddt_binder 85–94, rmsd < 1 Å) — which v24 has — not a rank. This is a provably-correct design
+choice, not a concession. Binding *magnitude* dominance is wet-lab-decided and cannot be manufactured in-silico.
