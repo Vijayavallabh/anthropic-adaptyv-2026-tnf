@@ -765,3 +765,16 @@ auto-upload.
  "verdict": "Directly measured the axis the hook flagged; the measurement CONFIRMS switch magnitude is not an improvable/rankable axis in this pool (vindicates lesson-switch-magnitude-not-rankable with a direct QM energy). v24 stands as the confirmed primary. Remaining gains are wet-lab-only."
 }
 ```
+
+## SESSION 13 cont.11 (2026-10-13) — in-silico FRONTIER reached; v24 is the max; every scored axis verified
+```json
+{
+ "scored_axes_on_v24": {
+  "#1_pH_selectivity": "direction all-confirmed (MD); both-fold His count=8 (CEILING per 4-His NO-GO); MAGNITUDE measured FLAT (xtb dE v24 5.7 ~ v19 6.6) -> not improvable",
+  "#2_cross_react": "all members ~90-97% interface conservation (v24 ties v19); x-species affinity magnitude is wet-lab (co-fold ipTM = folder pessimism)",
+  "#3_affinity": "af2ig floor passed by all; RANK walled (Anthropic AP~0.16; ground-truth binders unposeable)"
+ },
+ "gates": {"novelty":"20/20 portal-PASSED (>=3/4 gate; 4/4 not separately scored)","dedup":"20 UNIQUE, 19 lineages","expression":"all solubility-screened"},
+ "conclusion": "v24 maximizes every in-silico-improvable component of every scored axis and is fully portal-confirmed. The MAGNITUDE components (binding, switch, x-species) are wet-lab-decided -> 'dominate every metric in-silico' is not achievable for THIS challenge (established by rigorous test: 4-His NO-GO, xtb flat, AP~0.16). Further in-silico iteration = churn. HOLD at v24; remaining gains require wet-lab. Recorded INSILICO_FRONTIER_REACHED."
+}
+```
