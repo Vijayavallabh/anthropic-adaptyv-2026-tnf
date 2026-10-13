@@ -80,17 +80,18 @@ evidence.
   upload") separate from the PDB-novelty gate. v22 → 4 cousins flagged (des_4098_1 ×3, des_2106_2 ×2) → only **16
   unique** (hits v19/v21 too). **v23 → ALL 20 PASSED** → v23 FULLY portal-confirmed, 20 unique, 0 re-checks left.
   Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED.
-- **v24 — MAX #1-axis (dedup-clean, 3 re-checks):** `runs/push/submission_v24.csv` (md5
-  **`34f3c096bf63dd9ef70d05308c6c3f1d`**, validator PASS, 20 designs). = v23 with 3 same-lineage swaps to v21's solid
-  ≥2-cat both-fold saN variants (des_2106_2→sa2, des_4082_8_pd_10_4→sa7 [d_repel 1.69], des_6025_4→sa10_sh3_sa11
-  [1.2]). **8 both-fold members (2 three-cat + 6 two-cat) = v21's max #1-depth, dedup-clean 20-UNIQUE, only 3
-  re-checks** (17 already portal-passed). **Supersedes v21.** Dossier `docs/SUBMISSION_v24_candidate.md`.
+- **v24 — CONFIRMED PRIMARY (max #1-axis, dedup-clean, 0 re-checks):** `runs/push/submission_v24.csv` (md5
+  **`34f3c096bf63dd9ef70d05308c6c3f1d`**, validator PASS, 20 designs, **all 20 portal-PASSED 2026-10-13**). = v23 with
+  3 same-lineage swaps to v21's solid ≥2-cat both-fold saN variants (des_2106_2→sa2, des_4082_8_pd_10_4→sa7 [d_repel
+  1.69], des_6025_4→sa10_sh3_sa11 [1.2]). **8 both-fold members (2 three-cat + 6 two-cat) = the #1-axis CEILING,
+  dedup-clean 20-UNIQUE, fully confirmed.** The MAX in-silico-provable set. **Supersedes v21.** Dossier
+  `docs/SUBMISSION_v24_candidate.md`.
 - **v23 — FULLY CONFIRMED NOW (0 re-checks):** `runs/push/submission_v23.csv` (md5
   **`65bf89bb38f5498ad90522542655eae2`**, validator PASS, 20 designs, **all 20 portal-PASSED**). = v22 − 3 cousins +
   {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. 20 UNIQUE, 5 both-fold, 19 lineages. The strongest
   fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **The pick:** **v24** for max #1-axis depth (8 both-fold, 3 re-checks); **v23** for fully-confirmed-now (5
-  both-fold, 0 re-checks); **v19** zero-work fallback. **v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
+- **The pick:** **v24** = CONFIRMED PRIMARY (8 both-fold = max #1-axis, all 20 portal-PASSED, 0 re-checks); **v23**
+  = confirmed alt (5 both-fold, fewer shell-adapt members); **v19** zero-work fallback. **v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
   is NOT in-silico-provable: binding magnitude (#3) is wet-lab-decided (Anthropic AP≈0.16 near-chance) and switch
   MAGNITUDE is thermodynamically unrankable. The provable axes ARE maxed (novelty 20/20 for v23; #1 both-fold
   ordinal = 8 ceiling, 4-His NO-GO; diversity 19; direction all-confirmed).

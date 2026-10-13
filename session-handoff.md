@@ -15,31 +15,31 @@ Ran the SAME in-silico gauntlet on v19's 20 and v21's 17. **v21 is NOT "better i
 
 **So the v19↔v21 choice is a TRADEOFF, not a domination.** v19 = fully-gated, strong switches, comparable everything. v21 = same measurable axes + more diversity + fold-robust confidence, BUT needs the portal re-check on 13 members. Recommend v21 only IF the re-check clears; otherwise v19 is the safe strong pick. Full data: dossier `COMPARISON_v21_vs_v19`.
 
-## ★ RECOMMENDATION (SESSION 13) — v24 = MAX-#1 (3 re-checks); v23 = FULLY CONFIRMED NOW (0); v19 = fallback
+## ★ RECOMMENDATION (SESSION 13) — v24 = CONFIRMED PRIMARY (max-#1, 0 re-checks); v23 = confirmed alt; v19 = fallback
 
-**PORTAL (2026-10-13): the USER uploaded v22 then v23.** v22 → portal **internal cousin-dedup** ("Similar designs
-in this upload") flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 UNIQUE; the 2 new members passed.
-**v23 → ALL 20 PASSED ("20 included, 0 needing fixes")** → v23 is now FULLY portal-confirmed, 20 unique, 0
-re-checks left. The dedup hits every cousin-carrying set (v19/v22/v21). See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED.
+**PORTAL (2026-10-13): the USER uploaded v22 → v23 → v24.** v22 → portal **internal cousin-dedup** ("Similar
+designs in this upload") flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 UNIQUE. **v23 → ALL 20 PASSED.
+v24 → ALL 20 PASSED** ("20 included, 0 needing fixes"). So BOTH v23 and v24 are now FULLY portal-confirmed, 20
+unique, 0 re-checks. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED + V24_PORTAL_CONFIRMED.
 
-- **MAX #1-axis → v24** (`runs/push/submission_v24.csv`, md5 **`34f3c096bf63dd9ef70d05308c6c3f1d`**, 20 designs,
-  validator PASS, LOCAL-ONLY). = v23 with 3 same-lineage swaps to v21's SOLID ≥2-cat both-fold saN variants
-  (des_2106_2_mh→sa2, des_4082_8_pd_10_4→sa7 [d_repel 1.69], des_6025_4_pd_77_4→sa10_sh3_sa11 [1.2]). **8 both-fold
-  members (2 three-cat + 6 two-cat) = v21's max #1-axis depth, but dedup-clean 20-UNIQUE and only 3 re-checks**
-  (the 3 saN; 17 others already portal-passed). **Supersedes v21** (same depth, 3 vs 13 re-checks, no dedup debt).
-  Dossier `docs/SUBMISSION_v24_candidate.md`.
-- **FULLY CONFIRMED NOW → v23** (`runs/push/submission_v23.csv`, md5 **`65bf89bb38f5498ad90522542655eae2`**, 20
-  designs, validator PASS). All 20 portal-PASSED (novelty + dedup). 5 both-fold (2 three-cat + 3 two-cat), 19
-  distinct lineages. **0 re-checks** — the strongest fully-gated set available with zero further effort.
-  Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **ZERO-WORK fallback → v19** (all 20 portal-confirmed ≥3/4, but note it carries the 4 cousins → ~16 unique if
-  re-uploaded). v23 dominates it (20 unique, same gating).
-- **SUPERSEDED:** v22 (→v23, fixes dedup) and v21 (→v24, dedup-clean + 3 vs 13 re-checks). Kept as records only.
+- **CONFIRMED PRIMARY → v24** (`runs/push/submission_v24.csv`, md5 **`34f3c096bf63dd9ef70d05308c6c3f1d`**, 20
+  designs, validator PASS, **all 20 portal-PASSED**). = v23 with 3 same-lineage swaps to v21's SOLID ≥2-cat both-fold
+  saN variants (des_2106_2_mh→sa2, des_4082_8_pd_10_4→sa7 [d_repel 1.69], des_6025_4_pd_77_4→sa10_sh3_sa11 [1.2]).
+  **8 both-fold members (2 three-cat + 6 two-cat) = the #1-axis CEILING, dedup-clean 20-UNIQUE, 0 re-checks.** This
+  is the MAX in-silico-provable set. **Supersedes v21** (same depth, fully confirmed, no dedup debt). Dossier
+  `docs/SUBMISSION_v24_candidate.md`.
+- **CONFIRMED ALT → v23** (`runs/push/submission_v23.csv`, md5 **`65bf89bb38f5498ad90522542655eae2`**, all 20
+  portal-PASSED). 5 both-fold, 19 distinct lineages. Lower #1-depth than v24 but more non-shell-adapt members (3 of
+  v24's both-fold are shell-adapt saN = more residues rewritten from parent). Pick v23 if you prefer less
+  shell-adaptation over #1-depth.
+- **ZERO-WORK fallback → v19** (20 portal-confirmed ≥3/4, but carries the 4 cousins → ~16 unique). Dominated by v24/v23.
+- **SUPERSEDED:** v22 (→v23) and v21 (→v24). Kept as records only.
 - **Note on "dominate every metric":** NOT in-silico-provable — binding magnitude (#3) is wet-lab-decided
   (Anthropic's own AP≈0.16 = near-chance in-silico ranking) and switch MAGNITUDE is thermodynamically unrankable
-  (pKa err 2-3u > 1.4u window). The provable axes ARE maximized: novelty (hard gate) 20/20 portal-confirmed for
-  v23; #1-axis both-fold ordinal = 8 (v24, the ceiling — 4-His NO-GO confirmed that 3-cat/member is the max);
-  diversity 19 lineages; switch DIRECTION all-confirmed. v24/v23 are the frontier of what in-silico can establish.
+  (pKa err 2-3u > 1.4u window). Every PROVABLE axis is MAXED **and portal-confirmed**: novelty (hard gate) 20/20;
+  #1-axis both-fold ordinal = 8 (v24, the ceiling — 4-His NO-GO confirmed 3-cat/member is the max); diversity 19
+  lineages; switch DIRECTION all-confirmed. v24 is the frontier of what in-silico can establish — further gains
+  are wet-lab-only.
 
 ## v21 — max-diversity option (SESSION 13), USER-PORTAL-GATED (13 re-checks; ties v19 on measurable axes)
 

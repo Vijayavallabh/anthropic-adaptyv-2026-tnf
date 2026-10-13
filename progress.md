@@ -744,3 +744,13 @@ auto-upload.
  "domination_honest": "NOT in-silico-provable: binding magnitude (#3) wet-lab-decided (Anthropic AP~0.16 near-chance); switch MAGNITUDE thermodynamically unrankable. Provable axes MAXED: novelty 20/20 confirmed (v23); #1 both-fold ordinal=8 ceiling (4-His NO-GO cont.6); diversity 19 lineages; direction all-confirmed."
 }
 ```
+
+## SESSION 13 cont.9 (2026-10-13) — v24 FULLY portal-confirmed = the MAX in-silico-provable submission
+```json
+{
+ "v24_confirmed": "USER uploaded v24 -> ALL 20 PASSED ('20 included, 0 needing fixes'). The 3 saN swaps (des_6025_4_sa10_sh3_sa11, des_2106_2_mh_sa2, des_4082_8_sa7) PASS novelty + dedup. v24 FULLY portal-confirmed, 20 UNIQUE, 0 re-checks. md5 34f3c096bf63dd9ef70d05308c6c3f1d.",
+ "v24_is_the_frontier": "v24 maxes every PROVABLE axis AND is portal-confirmed: novelty 20/20; #1-axis both-fold ordinal=8 (the CEILING, per 4-His NO-GO cont.6); diversity 19 lineages; switch DIRECTION all-confirmed. = MAX in-silico-provable submission.",
+ "recommendation": "v24 = CONFIRMED PRIMARY (max #1, 0 re-checks). v23 = confirmed alt (5 both-fold, fewer shell-adapt). v19 = fallback. v22->v23, v21->v24 SUPERSEDED.",
+ "domination_honest": "binding magnitude (#3) + switch MAGNITUDE remain in-silico-unprovable (Anthropic AP~0.16 near-chance; pKa err>window) -> further gains are WET-LAB only. v24 is the ceiling of what in-silico establishes. Upload is USER-GATED."
+}
+```

@@ -22,16 +22,16 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 domination (switch magnitude is unrankable in-silico, binding magnitude is wet-lab-decided, novelty is portal-gated).
 **User portal uploads (2026-10-13) revealed the portal also runs an internal cousin-dedup** ("Similar designs in
 this upload"): on v22 it flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 unique (hits v19/v21 too). The
-dedup-clean **v23 then uploaded with ALL 20 PASSED** — so v23 is fully portal-confirmed, 20 unique, 0 re-checks left.
+dedup-clean **v23 and v24 were then both uploaded — ALL 20 PASSED each** → both fully portal-confirmed, 0 re-checks.
 
-`runs/push/submission_v24.csv` — **max #1-axis** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20 designs, validator PASS).
-v23 with 3 same-lineage swaps to v21's solid ≥2-cat both-fold saN variants → **8 both-fold members (= v21's max
-#1-axis depth) in a dedup-clean 20-unique set, needing only 3 re-checks** (vs v21's 13). Supersedes v21. Dossier
-`docs/SUBMISSION_v24_candidate.md`.
+`runs/push/submission_v24.csv` — **the confirmed primary, max #1-axis** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20
+designs, validator PASS, **all 20 portal-PASSED**). v23 with 3 same-lineage swaps to v21's solid ≥2-cat both-fold
+saN variants → **8 both-fold members = the #1-axis ceiling, dedup-clean 20-unique, 0 re-checks.** The max
+in-silico-provable set. Supersedes v21. Dossier `docs/SUBMISSION_v24_candidate.md`.
 
-`runs/push/submission_v23.csv` — **fully confirmed now** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
-validator PASS, **all 20 portal-PASSED**). Dedup-clean 20 unique, 5 both-fold, 19 distinct lineages, **0 re-checks**
-— the strongest fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
+`runs/push/submission_v23.csv` — **confirmed alternative** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
+validator PASS, **all 20 portal-PASSED**). 5 both-fold, 19 distinct lineages, 0 re-checks; fewer shell-adapt members
+than v24 (pick it if you prefer less shell-adaptation over #1-depth). Dossier `docs/SUBMISSION_v23_candidate.md`.
 
 **Not in-silico-provable:** "dominate every metric" — binding magnitude (#3) is wet-lab-decided (Anthropic's own
 AP≈0.16 ≈ near-chance in-silico ranking) and switch magnitude is thermodynamically unrankable. The provable axes
