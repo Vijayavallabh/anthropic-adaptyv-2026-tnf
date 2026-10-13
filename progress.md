@@ -723,3 +723,14 @@ auto-upload.
  "recommendation_unchanged": "v21/v22/v19 stand (priority-dependent). This result re-confirms v21 as the #1-axis frontier."
 }
 ```
+
+## SESSION 13 cont.7 (2026-10-13) — USER portal-uploaded v22; portal cousin-dedup -> v23 (dedup-clean, pragmatic best)
+```json
+{
+ "portal_v22_upload": "USER uploaded v22 (20). Portal parse: 16 PASSED (incl des_36133_g4_sa18 + des_732_1_r3_sa15 -> 2 new members now CONFIRMED novelty+dedup); 4 NOT passed = INTERNAL cousin-dedup ('Similar designs in this upload'): des_4098_1_c44, des_4098_1_c44_w6_3, des_2106_2_H43, des_2106_2_mh_37_43_50_75. => v22 scores only 16 UNIQUE.",
+ "lesson": "portal dedups near-cousins within an upload (sequence-similarity). Hits v19/v22 (4 cousins) and v21 (2). des_4082_8 x2 PASSED (distinct enough). Vindicates diverse-not-cousins: cap 1 per too-similar cluster.",
+ "v23": "runs/push/submission_v23.csv md5 65bf89bb38f5498ad90522542655eae2, 20 designs, validator PASS, LOCAL-ONLY. = v22 - {c44, c44_w6_3, des_2106_2_H43} + {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. 20 UNIQUE scored + #1-axis both-fold depth 5 (vs v22's 2). 19 distinct lineages. Re-check: 3 refills (16 already portal-passed).",
+ "recommendation": "v23 = pragmatic BEST (dedup-clean, 3 re-checks). v21 = max #1 (8 both-fold, 13 re-checks, needs own dedup). v19 or v22-minus-4 = zero-new-recheck 16-unique. v22 SUPERSEDED by v23.",
+ "also": "4-His campaign (cont.6) = NO-GO, both-fold ceiling 3 confirmed."
+}
+```

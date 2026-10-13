@@ -76,12 +76,20 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **The pick is PRIORITY-DEPENDENT — three legitimate options, not a flat "v22 primary".** On the #1 judged axis
-  (expected pH fold-change, proxied by the both-fold-confirmed COUNT of separated in-window His) **v21 leads** (8
-  members with 2–3 both-fold-geometry-confirmed cation-repelling His); **v22** is the pragmatic strict-improvement
-  over the already-portal-confirmed v19 baseline at minimal re-check cost; **v19** is the zero-work fully-gated
-  fallback. Switch MAGNITUDE itself is not rankable in-silico (see below) — these differ on re-check burden and on
-  #1-axis depth, not on a provable domination.
+- **PORTAL DEDUP (2026-10-13, from the user's v22 upload):** the portal runs an INTERNAL cousin-dedup ("Similar
+  designs in this upload") separate from the PDB-novelty gate. It flagged 4 v22 cousins (des_4098_1 ×3, des_2106_2
+  ×2) → v22 scores only **16 unique**; this hits v19/v21 too. The 2 new members (des_36133, des_732) **PASSED** and
+  are now portal-confirmed. Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT.
+- **v23 — PRAGMATIC BEST (dedup-clean):** `runs/push/submission_v23.csv` (md5 **`65bf89bb38f5498ad90522542655eae2`**,
+  validator PASS, 20 designs). = v22 − {des_4098_1_c44, des_4098_1_c44_w6_3, des_2106_2_H43} + 3 distinct-lineage
+  direction-confirmed 2-cat refills {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. **20 UNIQUE scored**
+  (vs v22's 16) + **#1-axis both-fold depth 5** (2 three-cat + 3 two-cat) vs v22's 2; 19 distinct lineages. **3
+  re-checks** (16 already portal-passed). Dossier `docs/SUBMISSION_v23_candidate.md`.
+- **The pick is PRIORITY-DEPENDENT.** On the #1 judged axis (both-fold-confirmed COUNT of separated in-window His)
+  **v21 leads** (8 members) but needs 13 re-checks + its own dedup; **v23** is the pragmatic dedup-clean best (3
+  re-checks, #1-depth 5); **v19** (or v22 minus the 4 flagged = 16 unique) is zero-new-recheck. **v22 SUPERSEDED by
+  v23.** Switch MAGNITUDE itself is not rankable in-silico — these differ on re-check burden and #1-axis depth, not a
+  provable domination.
 - **v22 — pragmatic Pareto-improvement over confirmed v19 (minimal re-check):** `runs/push/submission_v22.csv`
   (md5 **`abaec06790766f25282133d929083187`**, validator PASS, 20 designs). = v19 with ONLY its **2 MD-FAILING
   switchers** replaced — b1m9_A12H (d_repel −1.307, wrong-sign) and des_138_7_pd_24_4 (−0.097, non-causal) → by

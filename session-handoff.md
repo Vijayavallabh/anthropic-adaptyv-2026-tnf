@@ -15,25 +15,28 @@ Ran the SAME in-silico gauntlet on v19's 20 and v21's 17. **v21 is NOT "better i
 
 **So the v19↔v21 choice is a TRADEOFF, not a domination.** v19 = fully-gated, strong switches, comparable everything. v21 = same measurable axes + more diversity + fold-robust confidence, BUT needs the portal re-check on 13 members. Recommend v21 only IF the re-check clears; otherwise v19 is the safe strong pick. Full data: dossier `COMPARISON_v21_vs_v19`.
 
-## ★ RECOMMENDATION (SESSION 13) — PRIORITY-DEPENDENT: v21 leads #1, v22 = pragmatic, v19 = zero-work
+## ★ RECOMMENDATION (SESSION 13) — v23 is the new PRAGMATIC BEST (dedup-clean); v21 = max-#1
 
-The three options differ on re-check burden and on #1-axis depth, NOT on a provable domination (switch magnitude
-is unrankable in-silico; binding magnitude is wet-lab-decided; novelty is portal-gated). Pick by priority:
+**NEW (2026-10-13): the USER uploaded v22 to the portal.** Result: the 2 new members (des_36133_g4_sa18,
+des_732_1_r3_sa15) **PASSED** (novelty + dedup, now confirmed), but the portal's **internal cousin-dedup**
+("Similar designs in this upload") flagged **4** v22 designs as too-similar cousins — des_4098_1 ×3 (b14 kept,
+c44 + c44_w6_3 flagged) and des_2106_2 ×2 (H43 + mh flagged) — so **v22 scores only 16 UNIQUE**. This dedup hits
+**every** prior set (v19/v22 have those 4 cousins; v21 has b14+c44 and H43+mh_sa2). See PORTAL_V22_UPLOAD_RESULT.
 
-- **MAX #1-axis strength → v21** (`runs/push/submission_v21.csv`). On the top judged axis (expected pH
-  fold-change, proxied by the both-fold-confirmed COUNT of separated in-window His) v21 LEADS: 8 members carry
-  2–3 both-fold-geometry-confirmed cation-repelling His (3 three-cat + 5 two-cat), vs v22's 2 and v19's 0. Cost:
-  **13 portal re-checks.** Also wins diversity (15 lineages) + fold-robustness.
-- **PRAGMATIC strict-improvement over confirmed v19 → v22** (`runs/push/submission_v22.csv`, md5
-  **`abaec06790766f25282133d929083187`**, 20 designs, validator PASS, LOCAL-ONLY). = v19 with ONLY its **2
-  MD-FAILING switchers** replaced: b1m9_A12H (d_repel −1.307 wrong-sign) + des_138_7_pd_24_4 (−0.097 non-causal) →
-  des_36133_g4_sa18 (3-cat, MD gap +2.30) + des_732_1_r3_sa15 (3-cat). **≥ v19 on every axis, STRICTLY > on
-  switch-DIRECTION (fixes 2 dead switchers) + diversity; TIE on binding/cross-react/expression; only 2 portal
-  re-checks** (the other 18 already portal-confirmed ≥3/4). NOTE: does NOT dominate v21 on #1 — its 18
-  v19-derived members are MD-direction-OK but NOT both-fold geometry-confirmed. (Earlier "strictly better on
-  binding" was an overclaim — pae 4.5 vs 4.9/6.0 is noise; corrected to TIE.) Dossier
-  `docs/SUBMISSION_v22_candidate.md`.
-- **ZERO-WORK fully-gated fallback → v19** (all 20 portal-confirmed ≥3/4). Recommended if no portal re-check is done.
+- **PRAGMATIC BEST → v23** (`runs/push/submission_v23.csv`, md5 **`65bf89bb38f5498ad90522542655eae2`**, 20 designs,
+  validator PASS, LOCAL-ONLY). = v22 − {des_4098_1_c44, des_4098_1_c44_w6_3, des_2106_2_H43} + 3 distinct-lineage
+  direction-confirmed 2-cat refills {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. **20 UNIQUE
+  scored** (vs v22's effective 16) **and higher #1-axis depth: 5 both-fold members (2 three-cat + 3 two-cat) vs
+  v22's 2.** 19 distinct lineages (only des_4082_8 ×2, which the portal PASSED). Re-check burden: **3** (the
+  refills; 16 members already portal-passed in the v22 upload; des_2106_2_mh novelty already v19-confirmed, just
+  re-confirm it passes dedup alone). Dossier `docs/SUBMISSION_v23_candidate.md`.
+- **MAX #1-axis strength → v21** (`runs/push/submission_v21.csv`). 8 both-fold members (3 three-cat + 5 two-cat) =
+  highest expected FC + diversity (15 lineages), BUT **13 re-checks** AND it still needs its own cousin-dedup
+  (drop c44 + one des_2106_2) before upload.
+- **ZERO-WORK → v19** (all 20 portal-confirmed ≥3/4) or **v22 minus the 4 flagged = 16 UNIQUE** (all already
+  portal-passed, zero new re-checks) if the user prefers 16 confirmed over 20 with 3 re-checks.
+- **SUPERSEDED → v22** (`abaec06790766f25282133d929083187`): v23 strictly improves it (fixes the dedup loss +
+  raises #1 depth) at the same effort class. Keep only as the raw record of the portal upload.
 
 ## v21 — max-diversity option (SESSION 13), USER-PORTAL-GATED (13 re-checks; ties v19 on measurable axes)
 

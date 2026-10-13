@@ -18,9 +18,17 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 ## The submission
 
-**The pick is priority-dependent** — three legitimate options that differ on re-check burden and on #1-axis
-depth, not on a provable domination (switch magnitude is unrankable in-silico, binding magnitude is wet-lab-decided,
-novelty is portal-gated):
+**The pick is priority-dependent** — options differ on re-check burden and on #1-axis depth, not on a provable
+domination (switch magnitude is unrankable in-silico, binding magnitude is wet-lab-decided, novelty is portal-gated).
+**A user portal upload of v22 (2026-10-13) revealed the portal also runs an internal cousin-dedup** ("Similar designs
+in this upload"): it flagged 4 v22 cousins (des_4098_1 ×3, des_2106_2 ×2), so v22 scores only 16 unique — and this
+hits v19/v21 too. The 2 new members (des_36133, des_732) **passed** (now confirmed).
+
+`runs/push/submission_v23.csv` — **the pragmatic best** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
+validator PASS). v22 with its 3 redundant cousins replaced by 3 distinct-lineage direction-confirmed switchers →
+**20 unique scored** (vs v22's effective 16) **and higher #1-axis depth** (5 both-fold members vs v22's 2), 19
+distinct lineages. Needs only **3 portal re-checks** (16 members already passed in the v22 upload). Dossier
+`docs/SUBMISSION_v23_candidate.md`.
 
 `runs/push/submission_v21.csv` — **strongest on the #1 axis** (md5 `f7f246f41a3a062b1922f0f980a9928a`, 17 designs,
 validator PASS). On pH-selectivity — proxied by the both-fold-confirmed count of separated in-window His (a sound
@@ -29,14 +37,9 @@ both-fold-geometry-confirmed cation-repelling His** (vs v22's 2, v19's 0). A lea
 lineages) from a brutal multi-agent review plus foldseek-distinct new lineages. Cost: **13 portal re-checks**.
 Dossier `docs/SUBMISSION_v21_candidate.md`.
 
-`runs/push/submission_v22.csv` — **pragmatic strict-improvement over the confirmed v19 baseline** (md5
-`abaec06790766f25282133d929083187`, 20 designs, validator PASS). A rigorous head-to-head gauntlet showed v19's
-**only** real weakness was 2 switchers that fail the two-state MD direction gate; v22 replaces **just those 2** with
-2 strong direction-confirmed new-lineage switchers — so it is **≥ v19 on every axis, strictly better on switch
-DIRECTION (fixes 2 dead switchers) and diversity, a TIE on binding / cross-react / expression**, needing only **2
-portal novelty re-checks** (the other 18 are already portal-confirmed ≥3/4). It does **not** dominate v21 on #1 (its
-18 v19-derived members are MD-direction-OK but not both-fold geometry-confirmed). Dossier
-`docs/SUBMISSION_v22_candidate.md`.
+`runs/push/submission_v22.csv` — **SUPERSEDED by v23** (md5 `abaec06790766f25282133d929083187`, 20 designs). The set
+the user uploaded; v23 strictly improves it (fixes the 4-cousin dedup loss + raises #1 depth) at the same effort
+class. Kept only as the raw record of that upload. Dossier `docs/SUBMISSION_v22_candidate.md`.
 
 `runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
 carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done
