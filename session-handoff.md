@@ -15,7 +15,18 @@ Ran the SAME in-silico gauntlet on v19's 20 and v21's 17. **v21 is NOT "better i
 
 **So the v19↔v21 choice is a TRADEOFF, not a domination.** v19 = fully-gated, strong switches, comparable everything. v21 = same measurable axes + more diversity + fold-robust confidence, BUT needs the portal re-check on 13 members. Recommend v21 only IF the re-check clears; otherwise v19 is the safe strong pick. Full data: dossier `COMPARISON_v21_vs_v19`.
 
-## Current candidate (SESSION 13) — v21, USER-PORTAL-GATED (co-leading with v19; see head-to-head above)
+## ★ PRIMARY RECOMMENDATION (SESSION 13) — v22, PARETO-DOMINANT over v19
+
+- **`runs/push/submission_v22.csv`** (md5 **`abaec06790766f25282133d929083187`**, 20 designs, validator PASS,
+  LOCAL-ONLY). = v19 with ONLY its **2 MD-FAILING switchers** replaced: b1m9_A12H (d_repel −1.307 wrong-sign) +
+  des_138_7_pd_24_4 (−0.097 non-causal) → des_36133_g4_sa18 (3-cat, MD gap +2.30) + des_732_1_r3_sa15 (3-cat).
+  **Pareto-dominates v19: ≥ on every axis, STRICTLY > on switch(#1) + binding + diversity; only 2 portal
+  re-checks** (the other 18 are already portal-confirmed ≥3/4). This is the data-driven optimum from the
+  head-to-head above — it fixes v19's one real weakness (2 dead switchers) at minimal risk. Dossier
+  `docs/SUBMISSION_v22_candidate.md`. **Recommend v22 for upload** (do the 2 re-checks on des_36133 + des_732);
+  v19 = zero-work fallback; v21 = max-diversity (13 re-checks).
+
+## v21 — max-diversity option (SESSION 13), USER-PORTAL-GATED (13 re-checks; ties v19 on measurable axes)
 
 - **`runs/push/submission_v21.csv`** (md5 **`f7f246f41a3a062b1922f0f980a9928a`**) — **17 LEANER DIVERSE designs**,
   validator **PASS**, LOCAL-ONLY. = v20b minus same-fold cousins + weakest-switch members, + **7 NEW-lineage

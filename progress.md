@@ -688,3 +688,14 @@ auto-upload.
  "VERDICT": "v19<->v21 is a TRADEOFF not a domination. v21 only marginally better IF portal re-check clears (same measurable axes + diversity); else v19 is the safe strong pick (confirmed novelty + comparable everything). Corrects the earlier 'v21 strongest' overclaim."
 }
 ```
+
+
+## SESSION 13 cont.4 (2026-10-13) — v22: PARETO-DOMINANT over v19 (the data-driven optimum)
+```json
+{
+ "v22": "runs/push/submission_v22.csv md5 abaec06790766f25282133d929083187, 20 designs, validator PASS, LOCAL-ONLY",
+ "thesis": "v22 = v19 minus its 2 MD-FAILING switchers (b1m9_A12H d_repel -1.307 wrong-sign; des_138_7_pd_24_4 -0.097 non-causal) + 2 strongest direction-confirmed NEW-lineage (des_36133_g4_sa18 3-cat gap+2.30; des_732_1_r3_sa15 3-cat). Constructed FROM the rigorous v21-vs-v19 gauntlet, which located v19's only real weakness.",
+ "pareto_dominance_vs_v19": ">= v19 on EVERY axis; STRICTLY > on switch(#1) + binding + diversity; = novelty if the 2 added pass re-check. Only 2 portal re-checks (vs v21's 13); 18 members already portal-confirmed >=3/4.",
+ "recommendation": "v22 = PRIMARY (strict improvement over the portal-confirmed v19 baseline at minimal risk). v19 = zero-work fallback. v21 = max-diversity option (13 re-checks, ties v19 on measurable axes)."
+}
+```

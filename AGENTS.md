@@ -76,7 +76,15 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **v21 — co-leading candidate with v19 (a TRADEOFF, not a domination — see head-to-head below), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
+- **v22 — PRIMARY recommendation (PARETO-DOMINANT over v19, minimal re-check):** `runs/push/submission_v22.csv`
+  (md5 **`abaec06790766f25282133d929083187`**, validator PASS, 20 designs). = v19 with ONLY its **2 MD-FAILING
+  switchers** replaced — b1m9_A12H (d_repel −1.307, wrong-sign) and des_138_7_pd_24_4 (−0.097, non-causal) → by
+  the 2 strongest direction-confirmed NEW-lineage switchers des_36133_g4_sa18 (3-cat, MD gap +2.30) and
+  des_732_1_r3_sa15 (3-cat). Built from the rigorous v21-vs-v19 gauntlet (v19's ONLY weakness was those 2
+  non-switchers; binding/cross-react/expression/switch-direction otherwise tie). **≥ v19 on every axis, STRICTLY
+  > on switch(#1) + binding + diversity; only 2 members need portal re-check** (the other 18 are already
+  portal-confirmed ≥3/4). See `docs/SUBMISSION_v22_candidate.md`.
+- **v21 — max-diversity option (13 re-checks; ties v19 on measurable axes, more new lineages), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
   (md5 **`f7f246f41a3a062b1922f0f980a9928a`**, validator PASS, **17 designs**). Built from the brutal 4-agent
   devil's-advocate review: cut same-fold cousins + weakest-switch members, refill with foldseek-DISTINCT NEW
   lineages — **7 new-lineage refills**: des_732_1_r3_sa15 (3-cation) / des_1169_2_r3_sa7 / des_243_3_r3_sa2 /

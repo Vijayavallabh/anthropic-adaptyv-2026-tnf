@@ -18,14 +18,18 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 ## The submission
 
-`runs/push/submission_v21.csv` — **the current strongest candidate** (md5 `30915564027fdcea0da997675d29e904`,
-17 designs, validator PASS). A leaner, more **diverse** portfolio:
-a brutal multi-agent devil's-advocate review cut same-fold cousins and the weakest-switch members, and refilled
-with foldseek-distinct **new lineages**. Selection follows the finding that switch *magnitude* is not reliably
-rankable in-silico (predictor error exceeds the pH window; two linkage engines disagree on rank) — so the set is
-built from many distinct, **direction-confirmed** switchers, each strong on binding, cross-reactivity, novelty and
-solubility, to maximize the chance it contains the sharpest switch and to hedge expression risk. USER portal
-novelty re-check on the reseqenced members is required before upload. Dossier `docs/SUBMISSION_v21_candidate.md`.
+`runs/push/submission_v22.csv` — **the primary recommendation** (md5 `abaec06790766f25282133d929083187`, 20 designs,
+validator PASS). Built from a rigorous head-to-head gauntlet against the portal-confirmed v19 baseline, which
+showed v19's **only** real weakness was 2 switchers that fail the two-state MD direction gate. v22 replaces **just
+those 2** with the 2 strongest direction-confirmed new-lineage switchers — so it is **≥ v19 on every axis and
+strictly better on pH-switch (#1), binding, and diversity**, needing only **2 portal novelty re-checks** (the
+other 18 members are already portal-confirmed ≥3/4). Dossier `docs/SUBMISSION_v22_candidate.md`.
+
+`runs/push/submission_v21.csv` — a **max-diversity alternative** (md5 `f7f246f41a3a062b1922f0f980a9928a`, 17
+designs, validator PASS). A leaner, more **diverse** portfolio from a brutal multi-agent review (cut cousins +
+weakest-switch) plus foldseek-distinct **new lineages**. It ties v19 on the measurable axes (binding, cross-react,
+expression, switch direction) but carries more new lineages at the cost of **13** portal re-checks. Choose it over
+v22 only if the extra diversity is worth that re-check burden. Dossier `docs/SUBMISSION_v21_candidate.md`.
 
 `runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
 carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done
