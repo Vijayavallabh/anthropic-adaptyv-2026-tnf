@@ -267,7 +267,22 @@ conflict in favor of the authoritative sections and the live CSV. Counts and md5
  "fold_robustness": "v21 WINS \u2014 shell-adapt gives Boltz\u2229Chai both-fold confirmation (28% vs single-fold 51%); v19 single-fold. A CONFIDENCE metric, not judged magnitude.",
  "diversity": "v21 WINS \u2014 15 distinct lineages/folds in 17 (cut cousins, + 4 fresh new-lineage); v19 has more within-lineage cousins.",
  "VERDICT": "v21 is NOT better in every metric. TIES v19 on binding/cross-react/expression/switch-direction; BEHIND on novelty-certainty (pending re-check); AHEAD only on fold-robustness-confidence + diversity. v19 is a genuinely STRONG, fully-gated alternative, not merely a fallback.",
- "RECOMMENDATION": "If USER does the portal re-check and the 13 pass: v21 marginally better (same measurable axes + more diversity + fold-robust confidence). If NOT re-checking: v19 is the safe strong choice (confirmed novelty + comparable everything). The choice is a TRADEOFF, not a domination."
+ "RECOMMENDATION": "If USER does the portal re-check and the 13 pass: v21 marginally better (same measurable axes + more diversity + fold-robust confidence). If NOT re-checking: v19 is the safe strong choice (confirmed novelty + comparable everything). The choice is a TRADEOFF, not a domination.",
+ "CORRECTION_binding": "Binding is a TIE (all members pass af2ig floor; pae_int differences ~4-6 are within noise and do NOT predict wet-lab binding). Any earlier *strictly-better-on-binding* phrasing was an overclaim.",
+ "REFINED_#1_verdict": "Switch DIRECTION ties (both mostly His-causal), BUT on expected fold-change via both-fold His-count, v21 > v22 > v19 (v21 has 8 both-fold 2-3cat vs v22 2, v19 0). So v21 is strongest on the #1 axis if its 13 re-checks are done."
+}
+```
+
+## SWITCH_FC_ORDINAL (authoritative — #1-axis ranking by both-fold His count)
+```json
+{
+ "insight": "both-fold-confirmed COUNT of separated in-window His is a sound ORDINAL proxy for expected fold-change on the #1 axis (Wyman linkage is additive over titratable groups: more separated His each repelling a distinct conserved cation -> larger |\u0394n_H| -> larger FC; Baker multi-His SOTA). NOT a precise rank (per-His pKa-in-window varies), but a robust ordinal + a geometric-confidence signal (both-fold = Boltz\u2229Chai agree the His engages its cation).",
+ "per_submission_both_fold_counts": {
+  "v21": "3-cat=3, 2-cat=5, 1-cat=5 (8 members with 2-3 separated His) + 4 carryover",
+  "v22": "3-cat=2 (des_36133, des_732) + 18 raw v19 multi-His (direction-OK via MD, NOT both-fold geometry-confirmed)",
+  "v19": "0 both-fold + 20 raw multi-His (direction-OK, not both-fold)"
+ },
+ "IMPLICATION": "On the #1 axis (pH-selectivity), v21 is the STRONGEST: 8 members with 2-3 both-fold-confirmed separated His = highest expected-FC distribution + highest geometric confidence. v22/v19 have direction-confirmation (MD) but little/no both-fold geometry confirmation. This REVISES the earlier v22-primary call."
 }
 ```
 

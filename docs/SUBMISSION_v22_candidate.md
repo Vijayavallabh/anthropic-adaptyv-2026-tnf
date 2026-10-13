@@ -1,8 +1,9 @@
-# v22 candidate — PARETO-DOMINANT over v19 (LOCAL-ONLY, upload USER-GATED)
+# v22 candidate — pragmatic Pareto-improvement over v19 (LOCAL-ONLY, upload USER-GATED)
 
 Built from the rigorous v21-vs-v19 gauntlet: v19's only real weakness was 2 MD-failing switchers.
 v22 swaps exactly those 2 for 2 strong direction-confirmed new-lineage switchers -> >= v19 on every axis,
-strictly > on switch(#1)+binding+diversity, with only 2 portal re-checks needed.
+strictly > on switch-DIRECTION + diversity, TIE on binding/cross-react/expression, 2 portal re-checks.
+NOTE: v22 does NOT dominate v21 on the #1 axis — v21's both-fold His-count depth (8 members) is higher expected FC.
 
 ## STATUS
 ```json
@@ -37,13 +38,14 @@ strictly > on switch(#1)+binding+diversity, with only 2 portal re-checks needed.
 ## PARETO_DOMINANCE_vs_v19
 ```json
 {
- "switch_#1": "STRICTLY BETTER \u2014 removed 2 non-switchers (d_repel -1.307, -0.097), added 2 His-causal (+1.107, +0.568). Net gain on the TOP judged axis.",
- "binding": "BETTER/= \u2014 added pae 4.48/4.53 vs cut 4.87/6.01; 18 shared members unchanged.",
- "cross_react": "= \u2014 added 92.7/93% vs cut ~92-93%.",
- "expression": "= \u2014 added sol 0.77/0.72 vs cut 0.78/0.71.",
+ "switch_DIRECTION_#1": "BETTER (robust, DIRECTION not magnitude) \u2014 removed 2 members that FAIL the direction gate (d_repel -1.307 wrong-sign, -0.097 non-causal) and added 2 His-causal (+1.107, +0.568). This is a direction improvement (switching vs not-switching), which is robust; it is NOT a magnitude/sharpness claim (magnitude is unrankable).",
+ "switch_FC_ordinal_#1": "NOTE: on expected fold-change via both-fold His-count, v21 > v22 (v21 has 8 both-fold 2-3cat members vs v22's 2). v22's 18 v19-derived members are direction-OK (MD) but NOT both-fold geometry-confirmed. So v22 fixes v19's 2 DEAD switchers but does not match v21's high-FC-confidence depth. See SWITCH_FC_ORDINAL.",
+ "binding": "TIE \u2014 all members pass the af2ig floor; pae_int differences (4.5 vs 4.9/6.0) are within noise and do NOT predict wet-lab binding. (Earlier 'strictly better on binding' was an overclaim; corrected.)",
+ "cross_react": "TIE \u2014 added 92.7/93% vs cut ~92-93%.",
+ "expression": "TIE \u2014 added sol 0.77/0.72 vs cut 0.78/0.71.",
  "diversity": "BETTER \u2014 +2 new lineages, removed a des_138_7 cousin.",
  "novelty": "= IF the 2 added pass portal re-check (nov TM 0.842 helical -> expect 3/4). 18 members already portal-confirmed.",
- "VERDICT": "v22 is >= v19 on EVERY axis and STRICTLY > on switch(#1)+binding+diversity. Pareto-dominant. Only 2 members need re-check."
+ "VERDICT": "v22 Pareto-improves v19: >= on EVERY axis, STRICTLY > on switch-DIRECTION (fixes 2 dead switchers) + diversity; TIE on binding/cross-react/expression; = novelty pending 2 re-checks. It does NOT dominate v21 on the #1 axis (v21 has more both-fold multi-His = higher expected FC). v22 = pragmatic strict-improvement over the confirmed baseline at minimal (2) re-check risk."
 }
 ```
 
@@ -54,7 +56,7 @@ strictly > on switch(#1)+binding+diversity, with only 2 portal re-checks needed.
 
 ## RECOMMENDATION
 ```json
-"v22 is the new PRIMARY recommendation: strictly improves on the portal-confirmed v19 baseline on the #1 axis with minimal (2) re-check risk. v19 = zero-work fallback; v21 = max-diversity option (13 re-checks)."
+"PRIORITY-DEPENDENT, not a flat 'v22 primary'. v22 = the PRAGMATIC pick: a strict improvement over the portal-confirmed v19 baseline (fixes 2 dead switchers) at minimal (2) re-check risk. For MAX #1-axis strength pick v21 instead (8 both-fold 2-3cat His vs v22's 2; cost 13 re-checks). v19 = zero-work fallback."
 ```
 
 ## composition

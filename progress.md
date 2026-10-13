@@ -690,12 +690,23 @@ auto-upload.
 ```
 
 
-## SESSION 13 cont.4 (2026-10-13) — v22: PARETO-DOMINANT over v19 (the data-driven optimum)
+## SESSION 13 cont.4 (2026-10-13) — v22: pragmatic Pareto-improvement over v19 (see cont.5 for the #1-axis correction)
 ```json
 {
  "v22": "runs/push/submission_v22.csv md5 abaec06790766f25282133d929083187, 20 designs, validator PASS, LOCAL-ONLY",
  "thesis": "v22 = v19 minus its 2 MD-FAILING switchers (b1m9_A12H d_repel -1.307 wrong-sign; des_138_7_pd_24_4 -0.097 non-causal) + 2 strongest direction-confirmed NEW-lineage (des_36133_g4_sa18 3-cat gap+2.30; des_732_1_r3_sa15 3-cat). Constructed FROM the rigorous v21-vs-v19 gauntlet, which located v19's only real weakness.",
- "pareto_dominance_vs_v19": ">= v19 on EVERY axis; STRICTLY > on switch(#1) + binding + diversity; = novelty if the 2 added pass re-check. Only 2 portal re-checks (vs v21's 13); 18 members already portal-confirmed >=3/4.",
- "recommendation": "v22 = PRIMARY (strict improvement over the portal-confirmed v19 baseline at minimal risk). v19 = zero-work fallback. v21 = max-diversity option (13 re-checks, ties v19 on measurable axes)."
+ "pareto_dominance_vs_v19": ">= v19 on EVERY axis; STRICTLY > on switch-DIRECTION (fixes 2 dead switchers) + diversity; TIE on binding/cross-react/expression; = novelty if the 2 added pass re-check. Only 2 portal re-checks (vs v21's 13); 18 members already portal-confirmed >=3/4. CORRECTION: earlier 'strictly > on binding' was an overclaim (pae 4.5 vs 4.9/6.0 is within noise, does not predict wet-lab binding) -> TIE.",
+ "recommendation": "PRIORITY-DEPENDENT, not a flat v22-primary. v22 = pragmatic strict-improvement over the portal-confirmed v19 baseline at minimal (2) re-check risk. v19 = zero-work fallback. v21 = max-#1-axis + max-diversity (13 re-checks)."
+}
+```
+
+## SESSION 13 cont.5 (2026-10-13) — SWITCH_FC_ORDINAL: v21 leads the #1 axis (correction to recommendation)
+```json
+{
+ "insight": "Switch MAGNITUDE is unrankable in-silico, BUT the both-fold-confirmed COUNT of separated in-window His is a sound ORDINAL for expected fold-change (Wyman linkage is additive; Baker multi-His is the SOTA pH-switch). It is also a geometric-confidence signal (His engages its cation in BOTH independent folders).",
+ "both_fold_counts": {"v21": "3 three-cat + 5 two-cat = 8 members with 2-3 confirmed His (+4 carryover)", "v22": "2 three-cat (+18 v19-derived, MD-direction-OK but NOT both-fold geometry-confirmed)", "v19": "0 both-fold-confirmed (20 raw multi-His, MD-direction-OK)"},
+ "implication": "On the #1 judged axis (pH-selectivity / expected FC), v21 is STRONGEST via both-fold His-count depth. So the recommendation is PRIORITY-DEPENDENT: v21 for max #1-axis strength (13 re-checks); v22 pragmatic Pareto-over-confirmed-v19 (2 re-checks); v19 zero-work. NOT a flat 'v22 primary'.",
+ "also_corrected": "v22-vs-v19 binding claim: 'strictly better' -> TIE (pae_int 4.5 vs 4.9/6.0 is within af2ig noise; the real v22 gain over v19 is switch-DIRECTION [2 non-switchers -> 2 direction-confirmed] + diversity).",
+ "recorded_in": "validation_results.json keys SWITCH_FC_ORDINAL + COMPARISON_v21_vs_v19; memory lesson-switch-magnitude-not-rankable-select-diversity.md (refined)."
 }
 ```

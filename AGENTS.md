@@ -76,14 +76,24 @@ evidence.
 
 ## Submission contract (TNF Challenge 2 — ≤20 designs; deadline ~2026-10-19)
 
-- **v22 — PRIMARY recommendation (PARETO-DOMINANT over v19, minimal re-check):** `runs/push/submission_v22.csv`
+- **The pick is PRIORITY-DEPENDENT — three legitimate options, not a flat "v22 primary".** On the #1 judged axis
+  (expected pH fold-change, proxied by the both-fold-confirmed COUNT of separated in-window His) **v21 leads** (8
+  members with 2–3 both-fold-geometry-confirmed cation-repelling His); **v22** is the pragmatic strict-improvement
+  over the already-portal-confirmed v19 baseline at minimal re-check cost; **v19** is the zero-work fully-gated
+  fallback. Switch MAGNITUDE itself is not rankable in-silico (see below) — these differ on re-check burden and on
+  #1-axis depth, not on a provable domination.
+- **v22 — pragmatic Pareto-improvement over confirmed v19 (minimal re-check):** `runs/push/submission_v22.csv`
   (md5 **`abaec06790766f25282133d929083187`**, validator PASS, 20 designs). = v19 with ONLY its **2 MD-FAILING
   switchers** replaced — b1m9_A12H (d_repel −1.307, wrong-sign) and des_138_7_pd_24_4 (−0.097, non-causal) → by
   the 2 strongest direction-confirmed NEW-lineage switchers des_36133_g4_sa18 (3-cat, MD gap +2.30) and
   des_732_1_r3_sa15 (3-cat). Built from the rigorous v21-vs-v19 gauntlet (v19's ONLY weakness was those 2
   non-switchers; binding/cross-react/expression/switch-direction otherwise tie). **≥ v19 on every axis, STRICTLY
-  > on switch(#1) + binding + diversity; only 2 members need portal re-check** (the other 18 are already
-  portal-confirmed ≥3/4). See `docs/SUBMISSION_v22_candidate.md`.
+  > on switch-DIRECTION (fixes 2 dead switchers) + diversity; TIE on binding/cross-react/expression; only 2
+  members need portal re-check** (the other 18 are already portal-confirmed ≥3/4). NOTE: v22 does NOT dominate v21
+  on #1 — its 18 v19-derived members are MD-direction-OK but NOT both-fold geometry-confirmed, so v21's both-fold
+  His-count depth (8 members) is higher expected FC. (Earlier "strictly better on binding" was an overclaim —
+  pae_int 4.5 vs 4.9/6.0 is within noise and doesn't predict wet-lab binding; corrected to TIE.) See
+  `docs/SUBMISSION_v22_candidate.md`.
 - **v21 — max-diversity option (13 re-checks; ties v19 on measurable axes, more new lineages), USER-PORTAL-GATED:** `runs/push/submission_v21.csv`
   (md5 **`f7f246f41a3a062b1922f0f980a9928a`**, validator PASS, **17 designs**). Built from the brutal 4-agent
   devil's-advocate review: cut same-fold cousins + weakest-switch members, refill with foldseek-DISTINCT NEW
@@ -94,7 +104,11 @@ evidence.
   principle (recorded):** switch MAGNITUDE is not reliably rankable in-silico (pKa-predictor error 2-3u > the
   1.4u 7.4↔6.0 window; two-engine Wyman rank disagrees ρ=0.56) → select on confirmed release DIRECTION + reliable
   axes (binding floor, cross-react ≥90%, structural novelty, solubility) + DIVERSITY, maximizing the chance the
-  set CONTAINS the sharpest switch (which can't be identified in-silico). Diversity also hedges the dominant
+  set CONTAINS the sharpest switch (which can't be identified in-silico). **ORDINAL refinement:** while precise
+  magnitude is unrankable, the COUNT of separated in-window His confirmed in BOTH folders IS a sound ordinal for
+  expected FC (Wyman additive; Baker multi-His SOTA) — and v21 is STRONGEST on it (both-fold counts: v21 has 3
+  three-cat + 5 two-cat = 8 members with 2–3 confirmed His; v22 has 2 three-cat; v19 has 0 both-fold-confirmed).
+  So on the #1 axis v21 leads via confirmed His-count depth. Diversity also hedges the dominant
   expression/wet-lab-zero risk. Expansion is COMPLETE: regen round-3 + round-2 cousins → des_820; then a FRESH
   de-novo campaign (1200 bpair backbones → 49 binders → 10 ultra-novel switch-piped) → round-4 added 3 more
   (des_36133/des_34125/des_33012). Pattern confirmed: all 1-cation switchers fail the MD direction gate; the

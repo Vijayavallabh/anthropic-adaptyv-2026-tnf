@@ -18,18 +18,25 @@ Novelty (distance from known proteins) is a hard gate, not a score — final nov
 
 ## The submission
 
-`runs/push/submission_v22.csv` — **the primary recommendation** (md5 `abaec06790766f25282133d929083187`, 20 designs,
-validator PASS). Built from a rigorous head-to-head gauntlet against the portal-confirmed v19 baseline, which
-showed v19's **only** real weakness was 2 switchers that fail the two-state MD direction gate. v22 replaces **just
-those 2** with the 2 strongest direction-confirmed new-lineage switchers — so it is **≥ v19 on every axis and
-strictly better on pH-switch (#1), binding, and diversity**, needing only **2 portal novelty re-checks** (the
-other 18 members are already portal-confirmed ≥3/4). Dossier `docs/SUBMISSION_v22_candidate.md`.
+**The pick is priority-dependent** — three legitimate options that differ on re-check burden and on #1-axis
+depth, not on a provable domination (switch magnitude is unrankable in-silico, binding magnitude is wet-lab-decided,
+novelty is portal-gated):
 
-`runs/push/submission_v21.csv` — a **max-diversity alternative** (md5 `f7f246f41a3a062b1922f0f980a9928a`, 17
-designs, validator PASS). A leaner, more **diverse** portfolio from a brutal multi-agent review (cut cousins +
-weakest-switch) plus foldseek-distinct **new lineages**. It ties v19 on the measurable axes (binding, cross-react,
-expression, switch direction) but carries more new lineages at the cost of **13** portal re-checks. Choose it over
-v22 only if the extra diversity is worth that re-check burden. Dossier `docs/SUBMISSION_v21_candidate.md`.
+`runs/push/submission_v21.csv` — **strongest on the #1 axis** (md5 `f7f246f41a3a062b1922f0f980a9928a`, 17 designs,
+validator PASS). On pH-selectivity — proxied by the both-fold-confirmed count of separated in-window His (a sound
+*ordinal* for expected fold-change even though precise magnitude isn't rankable) — v21 leads: **8 members carry 2–3
+both-fold-geometry-confirmed cation-repelling His** (vs v22's 2, v19's 0). A leaner, more **diverse** portfolio (15
+lineages) from a brutal multi-agent review plus foldseek-distinct new lineages. Cost: **13 portal re-checks**.
+Dossier `docs/SUBMISSION_v21_candidate.md`.
+
+`runs/push/submission_v22.csv` — **pragmatic strict-improvement over the confirmed v19 baseline** (md5
+`abaec06790766f25282133d929083187`, 20 designs, validator PASS). A rigorous head-to-head gauntlet showed v19's
+**only** real weakness was 2 switchers that fail the two-state MD direction gate; v22 replaces **just those 2** with
+2 strong direction-confirmed new-lineage switchers — so it is **≥ v19 on every axis, strictly better on switch
+DIRECTION (fixes 2 dead switchers) and diversity, a TIE on binding / cross-react / expression**, needing only **2
+portal novelty re-checks** (the other 18 are already portal-confirmed ≥3/4). It does **not** dominate v21 on #1 (its
+18 v19-derived members are MD-direction-OK but not both-fold geometry-confirmed). Dossier
+`docs/SUBMISSION_v22_candidate.md`.
 
 `runs/push/submission_v19.csv` — **20 designs**, validator PASS, **user portal-checked all 20 ≥3/4**, 20/20
 carrying a pH-release switch. The **gated-safe default** / recommended upload if no portal re-check is done
