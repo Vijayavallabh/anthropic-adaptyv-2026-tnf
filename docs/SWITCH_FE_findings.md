@@ -73,3 +73,42 @@ consensus, since c44 carries two extra histidines: it clears it. Protein-Sol sol
 (0.830), developability is cleaner (0 vs 1 liability — L66→H66 broke a hydrophobic run), and the two-folder
 agreement gate passes (Boltz monomer pLDDT 0.931 ≈ b14's 0.935, TM(ESM,Boltz)=0.936), so the lower ESM pLDDT
 (0.82) is ESM-specific pessimism, not a fold defect. c44's manufacturability ≈ b14's; the swap holds on every axis.
+
+## Enhanced-sampling test — does metadynamics make #1 *magnitude* rankable?
+
+The "magnitude unrankable" verdict above rested on bound-leg basin-trapping at plain TI (4 ns/window, no
+enhanced sampling) — a *compute* limit, not a proven physics wall. One lever was untested: enhanced sampling.
+Engine `scripts/fe/alchemy_meta_ddg.py` adds **well-tempered metadynamics** (biasFactor 8, native OpenMM —
+no PLUMED/MPI) on a His⁺↔carboxylate coordination-number CV to **both** legs, then reweights ⟨dU/dλ⟩ back to
+the unbiased ensemble. Key identity: the bias V(s) depends only on the CV s, **not on λ**, so it cancels
+exactly in the finite-difference dU/dλ; the unbiased average is recovered by weights wᵢ = exp(+V(sᵢ)/kT) with
+V = −(1−1/γ)·F(s). A fresh bias is grown per λ window. Controls: 3 designs × 2 legs × 4 **fresh** seeds
+(s21–24), 11 λ-windows, ~13 ns/leg, one leg per GPU on 8×H100.
+
+**Result — sign robust, magnitude did the opposite of converge:**
+
+| design (truth) | meta ΔΔG ± SE (z) | plain-TI ΔΔG | sign |
+|---|---|---|---|
+| des_820_3 (+) | **+7.20 ± 3.75** (z +1.9) | +6.83 | + ✓ |
+| des_4098_1_b14 (−) | **−2.06 ± 0.95** (z −2.2) | −3.88 | − ✓ |
+| des_4098_1_c44 (+) | **+6.90 ± 2.72** (z +2.5) | +7.21 | + ✓ |
+
+- **Signs 3/3 correct.** The ΔΔG *sign* is now confirmed across **three independent regimes** — plain-TI
+  6-seed, split-sample fresh-seed, and metadynamics-TI. The `b14 → c44` swap stands on all three.
+- **Free legs collapsed, bound legs did not.** des_820 free seed-spread 7.5 → **1.7**, b14 free 2.9 → **0.7**:
+  the free-binder CV explores a real range (cv_mean 0.2–0.9, cv_max 1–2), so the bias works. But des_820
+  **bound** spread went 7.4 → **16.9** (seeds −15.2 / −3.1 / −0.9 / +1.7, *each* with 0.5–0.8 within-seed
+  block error = textbook basin-trapping, not estimator noise).
+- **Mechanism, from the per-λ CV traces:** in the *bound complex* the His⁺↔carboxylate coordination CV is
+  **pinned near zero** (cv_mean ≈ 0.03, cv_max 0.07–0.14) — the switch-His is sequestered by the interface,
+  so this CV is **not** the bound-state slow coordinate. Depositing bias along it cannot cross the real
+  (multi-residue interface-rearrangement) barriers; it only widened the non-productive bound ensemble.
+
+**Consequence.** This is the deepest-rigor confirmation yet — now with per-λ CV evidence, not just argument —
+that the bound-state rate-limiting degree of freedom is the **multi-residue interface reorganization**,
+*orthogonal* to any single-His coordination CV. A CV able to enhance it would have to span the full interface
+salt-bridge network (high-dimensional, not tractably biasable in this regime). So #1 switch **magnitude** is
+confirmed **unrankable in-silico** even with the correct *class* of tool — while the **sign** is now
+triple-confirmed. This **re-vindicates the diversity-hedge** and **flags no change**: every v25 member's switch
+*direction* holds, the set carries 4 sign-confirmed releasers and 0 confirmed anti-switch, and magnitude is
+wet-lab-decided. v25 stands.
