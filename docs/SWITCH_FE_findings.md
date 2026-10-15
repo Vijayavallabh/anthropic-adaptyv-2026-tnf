@@ -43,3 +43,27 @@ and it **flags no change**: no member is a confirmed anti-switch, and the set al
 confirmed releaser (`des_820_3`). Since the submission is exactly 20 members (no cut to make) and no FE
 liability exists, there is no FE-justified swap. The correct in-silico treatment of #1 is diverse selection
 with direction-confirmation, which the submission has; functional-release *magnitude* is wet-lab-decided.
+
+## Broader-pool FE-screen → one actionable swap (b14 → c44)
+
+A screen of the mature candidate pool (27 designs: the 14 remaining submission members + 13 history
+candidates) was run to hunt for additional confirmed releasers. Because screening many candidates with
+a noisy (basin-trapped) measure invites multiple-testing flukes, the design was **split-sample**: a cheap
+2-seed pass only *filters*, and each filtered hit is then judged on **4 fresh, independent seeds** at the
+des_820 bar (all same-sign, |ΔΔG| > 5 kcal/mol, |z| > 3, Bonferroni-safe for ~27 tests). The guard worked:
+of 10 two-seed hits (~6 expected by luck), **4 regressed to unresolved** on the fresh seeds, including a
+planted fluke control and a design whose 2-seed −7.6 collapsed to −1.5.
+
+Three candidates cleared the bar as **confirmed releasers**: `b4m2_r1_w5_3` (+6.7, z=11), `des_6025_sh3_sa11`
+(+7.2, z=4.8) — both already in the submission — and `des_4098_1_c44` (+8.0, z=6.5), which was **not**. Its
+lineage sister `des_4098_1_b14` (in the submission) is the one **reproducible anti-switch**: all 6 seeds
+negative, z = −6.3 (mean −3.9; direction rock-solid, magnitude just under the gold cutoff). c44 is b14 plus
+two interface histidines (His63, His66) — the explicit release mechanism.
+
+Swapping **b14 → c44** therefore replaces a reproducible wrong-direction member with a confirmed strong
+releaser on the top-weighted axis. The swap clears every other axis: novelty (c44 is portal-confirmed ≥3/4,
+byte-identical in v19), binding (co-fold ipTM 0.974), cross-reactivity (94% footprint conservation, only the
+benign N-terminal ragged-tail divergence, identical to b14), and dedup (c44 is TM 0.85 to des_1060 vs b14's
+0.82 — both portal-distinct; c44 is 0.99-identical to b14 and inherits its niche). The resulting set carries
+**four FE-confirmed releasers and zero confirmed anti-switch**. This is a strict in-silico improvement on #1;
+it is recorded as a candidate (local CSV), and any upload decision remains deliberately gated to the user.
