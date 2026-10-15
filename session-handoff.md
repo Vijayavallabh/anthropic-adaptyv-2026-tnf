@@ -1,11 +1,35 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-13 (SESSION 13). **Deadline ~2026-10-19 11:30 UTC** (~6 days runway as of 2026-10-13 — the
-Stop-hook /goal still quotes a stale "1d 17h"; IGNORE that). **State: v24 is the confirmed primary (all 20
-portal-PASSED, max #1-axis, 0 re-checks); v23 confirmed alt; v19 fallback. In-silico frontier reached (4-His
-NO-GO; switch magnitude measured flat; binding+magnitudes wet-lab-decided). Generator scripts code-review-hardened.**
+Updated 2026-10-15 (SESSION 15). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
+"1d 17h"; IGNORE that). **State: v25 is the confirmed primary** — `runs/push/submission_v25.csv` (md5
+`41d5e12b4d89a353c44c7c3eb1289064`) = v24 with one direct-FE swap `b14→c44` (b14 = reproducible anti-switch
+z=−6.3; c44 = confirmed releaser +8.0, z=+6.5), **portal-parsed 2026-10-15 ALL 20 PASSED, 0 dedup flags**, all
+axes gated. **v24 (md5 `34f3c096…`) = conservative alt; v23 then v19 fallbacks.** In-silico frontier reached on
+every axis: generation floors, binding oracle fails across 3 folders, switch MAGNITUDE unrankable even by direct
+free energy (bound-leg basin-trapped). Remaining lever = wet-lab (the user-gated upload). See `docs/SWITCH_FE_findings.md`.
 
-## FULL-PORTFOLIO AXIS AUDIT (SESSION 13 cont.12, 2026-10-13) — every PROVABLE sub-metric verified maxed on v24
+## SESSION 15 (2026-10-15) — DIRECT-FE MOONSHOT → v25 (b14→c44), the first substantive #1-axis upgrade
+
+User greenlit the direct free-energy moonshot, then the broader-pool FE-screen. Built an alchemical ΔΔG pipeline
+(His⁰→His⁺ in bound complex vs free binder = the binding-induced pKa shift = functional-release magnitude; TI with
+finite-diff dU/dλ over 11 λ-windows, box-matched legs so proton self-energy/FF/PME-Δq² cancel; OpenMM `envs/md2`
+CUDA with `OPENMM_CUDA_COMPILER=/usr/local/cuda-12.3/bin/nvcc` — the `md`/8.6.1 env is PTX-broken; HMR+4fs, ~770 ns/day;
+scripts in the FE scratch: build_system / alchemy_ddg / combine_ddg / run_screen / screen_analyze / stage2_analyze).
+
+- **Switch MAGNITUDE is unrankable — deepest confirmation.** Free-binder legs converge (<0.8 kcal); bound-complex
+  legs are basin-trapped (per-seed precise, seed spread ~8 kcal — His⁺ salt-bridge states don't interconvert in MD),
+  so the binding FE itself won't converge. Detection floor ~|ΔΔG|>5 kcal. both-fold-His COUNT does NOT track FE release.
+- **FE-screen (multiplicity-guarded split-sample):** 2-seed filter on 27 mature-pool designs → judge each hit on 4
+  FRESH seeds at the des_820 bar (all same-sign, |mean|>5, |z|>3). 4 of 10 stage-1 hits regressed (flukes caught).
+  **Confirmed releasers:** des_820 (+6.8), b4m2 (+6.65,z11), des_6025_sh3_sa11 (+7.2) — all in v24 — and
+  **des_4098_1_c44 (+8.0, z=6.5), NOT in v24.** **des_4098_1_b14 (IN v24) is a reproducible anti-switch** (all 6 seeds −, z=−6.3).
+- **→ v25 = v24 with b14→c44** (c44 = b14 + His63/66 = release mechanism). Gate ALL PASS: novelty (c44 portal ≥3/4),
+  binding (ipTM 0.974), cross-react (94% conserved == b14), dedup (portal 20-unique). **Portal-parsed 20/20 PASSED,
+  0 dedup flags** (2026-10-15). Set holds 4 FE-confirmed releasers, 0 confirmed anti-switch. docs/SWITCH_FE_findings.md.
+- **Next:** v25 is the pick; final SUBMIT is USER-GATED. In-silico frontier exhausted on all axes; remaining lever = wet-lab.
+  (Edge case: des_875, b1m9 have C-terminal His → FE-driver assertion trips → un-profiled; neither was a lead.)
+
+## FULL-PORTFOLIO AXIS AUDIT (SESSION 13 cont.12, 2026-10-13) — every PROVABLE sub-metric verified maxed on v24 (now v25)
 
 Each scored axis has a sub-metric that IS decidable in-silico (needs no unposeable CRO ground truth); all three now verified across the full 20-member portfolio, each committed + recorded in the master record:
 - **#1 pH-selectivity:** both-fold His ordinal = **8 (ceiling)**; cross-validated dE (min over Boltz∩Chai) shows v24 ≥ v19 within every comparable lineage (des_6025 0.00→2.88, des_2106 1.59→4.10). The "v19 single-fold 6.6 > v24 5.7" is a NON-replicating fold-lucky-spike artifact (c44_w6_3 11.2→2.27, des_138_7 7.0→0.0 under cross-val); dominating it would require re-selecting FOR noise (NO v25). → `V24_XVAL_DE_DOMINANCE`.

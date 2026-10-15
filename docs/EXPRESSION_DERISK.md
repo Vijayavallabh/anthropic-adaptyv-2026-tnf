@@ -1,10 +1,10 @@
 # Expression de-risking dossier — treating "will it express" as a quantified prediction, not a solved fact
 
-> **Note (SESSION 13):** this is a v11-era snapshot. The *methodology* (orthogonal multi-signal expression
+> **Note (SESSION 15):** this is a v11-era snapshot. The *methodology* (orthogonal multi-signal expression
 > consensus) is current and still applied, but the "current best = v11" framing below is superseded — the
-> **confirmed primary is `submission_v24.csv`** (all 20 portal-PASSED, max #1-axis, 0 re-checks), with
-> `submission_v23.csv` the confirmed alternative and `submission_v19.csv` the zero-work fallback
-> (see AGENTS.md / README.md / session-handoff.md).
+> **confirmed primary is `submission_v25.csv`** (v24 with the direct-FE swap b14→c44; portal-parsed 20/20),
+> with `submission_v24.csv` the conservative alternative (all 20 portal-PASSED) and `submission_v23.csv`/`v19`
+> fallbacks (see AGENTS.md / README.md / session-handoff.md / docs/SWITCH_FE_findings.md).
 
 **Why this doc.** Expression is the dominant wet-lab-zero risk: a design that cannot be manufactured scores
 zero regardless of its pH-switch. Our prior confidence rested mainly on **one** predictor — ESMFold monomer

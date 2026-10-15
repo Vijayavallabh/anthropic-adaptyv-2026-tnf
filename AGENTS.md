@@ -16,9 +16,10 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `session-handoff.md` (latest session state + next steps),
    `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md` (plan + outcome). `scripts/README.md`
-   maps the pipeline; the **confirmed primary submission is `runs/push/submission_v24.csv`** (all 20
-   portal-PASSED, max #1-axis, 0 re-checks — see the Submission contract below); `v23` is the confirmed
-   alternative; `v19` is the zero-work fallback. (`v20`/`v21`/`v22` superseded — kept as records.)
+   maps the pipeline; the **confirmed primary submission is `runs/push/submission_v25.csv`** (md5
+   `41d5e12b4d89a353c44c7c3eb1289064`; v24 with one direct-FE swap b14→c44 — portal-parsed ALL 20 PASSED,
+   0 dedup flags — see the Submission contract below); `v24` (md5 `34f3c096…`) is the conservative
+   alternative; `v23` then `v19` are fallbacks. (`v20`/`v21`/`v22` superseded — kept as records.)
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -81,7 +82,15 @@ evidence.
   upload") separate from the PDB-novelty gate. v22 → 4 cousins flagged (des_4098_1 ×3, des_2106_2 ×2) → only **16
   unique** (hits v19/v21 too). **v23 → ALL 20 PASSED** → v23 FULLY portal-confirmed, 20 unique, 0 re-checks left.
   Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED.
-- **v24 — CONFIRMED PRIMARY (max #1-axis, dedup-clean, 0 re-checks):** `runs/push/submission_v24.csv` (md5
+- **v25 — CONFIRMED PRIMARY (direct-FE #1-axis upgrade; portal-parsed 20/20):** `runs/push/submission_v25.csv`
+  (md5 **`41d5e12b4d89a353c44c7c3eb1289064`**, validator PASS, 20 designs, **portal-parsed 2026-10-15: ALL 20 PASSED,
+  0 needing fixes, no cousin/dedup flags**). = v24 with ONE swap: `des_4098_1_b14 → des_4098_1_c44` (same lineage).
+  Motivated by alchemical binding free energy (TI, His⁰→His⁺ bound vs free): **b14 is a reproducible anti-switch**
+  (all 6 seeds −, z=−6.3) while **c44 is a confirmed strong releaser** (+8.0 kcal/mol, z=+6.5; c44 = b14 + His63/66
+  = the release mechanism). Gate ALL PASS: novelty (c44 portal ≥3/4 byte-identical v19), binding (co-fold ipTM 0.974),
+  cross-react (94% footprint conserved, == b14), dedup (portal 20-unique). Set holds **4 FE-confirmed releasers, 0
+  confirmed anti-switch.** See `docs/SWITCH_FE_findings.md` + `docs/SUBMISSION_v25_candidate.md`. **Supersedes v24.**
+- **v24 — CONSERVATIVE ALTERNATIVE (max both-fold ordinal, the exact earlier-blessed set):** `runs/push/submission_v24.csv` (md5
   **`34f3c096bf63dd9ef70d05308c6c3f1d`**, validator PASS, 20 designs, **all 20 portal-PASSED 2026-10-13**). = v23 with
   3 same-lineage swaps to v21's solid ≥2-cat both-fold saN variants (des_2106_2→sa2, des_4082_8_pd_10_4→sa7 [d_repel
   1.69], des_6025_4→sa10_sh3_sa11 [1.2]). **8 both-fold members (2 three-cat + 6 two-cat) = the #1-axis CEILING,
@@ -91,8 +100,10 @@ evidence.
   **`65bf89bb38f5498ad90522542655eae2`**, validator PASS, 20 designs, **all 20 portal-PASSED**). = v22 − 3 cousins +
   {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. 20 UNIQUE, 5 both-fold, 19 lineages. The strongest
   fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **The pick:** **v24** = CONFIRMED PRIMARY (8 both-fold = max #1-axis, all 20 portal-PASSED, 0 re-checks); **v23**
-  = confirmed alt (5 both-fold, fewer shell-adapt members); **v19** zero-work fallback. **v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
+- **The pick:** **v25** = CONFIRMED PRIMARY (direct-FE #1-axis upgrade over v24: removes the one reproducible
+  anti-switch b14, adds confirmed releaser c44; portal-parsed 20/20, 0 dedup flags); **v24** = conservative
+  alternative (8 both-fold ordinal, the exact earlier-portal-blessed set); **v23** / **v19** fallbacks. **v24→v25,
+  v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
   is NOT in-silico-provable: binding magnitude (#3) is wet-lab-decided (Anthropic AP≈0.16 near-chance) and switch
   MAGNITUDE is thermodynamically unrankable. The provable axes ARE maxed (novelty 20/20 for v23; #1 both-fold
   ordinal = 8 ceiling, 4-His NO-GO; diversity 19; direction all-confirmed).

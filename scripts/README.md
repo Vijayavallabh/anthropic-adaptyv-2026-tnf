@@ -38,8 +38,8 @@ AROUND fixed His so it adapts) · `wave4b.sh` + `wave4b_analyze.py` + `wave4b_tr
 sign confirm) · `esmfold_monomer.py` (single-seq MONOMER pLDDT expression ranker) · `sap_score.py`
 (aggregation) · **`integrate_v9.py`** (assemble switch core + diverse portal-verified floor →
 `runs/push/submission_v9.csv`; superseded by later assemblies — the confirmed primary is
-`submission_v24.csv` (all 20 portal-PASSED, max #1-axis, dedup-clean), `submission_v23.csv` the
-confirmed alt, `submission_v19.csv` the zero-work fallback).
+`submission_v25.csv` (v24 with the direct-FE swap b14→c44; portal-parsed 20/20), `submission_v24.csv`
+the conservative alt (all 20 portal-PASSED, max both-fold ordinal), `submission_v23.csv`/`submission_v19.csv` fallbacks).
 
 **Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).

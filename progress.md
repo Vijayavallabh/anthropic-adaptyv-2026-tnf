@@ -2,16 +2,18 @@
 
 Current status and next step for the TNF-α Challenge 2 campaign. Append; don't rely on chat history.
 
-## Status: SUBMISSION READY — upload user-gated. CONFIRMED PRIMARY = v24 (all 20 portal-PASSED, 0 re-checks)
+## Status: SUBMISSION READY — upload user-gated. CONFIRMED PRIMARY = v25 (direct-FE #1 upgrade; portal-parsed 20/20)
 
-- **CONFIRMED PRIMARY:** `runs/push/submission_v24.csv` (md5 **`34f3c096bf63dd9ef70d05308c6c3f1d`**) — 20 designs,
-  validator PASS, **user portal-uploaded 2026-10-13 → ALL 20 PASSED** (novelty + internal dedup). 20 UNIQUE,
-  8 both-fold multi-His (2 three-cat + 6 two-cat = the #1-axis ceiling), 19 distinct lineages, all
-  direction-confirmed, **0 re-checks**. The MAX in-silico-provable set. Dossier `docs/SUBMISSION_v24_candidate.md`.
-- **CONFIRMED ALT:** `runs/push/submission_v23.csv` (md5 **`65bf89bb38f5498ad90522542655eae2`**) — all 20
-  portal-PASSED; 5 both-fold, 19 lineages, fewer shell-adapt members than v24. Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **ZERO-WORK FALLBACK:** `runs/push/submission_v19.csv` (md5 **`7756055f0b20bcd6994fefb644271db7`**) — 20 designs,
-  all portal-confirmed ≥3/4 (but carries 4 cousins → ~16 unique under the portal's internal dedup; dominated by v24/v23).
+- **CONFIRMED PRIMARY:** `runs/push/submission_v25.csv` (md5 **`41d5e12b4d89a353c44c7c3eb1289064`**) — 20 designs,
+  validator PASS, **user portal-parsed 2026-10-15 → ALL 20 PASSED, 0 needing fixes, no dedup flags**. = v24 with ONE
+  direct-FE swap `des_4098_1_b14 → des_4098_1_c44` (same lineage): alchemical ΔΔG (His⁰→His⁺ bound vs free) shows
+  **b14 = reproducible anti-switch** (all 6 seeds −, z=−6.3) and **c44 = confirmed strong releaser** (+8.0, z=+6.5;
+  c44 = b14 + His63/66). Gate ALL PASS (novelty/binding/cross-react/dedup). Holds **4 FE-confirmed releasers, 0
+  confirmed anti-switch.** Dossier `docs/SUBMISSION_v25_candidate.md` + `docs/SWITCH_FE_findings.md`. Supersedes v24.
+- **CONSERVATIVE ALT:** `runs/push/submission_v24.csv` (md5 **`34f3c096bf63dd9ef70d05308c6c3f1d`**) — 20 designs,
+  validator PASS, **portal-uploaded 2026-10-13 → ALL 20 PASSED**. 8 both-fold multi-His (#1-axis ordinal ceiling),
+  19 lineages; the exact earlier-blessed set (pick it if you distrust the in-silico FE swap). Dossier `docs/SUBMISSION_v24_candidate.md`.
+- **FALLBACKS:** `runs/push/submission_v23.csv` (md5 **`65bf89bb38f5498ad90522542655eae2`**) — all 20 portal-PASSED, 5 both-fold, 19 lineages; then `runs/push/submission_v19.csv` (md5 **`7756055f0b20bcd6994fefb644271db7`**) — carries 4 cousins → ~16 unique under portal dedup (dominated by v24/v25).
 - **SUPERSEDED (records only):** v22→v23, v21→v24, v20 (fold-robust predecessor), v18 (md5 `524722158467273c0e9f57f5402650ed`).
 - See the SESSION 13 cont.1–11 entries at the tail for the full chain (portal dedup → v23/v24; 4-His NO-GO;
   xtb switch-magnitude flat; in-silico frontier reached). The 9-design final_portfolio below is historical/SUPERSEDED.
@@ -20,8 +22,10 @@ Current status and next step for the TNF-α Challenge 2 campaign. Append; don't 
   single-fold v19 edge is noise); #2 cross-react footprint **0/20 core liabilities** (commit f23f70a); #3
   binding ranker **structurally moot** at 20/20 (commit 5657e9b). v24 = non-dominated frontier; magnitude axes
   wet-lab-decided. ~230 G scratch cleared from `runs/` (deliverables/envs/weights preserved).
-- **Deadline ~2026-10-19.** Full history is append-only below; the authoritative latest state is the SESSION 12
-  tail. (The `runs/submission/final_portfolio` 9-design set was an earlier session-8/9 checkpoint — superseded.)
+- **SESSION 14 (2026-10-13) — bold generation campaign + binding-oracle wall (user-greenlit):** RFd3 de-novo 0/16384 (floor); partial diffusion 28% bind but 99% cousins, max both-fold 2 (< v24's 3); binding oracle fails across 3 SOTA folders (Boltz/Chai/Protenix v2) on 12 CRO ground-truth binders. No design beat v24. `docs/BINDING_ORACLE_findings.md` (commit 9948d9e).
+- **SESSION 15 (2026-10-15) — direct-FE moonshot → v25 (user-greenlit):** built alchemical ΔΔG pipeline (TI, His⁰→His⁺ bound vs free; `envs/md2` CUDA). Switch MAGNITUDE confirmed unrankable (bound-leg basin-trapped, ~8 kcal seed spread; deepest confirmation). Multiplicity-guarded split-sample screen of 27 mature-pool designs → confirmed releasers des_820/b4m2/des_6025_sh3_sa11 (in v24) + **des_4098_1_c44 (+8.0, z=6.5, NOT in v24)**; **des_4098_1_b14 (in v24) = reproducible anti-switch (z=−6.3)**. → **v25 = v24 with b14→c44**, all axes gated, **portal-parsed 20/20 PASSED**. `docs/SWITCH_FE_findings.md` (commit df38cce). v25 = new primary; v24 = conservative alt.
+- **Deadline ~2026-10-19.** Full history is append-only below; the authoritative latest state is this status block.
+  (The `runs/submission/final_portfolio` 9-design set was an earlier session-8/9 checkpoint — superseded.)
 - **Repo:** `github.com/Vijayavallabh/anthropic-adaptyv-2026-tnf` (private). Upload is USER-GATED — do not auto-upload.
 
 ## Evidence (current, 2026-10-12)

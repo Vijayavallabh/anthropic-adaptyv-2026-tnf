@@ -24,10 +24,19 @@ domination (switch magnitude is unrankable in-silico, binding magnitude is wet-l
 this upload"): on v22 it flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 unique (hits v19/v21 too). The
 dedup-clean **v23 and v24 were then both uploaded — ALL 20 PASSED each** → both fully portal-confirmed, 0 re-checks.
 
-`runs/push/submission_v24.csv` — **the confirmed primary, max #1-axis** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20
-designs, validator PASS, **all 20 portal-PASSED**). v23 with 3 same-lineage swaps to v21's solid ≥2-cat both-fold
-saN variants → **8 both-fold members = the #1-axis ceiling, dedup-clean 20-unique, 0 re-checks.** The max
-in-silico-provable set. Supersedes v21. Dossier `docs/SUBMISSION_v24_candidate.md`.
+`runs/push/submission_v25.csv` — **the confirmed primary** (md5 `41d5e12b4d89a353c44c7c3eb1289064`, 20 designs,
+validator PASS, **portal-parsed 2026-10-15: ALL 20 PASSED, 0 needing fixes, no cousin/dedup flags**). = v24 with ONE
+direct-free-energy swap `des_4098_1_b14 → des_4098_1_c44` (same lineage): alchemical ΔΔG (His⁰→His⁺, bound complex vs
+free binder) shows **b14 is a reproducible anti-switch** (all 6 seeds negative, z=−6.3) while **c44 is a confirmed
+strong releaser** (+8.0 kcal/mol, z=+6.5; c44 = b14 + His63/His66, the release mechanism). Clears every axis — novelty
+(c44 portal-confirmed ≥3/4, byte-identical in v19), binding (co-fold ipTM 0.974), cross-react (94% footprint conserved,
+identical profile to b14), dedup (portal 20-unique). Holds **4 FE-confirmed releasers and zero confirmed anti-switch**.
+Supersedes v24. Dossiers `docs/SUBMISSION_v25_candidate.md` + `docs/SWITCH_FE_findings.md`.
+
+`runs/push/submission_v24.csv` — **conservative alternative** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20
+designs, validator PASS, **all 20 portal-PASSED 2026-10-13**). v23 with 3 same-lineage swaps to v21's solid ≥2-cat
+both-fold saN variants → **8 both-fold members = the #1-axis ordinal ceiling, dedup-clean 20-unique, 0 re-checks.** The
+exact earlier-portal-blessed set — pick it if you distrust the in-silico FE swap. Supersedes v21. Dossier `docs/SUBMISSION_v24_candidate.md`.
 
 `runs/push/submission_v23.csv` — **confirmed alternative** (md5 `65bf89bb38f5498ad90522542655eae2`, 20 designs,
 validator PASS, **all 20 portal-PASSED**). 5 both-fold, 19 distinct lineages, 0 re-checks; fewer shell-adapt members
