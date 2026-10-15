@@ -1,12 +1,31 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-15 (SESSION 15). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
+Updated 2026-10-15 (SESSION 16). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
 "1d 17h"; IGNORE that). **State: v25 is the confirmed primary** — `runs/push/submission_v25.csv` (md5
 `41d5e12b4d89a353c44c7c3eb1289064`) = v24 with one direct-FE swap `b14→c44` (b14 = reproducible anti-switch
 z=−6.3; c44 = confirmed releaser +8.0, z=+6.5), **portal-parsed 2026-10-15 ALL 20 PASSED, 0 dedup flags**, all
 axes gated. **v24 (md5 `34f3c096…`) = conservative alt; v23 then v19 fallbacks.** In-silico frontier reached on
 every axis: generation floors, binding oracle fails across 3 folders, switch MAGNITUDE unrankable even by direct
-free energy (bound-leg basin-trapped). Remaining lever = wet-lab (the user-gated upload). See `docs/SWITCH_FE_findings.md`.
+free energy AND by enhanced-sampling metadynamics (bound-leg basin-trapped; the slow mode is multi-residue interface
+reorganization, orthogonal to the His CV). Remaining lever = wet-lab (the user-gated upload). See `docs/SWITCH_FE_findings.md`.
+
+## SESSION 16 (2026-10-15) — ENHANCED-SAMPLING TEST of #1 magnitude → metadynamics; v25 UNCHANGED
+
+Attacked the last untested #1 lever: the "basin-trapping is a *compute* limit not physics" hypothesis, via
+well-tempered metadynamics (biasFactor 8, native OpenMM — no PLUMED/MPI) on a His⁺↔carboxylate coordination CV,
+BOTH legs, reweighting ⟨dU/dλ⟩ to the unbiased ensemble (bias V(s)⊥λ cancels in finite-diff dU/dλ; wᵢ=exp(+V/kT)).
+3 controls × 2 legs × 4 fresh seeds (s21–24), ~13 ns/leg, 8×H100. Harness now in repo: `scripts/fe/`
+{`alchemy_meta_ddg.py`, `run_meta.sh`, `analyze_meta.py`, `meta_controls.tsv`}.
+- **Signs 3/3 correct** (des_820 +7.20, b14 −2.06, c44 +6.90) — ΔΔG *sign* now TRIPLE-confirmed (plain-TI 6-seed +
+  split-sample + metadynamics); the b14→c44 swap stands on three independent regimes.
+- **Magnitude did NOT converge** — FREE legs collapsed (des_820 7.5→1.7, b14 2.9→0.7) but BOUND legs did not
+  (des_820 bound 7.4→**16.9**, each seed with 0.5–0.8 within-seed err = basin-trapping). Per-λ CV traces: the
+  bound-complex His CV is **pinned ~0.03** (His sequestered by the interface) → it is NOT the slow coordinate; the
+  rate-limiting DOF is the multi-residue interface rearrangement, orthogonal to any single-His CV. The adversarial
+  "wrong-coordinate" kill is now EMPIRICALLY proven.
+- **Verdict:** #1 magnitude confirmed unrankable even with the correct *class* of enhanced-sampling tool; sign
+  triple-confirmed; diversity-hedge re-vindicated. **NO set change — v25 stands.** Do NOT re-propose
+  metadynamics/REST2/λ-HREX on a single-His CV. Recorded `MOONSHOT_METADYNAMICS_control_validation`.
 
 ## SESSION 15 (2026-10-15) — DIRECT-FE MOONSHOT → v25 (b14→c44), the first substantive #1-axis upgrade
 

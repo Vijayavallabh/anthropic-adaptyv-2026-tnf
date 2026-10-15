@@ -43,7 +43,9 @@ validator PASS, **all 20 portal-PASSED**). 5 both-fold, 19 distinct lineages, 0 
 than v24 (pick it if you prefer less shell-adaptation over #1-depth). Dossier `docs/SUBMISSION_v23_candidate.md`.
 
 **Not in-silico-provable:** "dominate every metric" — binding magnitude (#3) is wet-lab-decided (Anthropic's own
-AP≈0.16 ≈ near-chance in-silico ranking) and switch magnitude is thermodynamically unrankable. The provable axes
+AP≈0.16 ≈ near-chance in-silico ranking) and switch magnitude is thermodynamically unrankable (confirmed by direct
+alchemical FE *and* enhanced-sampling metadynamics — the bound-leg slow mode is interface reorganization, not the
+His CV). The provable axes
 are maximized: novelty 20/20 confirmed (v23); #1 both-fold ordinal = 8 (v24, the ceiling — a 4-His campaign
 confirmed 3-cat/member is the max); diversity 19 lineages; switch direction all-confirmed.
 
