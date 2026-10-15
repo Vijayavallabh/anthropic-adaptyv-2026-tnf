@@ -34,9 +34,18 @@ See `docs/SWITCH_FE_findings.md` for the full method, the basin-trapping finding
 | **Novelty (DQ hard gate)** | pass | pass — portal ≥3/4, byte-identical in v19; v25 parse Passed | pass |
 | **Binding floor** | pass | co-fold ipTM 0.974, bind 4.56 | pass |
 | **Dedup** | 0.82 TM to des_1060 (portal-distinct) | 0.85 TM (0.99 ≡ b14, inherits niche) | portal 20-unique ✓ |
+| **Expression** (6-signal) | ESM 0.90 / Boltz 0.935 / sol 0.83 / 1 dev-liab | ESM 0.82 / **Boltz 0.931** / TM 0.94 / sol 0.83 / **0 dev-liab** | pass (2-fold agree) |
 
 Result: the set holds **4 FE-confirmed releasers** (des_820, b4m2, des_6025_sh3_sa11, c44) and **zero confirmed
 anti-switch**.
+
+**Expression (manufacturability) — checked, c44 clears it.** The dominant wet-lab-zero risk, run as the repo's
+6-signal consensus (fold pLDDT in two folders + cross-fold TM + SAP + Protein-Sol solubility + developability
+rules). The extra His (63/66) dent *no* expression signal: Protein-Sol solubility is identical to b14 (0.830,
+94.9%); developability is cleaner (0 liabilities vs b14's 1 — L66→H66 broke a hydrophobic run); and the
+two-folder agreement gate passes decisively — the orthogonal AF3-style folder (Boltz) folds c44's monomer at
+**0.931** (≈ b14's 0.935) with TM(ESM,Boltz)=0.936, so the lower *ESM* pLDDT (0.82 vs 0.90) is ESM-specific
+pessimism, not a real fold defect. c44 was also expression-vetted in the v11 era. Manufacturability ≈ b14.
 
 ## Composition (20)
 

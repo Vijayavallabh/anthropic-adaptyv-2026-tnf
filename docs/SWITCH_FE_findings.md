@@ -67,3 +67,9 @@ benign N-terminal ragged-tail divergence, identical to b14), and dedup (c44 is T
 0.82 — both portal-distinct; c44 is 0.99-identical to b14 and inherits its niche). The resulting set carries
 **four FE-confirmed releasers and zero confirmed anti-switch**. This is a strict in-silico improvement on #1;
 it is recorded as a candidate (local CSV), and any upload decision remains deliberately gated to the user.
+
+Expression (manufacturability — the dominant wet-lab-zero risk) was then checked on c44 with the 6-signal
+consensus, since c44 carries two extra histidines: it clears it. Protein-Sol solubility is identical to b14
+(0.830), developability is cleaner (0 vs 1 liability — L66→H66 broke a hydrophobic run), and the two-folder
+agreement gate passes (Boltz monomer pLDDT 0.931 ≈ b14's 0.935, TM(ESM,Boltz)=0.936), so the lower ESM pLDDT
+(0.82) is ESM-specific pessimism, not a fold defect. c44's manufacturability ≈ b14's; the swap holds on every axis.
