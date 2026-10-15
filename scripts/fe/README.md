@@ -36,6 +36,23 @@ PY=envs/md2/bin/python          # has openmm 8.4 + openmmtools + pymbar + biopyt
 - `stage2_analyze.py` — stage-2 confirmation on FRESH seeds only (split-sample), des_820 gold bar
   (all same-sign, |mean| > 5 kcal, |z| > 3; Bonferroni-safe for the screen size).
 
+### Sign coverage (release direction) — the whole-portfolio audit
+Switch *magnitude* is unrankable, but the switch *sign* (does His⁺ release or tighten the complex?) is a
+reproducible double difference, so every submitted design can be checked for a hidden anti-switch (the
+pattern that caught `des_4098_1_b14` and drove the b14→c44 swap).
+- `run_sign.sh` — GPU-sharded plain-TI runner over a `name<TAB>his<TAB>leg<TAB>seed` TSV (`TSV=…`), config
+  matched to the cached campaign (EQ 0.5 / PRODB 2.5 / PRODF 2.0 / nwin 11 / sample 1.0) so new seeds POOL
+  with old. One process per GPU, resumable, foreign-GPU guard. Env: `GPUS`, `NWIN`, `EQ`, `PRODB/PRODF`, `SAMP`.
+- `analyze_sign.py [--csv submission.csv]` — pooled sign per member: the robust **paired** per-seed
+  estimator ΔΔG_s = dG_bound_s − dG_free_s (cancels correlated noise) + an independent-pool cross-check.
+  Calibrated on the one known anti-switch (b14: paired −3.9, z −8.8, 0/6 seeds): a **CONFIRMED anti-switch**
+  needs paired ΔΔG reproducibly negative (≥ all-but-one seeds negative **and** |z| > 3), with a ≥4-seed floor
+  so a 2-seed fluke can never read as confirmed. Auto-discovers members, or `--csv` restricts to a submission.
+- **Result (`docs/SWITCH_FE_findings.md`):** all 20 v25 members carry 6+6-seed bound/free coverage →
+  **0 confirmed anti-switch, 5 confirmed releasers**; the rest positive/neutral. b14 reproduces as the
+  positive control. A few members show a weak negative *lean* that does not clear the bar; the three
+  strongest (des_84_3 z −3.0, des_2106_2, des_495_6) get a 12-seed extension to settle the borderline.
+
 ### Enhanced sampling (metadynamics) — the magnitude test
 - `alchemy_meta_ddg.py` — one leg of the ΔΔG by TI **with well-tempered metadynamics** (native OpenMM, no
   PLUMED/MPI) on a His⁺↔carboxylate coordination-number CV, to break bound-leg basin-trapping. The bias
@@ -63,6 +80,9 @@ PY=envs/md2/bin/python          # has openmm 8.4 + openmmtools + pymbar + biopyt
   the *free* leg but not the *bound* leg, because in the bound complex that CV is pinned (His buried in the
   interface). The rate-limiting coordinate is the multi-residue interface rearrangement — don't re-propose
   metadynamics / REST2 / λ-HREX on a single-His CV to rank magnitude; the wrong-coordinate wall is proven.
-- Terminal His (position 1 or last residue) trips the net-charge assertion in `alchemy_ddg.py` (internal
-  template charges don't sum to +1); such designs are not profiled by this pipeline as-is.
+- Terminal His (position 1 or last residue): `alchemy_ddg.py` perturbs **only** the atoms whose partial
+  charge actually changes on HIE→HIP (imidazole ring + the appearing HD1), leaving backbone/CB/terminal
+  atoms (OXT, N-terminal H1/H2/H3) untouched — so a C-/N-terminal switch-His profiles correctly (dq=+1 per
+  His, assertion passes) and the change is byte-identical for internal His. This unblocked `des_875` (His80
+  is the C-terminal residue), the last v25 member lacking sign coverage.
 - All outputs go under `runs/fe/` (gitignored).

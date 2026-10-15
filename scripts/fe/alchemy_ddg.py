@@ -40,13 +40,24 @@ def main():
     ff = ForceField("amber14-all.xml", "amber14/tip3p.xml")
     qH = {v: {a.name: a.parameters["charge"] for a in ff._templates[v].atoms} for v in ("HIE", "HIP")}
     nbf.addGlobalParameter("lam", 0.0)
+    # Only atoms whose partial charge actually changes on HIE->HIP (the imidazole ring + the appearing
+    # HD1 proton) are perturbed. Backbone / CB / terminal atoms (e.g. a C-terminal OXT or N-terminal
+    # H1/H2/H3) carry an identical charge in both protonation states, so they are LEFT UNTOUCHED. This
+    # keeps a terminal switch-His correct — its FF terminal-variant charges differ from the internal
+    # HIE/HIP template, so overwriting them with the template value corrupts the leg (and trips the net-dq
+    # assertion) — and is byte-identical for internal His (those atoms were previously no-op overwrites
+    # with a zero lambda-offset). Verified byte-identical on des_820; unblocks C-terminal His (des_875).
+    CHG = {n for n in set(qH["HIE"]) | set(qH["HIP"])
+           if abs(qH["HIP"].get(n, 0.0) - qH["HIE"].get(n, 0.0)) > 1e-6}
     tot_dq = 0.0; nmod = 0; applied = []
     for res in top.residues():
         if res.chain.id == args.binder_chain and res.name in ("HIS","HID","HIE","HIP") and int(res.id) in prot:
             for a in res.atoms():
+                if a.name not in CHG:
+                    continue
                 q_cur, sig, eps = nbf.getParticleParameters(a.index)
                 eps_v = eps.value_in_unit(eps.unit)
-                q_hie = qH["HIE"].get(a.name, 0.0); q_hip = qH["HIP"].get(a.name, q_cur.value_in_unit(q_cur.unit))
+                q_hie = qH["HIE"].get(a.name, 0.0); q_hip = qH["HIP"].get(a.name, 0.0)
                 if a.name == "HD1":
                     nbf.setParticleParameters(a.index, 0.0, sig, 0.0)
                     nbf.addParticleParameterOffset("lam", a.index, q_hip, 0.0, eps_v)
@@ -55,7 +66,7 @@ def main():
                     nbf.addParticleParameterOffset("lam", a.index, q_hip - q_hie, 0.0, 0.0)
                 tot_dq += (q_hip - q_hie); nmod += 1
             applied.append(int(res.id))
-    assert abs(tot_dq - len(applied)) < 0.05, f"net dq {tot_dq} != +{len(applied)}"
+    assert abs(tot_dq - len(applied)) < 0.05, f"net dq {tot_dq:+.3f} != +{len(applied)}"
     print(f"[TI-FD] leg={args.sys.split('/')[-1]} His={applied} atoms={nmod} dq={tot_dq:+.2f} seed={args.seed}")
 
     integ = LangevinMiddleIntegrator(300*kelvin, 1.0/picosecond, 4*femtosecond)
