@@ -112,3 +112,34 @@ confirmed **unrankable in-silico** even with the correct *class* of tool — whi
 triple-confirmed. This **re-vindicates the diversity-hedge** and **flags no change**: every v25 member's switch
 *direction* holds, the set carries 4 sign-confirmed releasers and 0 confirmed anti-switch, and magnitude is
 wet-lab-decided. v25 stands.
+
+## Whole-portfolio sign audit — all 20 v25 members, 6→12 seeds
+
+The metadynamics section above tested only 3 controls. This audit extends direct-FE **sign** coverage to
+every v25 member (`scripts/fe/run_sign.sh` + `analyze_sign.py`): bound+free, 6 seeds each (the one gap —
+`des_875`, His80 = C-terminal — was unblocked by the terminal-His engine fix). Estimator = paired per-seed
+ΔΔG; bar (calibrated on b14: paired −3.9, z −8.8, 0/6) = ≥all-but-one seeds negative AND |z|>3, ≥4-seed floor.
+
+**6-seed roster result:** 5 confirmed releasers (c44 +7.2, b4m2 +6.7, des_6025 +7.7, des_820 +6.8,
+des_732 +3.2), 0 confirmed anti-switch. Three members showed a 5/6-negative *lean* not clearing the bar
+(des_84_3 −1.8/z−3.0, des_2106_2 −3.5/z−1.6, des_495_6 −1.5/z−1.4) → extended all three to **12 seeds**.
+
+**12-seed resolution:**
+
+| member | 6-seed | 12-seed ΔΔG ± SE (z) | neg seeds | verdict |
+|---|---|---|---|---|
+| des_84_3_mh_49_56_76 | −1.8 (z−3.0) | **−2.16 ± 0.47 (z −4.6)** | **11/12** | **CONFIRMED ANTI-SWITCH** |
+| des_2106_2…_sa2 | −3.5 (z−1.6) | −1.87 ± 1.75 (z −1.1) | 8/12 | noise (spread −11..+10) |
+| des_495_6_mh_41_49 | −1.5 (z−1.4) | −0.39 ± 0.72 (z −0.5) | 6/12 | neutral noise |
+
+des_84_3 firmed up with sampling (did not regress) → a real, reproducible anti-switch, same class as b14
+(~half the magnitude, higher-seed confidence). The other two regressed, as split-sample predicts.
+
+**Consequence → v26.** des_84_3 is the one v25 member proven to switch the WRONG direction on the #1 axis.
+No clean replacement exists: des_84_3 is the only des_84-lineage design with FE coverage (no c44-style
+same-lineage releaser), and the portal-confirmed non-v25 designs are all negative-leaning, dedup-cousins of
+existing members, or lack an FE sign. So `submission_v26.csv` = **v25 minus des_84_3 (19 designs)**,
+md5 `73119a41fee4d726a39263229ad3f9b0`, validator PASS, a strict subset of portal-confirmed v25 (no
+re-check, no dedup risk): **0 confirmed anti-switch, 5 confirmed releasers.** v26 is the recommended
+#1-pure primary; v25 is retained as the 20-design max-diversity alternative (trade: one lineage of
+wet-lab hedge vs. one proven-wrong-direction slot). Final pick user-gated.

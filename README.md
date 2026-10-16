@@ -24,14 +24,25 @@ domination (switch magnitude is unrankable in-silico, binding magnitude is wet-l
 this upload"): on v22 it flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 unique (hits v19/v21 too). The
 dedup-clean **v23 and v24 were then both uploaded — ALL 20 PASSED each** → both fully portal-confirmed, 0 re-checks.
 
-`runs/push/submission_v25.csv` — **the confirmed primary** (md5 `41d5e12b4d89a353c44c7c3eb1289064`, 20 designs,
-validator PASS, **portal-parsed 2026-10-15: ALL 20 PASSED, 0 needing fixes, no cousin/dedup flags**). = v24 with ONE
-direct-free-energy swap `des_4098_1_b14 → des_4098_1_c44` (same lineage): alchemical ΔΔG (His⁰→His⁺, bound complex vs
-free binder) shows **b14 is a reproducible anti-switch** (all 6 seeds negative, z=−6.3) while **c44 is a confirmed
-strong releaser** (+8.0 kcal/mol, z=+6.5; c44 = b14 + His63/His66, the release mechanism). Clears every axis — novelty
-(c44 portal-confirmed ≥3/4, byte-identical in v19), binding (co-fold ipTM 0.974), cross-react (94% footprint conserved,
-identical profile to b14), dedup (portal 20-unique). Holds **4 FE-confirmed releasers and zero confirmed anti-switch**.
-Supersedes v24. Dossiers `docs/SUBMISSION_v25_candidate.md` + `docs/SWITCH_FE_findings.md`.
+`runs/push/submission_v26.csv` — **the recommended #1-pure primary** (md5 `73119a41fee4d726a39263229ad3f9b0`,
+**19 designs**, validator PASS). = **v25 minus `des_84_3_mh_49_56_76`**, a strict subset of portal-confirmed v25
+(every design already portal-PASSED, no re-check, no dedup risk). A whole-portfolio direct-FE **sign** audit
+(all 20 v25 members, bound+free, 6→12 seeds — `scripts/fe/analyze_sign.py`) found des_84_3 is a **confirmed
+anti-switch** (paired ΔΔG −2.16, z=−4.6, 11/12 seeds negative) — the one v25 member proven to switch the WRONG
+direction on the #1 axis, same class as b14 (~half the magnitude, higher-seed confidence). No clean replacement
+exists (des_84_3 is the only des_84-lineage design with FE coverage; portal-confirmed non-v25 designs are all
+negative-leaning, dedup-cousins, or lack an FE sign), so the #1-correct move is to drop it. v26 holds **5
+FE-confirmed releasers and 0 confirmed anti-switch**. Dossier `docs/SWITCH_FE_findings.md`.
+
+`runs/push/submission_v25.csv` — **the 20-design max-diversity alternative** (md5 `41d5e12b4d89a353c44c7c3eb1289064`,
+20 designs, validator PASS, **portal-parsed 2026-10-15: ALL 20 PASSED, 0 needing fixes, no cousin/dedup flags**). = v24
+with ONE direct-free-energy swap `des_4098_1_b14 → des_4098_1_c44` (same lineage): alchemical ΔΔG (His⁰→His⁺, bound
+complex vs free binder) shows **b14 is a reproducible anti-switch** (all 6 seeds negative, z=−6.3) while **c44 is a
+confirmed strong releaser** (+8.0 kcal/mol, z=+6.5; c44 = b14 + His63/His66, the release mechanism). Clears every axis —
+novelty (c44 portal-confirmed ≥3/4, byte-identical in v19), binding (co-fold ipTM 0.974), cross-react (94% footprint
+conserved), dedup (portal 20-unique). **Trade vs v26:** v25 keeps one extra lineage of wet-lab diversity hedge, at the
+cost of one slot (des_84_3) now proven to switch the wrong way. Supersedes v24. Dossiers
+`docs/SUBMISSION_v25_candidate.md` + `docs/SWITCH_FE_findings.md`.
 
 `runs/push/submission_v24.csv` — **conservative alternative** (md5 `34f3c096bf63dd9ef70d05308c6c3f1d`, 20
 designs, validator PASS, **all 20 portal-PASSED 2026-10-13**). v23 with 3 same-lineage swaps to v21's solid ≥2-cat
@@ -47,7 +58,9 @@ AP≈0.16 ≈ near-chance in-silico ranking) and switch magnitude is thermodynam
 alchemical FE *and* enhanced-sampling metadynamics — the bound-leg slow mode is interface reorganization, not the
 His CV). The provable axes
 are maximized: novelty 20/20 confirmed (v23); #1 both-fold ordinal = 8 (v24, the ceiling — a 4-His campaign
-confirmed 3-cat/member is the max); diversity 19 lineages; switch direction all-confirmed.
+confirmed 3-cat/member is the max); diversity 19 lineages. **Switch direction is now audited portfolio-wide by
+direct FE** (6→12 seeds, every member): v26 is all-releaser/neutral with **0 confirmed anti-switch**; v25 carries
+exactly one (des_84_3, −2.2, z−4.6), which is why v26 drops it.
 
 `runs/push/submission_v22.csv` / `submission_v21.csv` — **SUPERSEDED** (by v23 and v24 respectively); kept as records.
 

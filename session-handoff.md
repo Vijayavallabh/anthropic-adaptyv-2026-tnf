@@ -1,13 +1,34 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-15 (SESSION 16). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
-"1d 17h"; IGNORE that). **State: v25 is the confirmed primary** — `runs/push/submission_v25.csv` (md5
-`41d5e12b4d89a353c44c7c3eb1289064`) = v24 with one direct-FE swap `b14→c44` (b14 = reproducible anti-switch
-z=−6.3; c44 = confirmed releaser +8.0, z=+6.5), **portal-parsed 2026-10-15 ALL 20 PASSED, 0 dedup flags**, all
-axes gated. **v24 (md5 `34f3c096…`) = conservative alt; v23 then v19 fallbacks.** In-silico frontier reached on
+Updated 2026-10-16 (SESSION 17). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
+"1d 17h"; IGNORE that). **State: v26 is the recommended #1-pure primary** — `runs/push/submission_v26.csv` (md5
+`73119a41fee4d726a39263229ad3f9b0`, **19 designs**) = v25 minus `des_84_3_mh_49_56_76`, found by a whole-portfolio
+direct-FE **sign** audit (all 20 v25 members, 6→12 seeds) to be a **confirmed anti-switch** (paired ΔΔG −2.16,
+z=−4.6, 11/12 seeds negative — same class as b14). v26 is a strict subset of portal-confirmed v25 (no re-check, no
+dedup risk), with **0 confirmed anti-switch, 5 confirmed releasers**. **`runs/push/submission_v25.csv` (md5
+`41d5e12b4d89a353c44c7c3eb1289064`, 20 designs) = the max-diversity alternative** (= v24 with the `b14→c44` direct-FE
+swap, portal-parsed 2026-10-15 ALL 20 PASSED) — keeps one extra lineage of wet-lab hedge at the cost of the one
+proven-wrong-direction slot. **v24 (md5 `34f3c096…`) = conservative alt; v23 then v19 fallbacks.** In-silico frontier reached on
 every axis: generation floors, binding oracle fails across 3 folders, switch MAGNITUDE unrankable even by direct
 free energy AND by enhanced-sampling metadynamics (bound-leg basin-trapped; the slow mode is multi-residue interface
 reorganization, orthogonal to the His CV). Remaining lever = wet-lab (the user-gated upload). See `docs/SWITCH_FE_findings.md`.
+
+## SESSION 17 (2026-10-16) — WHOLE-PORTFOLIO direct-FE SIGN audit → v26 (drops one confirmed anti-switch)
+
+The metadynamics work (SESSION 16) proved the switch *magnitude* unrankable but left the *sign* checked on only
+3 controls. This session extended direct-FE sign coverage to **every v25 member**.
+- **Terminal-His engine fix** (`scripts/fe/alchemy_ddg.py`, committed 068ac30) — perturb only the HIE→HIP
+  charge-changing atoms, leaving backbone/CB/terminal (OXT, N-term H) untouched: byte-identical for internal His,
+  unblocks a terminal switch-His. This unblocked `des_875` (His80 = C-terminal), the last v25 member lacking coverage.
+- **Sign harness** (`scripts/fe/run_sign.sh` + `analyze_sign.py`) — paired per-seed ΔΔG; a CONFIRMED anti-switch
+  needs ≥all-but-one seeds negative AND |z|>3 (≥4-seed floor), calibrated on b14 (reproduces as −3.9, z−8.8, 0/6).
+- **Audit:** all 20 v25 members at 6+6 seeds; 3 negative-leaners extended to 12. **5 confirmed releasers**; one
+  **CONFIRMED ANTI-SWITCH — `des_84_3` (−2.16, z−4.6, 11/12 neg at 12 seeds; firmed up from z−3.0 at 6).** The other
+  two (des_2106_2, des_495_6) regressed to noise. des_875 clean (+0.86).
+- **Decision → v26 = v25 − des_84_3 (19 designs).** No clean replacement exists (des_84_3 is the only des_84-lineage
+  FE design; portal-confirmed non-v25 candidates are all negative-leaning / dedup-cousins / no FE sign), so the
+  #1-correct move is to drop it — the b14-removal principle, now applied by audit. v26 recommended; v25 retained as
+  max-diversity alt. Final pick USER-GATED. Full detail: `docs/SWITCH_FE_findings.md` (whole-portfolio sign audit).
 
 ## SESSION 16 (2026-10-15) — ENHANCED-SAMPLING TEST of #1 magnitude → metadynamics; v25 UNCHANGED
 

@@ -2,9 +2,16 @@
 
 Current status and next step for the TNF-α Challenge 2 campaign. Append; don't rely on chat history.
 
-## Status: SUBMISSION READY — upload user-gated. CONFIRMED PRIMARY = v25 (direct-FE #1 upgrade; portal-parsed 20/20)
+## Status: SUBMISSION READY — upload user-gated. RECOMMENDED PRIMARY = v26 (#1-pure, 19 designs); v25 = 20-design max-diversity alt
 
-- **CONFIRMED PRIMARY:** `runs/push/submission_v25.csv` (md5 **`41d5e12b4d89a353c44c7c3eb1289064`**) — 20 designs,
+- **RECOMMENDED PRIMARY (SESSION 17, 2026-10-16):** `runs/push/submission_v26.csv` (md5 **`73119a41fee4d726a39263229ad3f9b0`**)
+  — **19 designs**, validator PASS. = v25 minus `des_84_3_mh_49_56_76`, which a whole-portfolio direct-FE **sign** audit
+  (all 20 members, 6→12 seeds; `scripts/fe/analyze_sign.py`) found to be a **confirmed anti-switch** (paired ΔΔG −2.16,
+  z=−4.6, 11/12 seeds negative — same class as b14, the one v25 member proven to switch the WRONG way on the #1 axis).
+  v26 is a strict subset of portal-confirmed v25 (no re-check, no dedup risk): **0 confirmed anti-switch, 5 confirmed
+  releasers.** No clean replacement exists (des_84_3 = only des_84-lineage FE design). Terminal-His engine fix (unblocked
+  des_875, His80=C-term) + sign harness committed 068ac30. Detail: `docs/SWITCH_FE_findings.md`. Final pick USER-GATED.
+- **MAX-DIVERSITY ALT:** `runs/push/submission_v25.csv` (md5 **`41d5e12b4d89a353c44c7c3eb1289064`**) — 20 designs,
   validator PASS, **user portal-parsed 2026-10-15 → ALL 20 PASSED, 0 needing fixes, no dedup flags**. = v24 with ONE
   direct-FE swap `des_4098_1_b14 → des_4098_1_c44` (same lineage): alchemical ΔΔG (His⁰→His⁺ bound vs free) shows
   **b14 = reproducible anti-switch** (all 6 seeds −, z=−6.3) and **c44 = confirmed strong releaser** (+8.0, z=+6.5;
