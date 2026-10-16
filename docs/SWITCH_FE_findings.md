@@ -182,3 +182,28 @@ to −0.42 (z−0.4, 6/6) at 12** → neutral, not a releaser (novelty-safe TM 0
 A clean 20 (all portal-confirmed AND all releasing) is **not** data-supported: two anti-switches had to be
 removed and the pool has no novelty-safe non-cousin releaser left. The ladder trades count against
 novelty-certainty at one fixed #1-pure, 5-releaser core. Upload user-gated.
+
+## des_34125 override audit (2026-10-17) — settled by control, not judgment
+
+An external review flagged that dropping des_34125 overrode the analyzer's own label: at 20/24 it misses the
+"all-but-one-seed" rule (needs ≥23/24), so its label stayed `NEG_LEAN_UNCONFIRMED`; the cut rested on the
+z-test, i.e. on judgment over the tool. Fair flag — settled with a falsifiable control rather than argument.
+
+**Pre-committed rule:** extend BOTH reference anti-switches (b14, des_84_3) to the same 24-seed depth. If they
+*also* land <23/24 → the rule is miscalibrated at high n → the cut stands. If they stay ≥23/24 → des_34125 is
+genuinely noisier → restore it (v26=19). Control: 60 legs, all rc=0, GPUs returned idle.
+
+| design (24 seeds) | neg/n | ddG | z | sign-test p | all-but-one (≥23/24) |
+|---|---|---|---|---|---|
+| des_4098_1_b14 (calibration anchor) | 22/24 | −3.04 | −6.3 | 1.8e-5 | **FAIL** |
+| des_34125_g4_sa15 (in question) | 20/24 | −3.96 | −4.5 | 7.7e-4 | **FAIL** |
+| des_84_3_mh_49_56_76 (already removed) | 19/24 | −1.63 | −3.6 | 3.3e-3 | **FAIL** |
+
+**Result: VINDICATED.** At matched depth both reference anti-switches fail the ≥23/24 rule, and the analyzer now
+labels all three `NEG_LEAN_UNCONFIRMED` — it un-confirms its own two reference anti-switches purely on crossing
+into high-seed depth. So the rule, not the physics, is what breaks: the all-but-one sign-count is a 6-seed
+heuristic; at n=24 the bound-leg basin throws occasional positive outlier seeds even for proven anti-switches.
+The governing high-n instruments are the z-test and the distribution-free sign test, and by both des_34125
+(20/24, p=7.7e-4, z−4.5, −3.96) is **more** one-signed, higher |z|, and larger in magnitude than des_84_3
+(19/24, p=3.3e-3, z−3.6, −1.63), a slot already removed as a confirmed anti-switch and uncontested. No
+consistent rule removes des_84_3 yet keeps des_34125. **Recommendation stays v27 = 18; v26 not restored.**

@@ -28,8 +28,13 @@ dedup-clean **v23 and v24 were then both uploaded — ALL 20 PASSED each** → b
 ("best 20 even if it means rejecting all selected"). A decisive direct-FE sign extension (3 remaining 6-seed
 negative-leaners → 12 seeds; the one that firmed → 24) found a **second anti-switch hiding in v26**:
 `des_34125_g4_sa15` = **−3.96 kcal, z−4.46, 20/24 seeds negative**, firming monotonically with sampling
-(−0.68→−3.26→−3.96) to a magnitude larger than both known anti-switches (b14 −3.88, des_84_3 −2.16). All three
-options below are **#1-pure (0 confirmed anti-switch, 5 confirmed releasers, validator PASS)**; they trade count
+(−0.68→−3.26→−3.96) to a magnitude larger than both known anti-switches (b14 −3.88, des_84_3 −2.16). **An external
+review (2026-10-17) rightly flagged that this cut overrode the analyzer's own `NEG_LEAN_UNCONFIRMED` label (20/24
+misses its ≥23/24 "all-but-one-seed" rule). A falsifiable control extended *both* reference anti-switches to the
+same 24-seed depth and settled it: b14 lands 22/24 and des_84_3 19/24, so both *also* fail the ≥23/24 rule — it is a
+6-seed heuristic that breaks at high n, where the z-test and distribution-free sign-test govern. By those,
+des_34125 (p=7.7e-4) is more one-signed than the already-removed des_84_3 (p=3.3e-3); the cut is vindicated and
+v27=18 stands.** All three options below are **#1-pure (0 confirmed anti-switch, 5 confirmed releasers, validator PASS)**; they trade count
 against novelty-certainty at one fixed core. A clean 20 (all portal-confirmed AND all releasing) is not
 data-supported — two anti-switches had to be removed and the built pool has no novelty-safe non-cousin releaser left.
 

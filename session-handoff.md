@@ -6,8 +6,14 @@ Updated 2026-10-16 (SESSION 18). **Deadline ~2026-10-19 11:30 UTC** (the Stop-ho
 whole-portfolio stress test (direct-FE sign extension of the 3 remaining 6-seed negative-leaners → 12 seeds; the one
 that firmed → 24) found des_34125 is a **SECOND anti-switch** (paired ΔΔG **−3.96, z−4.46, 20/24 seeds negative**,
 firming monotonically −0.68→−3.26→−3.96, magnitude > both b14 −3.88 and des_84_3 −2.16; b14 calibration held in the
-same run). So **2 anti-switches removed total** (des_84_3 + des_34125). v27 = every member portal-confirmed (strict
-subset of portal-passed v25), **0 re-check/dedup/novelty risk, 0 confirmed anti-switch, 5 confirmed releasers.**
+same run). So **2 anti-switches removed total** (des_84_3 + des_34125). **[2026-10-17 — override audit RESOLVED,
+VINDICATED]** An external review flagged that the des_34125 cut overrode the analyzer's own `NEG_LEAN_UNCONFIRMED`
+label (20/24 misses its ≥23/24 all-but-one rule). A pre-committed, falsifiable control extended BOTH reference
+anti-switches to the same 24-seed depth: **b14 lands 22/24, des_84_3 19/24 → both ALSO fail the ≥23/24 rule**, and
+the analyzer now labels all three NEG_LEAN_UNCONFIRMED. The all-but-one count is a 6-seed heuristic that breaks at
+high n; by the governing z-test + distribution-free sign-test, des_34125 (p7.7e-4, z−4.5) is **more** one-signed than
+the already-removed des_84_3 (p3.3e-3, z−3.6). Cut vindicated; **v27=18 stands, v26 NOT restored.** v27 = every member
+portal-confirmed (strict subset of portal-passed v25), **0 re-check/dedup/novelty risk, 0 confirmed anti-switch, 5 confirmed releasers.**
 **Ladder:** `submission_v27d.csv` (19, md5 `17b45312…`) = v27 + des_243_3_r3_sa2 (NEW lineage, neutral switch,
 novelty TM 0.808 inferred-pass); `submission_v27dd.csv` (20, md5 `25bf9322…`) = v27d + des_1169_2_r3_sa7 (NEW lineage,
 neutral switch, novelty TM 0.934 marginal) = reaches the requested 20, soft spot des_1169 novelty. A clean 20
