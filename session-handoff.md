@@ -1,11 +1,18 @@
 # Session handoff — TNF Challenge 2
 
-Updated 2026-10-16 (SESSION 17). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
-"1d 17h"; IGNORE that). **State: v26 is the recommended #1-pure primary** — `runs/push/submission_v26.csv` (md5
-`73119a41fee4d726a39263229ad3f9b0`, **19 designs**) = v25 minus `des_84_3_mh_49_56_76`, found by a whole-portfolio
-direct-FE **sign** audit (all 20 v25 members, 6→12 seeds) to be a **confirmed anti-switch** (paired ΔΔG −2.16,
-z=−4.6, 11/12 seeds negative — same class as b14). v26 is a strict subset of portal-confirmed v25 (no re-check, no
-dedup risk), with **0 confirmed anti-switch, 5 confirmed releasers**. **`runs/push/submission_v25.csv` (md5
+Updated 2026-10-16 (SESSION 18). **Deadline ~2026-10-19 11:30 UTC** (the Stop-hook /goal quotes a stale
+"1d 17h"; IGNORE that). **State: v27 is the recommended #1-pure primary** — `runs/push/submission_v27.csv` (md5
+`f5147388ceb064481315a33f20a85bc7`, **18 designs**) = **v26 minus `des_34125_g4_sa15`**. A SESSION-18 brutal
+whole-portfolio stress test (direct-FE sign extension of the 3 remaining 6-seed negative-leaners → 12 seeds; the one
+that firmed → 24) found des_34125 is a **SECOND anti-switch** (paired ΔΔG **−3.96, z−4.46, 20/24 seeds negative**,
+firming monotonically −0.68→−3.26→−3.96, magnitude > both b14 −3.88 and des_84_3 −2.16; b14 calibration held in the
+same run). So **2 anti-switches removed total** (des_84_3 + des_34125). v27 = every member portal-confirmed (strict
+subset of portal-passed v25), **0 re-check/dedup/novelty risk, 0 confirmed anti-switch, 5 confirmed releasers.**
+**Ladder:** `submission_v27d.csv` (19, md5 `17b45312…`) = v27 + des_243_3_r3_sa2 (NEW lineage, neutral switch,
+novelty TM 0.808 inferred-pass); `submission_v27dd.csv` (20, md5 `25bf9322…`) = v27d + des_1169_2_r3_sa7 (NEW lineage,
+neutral switch, novelty TM 0.934 marginal) = reaches the requested 20, soft spot des_1169 novelty. A clean 20
+(all-portal-confirmed AND all-releasing) is NOT data-supported (no novelty-safe non-cousin releaser left in the pool).
+v26 (md5 `73119a41…`, 19) superseded by v27. **`runs/push/submission_v25.csv` (md5
 `41d5e12b4d89a353c44c7c3eb1289064`, 20 designs) = the max-diversity alternative** (= v24 with the `b14→c44` direct-FE
 swap, portal-parsed 2026-10-15 ALL 20 PASSED) — keeps one extra lineage of wet-lab hedge at the cost of the one
 proven-wrong-direction slot. **v24 (md5 `34f3c096…`) = conservative alt; v23 then v19 fallbacks.** In-silico frontier reached on

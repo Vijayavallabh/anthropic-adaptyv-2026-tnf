@@ -143,3 +143,42 @@ md5 `73119a41fee4d726a39263229ad3f9b0`, validator PASS, a strict subset of porta
 re-check, no dedup risk): **0 confirmed anti-switch, 5 confirmed releasers.** v26 is the recommended
 #1-pure primary; v25 is retained as the 20-design max-diversity alternative (trade: one lineage of
 wet-lab hedge vs. one proven-wrong-direction slot). Final pick user-gated.
+
+## Brutal whole-portfolio stress test (2026-10-16) — a second anti-switch, and the v27 ladder
+
+Re-opened the full v26 roster under an adversarial mandate ("best 20 even if it means rejecting all
+selected"). Stress-tested all 19 v26 members + 3 new-lineage 20th-candidates on every computable axis:
+sequence novelty (mmseqs vs full PDB: 21/21 zero hits, TNF posctrl 100% = search valid), developability
+(0 Cys / 0 N-glyc all; none disqualifying), binding (all pass af2ig pae_int<10), cross-react (settled
+90–97%), structural novelty (19/19 v26 portal-confirmed), FE switch sign (the live axis).
+
+**Sign extension of the 3 remaining 6-seed negative-leaners (→12), then the one firming one (→24):**
+
+| member | 6-seed | 12-seed | 24-seed | call |
+|---|---|---|---|---|
+| des_33012_g4_sa8 | −1.03 | −0.21 (z−0.2, 6/6) | — | noise, KEEP |
+| des_180_6_H9-14-38 | −0.85 | −1.09 (z−0.9, 6/6) | — | basin noise, KEEP |
+| des_34125_g4_sa15 | −0.68 | −3.26 (z−2.8, 10/12) | **−3.96 (z−4.5, 20/24)** | **CONFIRMED ANTI-SWITCH** |
+
+des_34125 firmed **monotonically** (−0.68→−3.26→−3.96) across three independent seed batches — magnitude
+larger than both known anti-switches (b14 −3.88, des_84_3 −2.16), z−4.46 (p<1e-5). It fails the analyzer's
+literal "all-but-one-seed-negative" label only because that is a 6-seed heuristic: at n=24 the basin-trapped
+bound leg throws occasional positive outlier seeds even for a true anti-switch, so the governing instrument
+is the z-test, which is decisive. b14 calibration held in the same run (−3.88, z−8.8). → **drop des_34125.**
+
+**20th-slot candidates (all new lineages):** des_243_3_r3_sa2 firmed +0.27→+1.76 at 6 seeds but **regressed
+to −0.42 (z−0.4, 6/6) at 12** → neutral, not a releaser (novelty-safe TM 0.808). des_1169_2_r3_sa7 neutral
+(−0.05), strong binder, novelty TM 0.934 (marginal; cf passed sh3_sa11 0.913). b1m9_A12H_w5_3 anti-lean
+(−2.60) → reject. No novelty-safe non-cousin **releaser** remains in the built pool.
+
+**The v27 ladder (all #1-pure: 0 confirmed anti-switch, 5 confirmed releasers, validator PASS):**
+
+| option | n | = | add | novelty | note |
+|---|---|---|---|---|---|
+| **v27** `f5147388` | 18 | v26 − des_34125 | — | all portal-confirmed | **recommended; 2 anti-switches removed total (des_84_3+des_34125); 0 re-check/dedup/risk** |
+| v27d `17b45312` | 19 | v27 + des_243 | neutral, NEW lin | TM 0.808 strong-inferred-pass | +1 lineage; 1 portal novelty-check |
+| v27dd `25bf9322` | 20 | v27d + des_1169 | neutral, NEW lin | TM 0.934 marginal | reaches 20; 2 portal-checks; des_1169 the soft spot |
+
+A clean 20 (all portal-confirmed AND all releasing) is **not** data-supported: two anti-switches had to be
+removed and the pool has no novelty-safe non-cousin releaser left. The ladder trades count against
+novelty-certainty at one fixed #1-pure, 5-releaser core. Upload user-gated.

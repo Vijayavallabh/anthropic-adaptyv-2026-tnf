@@ -2,11 +2,18 @@
 
 Current status and next step for the TNF-α Challenge 2 campaign. Append; don't rely on chat history.
 
-## Status: SUBMISSION READY — upload user-gated. RECOMMENDED PRIMARY = v26 (#1-pure, 19 designs); v25 = 20-design max-diversity alt
+## Status: SUBMISSION READY — upload user-gated. RECOMMENDED PRIMARY = v27 (#1-pure, 18 designs); v27d/v27dd = diversity/full-20 alts
 
-- **RECOMMENDED PRIMARY (SESSION 17, 2026-10-16):** `runs/push/submission_v26.csv` (md5 **`73119a41fee4d726a39263229ad3f9b0`**)
-  — **19 designs**, validator PASS. = v25 minus `des_84_3_mh_49_56_76`, which a whole-portfolio direct-FE **sign** audit
-  (all 20 members, 6→12 seeds; `scripts/fe/analyze_sign.py`) found to be a **confirmed anti-switch** (paired ΔΔG −2.16,
+- **RECOMMENDED PRIMARY (SESSION 18, 2026-10-16):** `runs/push/submission_v27.csv` (md5 **`f5147388ceb064481315a33f20a85bc7`**)
+  — **18 designs**, validator PASS. = **v26 minus `des_34125_g4_sa15`**. A brutal whole-portfolio stress test (direct-FE
+  sign extension of the 3 remaining 6-seed negative-leaners → 12 seeds, then the firming one → 24) found des_34125 is a
+  **SECOND anti-switch** (paired ΔΔG **−3.96, z−4.46, 20/24 neg**, firming monotonically −0.68→−3.26→−3.96 > both b14/des_84_3;
+  b14 calibration held). **2 anti-switches removed total.** v27 = all members portal-confirmed, 0 re-check/dedup/novelty risk,
+  0 confirmed anti-switch, 5 confirmed releasers. **Ladder:** v27d (19, md5 `17b45312…`, +des_243 neutral NEW-lineage novelty0.808),
+  v27dd (20, md5 `25bf9322…`, +des_1169 neutral NEW-lineage novelty0.934 marginal — reaches the requested 20). A clean 20
+  (all-portal-confirmed AND all-releasing) is NOT data-supported. v26 (19, `73119a41…`) superseded.
+- **(SESSION 17 record):** v26 = v25 minus `des_84_3_mh_49_56_76`, a whole-portfolio direct-FE **sign** audit
+  (all 20 members, 6→12 seeds; `scripts/fe/analyze_sign.py`) found it a **confirmed anti-switch** (paired ΔΔG −2.16,
   z=−4.6, 11/12 seeds negative — same class as b14, the one v25 member proven to switch the WRONG way on the #1 axis).
   v26 is a strict subset of portal-confirmed v25 (no re-check, no dedup risk): **0 confirmed anti-switch, 5 confirmed
   releasers.** No clean replacement exists (des_84_3 = only des_84-lineage FE design). Terminal-His engine fix (unblocked

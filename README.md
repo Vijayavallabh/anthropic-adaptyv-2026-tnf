@@ -24,7 +24,31 @@ domination (switch magnitude is unrankable in-silico, binding magnitude is wet-l
 this upload"): on v22 it flagged 4 cousins (des_4098_1 ×3, des_2106_2 ×2) → only 16 unique (hits v19/v21 too). The
 dedup-clean **v23 and v24 were then both uploaded — ALL 20 PASSED each** → both fully portal-confirmed, 0 re-checks.
 
-`runs/push/submission_v26.csv` — **the recommended #1-pure primary** (md5 `73119a41fee4d726a39263229ad3f9b0`,
+**The v27 ladder (2026-10-16 brutal whole-portfolio stress test)** — re-opened the full v26 roster adversarially
+("best 20 even if it means rejecting all selected"). A decisive direct-FE sign extension (3 remaining 6-seed
+negative-leaners → 12 seeds; the one that firmed → 24) found a **second anti-switch hiding in v26**:
+`des_34125_g4_sa15` = **−3.96 kcal, z−4.46, 20/24 seeds negative**, firming monotonically with sampling
+(−0.68→−3.26→−3.96) to a magnitude larger than both known anti-switches (b14 −3.88, des_84_3 −2.16). All three
+options below are **#1-pure (0 confirmed anti-switch, 5 confirmed releasers, validator PASS)**; they trade count
+against novelty-certainty at one fixed core. A clean 20 (all portal-confirmed AND all releasing) is not
+data-supported — two anti-switches had to be removed and the built pool has no novelty-safe non-cousin releaser left.
+
+`runs/push/submission_v27.csv` — **the recommended #1-pure primary** (md5 `f5147388ceb064481315a33f20a85bc7`,
+**18 designs**, validator PASS). = **v26 minus `des_34125_g4_sa15`** → **2 anti-switches removed total**
+(des_84_3 + des_34125). Every member is portal-confirmed (strict subset of the portal-passed v25), so **zero
+re-check, zero dedup, zero novelty risk**. 5 confirmed releasers, 0 confirmed anti-switch. Dossier `docs/SWITCH_FE_findings.md`.
+
+`runs/push/submission_v27d.csv` — **diversity alternative, 19 designs** (md5 `17b45312840f89597a0869f2c49f054d`,
+validator PASS). = v27 + `des_243_3_r3_sa2` (NEW lineage, neutral switch, best-in-pool novelty TM 0.808 — more
+novel than the already-portal-passed des_732 at 0.842, so strongly inferred to pass). Adds one lineage of wet-lab
+hedge at the cost of one portal novelty-check.
+
+`runs/push/submission_v27dd.csv` — **the full-20 option** (md5 `25bf9322eccaa1c5ef7196b825aeb3e5`, 20 designs,
+validator PASS). = v27d + `des_1169_2_r3_sa7` (NEW lineage, neutral switch, strong binder, novelty TM 0.934 —
+marginal, comparable to the already-passed sh3_sa11 at 0.913). Reaches the requested 20; the soft spot is
+des_1169's novelty (two portal-checks needed, des_1169 the riskier). Upload user-gated.
+
+`runs/push/submission_v26.csv` — **superseded by v27** (md5 `73119a41fee4d726a39263229ad3f9b0`,
 **19 designs**, validator PASS). = **v25 minus `des_84_3_mh_49_56_76`**, a strict subset of portal-confirmed v25
 (every design already portal-PASSED, no re-check, no dedup risk). A whole-portfolio direct-FE **sign** audit
 (all 20 v25 members, bound+free, 6→12 seeds — `scripts/fe/analyze_sign.py`) found des_84_3 is a **confirmed
