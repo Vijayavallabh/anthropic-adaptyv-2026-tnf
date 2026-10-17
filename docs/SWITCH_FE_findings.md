@@ -207,3 +207,26 @@ The governing high-n instruments are the z-test and the distribution-free sign t
 (20/24, p=7.7e-4, z−4.5, −3.96) is **more** one-signed, higher |z|, and larger in magnitude than des_84_3
 (19/24, p=3.3e-3, z−3.6, −1.63), a slot already removed as a confirmed anti-switch and uncontested. No
 consistent rule removes des_84_3 yet keeps des_34125. **Recommendation stays v27 = 18; v26 not restored.**
+
+## v27 negative-leaner sweep (2026-10-17) — the 24-seed bar applied to every member kept
+
+The des_34125 episode set a new standard: a 6–12 seed negative-leaner can firm into a real anti-switch at 24. That
+depth had been applied to des_34125/b14/des_84_3 but not to the four negative-leaners still *inside* v27 — an
+inconsistency (stricter bar on the slot rejected than on the slots kept). Fixed: all four extended to 24 seeds
+(96 legs, all rc=0). Pre-committed firm rule: drop only if |z| grows with depth **and** 24-seed sign-test p<0.01
+**and** neg-count ≥ des_84_3's confirmed 19/24.
+
+| v27 member @ 24 seeds | mean | z | neg/n | sign-test p | 6→12→24 trend | verdict |
+|---|---|---|---|---|---|---|
+| des_2106_2_…_sa2 | −2.02 | −1.9 | 16/24 | 0.076 | z −1.7→−1.1→−1.9 (non-monotonic) | **keep** (non-sig; CI incl. 0) |
+| des_180_6_H9-14-38 | −0.92 | −1.2 | 11/24 | 0.73 | minority-negative | keep (noise) |
+| des_33012_g4_sa8 | +0.43 | +0.5 | 10/24 | 0.85 | flipped positive | keep (noise) |
+| des_495_6_mh_41_49 | −0.00 | −0.0 | 12/24 | 0.58 | collapsed to zero | keep (noise) |
+
+**No third anti-switch.** Three of four are clean noise (coinflip / positive / zero mean). des_2106_2 is a
+non-significant mild negative lean — its 95% CI spans zero, its p (0.076) is 23× des_84_3's, and its trend is
+non-monotonic (unlike des_34125's clean monotonic firming), so it fails every firm criterion. Cutting it on a
+sub-significant lean would repeat, in mirror image, the judgment-over-tool over-cut flagged on des_34125; the
+disciplined call is to keep it and flag it as the weakest switch member. **v27 = 18 is confirmed maximally
+stress-tested: the 24-seed decisive bar is now applied portfolio-wide — 0 confirmed anti-switch, 5 confirmed
+releasers. The ladder (18/19/20) is unchanged.**

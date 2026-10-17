@@ -12,7 +12,12 @@ label (20/24 misses its ≥23/24 all-but-one rule). A pre-committed, falsifiable
 anti-switches to the same 24-seed depth: **b14 lands 22/24, des_84_3 19/24 → both ALSO fail the ≥23/24 rule**, and
 the analyzer now labels all three NEG_LEAN_UNCONFIRMED. The all-but-one count is a 6-seed heuristic that breaks at
 high n; by the governing z-test + distribution-free sign-test, des_34125 (p7.7e-4, z−4.5) is **more** one-signed than
-the already-removed des_84_3 (p3.3e-3, z−3.6). Cut vindicated; **v27=18 stands, v26 NOT restored.** v27 = every member
+the already-removed des_84_3 (p3.3e-3, z−3.6). Cut vindicated; **v27=18 stands, v26 NOT restored.** **[2026-10-17 —
+negative-leaner sweep]** A follow-up then extended the 4 negative-leaners still *inside* v27 to the same 24-seed depth
+(96 legs, all rc=0), so the decisive bar is applied portfolio-wide. Result: **0 firm** — des_33012 flipped positive,
+des_495_6 collapsed to a 12/12 coinflip, des_180_6 went minority-negative (11/24), and des_2106_2 is a
+non-significant mild lean (−2.02, z−1.9, 16/24, p0.076, 95% CI includes 0, non-monotonic trend) kept per the
+pre-committed rule and flagged as the weakest switch member. No third anti-switch. v27 = every member
 portal-confirmed (strict subset of portal-passed v25), **0 re-check/dedup/novelty risk, 0 confirmed anti-switch, 5 confirmed releasers.**
 **Ladder:** `submission_v27d.csv` (19, md5 `17b45312…`) = v27 + des_243_3_r3_sa2 (NEW lineage, neutral switch,
 novelty TM 0.808 inferred-pass); `submission_v27dd.csv` (20, md5 `25bf9322…`) = v27d + des_1169_2_r3_sa7 (NEW lineage,
