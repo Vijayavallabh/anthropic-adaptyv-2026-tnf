@@ -34,7 +34,10 @@ misses its ≥23/24 "all-but-one-seed" rule). A falsifiable control extended *bo
 same 24-seed depth and settled it: b14 lands 22/24 and des_84_3 19/24, so both *also* fail the ≥23/24 rule — it is a
 6-seed heuristic that breaks at high n, where the z-test and distribution-free sign-test govern. By those,
 des_34125 (p=7.7e-4) is more one-signed than the already-removed des_84_3 (p=3.3e-3); the cut is vindicated and
-v27=18 stands.** All three options below are **#1-pure (0 confirmed anti-switch, 5 confirmed releasers, validator PASS)**; they trade count
+v27=18 stands. A follow-up sweep (2026-10-17) then extended the four negative-leaners still inside v27 to the same
+24-seed depth and found no third anti-switch (des_2106_2 a non-significant mild lean, p=0.076, CI includes 0; the
+other three clean noise), so the 24-seed decisive bar is applied portfolio-wide.** All three options below are
+**#1-pure (0 confirmed anti-switch, 5 confirmed releasers, validator PASS)**; they trade count
 against novelty-certainty at one fixed core. A clean 20 (all portal-confirmed AND all releasing) is not
 data-supported — two anti-switches had to be removed and the built pool has no novelty-safe non-cousin releaser left.
 

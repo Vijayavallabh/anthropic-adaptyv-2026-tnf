@@ -16,10 +16,11 @@ the invariants; the project-specific facts (target, epitope, trigger, thresholds
 1. Run `./init.sh` to build the core env and run the verification gate (uv sync + compile + pytest + validator self-check).
 2. Read `progress.md` (current status), `session-handoff.md` (latest session state + next steps),
    `configs/target.yaml` (target, epitope, switch), and `docs/PLAN_TNF.md` (plan + outcome). `scripts/README.md`
-   maps the pipeline; the **confirmed primary submission is `runs/push/submission_v25.csv`** (md5
-   `41d5e12b4d89a353c44c7c3eb1289064`; v24 with one direct-FE swap b14→c44 — portal-parsed ALL 20 PASSED,
-   0 dedup flags — see the Submission contract below); `v24` (md5 `34f3c096…`) is the conservative
-   alternative; `v23` then `v19` are fallbacks. (`v20`/`v21`/`v22` superseded — kept as records.)
+   maps the pipeline; the **recommended primary submission is `runs/push/submission_v27.csv`** (md5
+   `f5147388ceb064481315a33f20a85bc7`, **18 designs**, #1-pure: 0 confirmed anti-switch, 5 confirmed releasers —
+   see the Submission contract below); the ladder adds `v27d` (19, md5 `17b45312…`) and `v27dd` (20, md5 `25bf9322…`);
+   `v26` (19, `73119a41…`) and `v25` (20, portal-parsed 20/20) are superseded max-diversity sets; `v24`/`v23`/`v19`
+   fallbacks. (`v20`/`v21`/`v22` superseded — kept as records.)
 3. Work one change at a time; finish it (tests plus evidence) before starting the next.
 
 ## Invariants (do not violate)
@@ -82,31 +83,31 @@ evidence.
   upload") separate from the PDB-novelty gate. v22 → 4 cousins flagged (des_4098_1 ×3, des_2106_2 ×2) → only **16
   unique** (hits v19/v21 too). **v23 → ALL 20 PASSED** → v23 FULLY portal-confirmed, 20 unique, 0 re-checks left.
   Lesson: cap 1 per too-similar cluster. See PORTAL_V22_UPLOAD_RESULT + V23_PORTAL_CONFIRMED.
-- **v25 — CONFIRMED PRIMARY (direct-FE #1-axis upgrade; portal-parsed 20/20):** `runs/push/submission_v25.csv`
-  (md5 **`41d5e12b4d89a353c44c7c3eb1289064`**, validator PASS, 20 designs, **portal-parsed 2026-10-15: ALL 20 PASSED,
-  0 needing fixes, no cousin/dedup flags**). = v24 with ONE swap: `des_4098_1_b14 → des_4098_1_c44` (same lineage).
-  Motivated by alchemical binding free energy (TI, His⁰→His⁺ bound vs free): **b14 is a reproducible anti-switch**
-  (all 6 seeds −, z=−6.3) while **c44 is a confirmed strong releaser** (+8.0 kcal/mol, z=+6.5; c44 = b14 + His63/66
-  = the release mechanism). Gate ALL PASS: novelty (c44 portal ≥3/4 byte-identical v19), binding (co-fold ipTM 0.974),
-  cross-react (94% footprint conserved, == b14), dedup (portal 20-unique). Set holds **4 FE-confirmed releasers, 0
-  confirmed anti-switch.** See `docs/SWITCH_FE_findings.md` + `docs/SUBMISSION_v25_candidate.md`. **Supersedes v24.**
-- **v24 — CONSERVATIVE ALTERNATIVE (max both-fold ordinal, the exact earlier-blessed set):** `runs/push/submission_v24.csv` (md5
-  **`34f3c096bf63dd9ef70d05308c6c3f1d`**, validator PASS, 20 designs, **all 20 portal-PASSED 2026-10-13**). = v23 with
-  3 same-lineage swaps to v21's solid ≥2-cat both-fold saN variants (des_2106_2→sa2, des_4082_8_pd_10_4→sa7 [d_repel
-  1.69], des_6025_4→sa10_sh3_sa11 [1.2]). **8 both-fold members (2 three-cat + 6 two-cat) = the #1-axis CEILING,
-  dedup-clean 20-UNIQUE, fully confirmed.** The MAX in-silico-provable set. **Supersedes v21.** Dossier
-  `docs/SUBMISSION_v24_candidate.md`.
-- **v23 — FULLY CONFIRMED NOW (0 re-checks):** `runs/push/submission_v23.csv` (md5
-  **`65bf89bb38f5498ad90522542655eae2`**, validator PASS, 20 designs, **all 20 portal-PASSED**). = v22 − 3 cousins +
-  {des_34125_g4_sa15, des_820_3_r3_sa4_r2_8, des_33012_g4_sa8}. 20 UNIQUE, 5 both-fold, 19 lineages. The strongest
-  fully-gated set with zero further effort. Dossier `docs/SUBMISSION_v23_candidate.md`.
-- **The pick:** **v25** = CONFIRMED PRIMARY (direct-FE #1-axis upgrade over v24: removes the one reproducible
-  anti-switch b14, adds confirmed releaser c44; portal-parsed 20/20, 0 dedup flags); **v24** = conservative
-  alternative (8 both-fold ordinal, the exact earlier-portal-blessed set); **v23** / **v19** fallbacks. **v24→v25,
-  v22→v23, v21→v24 (SUPERSEDED).** "Dominate every metric"
-  is NOT in-silico-provable: binding magnitude (#3) is wet-lab-decided (Anthropic AP≈0.16 near-chance) and switch
-  MAGNITUDE is thermodynamically unrankable. The provable axes ARE maxed (novelty 20/20 for v23; #1 both-fold
-  ordinal = 8 ceiling, 4-His NO-GO; diversity 19; direction all-confirmed).
+- **v27 — RECOMMENDED PRIMARY (#1-pure; the 2026-10-16/17 brutal whole-portfolio stress test):** `runs/push/submission_v27.csv`
+  (md5 **`f5147388ceb064481315a33f20a85bc7`**, validator PASS, **18 designs**). = **v26 minus `des_34125_g4_sa15`**, a
+  SECOND direct-FE-confirmed anti-switch (paired ΔΔG −3.96, z−4.46, 20/24 seeds neg, firming monotonically
+  −0.68→−3.26→−3.96). Every member portal-confirmed (strict subset of portal-passed v25): **0 re-check / 0 dedup / 0
+  novelty risk, 0 confirmed anti-switch, 5 confirmed releasers.** Two override checks settled the #1 axis by experiment,
+  not judgment: **(a) 24-seed CONTROL** — both reference anti-switches also fail the analyzer's ≥23/24 "all-but-one"
+  label at that depth (b14 22/24, des_84_3 19/24) → that label is a 6-seed heuristic; the z-test + distribution-free
+  sign-test govern at high n, and by them the des_34125 cut is vindicated. **(b) NEGATIVE-LEANER SWEEP** — the 4
+  negative-leaners still in v27 extended to the same 24-seed depth → **0 firm** (des_2106_2 a non-sig mild lean p0.076
+  CI-incl-0, kept; des_33012/des_495_6/des_180_6 clean noise). The 24-seed decisive bar is now applied portfolio-wide.
+  Dossier `docs/SWITCH_FE_findings.md`.
+- **v27d (19) / v27dd (20) — the ladder** (md5 **`17b45312840f89597a0869f2c49f054d`** / **`25bf9322e…`**, validator PASS):
+  v27 + `des_243_3_r3_sa2` (neutral, NEW lineage, novelty TM 0.808 inferred-pass), then + `des_1169_2_r3_sa7` (neutral,
+  NEW lineage, novelty TM 0.934 marginal — reaches the requested 20). They trade count against novelty-certainty at a
+  fixed #1-pure, 5-releaser core. A clean 20 (all-portal-confirmed AND all-releasing) is **NOT data-supported** (2
+  anti-switches removed; no novelty-safe non-cousin releaser left in the built pool).
+- **v26 (19, `73119a41fee4d726a39263229ad3f9b0`) / v25 (20, `41d5e12b4d89a353c44c7c3eb1289064`, portal-parsed ALL 20
+  PASSED) — SUPERSEDED by v27**, kept as records (v26 = v25 − des_84_3, the des_34125 restore target; v25 = the earlier
+  max-diversity 20). **v24** (`34f3c096bf63dd9ef70d05308c6c3f1d`, 8 both-fold ordinal = the exact earlier-portal-blessed
+  set) / **v23** (`65bf89bb38f5498ad90522542655eae2`) / **v19** are fallbacks.
+- **The pick:** **v27** (18, #1-pure, recommended) with the **v27d / v27dd** ladder to 19 / 20 for diversity / full count.
+  "Dominate every metric" is NOT in-silico-provable: binding magnitude (#3) is wet-lab-decided (Anthropic AP≈0.16
+  near-chance) and switch MAGNITUDE is thermodynamically unrankable. The provable axes ARE maxed: novelty portal-confirmed,
+  #1 switch-DIRECTION audited portfolio-wide to 24-seed depth (0 confirmed anti-switch, 5 confirmed releasers), diversity
+  across distinct lineages. Upload USER-GATED.
 - **v22 — pragmatic Pareto-improvement over confirmed v19 (minimal re-check):** `runs/push/submission_v22.csv`
   (md5 **`abaec06790766f25282133d929083187`**, validator PASS, 20 designs). = v19 with ONLY its **2 MD-FAILING
   switchers** replaced — b1m9_A12H (d_repel −1.307, wrong-sign) and des_138_7_pd_24_4 (−0.097, non-causal) → by

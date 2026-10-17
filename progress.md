@@ -4,6 +4,16 @@ Current status and next step for the TNF-α Challenge 2 campaign. Append; don't 
 
 ## Status: SUBMISSION READY — upload user-gated. RECOMMENDED PRIMARY = v27 (#1-pure, 18 designs); v27d/v27dd = diversity/full-20 alts
 
+- **STRESS TEST COMPLETE (2026-10-17):** the #1 (pH-selectivity) axis is now settled by experiment across the whole
+  roster. **(a) des_34125 override audit — VINDICATED:** a 24-seed control showed both reference anti-switches also fail
+  the analyzer's ≥23/24 "all-but-one" label (b14 22/24 p1.8e-5, des_84_3 19/24 p3.3e-3) → that rule is a 6-seed heuristic;
+  z-test + distribution-free sign-test govern at high n, and by them des_34125 (20/24, p7.7e-4) is a confirmed anti-switch
+  — cut stands, v27=18, v26 NOT restored. **(b) negative-leaner sweep:** the 4 negative-leaners still inside v27 extended
+  to the same 24-seed depth (96 legs, all rc=0) → **0 firm, no 3rd anti-switch** (des_33012 flipped +0.43; des_495_6
+  collapsed to a 12/12 coinflip; des_180_6 minority-negative 11/24; des_2106_2 a non-significant mild lean −2.02/z−1.9/16-24,
+  p0.076, 95% CI includes 0 — kept per pre-committed rule, flagged weakest). **v27=18 confirmed maximally stress-tested:
+  24-seed decisive bar applied portfolio-wide, 0 confirmed anti-switch, 5 confirmed releasers; ladder 18/19/20 UNCHANGED.**
+  Detail: `docs/SWITCH_FE_findings.md`; master-record DES34125_OVERRIDE_AUDIT + STRESS_TEST_v27_negleaner_sweep.
 - **RECOMMENDED PRIMARY (SESSION 18, 2026-10-16):** `runs/push/submission_v27.csv` (md5 **`f5147388ceb064481315a33f20a85bc7`**)
   — **18 designs**, validator PASS. = **v26 minus `des_34125_g4_sa15`**. A brutal whole-portfolio stress test (direct-FE
   sign extension of the 3 remaining 6-seed negative-leaners → 12 seeds, then the firming one → 24) found des_34125 is a
