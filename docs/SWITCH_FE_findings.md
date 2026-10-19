@@ -316,3 +316,22 @@ human target), it still **binds** mouse (gate frac 0.97, iptm 0.974 — raw #2 i
 so the mouse inversion is a conditional-behavior annotation, not a disqualifier. The b14→c44 swap stands —
 b14 was a *human* anti-switch (−3.88), strictly worse on the top-weighted axis. v27 = 18 unchanged; the
 dual-species releasers remain the cross-species-robust tier to feature. Pick USER-GATED.
+
+### Deepening resolution of des_36133 and des_138_7 (seeds 7–12) — experiment CLOSED
+
+- **des_36133_g4_sa18:** −3.84 (z−2.5, 6s) → **−4.80 (z−3.7, 2/10, p=0.039)** at 12 seeds → **firm mouse-anti**
+  (firmed with depth). But a weak HUMAN switcher (z+0.8), so less consequential than des_4098.
+- **des_138_7…mh_49_77:** −2.61 (z−1.5, 6s) → **−2.80 (z−2.6, 8/12, p=0.39)** at 12 seeds → z-test and
+  sign-test **disagree** (negative mean but split per-seed signs) = basin-trapping noise, not a firm effect →
+  **keep-flagged, NOT a firm anti** (same discipline as des_2106_2 in the human sweep).
+
+**Final deepened partition (18/18): 5 dual-species releasers | 6 conserved-flat/borderline | 7 firm
+mouse-anti.** Three designs firmed from CI-straddle to firm-anti on deepening (des_4098, des_36133) and one
+stayed sub-significant (des_138_7); the firming-with-depth pattern (des_4098 −1.49→−2.79, des_36133
+−3.84→−4.80) confirms the mouse anti-switches are genuine, not sampling artifacts.
+
+**Final consequence — unchanged.** This is an ORDERING signal, not a cut. v27 = 18 stands as the default pick.
+The 5 dual-species releasers (des_6025_4, des_820_3, b4m2, des_4082_8…10_4, des_732_1) are the
+cross-species-robust tier to feature. No design is removed: every firm mouse-anti still BINDS mouse (raw #2
+intact) and #1 is judged primarily on human. The one design anti in BOTH species (des_2106_2) still fails the
+cut bar on human alone. Pick and any CSV reordering remain USER-GATED; nothing uploaded.
