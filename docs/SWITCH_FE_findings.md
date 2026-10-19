@@ -300,3 +300,19 @@ The one scrutiny case is **des_2106_2** (anti in BOTH species) — but its human
 (z−1.9, 16/24), so by the des_34125 standard it does not clear the cut bar on human alone; mouse adds to it.
 No design is added or removed on this result. **v27 = 18 stands as default; any ordering/pick change is
 USER-GATED.** des_4098 + des_36133 seed-deepening (7–12) in flight to resolve the two CI-straddlers.
+
+### CI-straddle deepening (seeds 7–12) — des_4098 resolves to a firm mouse anti-switch
+
+des_4098_1_c44 extended 6→12 seeds: mouse ΔΔG −1.49 (z−1.7, 1/5, p=0.22) → **−2.79 (z−3.1, 1/11,
+p=0.0063)**. The anti-lean firmed **monotonically** with depth — the same signature as the des_34125 human
+anti-switch (−0.68→−3.26→−3.96), i.e. a real effect, not basin noise. So the portfolio's **joint-strongest
+HUMAN switcher** (human z+8.1, +7.2 kcal releaser) is a **firm ANTI-switch in mouse** (z−3.1). This is the
+cleanest demonstration of the section's thesis: a human-optimized switch can fully invert cross-species, and
+human switch strength does not predict transfer. Updated partition: **5 dual-species releaser | 6
+conserved-flat | 6 firm mouse-anti | 1 CI-straddle remaining** (des_36133; des_138_7 deepening in flight).
+
+**This does not cut c44.** It remains the strongest HUMAN switch in the set (#1 is judged primarily on the
+human target), it still **binds** mouse (gate frac 0.97, iptm 0.974 — raw #2 intact), and #2 < #1 in priority,
+so the mouse inversion is a conditional-behavior annotation, not a disqualifier. The b14→c44 swap stands —
+b14 was a *human* anti-switch (−3.88), strictly worse on the top-weighted axis. v27 = 18 unchanged; the
+dual-species releasers remain the cross-species-robust tier to feature. Pick USER-GATED.
