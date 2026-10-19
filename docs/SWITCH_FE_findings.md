@@ -230,3 +230,73 @@ sub-significant lean would repeat, in mirror image, the judgment-over-tool over-
 disciplined call is to keep it and flag it as the weakest switch member. **v27 = 18 is confirmed maximally
 stress-tested: the 24-seed decisive bar is now applied portfolio-wide — 0 confirmed anti-switch, 5 confirmed
 releasers. The ladder (18/19/20) is unchanged.**
+
+## Cross-species switch FE — does the pH-switch fire in MOUSE? (2026-10-18/19)
+
+Every FE section above is the **human** complex. Cross-reactivity (#2) and #1-in-mouse had only ever been
+argued from a **static** epitope-conservation footprint (`data/epitope/human_mouse_map.json`) — never
+energetically. This is the first direct test: does the His⁰→His⁺ release-direction (ΔΔG_switch sign) also
+hold in the **mouse** complex? Same pipeline, estimator and bar as the human sign audit; mouse systems named
+`<design>_mouse_{bound,free}`, built from a Boltz-2 co-fold of each binder on **mature** mouse-TNF.
+
+**Pose-trust gate first (the result is only as good as the mouse pose).** The binder is the *same* molecule in
+both complexes, so the gate is numbering-invariant: compare the binder-side **paratope** (contacts) + switch-His
+interfaciality, not the TNF epitope. PASS = paratope frac-of-human ≥0.60, ≥2 switch-His interfacial (<6Å),
+pose reproducible across ≥2 co-fold seeds (paratope Jaccard ≥0.6). **All 18 PASS** (frac 0.81–1.00, 14/18 ≥0.92);
+2 flagged for LOW co-fold confidence only (des_33012 iptm 0.401, des_820_3 iptm 0.618 — pose mode still
+reproducible). iptm alone is insufficient (one pilot had iptm 0.88 on a wrong-face pose → caught by paratope).
+
+**Wave: 18 designs × 2 legs × 6 seeds = 216 legs, all rc=0, zero crashes.** Convention unchanged
+(ΔΔG>0 = releases at low pH = correct; <0 = anti-switch).
+
+| design | HUMAN ΔΔG (z) | MOUSE ΔΔG (z, +/−) | verdict |
+|---|---|---|---|
+| b4m2_r1_w5_3 | +6.7 (z+18.8) | **+3.26 (z+2.7, 6/0)** | **DUAL-SPECIES RELEASER** |
+| des_6025_4…sh3_sa11 | +7.7 (z+8.3) | **+3.57 (z+4.9, 6/0)** | **DUAL-SPECIES RELEASER** |
+| des_4082_8…10_4 | +6.2 (z+2.5) | **+5.59 (z+4.0, 6/0)** | **DUAL-SPECIES RELEASER** |
+| des_732_1_r3_sa15 | +3.2 (z+5.1) | **+2.25 (z+3.5, 6/0)** | **DUAL-SPECIES RELEASER** |
+| des_820_3_r3_sa4_r2_8 | +6.8 (z+4.8) | **+6.83 (z+3.5, 6/0)** | **DUAL-SPECIES RELEASER** (low-conf pose) |
+| des_875_5_H3-57-80 | +0.9 (z+1.7) | +0.08 (z+0.1, 5/1) | conserved-flat (no inversion) |
+| b2m0_c70 | +1.7 (z+1.5) | +0.16 (z+0.2, 4/2) | conserved-flat |
+| des_6126_3…mh_9_56_78 | +1.9 (z+1.9) | −2.53 (z−1.3, 1/5) | conserved-flat |
+| des_138_7…mh_49_77 | +3.8 (z+2.6) | −2.61 (z−1.5, 2/4) | conserved-flat (borderline; deepening) |
+| des_4082_8…9_1 | +0.3 (z+0.3) | −1.83 (z−1.4, 2/4) | conserved-flat |
+| des_33012_g4_sa8 | +0.4 (z+0.5) | −0.02 (z−0.0, 3/3) | conserved-flat (low-conf pose) |
+| des_4098_1_c44 | +7.2 (z+8.1) | −1.49 (z−1.7, 1/5) | CI-straddle → deepening (seeds 7–12) |
+| des_36133_g4_sa18 | +1.2 (z+0.8) | −3.84 (z−2.5, 1/5) | CI-straddle → deepening |
+| des_180_6_H9-14-38 | −0.9 (z−1.2) | −6.34 (z−5.9, 0/6) | firm mouse-anti |
+| des_1060_4_mh_46_74 | +1.8 (z+0.7) | −8.01 (z−6.0, 0/6) | firm mouse-anti |
+| des_2106_2…_sa2 | −2.0 (z−1.9) | −7.82 (z−4.8, 0/6) | firm mouse-anti (anti in BOTH species) |
+| des_495_6_mh_41_49 | −0.0 (z−0.0) | −1.35 (z−3.1, 0/6) | firm mouse-anti |
+| des_1559_3_mh_48_75 | +2.0 (z+1.7) | −6.50 (z−4.1, 0/6) | firm mouse-anti |
+
+**Partition: 5 dual-species releaser | 6 conserved-flat | 2 CI-straddle (deepening) | 5 firm mouse-anti.**
+
+**Validity controls (the signal is real complex physics, not an artifact):**
+1. *Free-leg match.* The free leg is the isolated binder, so human-free must ≈ mouse-free — it does, for every
+   design (ΔFree +0.65/+0.39/−0.73/+0.07/+1.00 kcal on the first 5, all ≤1). No free-leg reference anomaly.
+2. *Signal is entirely in the BOUND leg* (ΔBound −8.0/−5.0/−5.1/−0.7/−8.8) — genuine complex reorganization.
+3. *Design-specific magnitude*, not a constant offset → not a systematic solver bias.
+4. *Conserved counterexample:* des_875_5 ΔBound only −0.7 → it is NOT that every mouse complex trivially
+   stabilizes protonated His; the effect tracks the specific epitope.
+5. *His-set matched* human==mouse per design (verified) → like-for-like sign comparison.
+Residual irreducible caveat: the switch-His TNF-side partner depends on the co-fold pose; no blind
+dock-correctness gate exists (ledger), so the gate anchors pose-equivalence to the human designed pose, not
+absolute correctness.
+
+**Cross-species coherence.** Of the 5 human-confirmed releasers, **4 are confirmed in mouse too**
+(dual-species: b4m2, des_6025, des_4082_8…10_4, des_732 — plus des_820 which is also human-confirmed = 5 dual
+when counting des_820). des_4098_1_c44 is the lone anomaly: a rock-solid human switch (z+8.1) that leans anti
+in mouse → the top deepening target. Human switch *strength does not cleanly predict transfer*
+(des_4082_8…10_4 at human z+2.5 transfers; c44 at z+8.1 does not), so the mouse FE adds **independent**
+discriminating signal, not an echo of the human result.
+
+**Consequence for the submission — an ORDERING signal, not a cut.** This gives the first energetic
+cross-species switch-robustness ranking the portfolio never had. The 4–5 dual-species releasers are the
+strongest assets on the combined #1∩#2 objective and should be featured. It is **not** an automatic cull of
+the firm mouse-antis: (a) they still **bind** mouse (raw #2 intact) — only the conditional release inverts;
+(b) #1 is judged primarily in human; (c) culling collapses the diversity hedge; (d) the pose caveat above.
+The one scrutiny case is **des_2106_2** (anti in BOTH species) — but its human anti is sub-significant
+(z−1.9, 16/24), so by the des_34125 standard it does not clear the cut bar on human alone; mouse adds to it.
+No design is added or removed on this result. **v27 = 18 stands as default; any ordering/pick change is
+USER-GATED.** des_4098 + des_36133 seed-deepening (7–12) in flight to resolve the two CI-straddlers.
