@@ -4,7 +4,7 @@
 > consensus) is current and still applied, but the "current best = v11" framing below is superseded — the
 > **confirmed primary is `submission_v25.csv`** (v24 with the direct-FE swap b14→c44; portal-parsed 20/20),
 > with `submission_v24.csv` the conservative alternative (all 20 portal-PASSED) and `submission_v23.csv`/`v19`
-> fallbacks (see AGENTS.md / README.md / session-handoff.md / docs/SWITCH_FE_findings.md).
+> fallbacks (see README.md / docs/SWITCH_FE_findings.md).
 
 **Why this doc.** Expression is the dominant wet-lab-zero risk: a design that cannot be manufactured scores
 zero regardless of its pH-switch. Our prior confidence rested mainly on **one** predictor — ESMFold monomer

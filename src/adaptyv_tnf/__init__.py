@@ -1,12 +1,12 @@
 """adaptyv_tnf - pipeline + submission tooling for the Anthropic x Adaptyv 2026
-EGFR conditional-binder challenge (Challenge 1).
+TNF-alpha conditional-binder challenge (Challenge 2).
 
 Objective priority (this order IS the scoring priority):
-    1. pH-selective binding        bind @ pH 6.5, no binding @ pH 7.4   (highest)
+    1. pH-selective binding        bind @ pH 7.4, release @ pH 6.0       (highest)
     2. human/mouse cross-reactive  the same sequence binds both
-    3. high affinity to human EGFR extracellular region
+    3. affinity to TNF-alpha in the ON (pH 7.4) state
 
-See AGENTS.md for the harness contract and feature_list.json for pipeline state.
+See README.md and docs/METHODS.md for the method and pipeline.
 """
 from __future__ import annotations
 
@@ -24,11 +24,10 @@ def main() -> None:
         textwrap.dedent(
             f"""
             adaptyv-tnf v{__version__}
-            Anthropic x Adaptyv 2026 - EGFR conditional-binder challenge (Challenge 1)
+            Anthropic x Adaptyv 2026 - TNF-alpha conditional-binder challenge (Challenge 2)
 
             Objective priority : pH-selectivity > cross-reactivity > affinity
-            Start here         : AGENTS.md
-            Pipeline state     : feature_list.json  (stages 0-6)
+            Start here         : README.md
             Validate a CSV     : uv run python scripts/validate_submission.py <file.csv> --track 3
             """
         ).strip()

@@ -12,7 +12,7 @@ CONTRACT (Adaptyv 2026 upload form). Track caps here match ``configs/filters.yam
 and ``docs/PLAN_TNF.md`` (TNF Challenge 2 = Track 3, <=20 designs).
 IMPORTANT: the live /submit form is a client-rendered SPA that could not be read
 programmatically - RE-VERIFY exact column names/casing on the logged-in form
-before the final upload (see AGENTS.md "Open questions / must re-verify").
+before the final upload.
 
   * one CSV; rows ordered best-first (top row = highest-ranked design)
   * required columns: name, sequence, molecule_class

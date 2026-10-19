@@ -44,7 +44,7 @@ the conservative alt (all 20 portal-PASSED, max both-fold ordinal), `submission_
 **Submission contract:** `validate_submission.py` + `src/adaptyv_tnf/submission.py` (shared Adaptyv 2026 upload format;
 TNF = Track 3, ≤20 designs — caps in `configs/filters.yaml`). The final upload is to the Proteinbase portal (user-gated).
 
-**LONG-SHOT de-novo NEW-shape pipeline (v16 — CURRENT submission path, SESSION 11; see `session-handoff.md`):**
+**LONG-SHOT de-novo NEW-shape pipeline (v16):**
 genuinely new shapes for the weak MD-NONRESPOND slots (not partial-diffusion cousins of confirmed lineages).
 Stage drivers (all parameterized, reusable):
 `run_bpair_rfd.sh <subdir> <ndes> <gpu> [startnum]` (β-pairing RFd1 fold-conditioned to Region-I edge strand;
@@ -56,4 +56,4 @@ full-atom af2in → af2ig binding filter; works on any flat/nested backbone set)
 `MHPOSEGLOB`; separated multi-His via `bpair_multihis_build.py` → Boltz → `mh_screen.py` linkage) ·
 `run_md_release.sh` + `md_verdict.py` (two-state MD trigger gate — the decider; static linkage ≠ MD trigger) ·
 `v15_stage2.sh` (partial-diffusion-track stage-2, analogous). Outputs: `runs/bpair/*`, `runs/partial_denovo*/*`;
-v16 CSV `runs/push/submission_v16.csv` (`a524d77f`). Dossier: `docs/SUBMISSION_v16_candidate.md`.
+v16 CSV `runs/push/submission_v16.csv` (`a524d77f`).

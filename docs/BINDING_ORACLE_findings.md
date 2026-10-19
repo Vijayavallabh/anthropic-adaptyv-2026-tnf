@@ -35,7 +35,7 @@ binders pose-converge slightly better on mouse — but n=3 is far too small to r
 Three independent lines now agree that TNF binding/cross-react is **in-silico-walled** (single-folder scores,
 strict both-fold switch, and pose-consensus all near-chance). Therefore:
 - The **cross-react (#2) claim rests on the mechanistic conserved-cation argument**, not any co-fold score
-  (see `SUBMISSION_v18_candidate.md` §Cross-reactivity). This is fold-independent and the right basis.
+  (see `docs/METHODS_push.md`). This is fold-independent and the right basis.
 - The **switch (#1) is the strongest axis** because it is physics (two-state MD + pKa + QM on a pose), and its
   fold-INDEPENDENT core is the conserved-cation chemistry.
 - Binding/affinity (#3, lowest-weighted) is genuinely wet-lab-decided for TNF — as Anthropic found (they
